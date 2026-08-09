@@ -66,13 +66,19 @@ spec:
             - name: data
               mountPath: /datastore
           resources: {{- toYaml .Values.resources | nindent 12 }}
+          # changedetection answers 500 on / while it initialises its datastore, which is long
+          # enough to trip a liveness probe and kill the container mid-start. A startupProbe holds
+          # liveness back until the app has answered once — and it may take its time, because a
+          # first boot on an empty volume is slower than a restart.
+          startupProbe:
+            httpGet: { path: /, port: http }
+            periodSeconds: 5
+            failureThreshold: 60
           livenessProbe:
             httpGet: { path: /, port: http }
-            initialDelaySeconds: 30
             periodSeconds: 30
           readinessProbe:
             httpGet: { path: /, port: http }
-            initialDelaySeconds: 10
             periodSeconds: 10
       volumes:
         {{- if .Values.globalSettings }}
