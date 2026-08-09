@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Nur Abholung, keine Lieferung Mittwoch – Montag 11:00 – 14:00 17:00 – 21:30 Dienstag Ruhetag",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Pizzeria Sebastian",
+ "osm_id": "node/3485770362",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.pizzeria-sebastian.de/#anfahrt"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Mo-Fr 10.00 bis 18.00 Uhr Samstag 10.00 bis 14.30 Uhr Tel. 0661 24 10 60 Email: info@circusikarus.de www.circusikarus.shop",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Cirkus Ikarus",
+ "osm_id": "node/1327230385",
+ "schema": 1,
+ "tags": [
+  "fulda-toys"
+ ],
+ "url": "https://www.circusikarus.de/Kontakt/"
+}

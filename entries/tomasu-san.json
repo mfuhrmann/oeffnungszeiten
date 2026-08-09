@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Dienstag & Mittwoch: 12.00 Uhr bis 16.00 Uhr Donnerstag & Freitag: 12.00 Uhr bis 14.30 Uhr 17.00 Uhr bis 19.00 Uhr Samstag: 12.00 Uhr bis 19.00 U",
+ "fetch_backend": "system",
+ "filter": "xpath:(//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\") and contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\") and contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")])])[1]",
+ "name": "Tomasu-san",
+ "osm_id": "node/1333293395",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://tomasu-san.com/"
+}

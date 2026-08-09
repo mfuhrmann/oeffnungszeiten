@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Montag 11 : 00 - 22 : 00 Dienstag 11 : 00 - 22 : 00 Mittwoch Ruhetag Donnerstag 11 : 00 - 22 : 00 Freitag 11 : 00 - 22 : 00 Samstag 11 : 00 - 22 : 00 Sonntag & Feiertage 17 : 00 - 22 : 00",
+ "fetch_backend": "system",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" eltdf-opening-hours-widget \")]",
+ "name": "Aiko Sushibar - Hot Wok",
+ "osm_id": "node/2590685849",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "http://aiko-sushibar.de/kontakt/"
+}

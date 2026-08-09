@@ -1,0 +1,161 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: changedetection
+  namespace: changedetection
+spec:
+  timeout: 15m
+  releaseName: changedetection
+  chart:
+    spec:
+      chart: ./charts/changedetection
+      # Flux defaults to ChartVersion, which only upgrades when Chart.yaml's version changes —
+      # a template edit would then leave the cluster on the old release while git reads as
+      # reconciled. Revision follows the source commit instead.
+      reconcileStrategy: Revision
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    remediation:
+      retries: -1
+  interval: 15m
+  valuesFrom:
+    - kind: ConfigMap
+      name: changedetection-base-values
+      valuesKey: values.yaml
+    - kind: Secret
+      name: changedetection-override-values
+      valuesKey: values-overrides.yaml
+      optional: true
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: changedetection-base-values
+  namespace: changedetection
+  labels:
+    reconcile.fluxcd.io/watch: Enabled
+data:
+  values.yaml: |
+    persistence:
+      # Needs block or local storage: the datastore is one JSON file rewritten in place plus
+      # thousands of small snapshot files. null takes the cluster default, local-path on k3s.
+      className: null
+      # Measured, not guessed: 277 watches with their snapshot history occupy 31 MB. 2Gi is
+      # already two orders of magnitude of headroom, and local-path reserves nothing anyway.
+      size: 2Gi
+
+    # Measured on the running instance: changedetection sits at 259 MiB, the browser at 162 MiB
+    # idle and a few hundred more per open tab. The VPS has 7.7 GiB with 4.1 GiB already in use
+    # and swap in use, so these are deliberately modest.
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: "1"
+        memory: 1Gi
+
+    browser:
+      # The chart default of 10 concurrent Chrome processes would blow the memory limit on this
+      # box, and the kernel killing Chrome mid-render surfaces as "render failed" rather than as
+      # a memory problem — an hour of debugging in the wrong place. There is no need for ten:
+      # 40 of 277 watches need a browser at all, checked every three days.
+      # Matches requests.workers below. Nothing in changedetection limits how many of its
+      # in-flight fetches are browser-backed, so more workers than Chrome slots means the
+      # surplus queues and can exceed the 45 s timeout — a render error on a healthy watch.
+      # Throughput is irrelevant here: 277 watches every three days is ~90 fetches a day.
+      maxConcurrentChromeProcesses: 2
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: "1"
+          memory: 1Gi
+
+    # No Ingress, deliberately. changedetection has one shared password and no user model, and
+    # an authenticated user can point a watch at any URL — an exposed instance is an SSRF pivot
+    # into the cluster. Reach the UI through a tunnel:
+    #   kubectl -n changedetection port-forward svc/changedetection 5000:5000
+    ingress:
+      enabled: false
+
+    # Two changedetection processes on one datastore corrupt it, so a single replica is a
+    # correctness requirement, not a capacity choice. Recreate (set in the chart) makes sure the
+    # old pod is gone before the new one attaches to the volume.
+    replicas: 1
+
+    # Pull, never push: nothing is exposed inbound, so CI cannot reach the app and the reconcile
+    # has to run from inside the cluster. It clones this very repository — the same one that
+    # defines it.
+    #
+    # Still off: `entries_sync.py --apply` writes its slug-to-uuid lock into the checkout, which a
+    # CronJob throws away. Until the mapping is derived instead of stored, every new entry would
+    # create a duplicate watch on the next run.
+    sync:
+      enabled: false
+      repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+      ref: main
+
+    # GENERATED — copied from deploy/global-settings.values.yaml in the watch repository,
+    # which is generated in turn from deploy/global-settings.json:
+    #   python3 scripts/apply_global_settings.py --emit-values
+    # The source stays in the watch repository: whether a pattern is too wide can only be
+    # tested next to the entry files and the snapshots, which watch_audit.py does.
+    # Regenerate and copy on change — an initContainer merges it before the app starts.
+    globalSettings:
+      {
+        "application": {
+          "empty_pages_are_a_change": false,
+          "filter_failure_notification_threshold_attempts": 6,
+          "global_ignore_text": [
+            "/(?i)bitte (addieren|rechnen|lösen|subtrahieren)/",
+            "/(?i)was ist die summe/",
+            "/(?i)summe aus \\d+ und \\d+/",
+            "/(?i)wie ?viel ist \\d+ ?[+\\-] ?\\d+/",
+            "/(?i)we.?re open/",
+            "/(?i)closes? at \\d/",
+            "/(?i)opens? at \\d/",
+            "/(?i)öffnet (um|bald|gleich|in|wieder)/",
+            "/(?i)schließt (um|bald|gleich|in)/",
+            "/(?i)derzeit geschlossen/",
+            "/(?i)geschlossen . öffnet/",
+            "/(?i)geöffnet . schließt/",
+            "/(?i)jetzt (geöffnet|geschlossen)/",
+            "/(?i)^\\s*ge(ö|oe)ffnet\\s*$/",
+            "/(?i)öffnet (heute|morgen|jetzt)/",
+            "/(?i)^\\s*heute\\s*:?\\s*\\d{1,2}[:.]\\d{2}/",
+            "/(?i)^\\s*vor \\d+ (tag|tagen|woche|wochen|monat|monate|monaten|jahr|jahren)\\s*$/",
+            "/^\\s*\\d+\\s*[+\\-]\\s*\\d+\\s*=\\s*$/",
+            "/(?i)\\d+ Bewertungen/",
+            "/(?i)spam.?schutz die zahl \\d+/",
+            "/(?i)\\d+ ?[+\\-] ?\\d+ ?= ?\\?/",
+            "/(?i)client-?ip ?:/",
+            "/(?i)wir (öffnen|schließen) (heute|morgen|wieder)/",
+            "/(?i)wir haben (aktuell|derzeit|momentan) (geschlossen|geöffnet)/",
+            "/(?i)^\\s*öffnungszeiten\\s+(geschlossen|öffnet|geöffnet)/"
+          ],
+          "global_subtractive_selectors": [],
+          "ignore_whitespace": true,
+          "render_anchor_tag_content": false,
+          "strip_ignored_lines": false
+        },
+        "requests": {
+          "jitter_seconds": 0,
+          "time_between_check": {
+            "days": 3,
+            "hours": 0,
+            "minutes": 0,
+            "seconds": 0,
+            "weeks": 0
+          },
+          "timeout": 45,
+          "workers": 2
+        }
+      }

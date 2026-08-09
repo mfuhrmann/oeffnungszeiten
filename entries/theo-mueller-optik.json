@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten * Mo – Fr 9:00 – 18:00 Uhr Sa 9:00 – 15:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")]/ancestor::div[contains(@class,\"flex_column\")][1])[1]",
+ "name": "Theo Müller Optik",
+ "osm_id": "node/10116012540",
+ "schema": 1,
+ "tags": [
+  "fulda-optician"
+ ],
+ "url": "https://optik-theo-mueller.de/kontaktlinsen/"
+}

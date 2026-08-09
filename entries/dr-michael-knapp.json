@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "DR. MICHAEL KNAPP Zahnarzt Implantologie & Endodontie Adresse Dalbergstraße 5 36037 Fulda Telefon: 06 61 – 29 28 900 Telefax: 06 61 – 29 28 871 info@dr-michael-knapp.de Unsere Sprechzeiten montags, di",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" av-small-hide \")]",
+ "name": "Dr.Michael Knapp",
+ "osm_id": "node/5513616860",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://www.dr-michael-knapp.de/#kontakt"
+}

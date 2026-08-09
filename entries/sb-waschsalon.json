@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "[ \"Mo 07:00-22:00\", \"Tu 07:00-22:00\", \"We 07:00-22:00\", \"Th 07:00-22:00\", \"Fr 07:00-22:00\", \"Sa 07:00-22:00\", \"Su 07:00-22:00\" ]",
+ "fetch_backend": "system",
+ "filter": "json:$..openingHours",
+ "name": "SB Waschsalon",
+ "osm_id": "node/430648222",
+ "schema": 1,
+ "tags": [
+  "fulda-laundry"
+ ],
+ "url": "https://www.waschsalon-fulda.de/kontakt"
+}

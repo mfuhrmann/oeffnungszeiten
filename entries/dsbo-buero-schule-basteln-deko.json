@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Montag – Freitag 09:30 Uhr – 18:30 Uhr Samstag 09:00 Uhr – 15:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "DSBO - Büro-Schule-Basteln-Deko",
+ "osm_id": "node/9843381258",
+ "schema": 1,
+ "tags": [
+  "fulda-stationery"
+ ],
+ "url": "https://www.dsbo.de/kontakt/"
+}

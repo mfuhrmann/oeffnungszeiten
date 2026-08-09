@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Mo. - Sa.: 07:00 - 22:00 Uhr So.: Geschlossen",
+ "fetch_backend": "system",
+ "filter": ".m-store-info__block2",
+ "name": "Kaufland",
+ "osm_id": "way/23795242",
+ "schema": 1,
+ "tags": [
+  "fulda-supermarket"
+ ],
+ "url": "https://filiale.kaufland.de/service/filiale.storeName=DE7960.html"
+}

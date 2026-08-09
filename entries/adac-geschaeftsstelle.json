@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten 9 - 13 Uhr Montag 14 - 17.30 Uhr Dienstag Mittwoch 10 - 13 Uhr Donnerstag Freitag",
+ "fetch_backend": "system",
+ "filter": "xpath://table[contains(normalize-space(.),\"Öffnungszeiten\")]",
+ "name": "ADAC Geschäftsstelle",
+ "osm_id": "node/1431286539",
+ "schema": 1,
+ "tags": [
+  "fulda-travel_agency"
+ ],
+ "url": "https://www.adac.de/der-adac/regionalclubs/hessen-thueringen/geschaeftsstellen-reisebueros/adac-geschaeftsstelle-fulda/"
+}

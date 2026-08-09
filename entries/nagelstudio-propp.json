@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten: Mo-Fr: 8.30-18.00Uhr Alle Termine nach Vereinbarung!",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Nagelstudio Propp",
+ "osm_id": "node/12870834020",
+ "schema": 1,
+ "tags": [
+  "fulda-cosmetics"
+ ],
+ "url": "http://www.nail-propp.de/Kontakt-DSGVO"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Sprechzeiten Mo - Fr 08.00 - 12.00 Uhr Mo | Di | Do 14.00 - 17.00 Uhr weitere nach Vereinbarung Labor täglich 08.00 - 09.00 Uhr",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//div[contains(.,\"Sprechzeiten\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Sprechzeiten\") and contains(.,\"Uhr\")])])[1]",
+ "name": "Dr. Marco Krenzer & Dr. Stefan Rolbetzki",
+ "osm_id": "node/7112686043",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.gastroenterologie-fulda.de/kontakt"
+}

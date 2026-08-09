@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "tegut... Fulda Rabanusstraße 3 36037 Fulda T 0661 250 6037 Anfahrt * Mo. - Fri. 07:00 - 19:00 Uhr Sa. 08:00 - 19:00 Uhr So. geschlossen",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://div[contains(.,\"Rabanusstraße 3\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Rabanusstraße 3\") and contains(.,\"Uhr\")])]",
+ "name": "Bäckerei Happ (Rabanusstraße)",
+ "note": "hours only on /fachgeschaefte/ under the city selector (JS); per-branch filter by street address",
+ "osm_id": "node/2411410498",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://baecker-happ.de/fachgeschaefte/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Warme Küche Mo – Fr: 12:00 – 21:00 Uhr Sa: 12:30 – 21:00 Uhr So: 13:30 – 21:00 Uhr Frühstücksbüffet Sa: 09:00 – 12:00 Uhr So: 09:00 – 13:00 Uhr Für weitere Infos zur Alten Schule: Folgen Sie uns auf F",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://p[contains(concat(\" \",normalize-space(@class),\" \"),\" karma \")]",
+ "name": "Alte Schule",
+ "osm_id": "node/1333326732",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://alteschule-fulda.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten: Mo – Fr: 08:00 – 17:00 Uhr Öffnungszeiten: Mo – Fr: 08:00 – 17:00 Uhr Öffnungszeiten: Mo – Fr: 08:30 – 13:00 & 14:00 – 18:00 Uhr Öffnungszeiten: Mo – Fr: 08:30 – 13:00 & 14:00 – 18:00 ",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Spiegel",
+ "osm_id": "node/13004479890",
+ "schema": 1,
+ "tags": [
+  "fulda-medical_supply"
+ ],
+ "url": "https://spiegel.care/kontakt/"
+}

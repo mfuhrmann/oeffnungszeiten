@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag und Dienstag geschlossen! Mittwoch bis Freitag 10.00 Uhr bis 13.00 Uhr 16.00 Uhr bis 18.00 Uhr Samstag 10.00 Uhr bis 13.00 Uhr",
+ "fetch_backend": "html_requests",
+ "filter": "xpath://div[contains(@class,\"elementor-widget-container\")][contains(.,\"Uhr bis\")]",
+ "name": "Modellbahnwelt Fulda",
+ "osm_id": "node/10700485828",
+ "schema": 1,
+ "tags": [
+  "fulda-model"
+ ],
+ "url": "https://modellbahnwelt-fulda.de/oeffnungszeiten/"
+}

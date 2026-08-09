@@ -1,0 +1,51 @@
+{{- if .Values.networkPolicy.enabled }}
+# The reason there is no Ingress — an unauthenticated instance that fetches arbitrary URLs is an
+# SSRF pivot — applies inside the cluster too: a ClusterIP is reachable from every pod. This
+# limits who may talk to the UI and to the browser, while leaving egress untouched, because
+# fetching business websites is the whole job.
+#
+# kubectl port-forward is unaffected: the kubelet attaches to the pod's namespace directly rather
+# than sending traffic across the pod network.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "changedetection.name" . }}
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "changedetection.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  policyTypes: [Ingress]
+  ingress:
+    # Only from this namespace — in practice the sync CronJob.
+    - from:
+        - podSelector: {}
+      ports:
+        - port: 5000
+          protocol: TCP
+{{- if .Values.browser.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "changedetection.name" . }}-browser
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "changedetection.name" . }}-browser
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  policyTypes: [Ingress]
+  ingress:
+    # A browser that renders any URL on request is worth even less exposure than the UI.
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ include "changedetection.name" . }}
+              app.kubernetes.io/instance: {{ .Release.Name }}
+      ports:
+        - port: 3000
+          protocol: TCP
+{{- end }}
+{{- end }}

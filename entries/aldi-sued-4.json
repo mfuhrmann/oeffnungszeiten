@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "* Di. * Do. * Fr. * Mi. * Mo. * Sa. * So. - DHL Packstation 07:00 - 21:00 07:00 - 21:00 07:00 - 21:00 07:00 - 21:00 07:00 - 21:00 07:00 - 21:00 geschlossen Öffnungszeiten",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Aldi Süd",
+ "osm_id": "way/146659015",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-supermarket"
+ ],
+ "url": "https://www.aldi-sued.de/filialen/l/fulda/leipziger-strasse-126-a/b876"
+}

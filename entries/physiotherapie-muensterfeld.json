@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Mo. – Do. 7:00 – 19:00 Uhr Fr. 7:00 – 16:00 Uhr Mo. – Do. 8:00 – 12:00 Uhr 13:00 – 16:00 Uhr Fr. 8:00 – 12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://figure[contains(concat(\" \",normalize-space(@class),\" \"),\" wp-block-table \")]",
+ "name": "Physiotherapie Münsterfeld",
+ "osm_id": "node/13959404350",
+ "schema": 1,
+ "tags": [
+  "fulda-physiotherapist"
+ ],
+ "url": "https://xn--physio-mnsterfeld-92b.de/oeffnungszeiten/"
+}

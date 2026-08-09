@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "0661 - 70015 Hausärztlich-internistische Praxis Dr. Matthias Wessinghage in Fulda 0661 - 70015 Hausarztpraxis Dr. Matthias Wessinghage Kontakt Sprechzeiten * Montag bis Freitag: 08.00-10.00 Uhr für Pa",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" uk-width-1-1 \")]",
+ "name": "Dr. med. Matthias Wessinghage",
+ "osm_id": "node/7112686044",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.praxis-wessinghage.de/kontakt"
+}

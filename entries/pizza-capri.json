@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Lieferung Abholung Montag 14:00 - 22:00 14:00 - 22:00 Dienstag 13:00 - 22:00 13:00 - 22:00 Mittwoch 11:00 - 23:30 11:00 - 23:30 Donnerstag 12:00 - 22:45 12:00 - 22:45 Freitag 11:00 - 22",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Pizza Capri",
+ "osm_id": "node/6841666155",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://capri-fulda.de/contact"
+}

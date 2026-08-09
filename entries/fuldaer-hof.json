@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Gasthaus Fuldaer Hof Am Ried 13, 36041 Fulda/Maberzell öffnungszeiten Sonntag und Montag ab 11:00 Uhr, Mittwoch bis Samstag ab 17:00 Uhr. Dienstag Ruhetag Kontakt Telefon: 0661 / 25 00 86 4 E-Mail: in",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"öffnungszeiten\")])/parent::*",
+ "name": "Fuldaer Hof",
+ "osm_id": "way/133329200",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.fuldaerhof.de/willkommen/#kontakt"
+}

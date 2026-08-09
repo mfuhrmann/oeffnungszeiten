@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Aktuelle Öffnungszeiten * Montag: 11:00 – 01:00 Uhr * Dienstag: 11:00 – 01:00 Uhr * Mittwoch: 11:00 – 01:00 Uhr * Donnerstag: 11:00 – 01:00 Uhr * Freitag: 11:00 – 02:00 Uhr * Samstag: 11:00 – 02:00 Uh",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Viva Havanna",
+ "osm_id": "node/2065180766",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.viva-havanna.com/kontakt/"
+}

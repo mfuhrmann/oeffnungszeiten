@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Montag bis Samstag: 11.30 Uhr - 23.00 Uhr Warme Küche Montag bis Samstag: 11.30 Uhr - 23.00 Uhr Warme Küche von 11.30 Uhr bis 21.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://span[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//span[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Vini und Panini",
+ "osm_id": "node/1332668410",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.vini-panini.de/kontakt"
+}

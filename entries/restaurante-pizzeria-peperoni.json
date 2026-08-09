@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "ÖFFNUNGSZEITEN Dienstag bis Sonntag & feiertags 11:30 - 14:30 & 17:00 - 23:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*",
+ "name": "Restaurante Pizzeria Peperoni",
+ "osm_id": "node/429766263",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.pizzeria-peperoni.de/kontakt"
+}

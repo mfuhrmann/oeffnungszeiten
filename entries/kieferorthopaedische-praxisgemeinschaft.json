@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Als Fachzahnärzte für Kieferorthopädie in Fulda sind wir Ihre Spezialisten für ein schönes Lächeln und gerade Zähne! Wir bieten Kieferorthopädie für Kinder, Jugendliche und Erwachsene. Wir sind stolz ",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Kieferorthopädische Praxisgemeinschaft",
+ "osm_id": "node/5164289093",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://www.kfo-schlossgarten.de"
+}

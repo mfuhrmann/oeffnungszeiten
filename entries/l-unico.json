@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Mo - So: 12:00 - 21:00 Uhr Abholung & Lieferung bis 20:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "L'Unico",
+ "osm_id": "node/2377213196",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.mylunico.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Montag - Donnerstag: 08:30 -12:00 und 14:00 - 17:30 Uhr, außerdem nach Vereinbarung. Zur Verkürzung von Wartezeiten bitten wir unsere Patienten generell um eine vorherige Terminvereinba",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Praxis für Kieferorthopädie",
+ "osm_id": "node/7015237365",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://www.zahnspange-fulda.net/kontakt.html"
+}

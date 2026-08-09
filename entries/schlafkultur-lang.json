@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag - Freitag 10:00 - 19:00 Samstag 10:00 - 14:00 Außerhalb der o. g. Zeiten nach Terminabsprache.",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://tbody[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//tbody[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Schlafkultur Lang",
+ "osm_id": "way/207120094",
+ "schema": 1,
+ "tags": [
+  "fulda-bed"
+ ],
+ "url": "https://www.schlafkultur-lang.de/1/home/1/1/1/1/1/1/1/1/1/3/info/oeffnungszeiten"
+}

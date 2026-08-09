@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten und Kontakt: Montag – Freitag 10:00 Uhr bis 18:00 Uhr Samstag 10:00 Uhr bis 16:00 Uhr Sehen soll brillant und bequem sein und verdient es, genau analysiert und wenn möglich verbessert z",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Die Brille",
+ "osm_id": "node/13194345687",
+ "schema": 1,
+ "tags": [
+  "fulda-optician"
+ ],
+ "url": "https://www.diebrille-fulda.de/#kontakt"
+}

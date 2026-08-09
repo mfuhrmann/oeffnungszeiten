@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Montag & Dienstag: 9:00 – 18:00 Uhr Mittwoch: geschlossen Donnerstag & Freitag: 9:00 – 18:00 Uhr Samstag: 9:00 – 13:00 Uhr Öffnungszeiten Montag & Dienstag: geschlossen Mittwoch: 9:30 –",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h5[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Hahner Zweiradtechnik OHG",
+ "osm_id": "node/1352414276",
+ "schema": 1,
+ "tags": [
+  "fulda-bicycle"
+ ],
+ "url": "http://hahner-zweirad.de/#kontakt"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten: Montag – Sonntag (Dienstag Ruhetag) 11:00 – 14:30 Uhr 17:30 – 22:00 Uhr Öffnungszeiten: Montag – Sonntag (Dienstag Ruhetag) 11:00 – 14:30 Uhr 17:30 – 22:00 Uhr Lieferzeiten Montag – So",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "China MC Chop Suey",
+ "osm_id": "node/12478123269",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://chop-suey-fulda.de/#kontakt"
+}

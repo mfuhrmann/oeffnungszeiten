@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Mo-Fr 8-12 Uhr Mo/Do 14-16 Uhr Di 15-17 Uhr Hausbesuche nach Vereinbarung",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"text-2\"]",
+ "name": "Facharztpraxis Dr. D. Hölper & Dr. T. Medebach",
+ "osm_id": "node/5639102902",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://allgemeinmedizin-fulda.de/kontakt/"
+}

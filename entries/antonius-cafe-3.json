@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Kontakt: antonius Hof Saturnstraße 14 36041 Fulda-Haimbach Reservierungen & Anfragen Tel.: 0661-1097720 Mail: hofcafe@antonius.de Öffnungszeiten Hofcafé So. & Mo. Ruhetag Di., Do. & Fr. 09.00 bis 17.0",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "antonius Cafe",
+ "note": "Discovery followed /herstellung/kontakt.html, which 404s. Hofcafe hours sit on the antonius-hof page itself (the OSM website tag).",
+ "osm_id": "node/13196229569",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://www.antonius.de/herstellung/antonius-hof.html"
+}

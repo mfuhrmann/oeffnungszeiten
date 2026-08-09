@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag 08:00 - 17:00 Dienstag 08:00 - 17:00 Mittwoch 08:00 - 17:00 Donnerstag 08:00 - 17:00 Freitag 08:00 - 17:00 Samstag Geschlossen Sonntag Geschlossen",
+ "fetch_backend": "html_requests",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "Euromaster",
+ "note": "2026-08-01: repointed from /kontaktcenter to the Fulda partner branch page (found via sitemap.xml); CD filter = table.tableHoraires (weekly hours, plain fetch).",
+ "osm_id": "way/445611877",
+ "schema": 1,
+ "tags": [
+  "fulda-car_repair"
+ ],
+ "url": "https://www.euromaster.de/filiale/hessen/fulda/yruhabd-auto-technik-fulda-gmbh-partnerbetrieb-von-euromaster"
+}

@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten * Montag: 07:00 - 18:00 * Dienstag: 07:00 - 18:00 * Mittwoch: 07:00 - 18:00 * Donnerstag: 07:00 - 18:00 * Freitag: 07:00 - 18:00 * Samstag: 07:00 - 18:00 * Sonntag: 08:00 - 17:00",
+ "fetch_backend": "html_requests",
+ "filter": ".detail-dealer-open-hours",
+ "name": "Zweittag Back Outlet (maberzeller strasse zweittag)",
+ "note": "2026-08-01: recovered - the Zweittag outlet is listed by Pappert as Fil. Fulda/Maberzeller Strasse Zweittag; /dealer/<slug>/ page carries the hours (matched by coordinates, 0.02 km).",
+ "osm_id": "node/2790948934",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://www.papperts.de/dealer/fil-fulda-maberzeller-strasse-zweittag/"
+}

@@ -1,0 +1,82 @@
+# -- Image for the watcher itself. Pin a tag; updatecli raises the bump PRs.
+image:
+  repository: ghcr.io/dgtlmoon/changedetection.io
+  tag: "0.55.8"
+  # -- Optional. When set, the image is pulled by digest and `tag` becomes documentation.
+  digest: ""
+  pullPolicy: IfNotPresent
+
+# -- replicas is 1 and cannot usefully be raised: two changedetection processes sharing one
+# datastore corrupt it. Kubernetes is used here for ease of maintenance, not availability.
+replicas: 1
+
+# -- Runs the initContainer that merges globalSettings into the datastore. Needs python3 and
+# nothing else. Separate from sync.image on purpose: the sync CronJob may be disabled or
+# retooled, and the app must not stop starting because of it.
+settingsImage: python:3.12-alpine
+
+resources:
+  limits:
+    cpu: "1"
+    memory: 1Gi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+persistence:
+  # -- The datastore is a JSON file rewritten in place plus many small snapshot files, so it
+  # wants block or local storage rather than a network share.
+  className: null
+  size: 5Gi
+  accessMode: ReadWriteOnce
+  existingClaim: null
+
+service:
+  port: 5000
+
+# -- No Ingress on purpose. changedetection has a single shared password and no user model,
+# and an authenticated user can point a watch at any URL, which makes it an SSRF pivot into
+# the cluster. Reach it with `kubectl port-forward svc/changedetection 5000:5000`.
+ingress:
+  enabled: false
+
+# -- Restrict who may reach the UI and the browser to this namespace. Egress stays open, since
+# fetching business websites is the point. Turn off for a CNI that does not enforce policies.
+networkPolicy:
+  enabled: true
+
+browser:
+  enabled: true
+  image:
+    repository: dgtlmoon/sockpuppetbrowser
+    # -- :latest is NEWER than the highest version tag (0.0.3), so pinning to the version
+    # would be a downgrade. Pin the digest instead; updatecli tracks it.
+    tag: "latest"
+    digest: "sha256:7116c61ef9cfce3d48a7efd9355d2fbe19f593ea3cfb52a5ded40ecbcb0a3f9d"
+    pullPolicy: IfNotPresent
+  replicas: 1
+  maxConcurrentChromeProcesses: 10
+  resources:
+    limits:
+      cpu: "2"
+      memory: 2Gi
+    requests:
+      cpu: 100m
+      memory: 512Mi
+
+# -- CronJob: pull this repository and reconcile changedetection against entries/.
+# It has to PULL, because nothing is exposed inbound and CI therefore cannot reach the app.
+sync:
+  # -- Off by default: without a real `repo` the CronJob fails at `git clone` every hour and
+  # piles up failed Jobs. Enable it together with the URL, never on its own.
+  enabled: false
+  schedule: "17 * * * *"
+  # -- Required when enabled. The repository holding entries/ — no default, so a forgotten
+  # value fails at render time instead of hourly in the cluster.
+  repo: ""
+  ref: main
+  image: python:3.12-alpine
+  # -- apply=false runs the plan only, which is the safe way to introduce the CronJob
+  apply: false
+
+env: []

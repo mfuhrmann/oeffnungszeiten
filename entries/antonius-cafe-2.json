@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Mo. 8.00 bis 17.30 Uhr Di. 8.00 bis 17.30 Uhr Mi. 8.00 bis 17.30 Uhr Do. 8.00 bis 17.30 Uhr Fr. 8.00 bis 17.30 Uhr Sa. Ruhetag So. 14.00 bis 17.30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(.,\"Öffnungszeiten\")]/following::table)[1]",
+ "name": "antonius Cafe",
+ "osm_id": "node/13196229570",
+ "schema": 1,
+ "tags": [
+  "fulda-farm"
+ ],
+ "url": "https://www.antonius.de/einkaufen/antonius-cafe.html"
+}

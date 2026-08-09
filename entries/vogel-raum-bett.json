@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten : Montag bis Freitag: 10.00–13.00 Uhr und 14.00–18.00 Uhr Samstag: 10.00–14.00 Uhr Öffnungszeiten : Montag bis Freitag: 9.30–12.30 Uhr und 14.30–17.30Uhr, Freitag nur bis 16.30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Vogel Raum & Bett",
+ "osm_id": "node/12920938604",
+ "schema": 1,
+ "tags": [
+  "fulda-interior_decoration"
+ ],
+ "url": "https://www.vogel-raumundbett.de/kontakt/"
+}

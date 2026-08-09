@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag 12:00 – 16:00 Uhr Mittwoch 12:00 – 16:00 Uhr Donnerstag 14:00 – 17:00 Uhr Samstag 10:00 – 16:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://tbody[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//tbody[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "3 1/2 Hosenstore",
+ "osm_id": "node/13796159497",
+ "schema": 1,
+ "tags": [
+  "fulda-charity"
+ ],
+ "url": "https://www.children-beyond-the-world.de/3%C2%BD-hosenstore/"
+}

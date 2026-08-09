@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Montag 09:30 - 19:00 Dienstag 09:30 - 19:00 Mittwoch 09:30 - 19:00 Donnerstag 09:30 - 19:00 Freitag 09:30 - 19:00 Samstag 09:30 - 19:00",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" openingBox \")]",
+ "name": "C&A",
+ "osm_id": "node/6534366151",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.c-and-a.com/stores/de-de/hessen/fulda/steinweg-1.html"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Montag 08:00 – 13:00 Uhr Dienstag 08:00 – 17:00 Uhr Mittwoch 07:00 – 13:00 Uhr Donnerstag 08:00 – 17:00 Uhr Freitag 08:00 – 13:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Rosen Praxis",
+ "osm_id": "node/13629479507",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://fulda-arzt.de/"
+}

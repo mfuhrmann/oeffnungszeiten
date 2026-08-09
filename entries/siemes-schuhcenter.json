@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Route planen » Siemes Schuhcenter Frankfurter Straße 71 36043 Fulda Tel.: (0661) 9428635 Direkt vor der Geschäftsstelle stehen kostenlose Parkplätze gemäß den geltenden Parkbedingungen zur Verfügung. ",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://article[contains(@class,\"store_finder_block\")]",
+ "name": "Siemes Schuhcenter",
+ "note": "2026-08-01: repointed to the Fulda store page (store-locator result, needs Playwright); CD filter = article.store_finder_block (address + Mo-Sa 09:00-19:00).",
+ "osm_id": "node/1434864565",
+ "schema": 1,
+ "tags": [
+  "fulda-shoes"
+ ],
+ "url": "https://www.schuhcenter.de/schuhgeschaefte-in-fulda/"
+}

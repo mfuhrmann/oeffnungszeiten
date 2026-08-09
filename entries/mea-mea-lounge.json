@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "TÄGLICH AB 11 UHR GEÖFFNET",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(concat(\" \",normalize-space(@class),\" \"),\" font_5 \")]",
+ "name": "Mea-Mea-Lounge",
+ "osm_id": "way/1284529868",
+ "schema": 1,
+ "tags": [
+  "fulda-bar"
+ ],
+ "url": "https://www.meamea-lounge.com"
+}

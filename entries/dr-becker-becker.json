@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten: Mo 08:00 - 12:00 Uhr 14:00 - 17:00 Uhr Di 08:30 - 12:00 Uhr 14:00 - 17:00 Uhr Mi 08:00 - 12.30 Uhr Do 08:00 - 12.00 Uhr 14:00 - 17:00 Uhr Fr 08:30 - 14.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//td[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Dr. Becker & Becker",
+ "osm_id": "node/12915161170",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://becker-zahnaerzte.de/"
+}

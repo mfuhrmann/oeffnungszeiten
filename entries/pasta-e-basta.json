@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Montag Geschlossen Dienstag 12:00 - 14:00, 17:30 - 22:00 Mittwoch 12:00 - 14:00, 17:30 - 22:00 Donnerstag 12:00 - 14:00, 17:00 - 22:00 Freitag 12:00 - 14:00, 17:30 - 22:00 Samstag 12:00",
+ "fetch_backend": "html_webdriver",
+ "filter": "#contact > div > div > div > section",
+ "name": "Pasta e basta",
+ "osm_id": "node/1333281099",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://pastaebasta-fulda.de/#contact"
+}

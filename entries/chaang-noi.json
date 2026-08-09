@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Montag & Dienstag: Ruhetag Mittwoch – Sonntag 12:00 – 15:00 Uhr 17:00 – 22:00 Uhr Küchenschluss: 14:15 Uhr & 21:15 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Chaang Noi",
+ "osm_id": "node/1333390898",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.chaangnoifulda.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag - Freitag 08:30 - 17:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ\",\"abcdefghijklmnopqrstuvwxyzäöü\"),\"montag\") and contains(translate(.,\"ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ\",\"abcdefghijklmnopqrstuvwxyzäöü\"),\"uhr\")][not(.//div[contains(translate(.,\"ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ\",\"abcdefghijklmnopqrstuvwxyzäöü\"),\"montag\") and contains(translate(.,\"ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ\",\"abcdefghijklmnopqrstuvwxyzäöü\"),\"uhr\")])]",
+ "name": "Drive Fulda GmbH",
+ "osm_id": "way/111669122",
+ "schema": 1,
+ "tags": [
+  "fulda-car"
+ ],
+ "url": "https://drivefulda.de/"
+}

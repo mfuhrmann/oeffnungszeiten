@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Juwelier Rubin GbR Karlstraße 9 36037 Fulda Telefon: +49 (0661) - 9 00 13 55 0 Email: info@juwelier-rubin-fulda.de Internet: www.juwelier-rubin-fulda.de Falls Sie Fragen oder Anregungen haben, schicke",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Juwelier Rubin",
+ "osm_id": "node/5508083105",
+ "schema": 1,
+ "tags": [
+  "fulda-jewelry"
+ ],
+ "url": "https://www.goldzentrum-fulda.de/kontakt/"
+}

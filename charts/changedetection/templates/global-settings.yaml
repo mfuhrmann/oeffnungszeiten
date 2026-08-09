@@ -1,0 +1,47 @@
+{{- if .Values.globalSettings }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "changedetection.name" . }}-global-settings
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+data:
+  # Merged into /datastore/changedetection.json by an initContainer before the app starts.
+  # It cannot be applied at runtime: changedetection has no settings API, reads this file only
+  # at startup, and overwrites it from memory on its next commit — a live edit is invisible and
+  # then lost. Watches are unaffected; each is its own file, saved immediately.
+  settings.json: |
+{{ toJson .Values.globalSettings | indent 4 }}
+  merge.py: |
+    # Merge managed keys into the datastore, preserving everything we do not manage
+    # (watches, tags, api token). Idempotent: runs on every pod start.
+    import json, os, sys
+    ds = "/datastore/changedetection.json"
+    managed = json.load(open("/settings/settings.json"))
+    cur = {}
+    if os.path.exists(ds):
+        # Refuse to continue on an unreadable datastore. Treating it as empty would rewrite the
+        # file with the managed keys ONLY, and changedetection then mints a fresh
+        # api_access_token -- leaving the hand-created API Secret stale, so the sync job 403s
+        # with no visible cause. A crash-looping init container is the louder, cheaper failure.
+        try:
+            cur = json.load(open(ds))
+        except Exception as e:
+            sys.exit(f"datastore unreadable ({e}); refusing to overwrite it -- "
+                     f"inspect or move {ds} aside")
+    cur.setdefault("settings", {})
+    changed = []
+    for section, values in managed.items():
+        sec = cur["settings"].setdefault(section, {})
+        for k, v in values.items():
+            if sec.get(k) != v:
+                sec[k] = v
+                changed.append(f"{section}.{k}")
+    if changed:
+        tmp = ds + ".tmp"
+        with open(tmp, "w") as fh:
+            json.dump(cur, fh, indent=2)
+        os.replace(tmp, ds)
+        print("applied:", ", ".join(changed))
+    else:
+        print("global settings already current")
+{{- end }}

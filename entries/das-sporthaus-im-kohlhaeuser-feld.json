@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Du hast noch eine Frage an uns? Innerhalb unserer Öffnungszeiten sind wir gerne telefonisch oder per E-Mail für dich da. Vor- & Nachname * E-Mail-Adresse * Betreff Nachricht * Ich stimme zu, dass mein",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Das Sporthaus im Kohlhäuser Feld",
+ "osm_id": "node/5044535239",
+ "schema": 1,
+ "tags": [
+  "fulda-sports"
+ ],
+ "url": "https://www.sporthausfulda.de/kontakt/"
+}

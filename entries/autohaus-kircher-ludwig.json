@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "[ { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [ \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\" ], \"closes\": \"18:00\", \"opens\": \"07:00\" }, { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": \"Fr",
+ "fetch_backend": "html_requests",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Autohaus Kircher-Ludwig",
+ "osm_id": "way/141655552",
+ "schema": 1,
+ "tags": [
+  "fulda-car"
+ ],
+ "url": "https://www.volkswagen.de/de/haendler-werkstatt/autohaus-kircher-ludwig-fulda.html"
+}

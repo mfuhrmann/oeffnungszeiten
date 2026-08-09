@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "[ { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [ \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Monday\" ], \"opens\": \"10:00\", \"closes\": \"19:00\" } ]",
+ "fetch_backend": "html_requests",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "MediaMarkt",
+ "note": "retail SPA; hours only in JSON-LD script (changedetection strips script text) + JS-hydrated widget; no visible-DOM selector. Paused. (flagged 2026-07-27)",
+ "osm_id": "node/1999908798",
+ "schema": 1,
+ "tags": [
+  "fulda-electronics"
+ ],
+ "url": "https://www.mediamarkt.de/de/store/fulda-448"
+}

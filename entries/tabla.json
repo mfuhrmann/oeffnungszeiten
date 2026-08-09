@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-27",
+ "captured_sample": "Monday: Closed Tuesday – Friday: 16:00–23:00 Saturday – Sunday: 14:00–23:00",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//p[contains(concat(\" \",normalize-space(@class),\" \"),\" whitespace-pre-line \")])[2]",
+ "name": "Tabla",
+ "note": "SPA; changedetection renders it in ENGLISH (Monday: Closed …) while our Playwright render returns German — filter must be class-based, not day-word based",
+ "osm_id": "node/14053772461",
+ "schema": 1,
+ "tags": [
+  "fulda"
+ ],
+ "url": "https://tabla-restaurant.de/"
+}

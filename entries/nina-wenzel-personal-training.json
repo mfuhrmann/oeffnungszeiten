@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "* * opening hours: Mo - Fr 09:00 - 21:00 info@ninawenzel-training.de 0151 55260340 ©2024 Nina Wenzel Personal Training Kontakt Datenschutz Impressum",
+ "fetch_backend": "system",
+ "filter": "xpath://footer[contains(concat(\" \",normalize-space(@class),\" \"),\" SITE_FOOTER \")]",
+ "name": "Nina Wenzel Personal Training",
+ "osm_id": "node/12908116902",
+ "schema": 1,
+ "tags": [
+  "fulda-fitness_centre"
+ ],
+ "url": "https://www.ninawenzel-training.de/"
+}

@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Telefon 0661 90160160 Mo–Fr 08–17 Uhr E-Mail info@schrimpf- bauelemente.de Adresse Marie-Curie-Straße 5 36039 Fulda Servicegebiet Osthessen & Rhön rund 150 km",
+ "fetch_backend": "html_requests",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" titem \")]",
+ "name": "Schrimpf Bauelemente GmbH",
+ "note": "2026-08-06: sichtbarer Kontaktblock mit den Zeiten (Mo-Fr 08-17 Uhr) statt JSON-LD; enthält zusätzlich Telefon und Adresse, beides statisch.",
+ "osm_id": "node/13323168207",
+ "schema": 1,
+ "tags": [
+  "fulda-wholesale"
+ ],
+ "url": "https://www.schrimpf-bauelemente.de/kontakt"
+}

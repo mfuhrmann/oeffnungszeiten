@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "08:00 - 20:00 Uhr 08:00 - 20:00 Uhr 08:00 - 20:00 Uhr 08:00 - 20:00 Uhr 08:00 - 20:00 Uhr 09:00 - 19:00 Uhr Dienstag Donnerstag Freitag Geschlossen Mittwoch Montag Samstag Sonntag Öffnungszeiten",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "dm",
+ "osm_id": "node/12463473267",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-chemist"
+ ],
+ "url": "https://www.dm.de/store/d398/fulda/bahnhofstrasse-18"
+}

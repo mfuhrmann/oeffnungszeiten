@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Montag – Samstag: 17:30 – 23:30 Uhr Sonn- & Feiertage: 11:30 – 14:30 Uhr & 17:30 – 23:30 Uhr Um telefonische Tischreservierung an Feiertagen und am Wochenende wird gebeten.",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Poseidon",
+ "osm_id": "node/267874538",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "http://www.poseidon-fulda.de/"
+}

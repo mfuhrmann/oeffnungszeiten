@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Mo-Fr: 8-18 Uhr Sa: 8:30-13 Uhr Links Zum B2B-Shop",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Leonhardt Kraftfahrzeugteile GmbH",
+ "osm_id": "node/13728491034",
+ "schema": 1,
+ "tags": [
+  "fulda-car_parts"
+ ],
+ "url": "https://www.leonhardt-kfz.de/#kontakt"
+}

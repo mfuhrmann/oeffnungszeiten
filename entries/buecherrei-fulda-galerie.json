@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten öffnet heute dienstags: 16:00 bis 18:00 Uhr donnerstags: 16:00 bis 18:00 Uhr Im Kalender anzeigen Unsere Öffnungszeiten dienstags: 16:00 bis 18:00 Uhr donnerstags: 16:00 bis 18:00 Uhr W",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Bücherrei Fulda Galerie",
+ "osm_id": "node/12865486146",
+ "schema": 1,
+ "tags": [
+  "fulda-library"
+ ],
+ "url": "https://www.bibkat.de/fulda-galerie/openings/"
+}

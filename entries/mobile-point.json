@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten MO. - FR. : 10:00 - 18:00 Uhr SA. : 10:00 - 15:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "mobile point",
+ "osm_id": "node/5505379089",
+ "schema": 1,
+ "tags": [
+  "fulda-mobile_phone"
+ ],
+ "url": "https://mobilepoint24.de/#kontakt"
+}

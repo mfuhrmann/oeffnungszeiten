@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "[ { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": \"WEDNESDAY\", \"opens\": \"08:00\", \"closes\": \"18:00\" }, { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": ",
+ "fetch_backend": "html_requests",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Vergölst",
+ "note": "2026-08-06: bleibt bei JSON-LD. Der sichtbare Zeitenblock existiert in unserem Playwright-Render, aber changedetections eigener Browser findet ihn nicht ('no filters were found') — dieselbe Klasse von Render-Unterschied wie früher bei Davis und Tabla.",
+ "osm_id": "node/13580558473",
+ "schema": 1,
+ "tags": [
+  "fulda-tyres"
+ ],
+ "url": "https://vergoelst.de/branches/vergoelst-fulda-weichselstrasse.html"
+}

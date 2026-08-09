@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Mo. und So.: 9:00 – 18:00 Di. – Sa.: 9:00 – 22:00",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Kulturcafe Ideal",
+ "osm_id": "node/524677806",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://www.ideal-fulda.de/kontakt/"
+}

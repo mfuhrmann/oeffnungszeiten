@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag 8:30 - 12:00 und 13:30 bis 17:30 Dienstag 8 :30 - 12:00 und 13:30 bis 17:30 Mittwoch 8:30 - 12:00 Donnerstag 8:30 - 12:00 und 13:30 bis 17:30 Freitag 8:30 - 12:00 und 13:30 bis 17:30 BETRIEBSFE",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" module-type-text \")]",
+ "name": "Dr. med. Christoph Müller",
+ "osm_id": "node/12962072465",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.hno-fulda.de/öffnungszeiten/"
+}

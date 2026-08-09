@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungs­zei­ten Montag - Frei­tag: 10 -19 Uhr Sams­tag: 10 - 20 Uhr Sonn­tag: 12 - 19 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnung\")])/parent::*",
+ "name": "La Gelateria Eiscafe",
+ "osm_id": "node/1254171143",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "http://www.la-gelateria-fulda.de/"
+}

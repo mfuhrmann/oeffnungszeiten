@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Kontakt Deutsches Feuerwehr-Museum Fulda e.V. St. Laurentius-Str. 3 36041 Fulda Telefon + 49 (0) 6 61 – 7 50 17 FAX:++ 49 (0)6 61 – 24 17 57 info@dfm-fulda.de ÖFFNUNGSZEITEN * Sommerzeit: Täglich auße",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*",
+ "name": "Deutsches Feuerwehr-Museum",
+ "osm_id": "way/23762768",
+ "schema": 1,
+ "tags": [
+  "fulda-museum"
+ ],
+ "url": "https://www.dfm-fulda.de/kontakt/"
+}

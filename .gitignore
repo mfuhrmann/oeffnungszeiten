@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.tmp
+scripts/*.tmp
+data/*.tmp
+
+# per-instance sync locks (only entries/.lock.json, the production one, is committed)
+entries/.lock.*.json
+
+# Momentaufnahmen aus cd_export.py — jederzeit neu erzeugbar, nicht die Wahrheit
+export/
+
+# lokale Werkzeug-, Editor- und Notizdateien
+.idea/
+.vscode/
+.claude/
+CLAUDE.md
+*.original.md
+
+# lokal aufbewahrt, nicht Teil des Repos: die OSM-Ernte zum Bestücken einer neuen Stadt
+legacy/

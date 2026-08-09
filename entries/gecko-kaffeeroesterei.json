@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Sommer-Öffnungszeiten:: Juni – Juli – August Dienstag + Donnerstag + Freitag 09:30 –17:30 Uhr Mittagspause jeweils von 14:00 bis 15:00 Uhr Mittwoch + Samstag (Markttage) 08:00 –14:00 Uhr Der Getränkea",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Gecko Kaffeerösterei",
+ "osm_id": "node/1336847412",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://kaffeeroesterei-gecko.de#kontakt"
+}

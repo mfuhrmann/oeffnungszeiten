@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Mo – Fr: 06:00 – 22:00 Uhr Sa – So (Feiertage): 06:00 – 15:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Brauns Gym",
+ "osm_id": "node/13584564402",
+ "schema": 1,
+ "tags": [
+  "fulda-fitness_centre"
+ ],
+ "url": "https://www.brauns-gym.de"
+}

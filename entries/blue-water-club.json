@@ -1,0 +1,15 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten saisonal von Oktober bis Mai - Freitag & Samstag ab 20 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\") and contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"samstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\") and contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"samstag\")])]",
+ "name": "Blue Water Club",
+ "note": "Opens two days a week ('saisonal von Oktober bis Mai - Freitag & Samstag ab 20 Uhr'), so a partial-week warning is correct, not a filter fault.",
+ "osm_id": "node/1333417029",
+ "schema": 1,
+ "tags": [
+  "fulda-bar",
+  "geprüft-ok"
+ ],
+ "url": "https://www.bluewaterclub.de/Startseite/"
+}

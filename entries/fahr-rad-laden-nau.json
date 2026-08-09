@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Jetzt geöffnet! März bis August: Montag bis Freitag 9.00 bis 18.30 Uhr Samstag 9.00 bis 15.00 Uhr September bis Februar: Montag bis Freitag 9.00 bis 18.00 Uhr Samstag 9.00 bis 14.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Fahr Rad Laden Nau",
+ "osm_id": "way/150690419",
+ "schema": 1,
+ "tags": [
+  "fulda-bicycle"
+ ],
+ "url": "https://www.bikenau.de/kontakt.asp"
+}

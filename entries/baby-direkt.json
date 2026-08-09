@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "* Öffnungszeiten: Mo. - Fr.: 9:30 – 18:30 | Sa: 09:30 – 16:00",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//li[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "baby-direkt",
+ "osm_id": "node/13455945081",
+ "schema": 1,
+ "tags": [
+  "fulda-baby_goods"
+ ],
+ "url": "https://www.baby-direkt.de/kontakt"
+}

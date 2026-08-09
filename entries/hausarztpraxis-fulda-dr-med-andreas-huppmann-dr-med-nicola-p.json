@@ -1,0 +1,15 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "(+49) 0661 9753 0 (Telefon) (+49) 0661 9753 199 Dienstag 16:00 – 19:00 Donnerstag 09:00 – 16:30 Freitag Geschlossen Mittwoch Geschlossen Montag Geschlossen Praxis-Chat Samstag Geschlossen Sonntag Gesc",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Hausarztpraxis Fulda, Dr. med. Andreas Huppmann, Dr. med. Nicola-Patricia Rudert",
+ "note": "meliva.de/standorte/ is a group locator shared by several practices; repointed to this practice's own /standort/ page, which carries a clean weekly hours table.",
+ "osm_id": "node/13448807041",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://meliva.de/standort/hausarzt-praxis-fulda/"
+}

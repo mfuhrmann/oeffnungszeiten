@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Fuldas Tauchertreff Montag: geschlossen Dienstag: 15.00 - 18:00 Uhr Mittwoch: 14.30 - 17:00 Uhr Donnerstag: geschlossen Freitag: 15.00 - 18:00 Uhr Samstag: 11.30 - 13.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(@class,\"heading-root\")][.//strong[contains(.,\"Öffnungszeiten\")]]",
+ "name": "Fuldas Tauchertreff",
+ "osm_id": "node/432864080",
+ "schema": 1,
+ "tags": [
+  "fulda-scuba_diving"
+ ],
+ "url": "https://www.fuldas-tauchertreff.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Unser Restaurant hat vorübergehend folgende Öffnungszeiten: Mo,Di,Do,Fr,Sa,So 12:00 – 23:00Uhr Mittwoch Ruhetag",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Ristorante Bòn dì",
+ "osm_id": "node/1327241618",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.ristorante-bondi.de/reservierung/#kontakt"
+}

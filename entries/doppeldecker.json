@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Dienstag - Freitag - ab 18 Uhr Samstag & Sonntag - ab 15 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "Doppeldecker",
+ "osm_id": "node/1332645893",
+ "schema": 1,
+ "tags": [
+  "fulda-bar"
+ ],
+ "url": "https://www.doppeldecker-fulda.de/kontakt.html"
+}

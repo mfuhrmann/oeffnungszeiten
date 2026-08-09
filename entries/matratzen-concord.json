@@ -1,0 +1,15 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "10:00 - 16:00 10:00 - 18:30 10:00 - 18:30 10:00 - 18:30 10:00 - 18:30 10:00 - 18:30 geschlossen * Di. * Do. * Fr. * Mi. * Mo. * Sa. * So. Öffnungszeiten",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Matratzen Concord",
+ "note": "2026-08-01: datastore aligned to the branch URL the CD watch already used (was the corporate /informationen/kontakt/, which would have made cd_sync create a duplicate watch).",
+ "osm_id": "node/4985129725",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-bed"
+ ],
+ "url": "https://www.matratzen-concord-filialen.de/fulda/a632"
+}

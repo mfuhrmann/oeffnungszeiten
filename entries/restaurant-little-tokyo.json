@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Di.-Fr. 11.30 – 14.30 Uhr / 17.30-22.30 Uhr Sa. 11.30 – 14.30 Uhr / 17.30 – 23.00 Uhr So. 11.30 – 14.30 Uhr / 17.30 – 22.30 Uhr Montag Ruhetag",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Restaurant Little Tokyo",
+ "osm_id": "node/1336860965",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.little-tokyo.de/anfahrt/"
+}

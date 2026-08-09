@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Hifi Gärber Abtstor 7-9, 36037 Fulda Telefon: +49 (0) 661 7 24 22 Telefax: +49 (0) 661 7 97 93 E-Mail: info @hifi-gaerber.de Öffnungszeiten: Mo - Fr: 10:00 - 18:00 Uhr Samstag: 10:00 - 15:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "HiFi Gärber",
+ "osm_id": "node/1333236187",
+ "schema": 1,
+ "tags": [
+  "fulda-electronics"
+ ],
+ "url": "https://www.hifi-gaerber.de/kontakt"
+}

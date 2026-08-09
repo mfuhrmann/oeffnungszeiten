@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Montag – Freitag: 08:00 bis 17:00 Uhr Samstag: geschlossen",
+ "fetch_backend": "system",
+ "filter": "xpath:(//span[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "TECHNIKPLUS",
+ "osm_id": "node/12500440613",
+ "schema": 1,
+ "tags": [
+  "fulda-electrical"
+ ],
+ "url": "https://technikplus-fulda.de/kontakt/"
+}

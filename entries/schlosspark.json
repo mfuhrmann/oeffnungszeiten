@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Stärken Sie sich für Ihren Tag Restaurant \"Apollo Saal\" Starten Sie Ihren Tag in unserem gemütlichen Restaurant. Lassen Sie sich von der kunstvoll bemalten Decke mit Darstellungen des Sonnengottes Apo",
+ "fetch_backend": "html_requests",
+ "filter": "xpath://div[contains(@class,\"ce-avsite_restaurants\")]",
+ "name": "Schloßpark",
+ "note": "2026-08-01: repointed to hotel restaurants page; CD filter covers all outlet blocks (Apollo Saal breakfast + a-la-carte, Dianakeller, Bar Barock). Old /kontakt-aufnehmen was a booking form.",
+ "osm_id": "node/1328288080",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.maritim.de/de/hotels/deutschland/hotel-am-schlossgarten-fulda/restaurants"
+}

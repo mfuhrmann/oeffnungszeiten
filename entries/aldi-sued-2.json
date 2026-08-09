@@ -1,0 +1,16 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "* Di. * Do. * Fr. * Mi. * Mo. * Sa. * So. 08:00 - 21:00 08:00 - 21:00 08:00 - 21:00 08:00 - 21:00 08:00 - 21:00 08:00 - 21:00 geschlossen Öffnungszeiten",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Aldi Süd",
+ "note": "Captures the same hours as the Keltenstraße branch. Separate branch pages that happen to open identically (08:00-21:00 daily) — not boilerplate.",
+ "osm_id": "node/1465073239",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-supermarket",
+  "geprüft-ok"
+ ],
+ "url": "https://filialen.aldi-sued.de/hessen/fulda/am-emaillierwerk-1"
+}

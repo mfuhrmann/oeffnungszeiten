@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Mo - Do 12:00 - 21:30 Fr, Sa 12:00 - 22:00 So 12:00 - 21:00",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Tondas",
+ "osm_id": "node/5508155670",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.tondas.de/kontakt"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten: Donnerstag 22.00 Uhr bis 03.00 Uhr Freitag 22.00 Uhr bis 04.30 Uhr Samstag 22.00 Uhr bis 04.30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Oberbayern",
+ "osm_id": "way/585082258",
+ "schema": 1,
+ "tags": [
+  "fulda-pub"
+ ],
+ "url": "https://www.tanzlokal-oberbayern.de/kontakt/"
+}

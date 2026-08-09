@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Info-Telefon: 0 66 1 / 94 27 947 | info@profound-korkstudio.de | Öffnungszeiten: Montag-Freitag: 10-12 & 14-18 Uhr, Samstag 10-14 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Korkshop24",
+ "osm_id": "node/13375150326",
+ "schema": 1,
+ "tags": [
+  "fulda-flooring"
+ ],
+ "url": "https://www.korkshop24.de/"
+}

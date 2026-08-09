@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Store Bahnhofstr. 23 36037 Fulda Öffnungszeiten Mo – Fr 9:00 – 18:00 Sa 9:00 – 16:00",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://div[contains(.,\"Öffnungszeiten\")][contains(.,\"Bahnhofstr\")][not(.//div[contains(.,\"Öffnungszeiten\") and contains(.,\"Bahnhofstr\")])]",
+ "name": "Eye Eye Optik",
+ "osm_id": "node/773212711",
+ "schema": 1,
+ "tags": [
+  "fulda-optician"
+ ],
+ "url": "https://eye-eye.de/fulda/"
+}

@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "tredy Store Fulda + Adresse Marktstraße 10 36037 Fulda, DE Kontakt Tel.: 0661-90169420 Öffnungszeiten Montag: 10:00 - 18:00 Dienstag: 10:00 - 18:00 Mittwoch: 10:00 - 18:00 Donnerstag: 10:00 - 18:00 Fr",
+ "fetch_backend": "html_requests",
+ "filter": "xpath://div[@data-store-id=\"0193073ab79d7cfbbd6281eed32c6db3\"]",
+ "name": "tredy",
+ "note": "2026-08-01: repointed to /storefinder, which server-renders every store card; CD filter pins the Fulda card by data-store-id 0193073ab79d7cfbbd6281eed32c6db3. No standalone Fulda store page exists.",
+ "osm_id": "node/12871359764",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.tredy-fashion.de/storefinder"
+}

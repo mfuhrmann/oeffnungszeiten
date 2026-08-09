@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag 10:00 - 15:00 Uhr Mittwoch 10:00 - 15:00 Uhr Donnerstag 10:00 - 15:00 Uhr Freitag 9:30 – 12:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" elementor-widget-xts_working_hours \")]",
+ "name": "Die Goldwaage Fulda",
+ "osm_id": "node/13739263362",
+ "schema": 1,
+ "tags": [
+  "fulda-gold_buyer"
+ ],
+ "url": "https://goldankauffulda.de/kontakt/"
+}

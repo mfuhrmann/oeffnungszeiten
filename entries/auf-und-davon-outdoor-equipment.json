@@ -1,0 +1,15 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Auf und Davon | Outdoor EquipmentMo-Fr: 9:30-18:30 UhrSa: 9:30-16:00 Uhr-Auf und Davon | BikeMo-Fr: 9:30-12:00 UhrMo-Fr: 13:00-18:30 UhrSa: 9:30-16:00 Uhr",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://div[contains(@class,\"footer_link-list\")][.//div[normalize-space(.)=\"Öffnungszeiten\"]]",
+ "name": "Auf und Davon outdoor equipment",
+ "note": "See auf-und-davon-bike: one footer block carries both shops' hours, so the two watches capture identical text by design.",
+ "osm_id": "node/1332126791",
+ "schema": 1,
+ "tags": [
+  "fulda-outdoor",
+  "geprüft-ok"
+ ],
+ "url": "https://www.aufunddavon.com"
+}

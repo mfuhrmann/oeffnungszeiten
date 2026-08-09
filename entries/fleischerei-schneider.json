@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Unsere aktuellen Öffnungszeiten sind: Öffnungszeiten: Montag: 06:30-14:00, Dienstag & Mittwoch: 06:30-15:00, Donnerstag & Freitag: 06:30-16:00 Samstag: 07:30-13:00",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Fleischerei Schneider",
+ "osm_id": "node/1333237142",
+ "schema": 1,
+ "tags": [
+  "fulda-butcher"
+ ],
+ "url": "https://www.fleischerei-schneider.com/"
+}

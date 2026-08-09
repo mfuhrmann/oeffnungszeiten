@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "MO., MI. – SA. / 8.30 - 19 UHR SONNTAG / 9 - 18 UHR Öffnungszeiten",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h1[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "O' Petit Paris",
+ "osm_id": "node/1332033886",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://opetitparis.de/#post-479-title"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten des Bildungsunternehmen Dr. Jordan Gemeinnütziger Schulverein e. V. 8:00 bis 17:00 Uhr montags bis donnerstags 8:00 bis 16:00 Uhr freitags Sie erreichen uns unter der: 0661 90272-300 in",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Jordan's Mensa",
+ "osm_id": "node/10076437284",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.privathandelsschule.de/service-center/kontakt/"
+}

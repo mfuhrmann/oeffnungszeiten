@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten: Mo-Di 11-24h | Mi-Sa 11-2h | So & Feiertage 12-24h",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Heimat",
+ "osm_id": "node/4855407422",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "http://heimat-fulda.de/"
+}

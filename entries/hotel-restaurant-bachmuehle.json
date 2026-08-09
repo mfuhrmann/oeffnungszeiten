@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Unser Restaurant ist geöffnet: Montag - Samstag ab 17:30 Uhr. Sonntag: ist Ruhetag! Hotel Fulda | Restaurant Fulda | Tagungshotel Fulda",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(concat(\" \",normalize-space(@class),\" \"),\" mbr-copy \")]",
+ "name": "Hotel Restaurant Bachmühle",
+ "osm_id": "way/125152737",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://bachmuehle.de/kontaktformular.html"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag - Freitag von 9:00 bis 12:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" opening_hours-line \")]",
+ "name": "(no name)",
+ "osm_id": "node/13738290956",
+ "schema": 1,
+ "tags": [
+  "fulda-copyshop"
+ ],
+ "url": "https://www.weinrich.de/copy-shop-fulda/"
+}

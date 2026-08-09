@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten * Dienstag * Mittwoch * Donnerstag * Freitag * Samstag * 10:00 - 18:00 * 10:00 - 18:00 * nur Kosmetik * 10:00 - 18:00 * 09:00 - 15:00 ;",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h5[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Studio JL - Jana Lautenschleger",
+ "osm_id": "node/6326749146",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://www.studio-jl.de/#kontakt"
+}

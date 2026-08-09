@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Montag - Samstag 09:00 - 20:00 Uhr Sonntag geschlossen",
+ "fetch_backend": "system",
+ "filter": ".branch-openingtimes",
+ "name": "Woolworth",
+ "note": "Only one Woolworth in Fulda (woolworth.de branches sitemap, 859 stores): store 1271. It is the Emaillierwerk mall branch; woolworth.de gives its postal address as Heinrichstrasse 85 while the mall is Am Emaillierwerk 1 - coords agree to ~97 m (OSM 50.54835/9.68658 vs page 50.54821/9.68793). OSM EDIT CANDIDATE: addr tag 'Am Emaillierwerk 85' mixes both - housenumber 85 belongs to Heinrichstrasse. Should be Heinrichstrasse 85 or Am Emaillierwerk 1.",
+ "osm_id": "node/1465073360",
+ "schema": 1,
+ "tags": [
+  "fulda-department_store"
+ ],
+ "url": "https://woolworth.de/stores/store/1271-fulda-heinrichstrasse-85"
+}

@@ -1,0 +1,44 @@
+{{- if .Values.sync.enabled }}
+{{- if not .Values.sync.repo }}
+{{- fail "sync.enabled requires sync.repo (the repository holding entries/)" }}
+{{- end }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "changedetection.name" . }}-sync
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.sync.schedule | quote }}
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: sync
+              image: {{ .Values.sync.image }}
+              # Pull, never push: nothing is exposed inbound, so CI cannot reach the app.
+              # The reconcile therefore runs from inside the cluster.
+              command: ["/bin/sh", "-c"]
+              args:
+                - |
+                  set -eu
+                  apk add --no-cache git >/dev/null
+                  pip install --quiet lxml
+                  git clone --depth 1 --branch {{ .Values.sync.ref }} {{ .Values.sync.repo }} /repo
+                  cd /repo
+                  python3 scripts/validate_entries.py
+                  python3 scripts/entries_sync.py --base-url "$CD_BASE_URL" {{ if .Values.sync.apply }}--apply{{ end }}
+              env:
+                - name: CD_BASE_URL
+                  value: "http://{{ include "changedetection.name" . }}:{{ .Values.service.port }}"
+                - name: CHANGEDETECTION_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ include "changedetection.name" . }}-api
+                      key: api-key
+{{- end }}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Restaurant Öffnungszeiten So – Do ab 11:00 Uhr bis 21:30 Uhr Fr – Sa ab 11:00 Uhr bis 22:00Uhr ab dem 04.07.2026 Montags Ruhetag 24.12.2026 geschlossen 25.12.2026 geschlossen 25.12.2024 geschlossen 01",
+ "fetch_backend": "system",
+ "filter": "xpath://h2[contains(normalize-space(.),\"Öffnungszeiten\")]/ancestor::div[contains(@class,\"fusion-column-wrapper\")][1]",
+ "name": "The Orange",
+ "osm_id": "node/3782399615",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://orange-burgermanufaktur.de/"
+}

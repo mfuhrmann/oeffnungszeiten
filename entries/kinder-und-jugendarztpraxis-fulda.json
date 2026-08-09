@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Dr. med. Christiane Daanay Dr. med. Christina Raspel Fachärztinnen für Kinder- und Jugendmedizin Lindenstrasse 40 36037 Fulda Tel: 06 61 - 7 78 20 Fax: 06 61 - 24 04 13 Sprechzeiten: Montag 08:00-12:0",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"article-126\"]",
+ "name": "Kinder- und Jugendarztpraxis Fulda",
+ "osm_id": "node/12962180502",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.kinderaerztefulda.de/anfahrt"
+}

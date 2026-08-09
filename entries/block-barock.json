@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag – Sonntag 10:00 – 23:00 Uhr (Abweichungen an Feiertagen möglich)",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Block Barock",
+ "osm_id": "way/316063087",
+ "schema": 1,
+ "tags": [
+  "fulda-sports_centre"
+ ],
+ "url": "https://block-barock.de/oeffnungszeiten/"
+}

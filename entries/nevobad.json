@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten: Mo. bis Fr. 09:00 – 17:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Nevobad",
+ "osm_id": "node/12992564275",
+ "schema": 1,
+ "tags": [
+  "fulda-bathroom_furnishing"
+ ],
+ "url": "https://nevobad.de/kontakt/"
+}

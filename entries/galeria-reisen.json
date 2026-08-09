@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag: 09:30 bis 18:00 Uhr Dienstag: 09:30 bis 18:00 Uhr Mittwoch: 09:30 bis 18:00 Uhr Donnerstag: 09:30 bis 18:00 Uhr Freitag: 09:30 bis 18:00 Uhr Samstag: geschlossen Sonntag: geschlossen",
+ "fetch_backend": "system",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" WorkingHours_fullDayTime__HLG_E \")]",
+ "name": "Galeria Reisen",
+ "osm_id": "node/1333605786",
+ "schema": 1,
+ "tags": [
+  "fulda-travel_agency"
+ ],
+ "url": "https://fulda-city.adacreisen.de/kontakt"
+}

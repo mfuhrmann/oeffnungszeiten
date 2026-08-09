@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Rezeption ParkHotel Montags - Freitags: 06:00 - 22:30 Uhr Samstags und Sonntags: 06:00 - 22:00 Uhr Bei Anreise außerhalb unserer Öffnungszeiten bitten wir um telefonische Kontaktaufnahm",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Park-Hotel Kolpinghaus",
+ "osm_id": "node/425773219",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://parkhotel-fulda.de/de/kontakt"
+}

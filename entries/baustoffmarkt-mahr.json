@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Baustoffmarkt Mahr GmbH & Co. KG Augustastraße 6A 36043 Fulda Öffnungszeiten Mo.–Fr. 07:00–17:30 Uhr Sa. 08:00–12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Baustoffmarkt Mahr",
+ "osm_id": "way/577967120",
+ "schema": 1,
+ "tags": [
+  "fulda-trade"
+ ],
+ "url": "https://www.baustoffmarkt-fulda.de/kontakt--anfahrt"
+}

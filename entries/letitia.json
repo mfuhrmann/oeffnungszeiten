@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Letitia Marktstraße 16 | 36037 Fulda Öffnungszeiten: Mo-Fr 10-18 Uhr, Sa 10-16 Uhr ÖFFNUNGSZEITEN MO-FR 10 - 18 UHR SA 10 - 16 UHR",
+ "fetch_backend": "html_requests",
+ "filter": "xpath://p[contains(translate(., \"öffnungszeitn\", \"ÖFFNUNGSZEITN\"), \"ÖFFNUNGSZEIT\")]",
+ "name": "Letitia",
+ "osm_id": "node/5508083101",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.letitia-fulda.de/kontakt.html"
+}

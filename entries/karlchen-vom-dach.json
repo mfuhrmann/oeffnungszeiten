@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "* Montag–Donnerstag: 14–22 Uhr * Freitag & Samstag: 11–0 Uhr * Sonntag & Feiertage: 11–22 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"donnerstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"donnerstag\")])])[1]",
+ "name": "Karlchen vom Dach",
+ "note": "Hours are on the homepage. Discovery had scored an Elementor popup trigger (#elementor-action%3A...) as a link; manual_url pins the clean URL.",
+ "osm_id": "way/1426728330",
+ "schema": 1,
+ "tags": [
+  "fulda-biergarten"
+ ],
+ "url": "https://www.karlchenvomdach.de/"
+}

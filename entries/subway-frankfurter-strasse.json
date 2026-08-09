@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Di 10:00 - 20:00 Do 10:00 - 20:00 Fr 10:00 - 20:00 Mi 10:00 - 20:00 Mo 10:00 - 20:00 Sa 10:00 - 20:00 So 12:00 - 20:00 Wochentag Öffnungszeiten",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//table[contains(@class,\"c-hours-details\")])[1]",
+ "name": "Subway (Frankfurter Straße)",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-fast_food"
+ ],
+ "url": "https://restaurants.subway.com/de/deutschland/he/fulda/frankfurter-stra%C3%9Fe-63"
+}

@@ -1,0 +1,15 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag 7.45 Uhr – 8.45 Uhr Freitag 7.45 Uhr – 8.15 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Antje Kirchhof-Kramp & Madlen Wetzel",
+ "note": "Only Mon and Fri are published (telephone hours 7.45-8.45 and 7.45-8.15). An audit warning about a partial week is expected here.",
+ "osm_id": "node/12914278806",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors",
+  "geprüft-ok"
+ ],
+ "url": "https://psychotherapie-kirchhof.de/index.php/kontakt"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "* Mittwoch & Donnerstag: 14–21:30 Uhr * Freitag, Samstag, Sonntag & Feiertage: 11–21:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(concat(\" \",normalize-space(@class),\" \"),\" kaleidos-opening-opening-hours-list \")]",
+ "name": "Firlefranz",
+ "osm_id": "node/269063973",
+ "schema": 1,
+ "tags": [
+  "fulda-pub"
+ ],
+ "url": "https://firle-franz.de/#anfahrt"
+}

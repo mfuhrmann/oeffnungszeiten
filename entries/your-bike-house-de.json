@@ -1,0 +1,9 @@
+{
+ "added": "2026-08-05",
+ "captured_sample": "Dienstag – Freitag 10:00 Uhr bis 18:00 Uhr Samstag 10:00 Uhr bis 14:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "your-bike-house.de",
+ "schema": 1,
+ "url": "https://your-bike-house.de/stores/"
+}

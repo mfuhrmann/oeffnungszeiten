@@ -1,0 +1,15 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Lieferung Abholung Montag 11:00 - 22:00 11:00 - 22:00 Dienstag 11:00 - 22:00 11:00 - 22:00 Mittwoch 11:00 - 22:00 11:00 - 22:00 Donnerstag 11:00 ",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Captain Kebap",
+ "note": "2026-08-06: zurück auf die sichtbare Öffnungszeiten-Tabelle (Liefer- und Abholspalte). Teilt die Seite mit captain-kebap-lieferservice.",
+ "osm_id": "node/12864446462",
+ "schema": 1,
+ "tags": [
+  "fulda-fast_food",
+  "geprüft-ok"
+ ],
+ "url": "https://captain-kebap-fulda.de/contact"
+}

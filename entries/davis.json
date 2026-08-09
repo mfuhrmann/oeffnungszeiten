@@ -1,0 +1,15 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "11:30 - 14:00 17:00 - 22:00 11:30 - 14:00 17:00 - 22:00 11:30 - 14:00 17:00 - 22:00 11:30 - 22:00 11:30 - Sa. 00:00 11:30 - Su. 00:00 17:00 - 22:00 Friday: Monday: Saturday: Sunday: Thursday: Tuesday:",
+ "fetch_backend": "html_webdriver",
+ "filter": ".location-detail-openday",
+ "name": "Davis",
+ "note": "repointed to locationdetail SPA route = full static weekly schedule (root /shop showed only rotating Today widget)",
+ "osm_id": "node/3239658875",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://pizzeria-davis.myhypersoftapp.de/shop/#/locationdetail/31393"
+}

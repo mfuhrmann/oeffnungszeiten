@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "* Di. * Do. * Fr. * Mi. * Mo. * Sa. * So. 09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 09:00 - 19:00 geschlossen Öffnungszeiten",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Takko Fashion",
+ "osm_id": "node/4984514160",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.takko.com/de-de/stores/#!/l/Fulda/FrankfurterStra%C3%9Fe71/410"
+}

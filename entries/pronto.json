@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-27",
+ "captured_sample": "Öffnungszeiten Montag - Donnerstag 11.00 - 14.00 Uhr 17.00 - 23.00 Uhr Freitag und Samstag 11.00 - 14.00 Uhr 17.00 - 24.00 Uhr Sonntage und Feiertage 11.00 - 23.00 Uhr Kontakt Fon 0661-78895 / 78889 F",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Pronto",
+ "osm_id": "node/14051888862",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurant"
+ ],
+ "url": "https://www.pizzeria-pronto-fulda.de/anfahrt.html"
+}

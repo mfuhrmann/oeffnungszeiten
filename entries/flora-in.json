@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montags – Samstags 07:00 – 09:00 Uhr",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//p[contains(translate(.,\"MONTAG\",\"montag\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAG\",\"montag\"),\"montag\")])])[1]",
+ "name": "Flora In",
+ "note": "hours live behind the \"Aktuelle Öffnungszeiten\" off-canvas panel (Elementor); discovery had latched onto the popup-trigger URL #elementor-action…. Rendered + day-anchored filter on the panel content.",
+ "osm_id": "node/12500552619",
+ "schema": 1,
+ "tags": [
+  "fulda-wholesale"
+ ],
+ "url": "https://flora-in.de/"
+}

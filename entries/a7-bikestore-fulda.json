@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Bikestore Uttrichshausen (November bis April) * Montag 09:00 Uhr - 12:00 Uhr * Dienstag 09:00 Uhr - 12:00 Uhr * Mittwoch 09:00 Uhr - 16:00 Uhr * Donnerstag gesc",
+ "fetch_backend": "system",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" penci-working-hours \")]",
+ "name": "A7 Bikestore Fulda",
+ "note": "2026-08-06: von .post-entry (7040 Zeichen, ganzer Beitrag inkl. Aktionsmeldungen) auf den Öffnungszeiten-Block verengt. Der Block listet alle Filialen der Kette, deshalb 1270 Zeichen.",
+ "osm_id": "node/10564355016",
+ "schema": 1,
+ "tags": [
+  "fulda-bicycle"
+ ],
+ "url": "https://a7-bikestore.com/oeffnungszeiten/"
+}

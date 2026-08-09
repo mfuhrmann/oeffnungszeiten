@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "UNSERE ÖFFNUNGSZEITEN Montag 09:00 – 12:00 Uhr Dienstag 09.00 – 14.00 Uhr Mittwoch – Freitag 09:00 – 18:00 Uhr Samstag 08:00 – 14:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*",
+ "name": "Frisagisten",
+ "osm_id": "way/134016594",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://frisagisten.de/kontakt/"
+}

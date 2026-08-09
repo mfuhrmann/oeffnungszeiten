@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "* 36037 Fulda, Dalbergstraße 22 zentrale Terminvergabe für alle Standorte unter der Telefon-Nr. 0661-77945 Sprechzeiten: Montag bis Donnerstag von 8.00 bis 17.00 Uhr; Freitag von 8.00 bis 14.00 Uhr un",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(.,\"Dalbergstraße 22\")]",
+ "name": "Diagnostikum Nuklearmedizin Dr. Körber und Kollegen",
+ "osm_id": "node/13448841087",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.diagnostikum-nuklearmedizin.de/kontakt"
+}

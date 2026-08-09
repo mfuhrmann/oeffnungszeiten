@@ -1,0 +1,15 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Öffnungszeiten Mo.-Fr. 10:00–17:30 Uhr Sa. 13:00–17:30 Uhr (1. Oktober – 30. April) So. 13:00–17:30 Uhr An folgenden Tagen bleibt die KAF 2026 geschlossen: 01. Januar, Neujahr 16. Febru",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h1[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Kinder-Akademie Fulda",
+ "note": "MuseumsKAFé shares this page: the café publishes no hours of its own ('unser KAFé ist während der Öffnungszeiten geöffnet'), so both watches capture the museum's hours by design.",
+ "osm_id": "way/537351025",
+ "schema": 1,
+ "tags": [
+  "fulda-museum",
+  "geprüft-ok"
+ ],
+ "url": "https://www.kaf.de/ueber-uns/oeffnungszeiten/"
+}

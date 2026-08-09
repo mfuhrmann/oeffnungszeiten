@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Mo - Do: 8:00 Uhr - 18:00 Uhr Fr: 8:00 Uhr - 17:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "RADIOLOGIE UND NUKLEARMEDIZIN IM ZENTRUM VITAL",
+ "osm_id": "node/5651139508",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://radiologie-fulda.de/kontakt-radiologie-fulda/"
+}

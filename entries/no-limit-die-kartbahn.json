@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Anschrift Indoor-Kart & Freizeit GmbH Frankfurter Straße 142 D-36043 Fulda Ihr direkter Weg zur NOlimit Kartbahn! Kontakt Telefon: +49 (0) 661 / 40 20 53 Telefax: +49 (0) 661 / 40 20 58 E-Mail: info(a",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "No limit - die Kartbahn",
+ "osm_id": "node/5324743781",
+ "schema": 1,
+ "tags": [
+  "fulda-sports_centre"
+ ],
+ "url": "https://www.nolimitkartbahn.de/kontakt/"
+}

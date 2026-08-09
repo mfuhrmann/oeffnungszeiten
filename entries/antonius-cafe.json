@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Kontakt antonius Café An St. Kathrin 4 36041 Fulda Mario Weigel Tel. 0661 - 10 97 424 Fax: 0661 - 10 97 481 antonius-cafe@antonius.de Unsere Öffnungszeiten Mo. 8.00 bis 17.30 Uhr Di. 8.00 bis 17.30 Uh",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(@class,\"ce_text\")][.//strong[contains(.,\"Öffnungszeiten\")]]",
+ "name": "antonius Café",
+ "note": "repointed to café page; xpath filter to Öffnungszeiten block (kontakt.html had an events calendar)",
+ "osm_id": "node/1479400272",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.antonius.de/einkaufen/antonius-cafe.html"
+}

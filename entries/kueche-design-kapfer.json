@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Bis bald auf einen Espresso oder Cappuccino in unserem Haus. Unsere Öffnunszeiten: Dienstag bis Freitag: 10:00 bis 18:00 Uhr Samstag: 10:00 bis 14:00 Uhr und nach Vereinbarung Sie finden uns in Nähe d",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "Küche & Design Kapfer",
+ "osm_id": "node/12962082861",
+ "schema": 1,
+ "tags": [
+  "fulda-kitchen"
+ ],
+ "url": "https://kuechen-fulda.de/"
+}

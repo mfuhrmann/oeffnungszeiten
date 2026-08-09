@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten (Abweichungen vor Ort möglich) täglich ab 18.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Toro Negro",
+ "note": "Hotel Esperanto outlet. Was watching /kontakt/, which carries no hours at all - blind watch, repointed 2026-08-03 to the per-outlet page.",
+ "osm_id": "node/3978092617",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.hotel-esperanto.de/toro-negro-fulda"
+}

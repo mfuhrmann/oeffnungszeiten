@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "* Montag: 08:00 – 17:00 Uhr * Dienstag: 10:00 – 20:00 Uhr * Mittwoch: 08:00- 17:00 Uhr * Donnerstag: 10:00-20:00 Uhr * Freitag: 08:00 – 12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Lebenswege Physiotherapie",
+ "osm_id": "node/12962184670",
+ "schema": 1,
+ "tags": [
+  "fulda-physiotherapist"
+ ],
+ "url": "https://www.lebenswege-physiotherapie.de/#kontakt"
+}

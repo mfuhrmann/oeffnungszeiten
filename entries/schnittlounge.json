@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten di. 9.00 - 15.00 Uhr mi. - fr. 9.00 - 19.00 Uhr sowie nach Vereinbarung Öffnungszeiten",
+ "fetch_backend": "system",
+ "filter": "xpath:(//span[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "SchnittLounge",
+ "osm_id": "node/1333328277",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://www.schnittlounge-fulda.de/kontakt.html"
+}

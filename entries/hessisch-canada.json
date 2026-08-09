@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Opening Hours Montag 14.00 -22.00 Uhr Dienstag Ruhetag Mittwoch 14.00 -22.00 Uhr Donnerstag 14.00 -22.00 Uhr Freitag 14.00 -22.00 Uhr Samstag 12.00 - 22.00 Uhr Sonntag 12.00 - 21.00 Uhr Durchgängig wa",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Opening Hours\")])/parent::*",
+ "name": "Hessisch Canada",
+ "osm_id": "node/3978092609",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://hessischcanada.com/"
+}

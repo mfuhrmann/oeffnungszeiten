@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Italia Feinkost / Antonio Pansardi Italienischer Lebensmittel-, Einzel- und Großhandel Lehnerzer Str. 31, 36039 Fulda 0661 67924233 / info@italia-feinkost.com Öffnungszeiten: Mittwoch - Freitag: 10:00",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Italia Feinkost",
+ "osm_id": "way/139008697",
+ "schema": 1,
+ "tags": [
+  "fulda-deli"
+ ],
+ "url": "https://www.italia-feinkost.com/#kontakt"
+}

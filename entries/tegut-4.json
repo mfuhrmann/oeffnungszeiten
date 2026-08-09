@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Markt Mo-Sa: 07:00 - 20:00 Post Mo-Sa: 09:00 - 19:00 * Parkplatz * Post (selbstbewirtschaftet)",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"openingHours_3950\"]",
+ "name": "tegut",
+ "osm_id": "way/134571090",
+ "schema": 1,
+ "tags": [
+  "fulda-supermarket"
+ ],
+ "url": "https://www.tegut.com/maerkte/markt/tegut-fulda-maberzeller-strasse-45.html#openingtimesCollapse"
+}

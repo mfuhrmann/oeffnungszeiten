@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Wochentag Zeiten Montag 07:00 - 16:30 Dienstag 07:00 - 16:30 Mittwoch 07:00 - 16:30 Donnerstag 07:00 - 16:30 Freitag 07:00 - 15:00 Samstag Geschlossen Sonntag Geschlossen",
+ "fetch_backend": "system",
+ "filter": "xpath:(//table[contains(@class,\"lp-param-hours\")])[1]",
+ "name": "SKV GmbH Fulda",
+ "osm_id": "node/12500440765",
+ "schema": 1,
+ "tags": [
+  "fulda-wholesale"
+ ],
+ "url": "https://stores.mega.de/skv-gmbh-fulda-02f989042601"
+}

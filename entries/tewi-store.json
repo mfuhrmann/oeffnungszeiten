@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "TEWI GMBH & CO. KG Ferdinand-Schneider-Str. 14-16 36043 Fulda Telefon: +49 (0)66 1 94 80 – 0 Öffnungszeiten: TEWI und TEWI STORE Mo. – Fr.: 09:00 – 18:00 Uhr Sa.: 10:00 – 14:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "TeWi Store",
+ "osm_id": "node/6810694133",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.tewi.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Marie-Curie-Straße 5, 36039 Fulda Mo–Fr 06:00–22:00 Sa–So 08:00–20:00 +49 661 48056609",
+ "fetch_backend": "html_webdriver",
+ "filter": ".close__meta",
+ "name": "RED Sports",
+ "osm_id": "node/13004511906",
+ "schema": 1,
+ "tags": [
+  "fulda-fitness_centre"
+ ],
+ "url": "https://www.redsports.de/"
+}

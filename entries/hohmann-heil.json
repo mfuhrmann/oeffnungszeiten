@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Textilvertriebsgesellschaft mbH Künzeller Straße 29, 36043 Fulda Telefon: (0661) 9783-0 Telefax: (0661) 9783-55 Email: kontakt@hohmann-heil.de Internet: hohmann-heil.de Öffnungszeiten: Montag bis Sams",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "hohmann & heil",
+ "osm_id": "way/193308503",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.hohmann-heil.de/kontakt/"
+}

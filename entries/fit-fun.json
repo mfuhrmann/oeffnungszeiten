@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "ÖFFNUNGSZEITEN Mo – Fr: 06.30 – 22.30 Uhr Sa: 08.00 – 19.00 Uhr So: 08.00 – 18.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*",
+ "name": "Fit & Fun",
+ "osm_id": "node/5540123977",
+ "schema": 1,
+ "tags": [
+  "fulda-fitness_centre"
+ ],
+ "url": "https://fitundfun-fulda.de/kontakt/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Montag Ruhetag! Dienstag - Samstag 16:00 Uhr - bis Ende Sonntag und an Feiertagen 12:00 Uhr bis 14:00 Uhr & 17:00 Uhr bis Ende",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" promotions-details \")]",
+ "name": "Hopfenglück",
+ "osm_id": "way/37196594",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://hopfenglueck-fulda.de/#promotion"
+}

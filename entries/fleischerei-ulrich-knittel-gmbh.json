@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag- Freitag 7.00 bis 14.00 ​ ​ Betriebsurlaub ​ 27.07.-07.08.2026 ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​",
+ "fetch_backend": "system",
+ "filter": "#comp-lpzfe9fb",
+ "name": "Fleischerei Ulrich Knittel GmbH",
+ "note": "Wix site; CSS filter to hours component",
+ "osm_id": "way/150980944",
+ "schema": 1,
+ "tags": [
+  "fulda-butcher"
+ ],
+ "url": "https://www.fleischerei-knittel.de"
+}

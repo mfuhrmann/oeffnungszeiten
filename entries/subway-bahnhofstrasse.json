@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Di 9:00 - 21:00 Do 9:00 - 21:00 Fr 9:00 - 21:00 Mi 9:00 - 21:00 Mo 9:00 - 21:00 Sa 10:00 - 21:00 So 11:00 - 21:00 Wochentag Öffnungszeiten",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//table[contains(@class,\"c-hours-details\")])[1]",
+ "name": "Subway (Bahnhofstraße)",
+ "osm_id": "node/698842165",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-fast_food"
+ ],
+ "url": "https://restaurants.subway.com/de/deutschland/he/fulda/bahnhofstra%C3%9Fe-5"
+}

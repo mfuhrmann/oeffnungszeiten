@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Bitte beachten Sie die geänderten Öffnungszeiten in der vorlesungsfreien Zeit (01.08. – 11.10.2026): geöffnet (Selbstbedienung an Automaten): Mo. – Fr.: 08.30 – 16.00 Uhr Sa.: 10.00 – 15.00 Uhr Cafete",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" randspalte \")]//div[contains(concat(\" \",normalize-space(@class),\" \"),\" mt-3 \")]",
+ "name": "Mensa Hochschule Fulda",
+ "osm_id": "node/11047221514",
+ "schema": 1,
+ "tags": [
+  "fulda-fast_food"
+ ],
+ "url": "https://www.stwgi.de/mensa-hochschule-fulda#kontakt_anchor"
+}

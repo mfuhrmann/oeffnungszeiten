@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "[ \"Tuesday 17:00-21:00\", \"Wednesday,Thursday,Friday,Saturday 17:00-22:00\" ]",
+ "fetch_backend": "system",
+ "filter": "json:$..openingHours",
+ "name": "Stella Fulda",
+ "osm_id": "node/3978092613",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://stella-fulda.de#reservierung"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Tel.: +49 (0) 661 29266122 Öffnungszeiten Ladengeschäft: Mo.-Fr. : 10:00 Uhr - 12:30 Uhr 15:30 Uhr - 18:00 Uhr Sa. : 10:00 Uhr - 14:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//b[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Rhöner BARF-Shop",
+ "osm_id": "node/13452602178",
+ "schema": 1,
+ "tags": [
+  "fulda-pet"
+ ],
+ "url": "https://www.rhoener-barfshop.de/kontaktformular"
+}

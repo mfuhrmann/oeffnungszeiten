@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag: 10:00-18:00 Dienstag: 10:00-18:00 Mittwoch: 10:00-18:00 Donnerstag: 10:00-18:00 Freitag: 10:00-18:00 Samstag: 10:00-18:00 Sonntag: Geschlossen",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" moorl-opening-hours \")]",
+ "name": "Elektro Zigge",
+ "osm_id": "node/4984468159",
+ "schema": 1,
+ "tags": [
+  "fulda-e-cigarette"
+ ],
+ "url": "https://www.elektrozigge.de/Shop-Service/Unsere-Filialen/Fulda-Kuenzell/"
+}

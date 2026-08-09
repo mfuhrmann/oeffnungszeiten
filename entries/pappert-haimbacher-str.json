@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten * Montag: 05:00 - 18:00 * Dienstag: 05:00 - 18:00 * Mittwoch: 05:00 - 18:00 * Donnerstag: 05:00 - 18:00 * Freitag: 05:00 - 18:00 * Samstag: 05:00 - 13:00 * Sonntag: 07:00 - 12:00",
+ "fetch_backend": "html_requests",
+ "filter": ".detail-dealer-open-hours",
+ "name": "Pappert (haimbacher str)",
+ "note": "2026-08-01: recovered via /dealer/<slug>/ branch page (matched to OSM by coordinates, 0.00 km).",
+ "osm_id": "node/1600298283",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://www.papperts.de/dealer/fil-fulda-haimbacher-str/"
+}

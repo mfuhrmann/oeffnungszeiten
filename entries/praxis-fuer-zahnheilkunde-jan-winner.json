@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag 08.00 – 12.00 14.30 – 18.00 Dienstag 08.00 – 12.00 14.30 – 18.00 Mittwoch 08.00 – 12.00 14.30 – 17.00 Donnerstag 08.00 – 12.00 14.30 – 18.00 Freitag 08.00 – 13.00",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGFREI\",\"montagfrei\"),\"montag\") and contains(translate(.,\"MONTAGFREI\",\"montagfrei\"),\"freitag\")][not(.//div[contains(translate(.,\"MONTAGFREI\",\"montagfrei\"),\"montag\") and contains(translate(.,\"MONTAGFREI\",\"montagfrei\"),\"freitag\")])]",
+ "name": "Praxis für Zahnheilkunde Jan Winner",
+ "osm_id": "node/6522695564",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "http://www.zahnarzt-fulda.info/praxis/"
+}

@@ -1,0 +1,15 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Öffnungszeiten Mo.-Fr. 10:00–17:30 Uhr Sa. 13:00–17:30 Uhr (1. Oktober – 30. April) So. 13:00–17:30 Uhr An folgenden Tagen bleibt die KAF 2026 geschlossen: 01. Januar, Neujahr 16. Febru",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h1[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "MuseumsKAFé",
+ "note": "The café publishes no hours of its own — its page says 'unser KAFé ist während der Öffnungszeiten geöffnet' — so this watch mirrors the Kinder-Akademie's hours deliberately.",
+ "osm_id": "node/5203973987",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe",
+  "geprüft-ok"
+ ],
+ "url": "https://www.kaf.de/ueber-uns/oeffnungszeiten/"
+}

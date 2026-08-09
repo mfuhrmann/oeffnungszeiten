@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten MO 07.30 - 13 Uhr und 15 - 17 Uhr DI 07.30 - 13 Uhr MI 07.30 - 13 Uhr DO 07.30 - 13 Uhr und 15 - 17 Uhr FR 07.30 - 13 Uhr Praxisurlaub Hinweis: Blutentnahmen finden vor unserem Sommerur",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Gemeinschaftspraxis am Frauenberg",
+ "osm_id": "node/7414805791",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.praxis-frauenberg.de/kontakt"
+}

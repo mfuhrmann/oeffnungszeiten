@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Telefonverkauf Tel. 0661/4958 321 Mo-Fr: 08:00-15:00 Uhr Sa: 08:00-12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"text-5\"]",
+ "name": "C+C Wehner Groma",
+ "osm_id": "way/125151736",
+ "schema": 1,
+ "tags": [
+  "fulda-wholesale"
+ ],
+ "url": "https://www.groma.de/kontakt/"
+}

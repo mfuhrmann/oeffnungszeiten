@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Täglich von 17:00 Uhr bis 00:00 Uhr Samstags open end Montag bis Donnerstag bis 21:30 Uhr Freitag und Samstag bis 22:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://span[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"samstag\")][not(.//span[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"samstag\")])]",
+ "name": "Chumbos",
+ "osm_id": "way/207009146",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://chumbos.de/mexican-grill-fulda/#anfahrt"
+}

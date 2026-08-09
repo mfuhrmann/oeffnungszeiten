@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "MONTAG bis SAMSTAG – 11 bis 18 Uhr SONNTAG – GESCHLOSSEN",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])])[1]",
+ "name": "Café Mint",
+ "note": "2026-08-06: zurück auf den sichtbaren Text. JSON-LD wird von niemandem gepflegt und wäre bei einer Änderung still.",
+ "osm_id": "node/13619904154",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://cafe-mint-fulda.de/#oeffnungszeiten"
+}

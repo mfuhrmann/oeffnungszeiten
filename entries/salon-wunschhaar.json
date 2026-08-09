@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Di & Mi 9:00 bis 18:00 Uhr Do & Fr 9:00 bis 18. 00 Uhr Sa 8:00 bis 13:00 Uhr Montags kreative Pause!",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Salon Wunschhaar",
+ "osm_id": "node/13726060512",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://wunschhaar-fulda.de/"
+}

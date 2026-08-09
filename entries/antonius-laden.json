@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Kontakt: antonius Laden An St. Kathrin 4 36041 Fulda Tel.: 0661 - 10 97 480 Mail: laden@antonius.de Unsere Öffnungszeiten Mo. 8.00 bis 18.00 Uhr Di. 8.00 bis 18.00 Uhr Mi. 8.00 bis 18.00 Uhr Do. 8.00 ",
+ "fetch_backend": "system",
+ "filter": "#article-171",
+ "name": "antonius Laden",
+ "osm_id": "node/670198272",
+ "schema": 1,
+ "tags": [
+  "fulda-supermarket"
+ ],
+ "url": "https://www.antonius.de/einkaufen/antonius-laden.html"
+}

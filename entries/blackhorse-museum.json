@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "* Momentan ist unser Museum von Montag – Freitag nur von 09:00 – 13:00 Uhr geöffnet. Für Besuchergruppen abends, samstags und an Sonn- und Feiertagen nach Absprache mit unserer Geschäftsstelle. * Letz",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Blackhorse Museum",
+ "osm_id": "node/271937791",
+ "schema": 1,
+ "tags": [
+  "fulda-museum"
+ ],
+ "url": "https://www.blackhorse-museum.de/oeffnungszeiten/"
+}

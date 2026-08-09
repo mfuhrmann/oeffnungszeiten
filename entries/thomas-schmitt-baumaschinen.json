@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Mietpark Industriepark Fulda-West Thomas Schmitt Baumaschinen GmbH&Co.KG Karrystraße 13 36041 Fulda-Rodges Tel. 0661-291947-50 info@tsb-fulda.de Werkstatt Tel. 0661-291947-60 Werkstatt@tsb-fulda.de Bu",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Thomas Schmitt Baumaschinen",
+ "osm_id": "way/1453524797",
+ "schema": 1,
+ "tags": [
+  "fulda-rental"
+ ],
+ "url": "https://www.thomas-schmitt-baumaschinen.de/kontakt-199.html"
+}

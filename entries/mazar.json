@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Montag geschlossen Dienstag 11.30 - 14.30 Uhr 16.30 - 21:30 Uhr Mittwoch 11.30 - 14.30 Uhr 16.30 - 21:30 Uhr Donnerstag 11.30 - 14.30 Uhr 16.30 - 21:30 Uhr Freitag 11.30 - 14.30 Uhr 16.30 - 21:30 Uhr ",
+ "fetch_backend": "system",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" knk-opening-hours \")]",
+ "name": "Mazar",
+ "osm_id": "node/1328319543",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://mazar-fulda.de/#oeffnungszeiten"
+}

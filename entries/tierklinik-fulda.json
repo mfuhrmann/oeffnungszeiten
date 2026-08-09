@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Öffnungszeiten Mo.-Fr. Montag-Freitag: 09:30-11:00 Uhr 16:30-19:00 Uhr Sa., So. Samstag, Sonntag: 09:00-09:30 Uhr 18:00-18:30 Uhr Die Samstag und Sonntag-Notsprechstunden sind den Notfä",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Tierklinik Fulda",
+ "osm_id": "way/137865419",
+ "schema": 1,
+ "tags": [
+  "fulda-veterinary"
+ ],
+ "url": "https://tierklinik-fulda.de/"
+}

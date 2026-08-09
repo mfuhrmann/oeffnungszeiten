@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Kontakt Sichern Sie sich jetzt ein Termin. 0661 25 03 07 13 0160 62 61 07 9 info@glamour-fulda.de Öffnungszeiten Mo. – Fr.: 09:00 – 19:00 Uhr Sa.: 09:00 – 18:00 Uhr Nutzen Sie unser Kontaktformular Ic",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" elementor-widget-container \")]",
+ "name": "Glamour - Nails by Natalia",
+ "osm_id": "node/5504610299",
+ "schema": 1,
+ "tags": [
+  "fulda-beauty"
+ ],
+ "url": "https://glamour-fulda.de/kontakt/"
+}

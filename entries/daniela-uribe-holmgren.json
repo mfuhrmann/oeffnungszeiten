@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "post@hautarzt-uribe-holmgren.de Öffnungszeiten Mo: 08:00 - 12:30 und 14:00 - 18:30 Di: 08:00 - 12:30 und 14:00 - 17:00 Mi: GESCHLOSSEN Do: 08:00 - 12:30 und 14:00 - 17:00 Fr: 08:00 - 12:30 und 14:00 -",
+ "fetch_backend": "system",
+ "filter": "xpath:(//b[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Daniela Uribe Holmgren",
+ "osm_id": "node/1333296833",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.hautarzt-uribe-holmgren.de/kontakt/"
+}

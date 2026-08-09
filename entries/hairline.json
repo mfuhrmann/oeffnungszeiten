@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Dienstag – Freitag von 9:30 bis 18:30 Uhr Samstag von 9:00 bis 14:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"block-11\"]",
+ "name": "Hairline",
+ "osm_id": "node/1333266619",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://hairline-fulda.de/#kontakt"
+}

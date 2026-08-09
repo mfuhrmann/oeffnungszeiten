@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Montag – Samstag: 15:00 bis 23:00 Uhr Sonntag geschlossen",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])])[1]",
+ "name": "HBH Hohmanns Brauhaus",
+ "note": "2026-08-06: sichtbarer Text statt JSON-LD. Die Seite zeigt den Block zweimal, deshalb [1].",
+ "osm_id": "node/1343739325",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://hohmanns-brauhaus-fulda.de/#kontakt"
+}

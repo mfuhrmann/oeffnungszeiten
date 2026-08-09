@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "0661-9455-22 Telefonische Bestellungen Montag-Freitag von 8-17 Uhr Telefonische Bestellungen Montag-Freitag von 8-17 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Laberenz",
+ "osm_id": "node/12500501408",
+ "schema": 1,
+ "tags": [
+  "fulda-wholesale"
+ ],
+ "url": "https://www.laberenz.com/#kontakt"
+}

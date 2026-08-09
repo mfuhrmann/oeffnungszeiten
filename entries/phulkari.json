@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Tägliche Öffnungszeiten: 11.30 Uhr bis 14.00 Uhr 17.30 Uhr bis 22.00 Uhr Samstag ab 17:30 Uhr bis 22:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Phulkari",
+ "osm_id": "node/431089625",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "http://www.phulkari-restaurant.de/kontakt.html"
+}

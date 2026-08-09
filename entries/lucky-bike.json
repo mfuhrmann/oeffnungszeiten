@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Geöffnet Montag – Freitag: 10 – 19 Uhr Samstag: 10 – 18 Uhr Die Filiale ist am 25.08.2026 geschlossen",
+ "fetch_backend": "system",
+ "filter": "xpath://span[contains(concat(\" \",normalize-space(@class),\" \"),\" e-paragraph-base \")]",
+ "name": "Lucky Bike",
+ "note": "2026-08-06: sichtbarer Text statt JSON-LD. Der frühere ancestor::div-Ausdruck wurde von lxml und changedetection unterschiedlich gelesen, dieser nicht.",
+ "osm_id": "way/117695812",
+ "schema": 1,
+ "tags": [
+  "fulda-bicycle"
+ ],
+ "url": "https://www.lucky-bike.de/fahrrad-fulda/"
+}

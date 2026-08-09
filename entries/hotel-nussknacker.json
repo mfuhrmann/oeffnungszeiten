@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Rezeption Mo.-Fr. 07:00 -21:00 Sa. 07:00 -18:00 So. 07:00 -11:30 Falls Sie außerhalb unserer Rezeptions-Öffnungszeiten anreisen möchten, setzen Sie sich bitte mit uns in Verbindung.",
+ "fetch_backend": "system",
+ "filter": "//div[contains(@class,\"ce_text\")][h3[contains(.,\"Öffnungszeiten\")]]",
+ "name": "Hotel Nußknacker",
+ "note": "xpath filter to Öffnungszeiten block (page also edits unrelated text e.g. owner names)",
+ "osm_id": "node/2159234645",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.hotel-nussknacker.de/anfahrtsplan.html"
+}

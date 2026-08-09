@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "[ \"Mo-Fr 07:00 - 21:00\", \"Sa 08:00 - 21:00\" ]",
+ "fetch_backend": "html_requests",
+ "filter": "json:$..openingHours",
+ "name": "tegut",
+ "osm_id": "node/1328314102",
+ "schema": 1,
+ "tags": [
+  "fulda-supermarket"
+ ],
+ "url": "https://www.tegut.com/maerkte/markt/tegut-fulda-rabanusstrasse-3.html#openingtimesCollapse"
+}

@@ -1,0 +1,17 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Unsere Leistungen Der Besuch unseres Verkaufsladens ist ab sofort über unsere Annahmestelle Elektrogeräterecycling möglich. Bitte sprechen Sie unsere Mitarbeiter an. Verkauf von Gebrauchtgeräten * Was",
+ "fetch_backend": "system",
+ "filter": ".seitencontent",
+ "name": "SecondHandElektrogeräte",
+ "note": "was sharing Kantine im Landratsamt's watch after discovery picked the site-wide footer link /Kontakt/74-2500-ErklaerungBarrierefreiheit (no hours); own watch now on the Dienstleistungen page. Filter .seitencontent. gruemel.de serves the SAME page to two concurrent requests for different URLs (server-side global state - reproduced with separate cookie jars), so the two gruemel watches would swap content whenever they recheck together; guarded with trigger_text as a page-identity marker. Marker: 'Verkauf von Gebrauchtgeräten'.",
+ "osm_id": "node/12241127538",
+ "schema": 1,
+ "tags": [
+  "fulda-charity"
+ ],
+ "trigger_text": [
+  "Verkauf von Gebrauchtgeräten"
+ ],
+ "url": "https://www.gruemel.de/Dienstleistungen/120-360-SecondHandElektrogeraete"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Mo – Fr: 07:00 – 17:00 Uhr Termine nur nach Vereinbarung",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"mo – fr\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"mo – fr\")])]",
+ "name": "Freigeist",
+ "osm_id": "node/13004511902",
+ "schema": 1,
+ "tags": [
+  "fulda-physiotherapist"
+ ],
+ "url": "https://freigeist-physiotherapie.de/"
+}

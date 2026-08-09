@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Friedrichstraße 6, 36037 Fulda Öffnungszeiten Sonntag bis Donnerstag: 10:00 - 21:00 mit Bewirtung, Fensterverkauf bis mind. 22:30 Freitag und Samstag: 10:00 - 22:00 mit Bewirtung, Fensterverkauf bis m",
+ "fetch_backend": "system",
+ "filter": "xpath:(//b[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Eiscafé Bonifatius",
+ "osm_id": "node/1328249619",
+ "schema": 1,
+ "tags": [
+  "fulda-ice_cream"
+ ],
+ "url": "http://www.eiscafe-bonifatius.de/"
+}

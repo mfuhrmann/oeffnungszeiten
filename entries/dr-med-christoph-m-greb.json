@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Sprechzeiten FAM Fulda Mo.-Fr. 7.30 – 11.00 Uhr Mo. und Do.14.30 – 17.00 Uhr Zweigstelle Hünfeld Di. und Fr. 14.00 – 17.00 Uhr nach Vereinbarung",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*/parent::*",
+ "name": "Dr. med. Christoph M. Greb",
+ "osm_id": "node/13410573208",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://urodoc-fulda.de/kontakt/"
+}

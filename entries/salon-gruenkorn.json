@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-07",
+ "captured_sample": "ÖFFNUNGSZEITENMontag bis Freitag 09.00-18.00 UhrSamstag 07.30-13.00 Uhr‍Donnerstags: Geschlossen",
+ "filter": "xpath:(//h1[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*",
+ "lang": "de",
+ "name": "Salon Grünkorn",
+ "osm_id": "node/14079256838",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://www.xn--friseursalon-grnkorn-3ec.de"
+}

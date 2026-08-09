@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "{ \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [ { \"@type\": \"DayOfWeek\", \"name\": \"Monday\" }, { \"@type\": \"DayOfWeek\", \"name\": \"Tuesday\" }, { \"@type\": \"DayOfWeek\", \"name\": \"Wednesday\" }, { \"@type\"",
+ "fetch_backend": "system",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Fitness Park",
+ "osm_id": "node/4984463208",
+ "schema": 1,
+ "tags": [
+  "fulda-fitness_centre"
+ ],
+ "url": "https://fitness-park24.de/"
+}

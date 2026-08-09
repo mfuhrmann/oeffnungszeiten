@@ -1,0 +1,17 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Kantine im Landratsamt Täglich wechselnder MITTAGSTISCH Öffnungszeiten Montag - Freitag von 7.30 bis 14.00 Uhr Mittagstisch Montag - Freitag von 11.30 bis 13.30 Uhr",
+ "fetch_backend": "system",
+ "filter": ".seitencontent",
+ "name": "Kantine im Landratsamt",
+ "note": "discovery grabbed the site-wide footer link /Kontakt/74-2500-ErklaerungBarrierefreiheit (an accessibility statement, no hours) and both gruemel.de records ended up on the same watch; repointed to the Dienstleistungen page, which carries the hours. Filter .seitencontent. gruemel.de serves the SAME page to two concurrent requests for different URLs (server-side global state - reproduced with separate cookie jars), so the two gruemel watches would swap content whenever they recheck together; guarded with trigger_text as a page-identity marker. Marker: 'Kantine im Landratsamt'.",
+ "osm_id": "node/7014990668",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "trigger_text": [
+  "Kantine im Landratsamt"
+ ],
+ "url": "https://www.gruemel.de/Dienstleistungen/71-135-KantineLandratsamt"
+}

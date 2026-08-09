@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten (Abweichungen vor Ort möglich) montags – samstags von 12.00 bis 14.00 Uhr und 17.00 bis 0.30 Uhr sonntags von 17.00 bis 0.30 Uhr Tisch reservieren",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Rustico",
+ "note": "Hotel Esperanto outlet. Discovery sent Bodega, Rustico and Toro Negro all to /kontakt/, which carries no hours at all; each outlet has its own page.",
+ "osm_id": "node/3978092615",
+ "schema": 1,
+ "tags": [
+  "fulda-pub"
+ ],
+ "url": "https://www.hotel-esperanto.de/rustico-fulda"
+}

@@ -1,0 +1,50 @@
+suite: Sync CronJob gating
+templates:
+  - 'sync-cronjob.yaml'
+tests:
+  - it: renders nothing by default
+    # A CronJob without a real repository would fail at git clone every hour.
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: refuses to render when enabled without a repository
+    set:
+      sync:
+        enabled: true
+    asserts:
+      - failedTemplate:
+          errorMessage: "sync.enabled requires sync.repo (the repository holding entries/)"
+
+  - it: reconciles in plan-only mode unless apply is set
+    set:
+      sync:
+        enabled: true
+        repo: https://codeberg.org/osm-fulda/oeffnungszeiten.git
+    asserts:
+      - hasDocuments:
+          count: 1
+      - notMatchRegex:
+          path: spec.jobTemplate.spec.template.spec.containers[0].args[0]
+          pattern: "--apply"
+
+  - it: passes --apply when told to
+    set:
+      sync:
+        enabled: true
+        repo: https://codeberg.org/osm-fulda/oeffnungszeiten.git
+        apply: true
+    asserts:
+      - matchRegex:
+          path: spec.jobTemplate.spec.template.spec.containers[0].args[0]
+          pattern: "entries_sync.py .*--apply"
+
+  - it: never runs two reconciles at once
+    set:
+      sync:
+        enabled: true
+        repo: https://codeberg.org/osm-fulda/oeffnungszeiten.git
+    asserts:
+      - equal:
+          path: spec.concurrencyPolicy
+          value: Forbid

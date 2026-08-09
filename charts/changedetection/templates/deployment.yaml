@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "changedetection.name" . }}
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicas }}
+  strategy:
+    # Recreate, never RollingUpdate: a rolling update briefly runs a second pod against the
+    # same ReadWriteOnce volume, and two changedetection processes on one datastore corrupt
+    # it. This is a correctness setting, not an availability trade-off.
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "changedetection.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels: {{- include "changedetection.labels" . | nindent 8 }}
+      {{- if .Values.globalSettings }}
+      annotations:
+        # Restart the pod when the managed settings change, so the initContainer re-runs.
+        # Hash the rendered ConfigMap, not just .Values.globalSettings — the same object also
+        # carries merge.py, and hashing only the values would ship new merge logic that first
+        # runs at some unrelated later restart.
+        checksum/global-settings: {{ include (print $.Template.BasePath "/global-settings.yaml") . | sha256sum }}
+      {{- end }}
+    spec:
+      # Since 0.55.8 every watch is its own <uuid>/watch.json, written immediately and
+      # atomically, and the shutdown handler writes nothing at all -- so this grace period is
+      # not about flushing state. It is here to let in-flight fetches and the browser session
+      # end rather than being cut mid-request.
+      terminationGracePeriodSeconds: 90
+      {{- if .Values.globalSettings }}
+      initContainers:
+        # Global settings have no API and cannot be written while the app runs: the file is
+        # read once at startup and overwritten from memory on the next commit, so a live edit
+        # is invisible and then lost. Before the app starts is the only point that survives.
+        - name: apply-global-settings
+          image: {{ .Values.settingsImage }}
+          command: ["python3", "/settings/merge.py"]
+          volumeMounts:
+            - name: data
+              mountPath: /datastore
+            - name: global-settings
+              mountPath: /settings
+      {{- end }}
+      containers:
+        - name: changedetection
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}{{ with .Values.image.digest }}@{{ . }}{{ end }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 5000
+          {{- $env := list }}
+          {{- if .Values.browser.enabled }}
+          {{- /* Only when the browser exists: pointing at a Service that was never rendered
+                 turns every html_webdriver watch into a DNS error. */}}
+          {{- $env = append $env (dict "name" "PLAYWRIGHT_DRIVER_URL"
+                "value" (printf "ws://%s-browser:3000" (include "changedetection.name" .))) }}
+          {{- end }}
+          {{- with concat $env .Values.env }}
+          env: {{- toYaml . | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: data
+              mountPath: /datastore
+          resources: {{- toYaml .Values.resources | nindent 12 }}
+          livenessProbe:
+            httpGet: { path: /, port: http }
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          readinessProbe:
+            httpGet: { path: /, port: http }
+            initialDelaySeconds: 10
+            periodSeconds: 10
+      volumes:
+        {{- if .Values.globalSettings }}
+        - name: global-settings
+          configMap:
+            name: {{ include "changedetection.name" . }}-global-settings
+        {{- end }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (printf "%s-data" (include "changedetection.name" .)) }}

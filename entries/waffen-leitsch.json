@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "AB 01.07.2025 NEUE ÖFFNUNGZEITEN: Dienstag - Freitag 9:00 - 18:00 Uhr Samstag 9:00 - 13:00 Uhr",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "Waffen-Leitsch",
+ "osm_id": "node/1333228526",
+ "schema": 1,
+ "tags": [
+  "fulda-weapons"
+ ],
+ "url": "http://www.waffen-leitsch.de/öffnungszeiten/"
+}

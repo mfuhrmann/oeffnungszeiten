@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten: Mo. - Fr. 10:00 - 19:00 Uhr Sa. 09:00 - 15:00 Uhr",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//td[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Cowboystiefel Shop",
+ "osm_id": "node/13004511904",
+ "schema": 1,
+ "tags": [
+  "fulda-shoes"
+ ],
+ "url": "https://cowboystiefel-shop.com/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag - Freitag 10 – 18:30 Uhr Samstag 9:30 bis 18:30 Uhr Sonntag 12 bis 18:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"collapseFooterCustom\"]",
+ "name": "Kaffeerösterei Kaffeekultur",
+ "osm_id": "node/1333230530",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://www.kaffeekultur-fulda.de/page/cms/019cdd2ed2a372b2ac4b7c0fb5a1e6a9"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Headquarter Zentrale Unsere Bürozeiten: Mo - Fr: 09:00 - 16:30 Uhr Tel: (06196) 773-0633 Fax: (06196) 773-0635 E-Mail: info@chidoba.com",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" formfield-icon-category \")]",
+ "name": "Chidoba",
+ "osm_id": "node/10091957711",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.chidoba.com/kontakt"
+}

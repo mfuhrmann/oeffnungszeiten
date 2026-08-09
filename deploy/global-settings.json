@@ -1,0 +1,49 @@
+{
+ "application": {
+  "empty_pages_are_a_change": false,
+  "filter_failure_notification_threshold_attempts": 6,
+  "global_ignore_text": [
+   "/(?i)bitte (addieren|rechnen|lösen|subtrahieren)/",
+   "/(?i)was ist die summe/",
+   "/(?i)summe aus \\d+ und \\d+/",
+   "/(?i)wie ?viel ist \\d+ ?[+\\-] ?\\d+/",
+   "/(?i)we.?re open/",
+   "/(?i)closes? at \\d/",
+   "/(?i)opens? at \\d/",
+   "/(?i)öffnet (um|bald|gleich|in|wieder)/",
+   "/(?i)schließt (um|bald|gleich|in)/",
+   "/(?i)derzeit geschlossen/",
+   "/(?i)geschlossen . öffnet/",
+   "/(?i)geöffnet . schließt/",
+   "/(?i)jetzt (geöffnet|geschlossen)/",
+   "/(?i)^\\s*ge(ö|oe)ffnet\\s*$/",
+   "/(?i)öffnet (heute|morgen|jetzt)/",
+   "/(?i)^\\s*heute\\s*:?\\s*\\d{1,2}[:.]\\d{2}/",
+   "/(?i)^\\s*vor \\d+ (tag|tagen|woche|wochen|monat|monate|monaten|jahr|jahren)\\s*$/",
+   "/^\\s*\\d+\\s*[+\\-]\\s*\\d+\\s*=\\s*$/",
+   "/(?i)\\d+ Bewertungen/",
+   "/(?i)spam.?schutz die zahl \\d+/",
+   "/(?i)\\d+ ?[+\\-] ?\\d+ ?= ?\\?/",
+   "/(?i)client-?ip ?:/",
+   "/(?i)wir (öffnen|schließen) (heute|morgen|wieder)/",
+   "/(?i)wir haben (aktuell|derzeit|momentan) (geschlossen|geöffnet)/",
+   "/(?i)^\\s*öffnungszeiten\\s+(geschlossen|öffnet|geöffnet)/"
+  ],
+  "global_subtractive_selectors": [],
+  "ignore_whitespace": true,
+  "render_anchor_tag_content": false,
+  "strip_ignored_lines": false
+ },
+ "requests": {
+  "jitter_seconds": 0,
+  "time_between_check": {
+   "days": 3,
+   "hours": 0,
+   "minutes": 0,
+   "seconds": 0,
+   "weeks": 0
+  },
+  "timeout": 45,
+  "workers": 2
+ }
+}

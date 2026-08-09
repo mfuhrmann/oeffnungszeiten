@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Tel.: +49 (0)661/75601 Öffnungszeiten Montag bis Sonntag: 17:00–21:30 Uhr Mittwoch: Ruhetag Speisen auch zum Mitnehmen Tel.: +49 (0)661/75601 Öffnungszeiten Montag und Dienstag: 17:00–21:30 Uhr Mittwo",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h5[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "thai-terrasse",
+ "osm_id": "node/429748128",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.thai-terrasse.de/kontakt"
+}

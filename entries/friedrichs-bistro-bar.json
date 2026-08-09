@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Montag bis Mittwoch 12.00 – 23.00 Uhr Donnerstag bis Samstag 12.00 – 01.00 Uhr (Küche jeweils bis 21 Uhr) Sonntag ist Ruhetag",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Friedrichs Bistro & Bar",
+ "osm_id": "node/12465260543",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://friedrichs-bistro.de/#oeffnungszeiten"
+}

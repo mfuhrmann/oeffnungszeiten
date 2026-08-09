@@ -1,0 +1,84 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  entries:
+    # Structure only, and deliberately so: stdlib, no network, 60 ms for every entry. It catches
+    # what breaks the reconcile — invalid JSON, a missing url, a duplicate slug, an unsupported
+    # fetch_backend, an absolute XPath that dies on the next site edit, a missing captured_sample.
+    #
+    # Whether a filter really captures the hours needs the live page, and that check fails for
+    # reasons a contributor cannot fix: the site is down, blocks bots, or rate-limits the runner.
+    # A red build nobody caused is a build everybody learns to ignore. That judgement stays with
+    # the reviewer, who reads captured_sample in the diff.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 scripts/validate_entries.py
+
+  settings-in-sync:
+    # deploy/global-settings.json is the source; the chart receives the same values through the
+    # base-values ConfigMap. Two copies drift silently, and a lost noise-suppression pattern shows
+    # up as false alerts weeks later, so compare them on every change.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pyyaml
+      - name: base-values match deploy/global-settings.json
+        run: |
+          python3 - <<'PY'
+          import json, sys, yaml
+          src = json.load(open("deploy/global-settings.json"))
+          cm = [d for d in yaml.safe_load_all(open("apps/changedetection/changedetection.yaml"))
+                if d and d["kind"] == "ConfigMap"][0]
+          got = yaml.safe_load(cm["data"]["values.yaml"])["globalSettings"]
+          if got != src:
+              print("base-values ConfigMap and deploy/global-settings.json disagree.")
+              print("Regenerate: python3 scripts/apply_global_settings.py --emit-values")
+              print("then copy the globalSettings block into apps/changedetection/changedetection.yaml")
+              sys.exit(1)
+          print(f"in sync — {len(src['application']['global_ignore_text'])} ignore patterns")
+          PY
+
+  chart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-helm@v4
+      - run: helm lint ./charts/changedetection
+      - name: unit tests
+        run: |
+          helm plugin install https://github.com/helm-unittest/helm-unittest --verify=false
+          helm unittest charts/changedetection
+      - name: renders with the real base values
+        run: |
+          python3 - <<'PY'
+          import yaml
+          cm = [d for d in yaml.safe_load_all(open("apps/changedetection/changedetection.yaml"))
+                if d and d["kind"] == "ConfigMap"][0]
+          open("/tmp/base-values.yaml", "w").write(cm["data"]["values.yaml"])
+          PY
+          helm template changedetection ./charts/changedetection \
+            --namespace changedetection -f /tmp/base-values.yaml > /dev/null
+
+  manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: kustomize builds
+        run: |
+          kubectl kustomize apps/changedetection > /dev/null
+          python3 -c "import yaml,sys; list(yaml.safe_load_all(open('clusters/k8s02/apps.yaml')))"

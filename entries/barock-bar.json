@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag – Donnerstag 12:00 – 01:00 Uhr Freitag – Samstag 12:00 – 03:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "BARock Bar",
+ "osm_id": "node/1333662518",
+ "schema": 1,
+ "tags": [
+  "fulda-bar"
+ ],
+ "url": "https://barockbar-fulda.de/kontakt/"
+}

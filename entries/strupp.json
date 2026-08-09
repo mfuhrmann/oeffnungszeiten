@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Washingtonallee 20 36041 Fulda 0661 - 25175 - 0 service@holzstrupp.de Mo. bis Fr. 7 bis 18 Uhr Sa. 8 bis 13 Uhr",
+ "fetch_backend": "system",
+ "filter": "address",
+ "name": "Strupp",
+ "osm_id": "way/1294937896",
+ "schema": 1,
+ "tags": [
+  "fulda-trade"
+ ],
+ "url": "https://www.holzstrupp.de/kontakt/"
+}

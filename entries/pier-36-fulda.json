@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Donnerstag 12:00 - 21:00 Freitag 12:00 - 21:00 Samstag 12:00 - 21:00 Sonntag 12:00 - 18:00",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"donnerstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"donnerstag\")])]",
+ "name": "Pier 36 Fulda",
+ "osm_id": "node/13304700184",
+ "schema": 1,
+ "tags": [
+  "fulda-bar"
+ ],
+ "url": "https://www.pier36fulda.de/offnungszeiten/"
+}

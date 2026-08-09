@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Die Öffnungszeiten Montag 11:30–23:00 Dienstag 11:30–23:00 Mittwoch 11:30–23:00 Donnerstag 11:30–23:00 Freitag 11:30–23:00 Samstag 11:30–23:00 Sonntag 11:30–23:00 Weitere Informationen zu: Anfahrtspla",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Asia Wok",
+ "osm_id": "node/1328249618",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://china-wok-fulda.xregional.de/oeffnungszeiten"
+}

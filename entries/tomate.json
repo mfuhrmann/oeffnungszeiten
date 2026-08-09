@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Montag 11-14:30, 17-22 Uhr Dienstag Ruhetag Mittwoch 11-14:30, 17-22 Uhr Donnerstag 11-14:30, 17-22 Uhr Freitag 11-14:30, 17-22 Uhr Samstag 11-14:30, 17-22 Uhr Sonntag 11-14:30, 17-22 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Tomate",
+ "osm_id": "node/10855769054",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://tomate-fulda.de/"
+}

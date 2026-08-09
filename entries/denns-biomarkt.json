@@ -1,0 +1,14 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "[ { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [ \"Montag\", \"Dienstag\", \"Mittwoch\", \"Donnerstag\", \"Freitag\", \"Samstag\" ], \"opens\": \"08:00\", \"closes\": \"20:00\" } ]",
+ "fetch_backend": "html_requests",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Denns BioMarkt",
+ "note": "Visible page shows only today's hours (live status). Real week lives in the page's application/ld+json Store block -> CD include_filter 'json:$..openingHoursSpecification' on plain fetch. Zero-noise structured source.",
+ "osm_id": "node/2166551148",
+ "schema": 1,
+ "tags": [
+  "fulda-supermarket"
+ ],
+ "url": "https://www.biomarkt.de/fulda-kothenbachweg-4-6/marktseite/"
+}

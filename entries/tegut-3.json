@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "[ \"Mo-Sa 07:00 - 20:00\" ]",
+ "fetch_backend": "html_requests",
+ "filter": "json:$..openingHours",
+ "name": "tegut",
+ "osm_id": "way/134130542",
+ "schema": 1,
+ "tags": [
+  "fulda-supermarket"
+ ],
+ "url": "https://www.tegut.com/maerkte/markt/tegut-fulda-haimbach-merkurstrasse-16-20.html#openingtimesCollapse"
+}

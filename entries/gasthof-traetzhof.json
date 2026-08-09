@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Montag bis Samstag mittags: 12.00 - 14.30 Uhr abends: 17.00 - max. 23.00 Uhr Die Küche hat für Sie geöffnet mittags: 12:00 - 13:30 Uhr abends: 17:30 - 20:45 Uhr Sonntags ist unser Resta",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Gasthof Trätzhof",
+ "osm_id": "node/7298867834",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.trätzhof.de/restaurant/"
+}

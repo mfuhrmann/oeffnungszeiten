@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Mittelstraße 16, 36037 Fulda TUE - FRI: 10:30 AM - 6:30 PM SAT: 10:30 AM - 7:00 PM Visit us",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" lightly-spaced-row \")]",
+ "name": "Seize 16",
+ "osm_id": "node/1336872651",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://seizeclo.de/"
+}

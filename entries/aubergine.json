@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "BITTE BEACHTEN SIE; DASS BEI UNS NUR BARZAHLUNG MÖGLICH IST ! Unsere Öffnungszeiten: Donnerstags, Freitags, Samstags und Sonntags von 11:30 bis 14:00 Uhr und 18:00 bis 22:00 Uhr Montag, Dienstag und M",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Aubergine",
+ "osm_id": "node/670187659",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "http://www.restaurant-aubergine.de/"
+}

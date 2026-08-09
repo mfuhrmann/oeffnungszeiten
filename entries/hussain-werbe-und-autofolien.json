@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "* Montags – Freitags: 10 – 17 Uhr * Samstags: 10 – 13 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Hussain Werbe- und Autofolien",
+ "osm_id": "node/2712237022",
+ "schema": 1,
+ "tags": [
+  "fulda-car_repair"
+ ],
+ "url": "https://www.hussain-werbung.de/"
+}

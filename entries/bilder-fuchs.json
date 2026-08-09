@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag: geschlossen Dienstag bis Freitag: 10–18 Uhr durchgehend Samstag: 10–15 Uhr durchgehend Gerne können Sie einen persönlichen Beratungstermin auch außerhalb unserer Öffnungszeiten vereinbaren – i",
+ "fetch_backend": "system",
+ "filter": "xpath://h2[contains(.,\"Öffnungszeiten\")]/following::div[contains(@class,\"avia_textblock\")][1]",
+ "name": "Bilder-Fuchs",
+ "osm_id": "node/1277953689",
+ "schema": 1,
+ "tags": [
+  "fulda-art"
+ ],
+ "url": "https://www.bilder-fuchs.de/kontakt/"
+}

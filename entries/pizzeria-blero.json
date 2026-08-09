@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Montag – Samstag : 15:00 – 22:00 Uhr Sonntag und Feiertage : 11:00 – 22:00 uhr Dienstag Ruhetag! Nach Absprache andere Öffnungszeiten möglich, auch für größere ",
+ "fetch_backend": "system",
+ "filter": "xpath:((//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*)[1]",
+ "name": "Pizzeria Blero",
+ "osm_id": "way/443711296",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.pizzeria-blero.de/"
+}

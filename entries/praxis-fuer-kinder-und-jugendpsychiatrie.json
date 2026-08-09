@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Unsere Sprechzeiten: Mo. bis Do.: 09:00 – 12:00 und 14:00 – 17:00 Fr.: 09:00 – 12:00 Uhr Anschrift: Dalbergstraße 29 • 36037 Fulda Tel. 0661 – 410 879 – 00 Fax 0661 – 410 879 – 99 Email: info@kjp-dalb",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*",
+ "name": "Praxis für Kinder und Jugendpsychiatrie",
+ "osm_id": "node/12963797192",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://kjp-dalberg.de/kontakt/"
+}

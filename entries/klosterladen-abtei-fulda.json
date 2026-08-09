@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten montags bis samstags 10:00-11:30 Uhr und 14:00-15:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(@class,\"uk-alert\")][.//h2[contains(text(),\"Öffnungszeiten\")]]",
+ "name": "Klosterladen Abtei Fulda",
+ "osm_id": "node/5511605749",
+ "schema": 1,
+ "tags": [
+  "fulda-convenience"
+ ],
+ "url": "https://www.abtei-fulda.de/stadtkloster/klosterladen/"
+}

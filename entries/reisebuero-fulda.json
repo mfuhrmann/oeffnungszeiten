@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag bis Freitag: 10:00-13:00 Uhr und 14:00 – 17:00 Uhr Samstag: 10:00 -13:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Reisebüro Fulda",
+ "osm_id": "node/4985287592",
+ "schema": 1,
+ "tags": [
+  "fulda-travel_agency"
+ ],
+ "url": "https://reisebuero-fulda.de/kontakt/"
+}

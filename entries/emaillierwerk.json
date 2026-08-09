@@ -1,0 +1,15 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "* Action 09:00 bis 20:00 * Action 09:00 bis 20:00 * Action 09:00 bis 20:00 * Action 09:00 bis 20:00 * Action 09:00 bis 20:00 * Action 09:00 bis 20:00 * Aktivoptik 09:00 bis 20:00 * Aktivoptik 09:00 bi",
+ "fetch_backend": "system",
+ "filter": "xpath://li[contains(concat(\" \",normalize-space(@class),\" \"),\" shop-time \")]",
+ "name": "Emaillierwerk",
+ "note": "A shopping centre. The hours are 165 per-tenant li.shop-time rows, none of which names a weekday, so 'times but no weekday' is the normal state. The weekday-looking text elsewhere on that page is a holiday closure list.",
+ "osm_id": "way/193308489",
+ "schema": 1,
+ "tags": [
+  "fulda-mall",
+  "geprüft-ok"
+ ],
+ "url": "https://www.emaillierwerk-fulda.de/oeffnungszeiten/"
+}

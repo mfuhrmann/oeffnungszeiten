@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten MONTAG-DONNERSTAG 18.00 – 24.00 FREITAG & SAMSTAG 12.00 – 14.00 18.00 – 24.00 Sonntag ist Ruhetag. Reservieren",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Restaurant Ritter",
+ "osm_id": "node/1332096007",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.restaurant-ritter.com/kontakt/"
+}

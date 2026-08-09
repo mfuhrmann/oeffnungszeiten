@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten Besuchen Sie uns Mo. - Fr.: 10:00 - 18:00 Uhr Sa.: 10:00 - 14:00 Uhr ​ Während der Sommermonate Juli & August ist der Laden ab 28°C nachmittags geschlossen.",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" e_a0EV \")]",
+ "name": "Konditorei Lembach",
+ "osm_id": "node/1332267938",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://www.lembachs.de/"
+}

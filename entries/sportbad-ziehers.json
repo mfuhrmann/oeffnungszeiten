@@ -1,0 +1,15 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Seit dem 09. Mai 2026 befindet sich das Sportbad Ziehers in der Sommerpause und öffnet am 7. September wieder für seine Badegäste. Magdeburger St",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"oeffnungszeiten\"]",
+ "name": "Sportbad Ziehers",
+ "note": "Seasonal. The id=oeffnungszeiten block currently reads 'seit dem 09. Mai in der Sommerpause, öffnet am 7. September wieder', so an audit finds no times and calls it RED — correct today, and the watch fires when the weekly hours return. Same anchor as the sister pool Freibad Rosenau.",
+ "osm_id": "way/25560330",
+ "schema": 1,
+ "tags": [
+  "fulda-sports_centre",
+  "geprüft-ok"
+ ],
+ "url": "https://re-gruppe.de/baeder/sportbad-ziehers/"
+}

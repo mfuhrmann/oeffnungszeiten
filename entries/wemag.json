@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Öffnungszeiten: Montag bis Freitag: 08:00 – 17:30 Uhr Samstag: geschlossen Öffnungszeiten: Montag bis Freitag: 08:00 – 17:00 Uhr Öffnungszeiten: Montag bis Freitag: 08:00 – 17:30 Uhr Öffnungszeiten: M",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "WEMAG",
+ "osm_id": "node/12892454904",
+ "schema": 1,
+ "tags": [
+  "fulda-wholesale"
+ ],
+ "url": "https://www.wemag.de/de/unternehmen/#Kontaktstandorte"
+}

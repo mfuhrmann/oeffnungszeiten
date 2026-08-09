@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "[ \"Monday,Tuesday,Wednesday,Thursday 08:00-12:30\", \"Friday 08:00-13:00\", \"Monday,Tuesday,Wednesday,Thursday 14:00-18:00\" ]",
+ "fetch_backend": "system",
+ "filter": "json:$..openingHours",
+ "name": "Zahnarztpraxis Dr. Zentgraf",
+ "osm_id": "node/2322929061",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://www.dr-zentgraf.de/kontakt/"
+}

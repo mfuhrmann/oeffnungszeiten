@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Sprechzeiten Tag Uhrzeit Mo: 08.00 - 12.30 Uhr und 14.00 - 18.00 Uhr Di: 08.00 - 12.30 Uhr und 14.00 - 18.00 Uhr Mi: 08.00 - 14.00 Uhr Do: 08.00 - 12.30 Uhr und 14.00 - 18.00 Uhr Fr: 08.00 - 15.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*",
+ "name": "Kinderarzt Dr. Steiß",
+ "osm_id": "node/1326146431",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.praxis-langner-steiss.de/kontakt"
+}

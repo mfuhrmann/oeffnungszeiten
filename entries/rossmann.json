@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Mo - Fr 07:00 - 22:00 Sa - So 08:00 - 22:00",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"opening0\"]",
+ "name": "Rossmann",
+ "osm_id": "node/11016282812",
+ "schema": 1,
+ "tags": [
+  "fulda-chemist"
+ ],
+ "url": "https://www.rossmann.de/de/filialen/hessen/fulda/rangstr--37.html#opening0"
+}

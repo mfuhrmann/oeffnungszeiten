@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Mo-Fr 7:30 bis 17 Uhr",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"mo-fr\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"mo-fr\")])]",
+ "name": "Pro Scheich",
+ "osm_id": "node/13335982596",
+ "schema": 1,
+ "tags": [
+  "fulda-tools"
+ ],
+ "url": "https://www.proscheich.de/"
+}

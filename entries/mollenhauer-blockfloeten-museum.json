@@ -1,0 +1,15 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Musikhaus Mollenhauer Christian - Wirth - Str. 4 36043 Fulda Tel.: 0661-941110 info@musik-mollenhauer.de Öffnungszeiten: Montag: Geschlossen Dienstag – Freitag: 9.30 - 12.30 Uhr 13.30 - 18.00 Uhr Sams",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Mollenhauer Blockflöten Museum",
+ "note": "The museum publishes no hours of its own; both this and musikhaus-mollenhauer capture the shop's contact block, which is the access time for the museum too.",
+ "osm_id": "node/11916484101",
+ "schema": 1,
+ "tags": [
+  "fulda-museum",
+  "geprüft-ok"
+ ],
+ "url": "https://www.musik-mollenhauer.de/Ladengeschaeft"
+}

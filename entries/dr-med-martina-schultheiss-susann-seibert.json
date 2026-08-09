@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Sprechzeiten Mo bis Fr von 8-12 Uhr Mo, Di und Do von 15-17 Uhr und nach Vereinbarung",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*/parent::*",
+ "name": "Dr. Med. Martina Schultheiß - Susann Seibert",
+ "osm_id": "node/13230067456",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.frauenarztpraxis-fulda.de/kontakt-frauenarztpraxis-fulda/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Eichenzell Im Streich 8 36124 Eichenzell Tel. (06659) 9 61 00 Öffnungszeiten Mo & Di 10.00 bis 18.00 Uhr Mittwoch geschlossen Do & Fr 10.00 bis 18.00 Uhr Sa 10.00 bis 13.00 Uhr Sonntags geschlossen Fu",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Blumen Link",
+ "osm_id": "way/1284529860",
+ "schema": 1,
+ "tags": [
+  "fulda-florist"
+ ],
+ "url": "https://www.blumen-link.de/#kontakt"
+}

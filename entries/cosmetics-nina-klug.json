@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Ich bin für Sie da: COSMETICS – Nina Klug Goethestraße 15 36043 Fulda Tel. 0661 – 480 285 55 Mobil 0175 – 62 18 317 Montag – Freitag: 09:00 – 18:00h Samstag: 09:00h – 13:00h",
+ "fetch_backend": "html_webdriver",
+ "filter": ".su-column-size-1-3",
+ "name": "COSMETICS – Nina Klug",
+ "osm_id": "node/13397387587",
+ "schema": 1,
+ "tags": [
+  "fulda-cosmetics"
+ ],
+ "url": "https://www.kosmetikstudio-nina-klug.de/kontakt"
+}

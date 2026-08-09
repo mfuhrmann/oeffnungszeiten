@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag 08:00-12:30, 15:00-17:00 Dienstag 08:00-12:00, 15:00-18:00 Mittwoch 08:00-12:30 Donnerstag 09:00-13:30 Freitag 08:00-12:30",
+ "fetch_backend": "system",
+ "filter": "xpath:(//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\") and contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\") and contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")])])[1]",
+ "name": "Achim Prütz",
+ "osm_id": "node/13230067457",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://praxis-pruetz.de/"
+}

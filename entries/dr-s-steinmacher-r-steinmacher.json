@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Montag 8:00 – 13:00 14:30 – 18:00 Dienstag 8:00 – 13:00 14:30 – 18:00 Mittwoch 8:00 – 15:00 Donnerstag 8:00 – 13:00 14:30 – 18:00 Freitag 8:00 – 14:30 Termin online buchen ProphylaxeCen",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Dr. S. Steinmacher & R. Steinmacher",
+ "osm_id": "node/5424227884",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://www.zahnarzt-steinmacher.de/#"
+}

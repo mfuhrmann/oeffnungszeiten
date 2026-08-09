@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag bis Freitag 8 – 12 Uhr Montag, Dienstag und Donnerstag 14 – 17 Uhr und nach Vereinbarung",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Dr. Susanne Goebels-Kummerow",
+ "osm_id": "node/1333295940",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://augenarztpraxis-fulda.de/kontakt.html"
+}

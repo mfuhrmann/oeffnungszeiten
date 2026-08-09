@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Täglich: 24 Stunden Mo - Sa: 12.00 Uhr - 14 Uhr und 18.00 Uhr - 22 Uhr Letzte Bestellannahme 21 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(concat(\" \",normalize-space(@class),\" \"),\" elementor-icon-box-description \")]",
+ "name": "Restaurant Goldener Karpfen",
+ "osm_id": "node/3123621395",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "http://hotel-goldener-karpfen.de/anfahrt-kontakt/"
+}

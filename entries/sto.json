@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "VerkaufsCenter Christian-Wirth-Str. 7 36043 Fulda Tel. +496619412110 vc.fulda.de@sto.com Öffnungszeiten Mo 07:00 - 17:00 Di 07:00 - 17:00 Mi 07:00 - 17:00 Do 07:00 - 17:00 Fr 07:00 - 15:00 Sa Geschlos",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//span[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "STO",
+ "osm_id": "node/12500518358",
+ "schema": 1,
+ "tags": [
+  "fulda-trade"
+ ],
+ "url": "https://www.sto.de/s/LocationDetails/0012p00003LvmaFAAR/sto-vc-fulda-verkaufscenter"
+}

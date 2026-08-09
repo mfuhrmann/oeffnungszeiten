@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Mo. – Fr. Di. Do. 8:00 – 12:00 Uhr 14:00 – 16:30 Uhr 14:00 – 16:30 Uhr Mo. – Di. sowie 8:30 – 12:00 Uhr 14:30 – 16:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" one_half \")]",
+ "name": "Gemeinschaftspraxis für Innere Medizin Fulda, Dr. med. Thomas Günther, Dr. med. Klaus Stienecker, Dr. Caroline Lutz",
+ "osm_id": "node/13410573209",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://innere-medizin-fulda.de/osterferien-und-oeffnungszeiten-im-fruehjahr-2026/"
+}

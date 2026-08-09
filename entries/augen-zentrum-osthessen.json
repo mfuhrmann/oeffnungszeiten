@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten: Mo., Di., Do.: 8:00 – 12:00 Uhr und 14:00 – 18:00 Uhr Mi., Fr., 08:00-14:00 Uhr und nach Vereinbarung Voranmeldung erbeten",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Augen Zentrum Osthessen",
+ "osm_id": "node/1333297442",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "http://augenaerzte-fulda.de"
+}

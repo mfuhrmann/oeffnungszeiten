@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Öffnungszeiten Mo-Sa: 09:00 – 22:00 Uhr So & Feiertag: 10:00 – 18:00 Uhr Öffnungszeiten Mo-Sa: 08:00 – 20:00 Uhr So & Feiertag: 10:00 – 18:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//b[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Reinholz Café am Buttermarkt",
+ "osm_id": "node/13393181068",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://reinholz-kaffee.de/reinholz-cafe-am-buttermarkt/"
+}

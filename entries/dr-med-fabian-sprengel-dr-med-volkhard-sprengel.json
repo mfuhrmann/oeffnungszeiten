@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag 08:00-12:00 Uhr 14:00-16:00 Uhr (keine Rezeptabholung) Dienstag 08:00-12:00 Uhr 14:00-16:30 Uhr Mittwoch 08:00-12:00 Uhr Donnerstag 08:00-12:00 Uhr 14:00-16:30 Uhr Freitag 08:00-12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(.,\"Montag\") and contains(.,\"Uhr\") and contains(.,\"Freitag\")]",
+ "name": "Dr. med. Fabian Sprengel, Dr. med. Volkhard Sprengel",
+ "osm_id": "node/1332090096",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.neuro-fulda.de/#kontakt"
+}

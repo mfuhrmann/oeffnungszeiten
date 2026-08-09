@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "MO | MI | FR 8.00 – 13.30 Uhr DI | DO 8.00 – 12.30 Uhr | 14.00 – 18.00 Uhr TEL 0661 – 22 0 55 Fax 0661 – 78 0 18 MAIL info@urologie-buttermarkt.de",
+ "fetch_backend": "system",
+ "filter": "xpath://table[contains(concat(\" \",normalize-space(@class),\" \"),\" contact-details \")]",
+ "name": "Urologie am Buttermarkt Drs. Wiegand/Stüber",
+ "osm_id": "node/12962269967",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://urologie-buttermarkt.de/#kontakt"
+}

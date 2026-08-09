@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-25",
+ "captured_sample": "Öffnungszeiten Mo-Fr: ab 17:00 Uhr Sa-So: 11:30 - 14:00 Uhr & ab 17:00 Uhr Täglich geöffnet",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Nest Restaurant",
+ "osm_id": "node/1333625315",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://nest-restaurant.de/"
+}

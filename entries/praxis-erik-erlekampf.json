@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-03",
+ "captured_sample": "Montag 08:00 - 13:00 Uhr 14:00 - 17:00 Uhr Dienstag 08:00 - 13:00 Uhr 15:00 - 17:00 Uhr (nach Vereinbarung) Mittwoch 08:00 - 13:00 Uhr 14:00 - 17:00 Uhr Prothesensprechstunde Donnerstag nur nach Verei",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Praxis Erik Erlekampf",
+ "osm_id": "node/12965167873",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://praxis-erlekampf.de/kontakt"
+}

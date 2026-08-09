@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "Montag bis Freitag, 8:00 bis 17:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"footer-collapse-1\"]",
+ "name": "Computer-L.A.N. GmbH",
+ "osm_id": "node/4754333852",
+ "schema": 1,
+ "tags": [
+  "fulda-computer"
+ ],
+ "url": "https://www.lansoftware.de/kontakt/#beratung"
+}

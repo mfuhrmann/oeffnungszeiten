@@ -1,0 +1,13 @@
+{
+ "added": "2026-07-26",
+ "captured_sample": "°°°Click & Meet°°° Ab dem 22.05. können wir Euch wieder Terminvereinbarung zu den gewohnten Öffnungszeiten (mo-fr 10-19 sa 10-16 Uhr) anbieten, natürlich unter den gesetzlich geltenden Vorschriften wi",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Marleen CD- und Plattenladen",
+ "osm_id": "node/1333298970",
+ "schema": 1,
+ "tags": [
+  "fulda-music"
+ ],
+ "url": "https://marleenrecords.wordpress.com/"
+}

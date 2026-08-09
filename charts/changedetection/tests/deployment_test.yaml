@@ -1,0 +1,81 @@
+suite: Deployment invariants
+templates:
+  - 'deployment.yaml'
+  # global-settings.yaml muss mitgerendert werden, weil die Pod-Annotation dessen Ausgabe hasht
+  - 'global-settings.yaml'
+tests:
+  - it: recreates the pod instead of overlapping it
+    # Two changedetection processes on one datastore corrupt it, so this is correctness.
+    asserts:
+      - equal:
+          path: spec.strategy.type
+          value: Recreate
+        template: 'deployment.yaml'
+      - equal:
+          path: spec.replicas
+          value: 1
+        template: 'deployment.yaml'
+
+  - it: has no initContainer without managed settings
+    asserts:
+      - notExists:
+          path: spec.template.spec.initContainers
+        template: 'deployment.yaml'
+      - notExists:
+          path: spec.template.metadata.annotations
+        template: 'deployment.yaml'
+
+  - it: merges managed settings before the app starts
+    set:
+      globalSettings:
+        application:
+          ignore_whitespace: true
+    asserts:
+      - equal:
+          path: spec.template.spec.initContainers[0].name
+          value: apply-global-settings
+        template: 'deployment.yaml'
+      - equal:
+          path: spec.template.spec.initContainers[0].image
+          value: python:3.12-alpine
+        template: 'deployment.yaml'
+      - exists:
+          path: spec.template.metadata.annotations['checksum/global-settings']
+        template: 'deployment.yaml'
+
+  - it: keeps the settings image independent of the sync image
+    # A retooled or removed sync block must not stop the app from starting.
+    set:
+      globalSettings:
+        application:
+          ignore_whitespace: true
+      settingsImage: python:3.13-alpine
+      sync:
+        image: alpine:3
+    asserts:
+      - equal:
+          path: spec.template.spec.initContainers[0].image
+          value: python:3.13-alpine
+        template: 'deployment.yaml'
+
+  - it: points at the browser only when there is one
+    set:
+      browser:
+        enabled: true
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].env
+          content:
+            name: PLAYWRIGHT_DRIVER_URL
+            value: "ws://changedetection-browser:3000"
+        template: 'deployment.yaml'
+
+  - it: omits the browser URL when the browser is disabled
+    # Otherwise every html_webdriver watch fails on a Service that was never rendered.
+    set:
+      browser:
+        enabled: false
+    asserts:
+      - notExists:
+          path: spec.template.spec.containers[0].env
+        template: 'deployment.yaml'

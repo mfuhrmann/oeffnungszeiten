@@ -1,0 +1,35 @@
+suite: Datastore volume
+templates:
+  - 'pvc.yaml'
+tests:
+  - it: survives a Helm uninstall
+    # Flux remediates a failed install by uninstalling and retrying; there is no backup.
+    asserts:
+      - equal:
+          path: metadata.annotations['helm.sh/resource-policy']
+          value: keep
+      - equal:
+          path: spec.accessModes[0]
+          value: ReadWriteOnce
+
+  - it: takes the cluster default storage class when none is given
+    asserts:
+      - notExists:
+          path: spec.storageClassName
+
+  - it: uses the named storage class when one is given
+    set:
+      persistence:
+        className: local-path
+    asserts:
+      - equal:
+          path: spec.storageClassName
+          value: local-path
+
+  - it: claims nothing when an existing claim is supplied
+    set:
+      persistence:
+        existingClaim: someone-elses-volume
+    asserts:
+      - hasDocuments:
+          count: 0
