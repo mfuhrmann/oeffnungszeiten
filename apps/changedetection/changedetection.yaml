@@ -99,7 +99,10 @@ data:
     # CronJob throws away. Until the mapping is derived instead of stored, every new entry would
     # create a duplicate watch on the next run.
     sync:
-      enabled: false
+      enabled: true
+      # Plan only for the first runs: the log shows what it would change, and nothing is written.
+      # Flip to true once a run reports what you expect.
+      apply: false
       repo: https://github.com/mfuhrmann/oeffnungszeiten.git
       ref: main
 
