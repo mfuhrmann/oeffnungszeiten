@@ -29,7 +29,16 @@ data:
             sys.exit(f"datastore unreadable ({e}); refusing to overwrite it -- "
                      f"inspect or move {ds} aside")
     cur.setdefault("settings", {})
+    app = cur["settings"].setdefault("application", {})
     changed = []
+    # On a fresh volume this script creates changedetection.json before the app has ever run, and
+    # the app only mints an api_access_token when it creates that file itself. Without one the API
+    # is unreachable and the sync CronJob cannot work, with nothing in the logs pointing at the
+    # cause. Mint it here, once; every later run leaves the existing token alone.
+    if not app.get("api_access_token"):
+        import uuid
+        app["api_access_token"] = uuid.uuid4().hex
+        changed.append("application.api_access_token (minted)")
     for section, values in managed.items():
         sec = cur["settings"].setdefault(section, {})
         for k, v in values.items():
