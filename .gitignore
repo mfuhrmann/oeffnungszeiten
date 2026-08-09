@@ -4,7 +4,8 @@ __pycache__/
 scripts/*.tmp
 data/*.tmp
 
-# per-instance sync locks (only entries/.lock.json, the production one, is committed)
+# sync cache: slug -> uuid is derived at reconcile time and only matches one instance
+entries/.lock.json
 entries/.lock.*.json
 
 # Momentaufnahmen aus cd_export.py — jederzeit neu erzeugbar, nicht die Wahrheit

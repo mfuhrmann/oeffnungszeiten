@@ -76,12 +76,12 @@ whether the filter grabbed the hours block, a news box or a marketing paragraph 
 that keeps recurring ([FILTERS.md](./FILTERS.md) §4). It is documentation, not state; sync ignores it.
 `osm_id` is optional and purely a reference, so a notification can carry an "edit this in OSM" link.
 
-**The URL cannot be the identity.** Some pages back two businesses each — a restaurant and its beer
-garden, a museum mapped twice, two outlets of one hotel — so a URL-keyed sync could not tell which
-watch an entry owns. `entries/.lock.json` records slug → uuid and is committed: derived state, but it
-makes the reconcile deterministic and lets a fresh clone adopt an existing instance instead of
-duplicating it. **One lock per instance** — a lock from a different instance makes the sync create
-everything twice.
+**Slug → watch uuid is derived, not stored.** An entry with no known uuid is matched to an existing
+watch by URL, and by name against title where one URL carries two businesses — a restaurant and its
+beer garden, a museum mapped twice, two outlets of one hotel. `entries/.lock.json` caches the result
+and is **not committed**: it can only ever match one instance, and the reconcile runs from a
+throwaway checkout in the cluster. Verified against a live instance with 277 watches — an empty cache
+and a cache full of invented uuids both adopt all 277 and create none.
 
 ## The pull request is the API
 
