@@ -28,10 +28,15 @@ spec:
                 - |
                   set -eu
                   apk add --no-cache git >/dev/null
-                  pip install --quiet lxml
                   git clone --depth 1 --branch {{ .Values.sync.ref }} {{ .Values.sync.repo }} /repo
                   cd /repo
+                  # Both are stdlib — no pip install, so an hourly job cannot fail on a missing
+                  # wheel. The structural check needs no network; only the live one would, and
+                  # that is not run here.
                   python3 scripts/validate_entries.py
+                  # The lock in the checkout is a cache and is thrown away with the pod. Entries
+                  # whose lock entry is missing get adopted by URL, so this updates the existing
+                  # watches instead of creating duplicates on every run.
                   python3 scripts/entries_sync.py --base-url "$CD_BASE_URL" {{ if .Values.sync.apply }}--apply{{ end }}
               env:
                 - name: CD_BASE_URL

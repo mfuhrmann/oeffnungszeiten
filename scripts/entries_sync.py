@@ -6,16 +6,17 @@ The entry files are the source of truth. Add a file -> new watch. Delete a file 
 is deleted. Edit a file -> the watch is updated. That single mechanism replaces gone-detection,
 the delete queue, adoption pools and absence records.
 
-Git is authoritative here, which is a deliberate reversal of the 2026-07-28 ownership rule:
-back then filters lived only in changedetection because the datastore could not express them.
-Entry files can, so a second source of truth is no longer needed. The cost is that a filter
-tweaked in the UI is reverted on the next sync — run `cd_export.py --split entries` to turn a
-UI experiment into a commit instead.
+Git is authoritative: a filter tweaked in the UI is reverted on the next sync. Run
+`cd_export.py --split entries` to turn a UI experiment into a commit instead.
 
 Identity is the **slug** (the filename), mapped to a changedetection uuid by entries/.lock.json.
-It cannot be the URL: eight pages here back two businesses each (Wiesenmühle restaurant +
-Biergarten, Vonderau Museum ×2, Maritim ×2), so a URL-keyed sync could not tell which watch an
-entry owns.
+It cannot be the URL alone: a handful of pages back two businesses each, so a URL-keyed sync
+could not tell which watch an entry owns.
+
+The lock is a cache, not a requirement. An entry whose lock entry is missing or stale is
+ADOPTED — matched to an existing watch by URL, and by name against title where one URL has
+several candidates — so a sync from a fresh checkout updates watches instead of duplicating
+them. That is what lets the reconcile run from a throwaway CronJob checkout.
 
 Changes nothing without --apply. Deletion is always targeted by uuid, never by tag — a tag
 filter once wiped all 73 watches.
@@ -47,6 +48,16 @@ FIELD_MAP = {
     "webdriver_delay": "webdriver_delay",
     "name": "title",
 }
+
+
+def norm_url(u):
+    """Compare URLs the way a human would: ignore a trailing slash and case."""
+    return (u or "").rstrip("/").lower()
+
+
+def norm_name(s):
+    """Compare names ignoring punctuation and case, so "antonius Café" still matches itself."""
+    return "".join(ch for ch in (s or "").lower() if ch.isalnum())
 
 
 def load_entries(d):
@@ -155,17 +166,47 @@ def main():
             _resolved[key] = resolve_tags(api, names, tag_cache, create=args.apply)
         return _resolved[key]
 
+    # An entry whose lock is missing or stale is adopted before it is created: without that, a
+    # sync from a fresh checkout duplicates every watch. That is not hypothetical — the CronJob
+    # discards its checkout, so the lock it writes is gone by the next run, and a lock carried
+    # over from a different instance matches nothing at all.
+    #
+    # The URL is not unique (a handful of pages back two businesses each), so a URL with several
+    # candidates is decided by name against title. Matching is deliberately conservative: adopt
+    # only what no other entry claims, and only on an exact normalised name, since a wrong
+    # adoption silently rewrites somebody else's watch.
+    adopt = {}
+    unlocked = [s for s in entries if lock.get(s) not in live]
+    if unlocked:
+        taken = {lock[s] for s in entries if lock.get(s) in live}
+        by_url = {}
+        for u, w in live.items():
+            by_url.setdefault(norm_url(w.get("url")), []).append(u)
+        for slug in unlocked:
+            free = [u for u in by_url.get(norm_url(entries[slug].get("url")), [])
+                    if u not in taken and u not in adopt.values()]
+            if len(free) == 1:
+                pick = free[0]
+            else:
+                want = norm_name(entries[slug].get("name"))
+                exact = [u for u in free if norm_name(live[u].get("title")) == want]
+                pick = exact[0] if len(exact) == 1 else None
+            if pick:
+                adopt[slug] = pick
+
     create, update, delete = [], [], []
     for slug, entry in entries.items():
         uuid = lock.get(slug)
-        if not uuid or uuid not in live:
+        if uuid not in live:
+            uuid = adopt.get(slug)
+        if not uuid:
             create.append((slug, entry))
             continue
         d = differs(desired(entry, tags_for(entry)), live[uuid])
         if d:
             update.append((slug, uuid, d))
 
-    claimed = {lock[s] for s in entries if s in lock}
+    claimed = {lock[s] for s in entries if s in lock} | set(adopt.values())
     for slug, uuid in lock.items():
         if slug not in entries and uuid in live:
             delete.append((slug, uuid))
@@ -174,7 +215,9 @@ def main():
 
     print(f"entries {len(entries)} · live watches {len(live)}")
     print(f"create {len(create)} · update {len(update)} · delete {len(delete)} · "
-          f"unclaimed {len(orphans)}")
+          f"adopted {len(adopt)} · unclaimed {len(orphans)}")
+    for slug in list(adopt)[:20]:
+        print(f"  = {slug}  adopted {adopt[slug][:8]}  {live[adopt[slug]].get('title') or ''}")
     for slug, entry in create[:20]:
         print(f"  + {slug}  {entry.get('url','')[:60]}")
     uuid_to_name = {u: t.get("title") for u, t in (api.tags() or {}).items()}
@@ -194,6 +237,9 @@ def main():
         print("\n(plan only — pass --apply)")
         return 0
 
+    # Adoptierte gehören ins Lock, damit es als Zwischenspeicher wieder stimmt — verlieren
+    # darf man es jetzt aber, das ist der Punkt der Übung.
+    lock.update(adopt)
     for slug, entry in create:
         uuid = api.add(entry["url"], args.tag, args.interval_days)
         api.update(uuid, **desired(entry, tags_for(entry)))
