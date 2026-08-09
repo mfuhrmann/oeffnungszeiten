@@ -1,0 +1,27 @@
+suite: Label validity
+templates:
+  - 'service.yaml'
+tests:
+  - it: sets the standard labels
+    chart:
+      version: 0.1.0
+    asserts:
+      - equal:
+          path: metadata.labels['app.kubernetes.io/name']
+          value: changedetection
+      - equal:
+          path: metadata.labels['helm.sh/chart']
+          value: changedetection-0.1.0
+
+  - it: stays a valid label when Flux appends the source commit
+    # reconcileStrategy: Revision makes the chart version "0.1.0+<commit>", and "+" is rejected in
+    # a label value — every object in the release then fails to apply, with the release rolled back.
+    chart:
+      version: 0.1.0+fbd23eee8064
+    asserts:
+      - equal:
+          path: metadata.labels['helm.sh/chart']
+          value: changedetection-0.1.0_fbd23eee8064
+      - matchRegex:
+          path: metadata.labels['helm.sh/chart']
+          pattern: '^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$'
