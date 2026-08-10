@@ -1,0 +1,111 @@
+suite: Matrix relay
+templates:
+  - 'matrix-relay.yaml'
+tests:
+  - it: renders nothing while it is switched off
+    # A chart without a Matrix account has nothing to deliver to.
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: renders configmap, state volume, deployment, service and policy
+    set:
+      matrixRelay:
+        enabled: true
+    asserts:
+      - hasDocuments:
+          count: 5
+
+  - it: keeps the state volume across a Helm uninstall
+    # It holds the refresh token; losing it means seeding again with the bot's password.
+    set:
+      matrixRelay:
+        enabled: true
+    documentIndex: 1
+    asserts:
+      - isKind:
+          of: PersistentVolumeClaim
+      - equal:
+          path: metadata.annotations['helm.sh/resource-policy']
+          value: keep
+      - equal:
+          path: spec.accessModes[0]
+          value: ReadWriteOnce
+
+  - it: never runs two relays against one session
+    # MAS refresh tokens are single use: a second pod's refresh invalidates the first one's.
+    set:
+      matrixRelay:
+        enabled: true
+    documentIndex: 2
+    asserts:
+      - isKind:
+          of: Deployment
+      - equal:
+          path: spec.replicas
+          value: 1
+      - equal:
+          path: spec.strategy.type
+          value: Recreate
+
+  - it: probes the port rather than the Matrix session
+    # A homeserver incident is not something a restart fixes.
+    set:
+      matrixRelay:
+        enabled: true
+    documentIndex: 2
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].livenessProbe.tcpSocket.port
+          value: relay
+      - notExists:
+          path: spec.template.spec.containers[0].readinessProbe
+
+  - it: rolls the pod when the relay code changes
+    # The code is mounted from a ConfigMap, so an updated object alone would take effect at
+    # some unrelated later restart.
+    set:
+      matrixRelay:
+        enabled: true
+    documentIndex: 2
+    asserts:
+      - exists:
+          path: spec.template.metadata.annotations['checksum/relay']
+
+  - it: serves the port changedetection posts notifications to
+    set:
+      matrixRelay:
+        enabled: true
+    documentIndex: 3
+    asserts:
+      - isKind:
+          of: Service
+      - equal:
+          path: metadata.name
+          value: changedetection-matrix-relay
+      - equal:
+          path: spec.ports[0].port
+          value: 8099
+
+  - it: admits changedetection only, not the whole namespace
+    # Anything that reaches this port can post into a room shared with other mappers.
+    set:
+      matrixRelay:
+        enabled: true
+    documentIndex: 4
+    asserts:
+      - isKind:
+          of: NetworkPolicy
+      - equal:
+          path: spec.ingress[0].from[0].podSelector.matchLabels['app.kubernetes.io/name']
+          value: changedetection
+
+  - it: drops the policy for a CNI that does not enforce one
+    set:
+      matrixRelay:
+        enabled: true
+      networkPolicy:
+        enabled: false
+    asserts:
+      - hasDocuments:
+          count: 4

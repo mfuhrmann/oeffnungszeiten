@@ -26,15 +26,20 @@ kubectl -n changedetection port-forward svc/changedetection 5000:5000
 **One replica.** Two processes on one datastore corrupt it; `strategy: Recreate` keeps the old pod
 from overlapping the new one.
 
-## The sync CronJob is off
+## The sync CronJob
 
 It clones the watch repository and reconciles changedetection against the entry files. It pulls
 rather than being pushed, because nothing is exposed inbound and CI therefore cannot reach the app.
 
-It stays off until `entries_sync.py --apply` derives the slug-to-uuid mapping instead of writing it
-to `entries/.lock.json` in the checkout — a CronJob discards that checkout, so the next run would
-not recognise the slug and would create a second watch on the same page. Until then, reconcile by
-hand.
+Its checkout is thrown away after every run, so the slug-to-uuid mapping cannot be a file in it:
+`entries_sync.py` derives the mapping instead — URL first, name against title where one URL carries
+two businesses — which is what makes an hourly job safe. A stale or missing `entries/.lock.json`
+is adopted, not duplicated.
+
+## Notifications
+
+A relay next to changedetection owns the Matrix session, because Apprise cannot hold one against a
+MAS homeserver. See [notifications.md](./notifications.md).
 
 ## Managed global settings
 

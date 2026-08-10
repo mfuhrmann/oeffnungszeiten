@@ -64,6 +64,32 @@ browser:
       cpu: 100m
       memory: 512Mi
 
+# -- Matrix notification relay. Apprise cannot hold a matrix.org session any more (MAS issues
+# short-lived tokens and Apprise has no refresh), so this owns the session and changedetection
+# posts to it with `json://changedetection-matrix-relay:8099/notify`.
+matrixRelay:
+  # -- Off by default because a chart without a Matrix account has nothing to deliver to. Turning
+  # it on before the session exists is safe: unseeded the relay answers 503 and reads the state
+  # file on the next request, so seeding needs no restart — and it gives `kubectl cp` a running
+  # pod to copy into. Seeding: scripts/matrix_relay_seed.py, steps in docs/notifications.md.
+  enabled: false
+  image: python:3.12-alpine
+  # -- replicas is 1 and cannot usefully be raised: MAS refresh tokens are single use, so two
+  # relays refreshing in parallel invalidate each other's session.
+  replicas: 1
+  persistence:
+    # -- Tiny, but the one piece of state here that is not disposable: it holds the refresh token.
+    size: 64Mi
+    className: null
+    accessMode: ReadWriteOnce
+  resources:
+    limits:
+      cpu: 200m
+      memory: 128Mi
+    requests:
+      cpu: 10m
+      memory: 32Mi
+
 # -- CronJob: pull this repository and reconcile changedetection against entries/.
 # It has to PULL, because nothing is exposed inbound and CI therefore cannot reach the app.
 sync:

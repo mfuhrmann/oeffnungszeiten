@@ -94,15 +94,19 @@ data:
     # Pull, never push: nothing is exposed inbound, so CI cannot reach the app and the reconcile
     # has to run from inside the cluster. It clones this very repository — the same one that
     # defines it.
-    #
-    # Still off: `entries_sync.py --apply` writes its slug-to-uuid lock into the checkout, which a
-    # CronJob throws away. Until the mapping is derived instead of stored, every new entry would
-    # create a duplicate watch on the next run.
     sync:
       enabled: true
       apply: true
       repo: https://github.com/mfuhrmann/oeffnungszeiten.git
       ref: main
+
+    # Matrix delivery. Apprise cannot hold a matrix.org session (MAS hands out short-lived
+    # tokens and Apprise has no refresh), so the relay owns the session and the watches post to
+    # it. On by design even before the session is seeded: unseeded it answers 503 and picks the
+    # state file up on the next request, and a pod that refused to start would leave nothing to
+    # copy the file into. Seeding: docs/notifications.md.
+    matrixRelay:
+      enabled: true
 
     # GENERATED — copied from deploy/global-settings.values.yaml in the watch repository,
     # which is generated in turn from deploy/global-settings.json:

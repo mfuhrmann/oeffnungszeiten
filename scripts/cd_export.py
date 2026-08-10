@@ -56,21 +56,27 @@ APP_FIELDS = [
     "render_anchor_tag_content", "empty_pages_are_a_change", "strip_ignored_lines",
     "ignore_status_codes", "fetch_backend", "webdriver_delay",
     "filter_failure_notification_threshold_attempts", "history_snapshot_max_length",
-    "notification_title", "notification_body", "notification_format",
+    "notification_title", "notification_body", "notification_format", "notification_urls",
     "scheduler_timezone_default", "base_url", "active_base_url", "tags",
 ]
 REQUEST_FIELDS = ["time_between_check", "timeout", "workers", "jitter_seconds", "default_ua"]
 
 # Never export these, with or without --with-secrets: they are pure credentials.
 NEVER = {"api_access_token", "password", "rss_access_token"}
-# Exported only with --with-secrets: notification_urls carry the Matrix token in the password
-# slot (matrixs://:<token>@…), so the default is to redact.
+# Exported only with --with-secrets: an Apprise URL carries its credential in the password slot
+# (matrixs://:<token>@…), so the default is to redact. The relay URL in use here holds no token,
+# but a redacted export is the safe default for whatever is configured.
 SECRET = {"notification_urls"}
 REDACTED = "<redacted — export with --with-secrets for a local backup>"
 
 
-def read_global_settings(container):
-    """Global settings live in the volume, not the API."""
+def read_global_settings(container, with_secrets=False):
+    """Global settings live in the volume, not the API.
+
+    Delivery is configured globally, so `notification_urls` reaches the export through here and
+    not only through the per-watch path — it needs the same redaction, or the summary line would
+    promise one thing while the file holds another.
+    """
     try:
         raw = subprocess.check_output(
             ["docker", "exec", container, "cat", "/datastore/changedetection.json"],
@@ -79,7 +85,10 @@ def read_global_settings(container):
         print(f"warning: could not read global settings ({str(e)[:60]})", file=sys.stderr)
         return None
     s = json.loads(raw).get("settings", {})
-    app = {k: v for k, v in s.get("application", {}).items()
+    # `not v` stays verbatim: an empty list holds no secret, and redacting it into a string would
+    # read as "delivery is armed" to anything that checks this field.
+    app = {k: (v if with_secrets or k not in SECRET or not v else REDACTED)
+           for k, v in s.get("application", {}).items()
            if k in APP_FIELDS and k not in NEVER}
     req = {k: v for k, v in s.get("requests", {}).items() if k in REQUEST_FIELDS}
     return {"application": app, "requests": req}
@@ -213,7 +222,7 @@ def main():
     out = {"watches": dict(sorted(watches.items(), key=lambda kv: (
         (kv[1].get("title") or kv[1].get("url") or "").lower(), kv[0])))}
     if not args.no_globals:
-        g = read_global_settings(args.container)
+        g = read_global_settings(args.container, args.with_secrets)
         if g:
             out["global_settings"] = g
 
@@ -250,13 +259,20 @@ def main():
             print("warning: slug collision", file=sys.stderr)
 
     filtered = sum(1 for r in watches.values() if r.get("include_filters"))
-    armed = sum(1 for r in watches.values() if r.get("notification_urls"))
+    # Delivery is configured globally, so a fully armed instance has no per-watch URL at all.
+    # Counting only those would report "0 with notifications" on exactly the instance where
+    # every watch alerts — the opposite of what this line is read for.
+    global_armed = bool(out.get("global_settings", {}).get("application", {})
+                        .get("notification_urls"))
+    armed = sum(1 for r in watches.values()
+                if r.get("notification_urls")
+                or (global_armed and not r.get("notification_muted")))
     pats = len((out.get("global_settings", {}).get("application", {})
                 .get("global_ignore_text") or []))
     print(f"wrote {args.out}: {len(watches)} watches, {filtered} with a filter, "
           f"{armed} with notifications, {pats} global ignore patterns")
     if not args.with_secrets:
-        print("notification_urls redacted (they hold the Matrix token).")
+        print("notification_urls redacted, per watch and global.")
     return 0
 
 

@@ -61,6 +61,7 @@ docker-compose.yml  optional local trial; not needed to contribute
 | `cdp_render.py` | render a page through a headless browser, no changedetection needed |
 | `cd_export.py` | turn a UI experiment back into entry files |
 | `apply_global_settings.py` | merge `deploy/global-settings.json` into an instance |
+| `matrix_relay_seed.py` | mint the Matrix session the notification relay runs on |
 
 Each has `--help`. Nothing writes to changedetection without `--apply`.
 
@@ -73,6 +74,7 @@ Each has `--help`. Nothing writes to changedetection without `--apply`.
 | [FILTERS.md](./FILTERS.md) | how to find an hours block, and how to know the filter is right |
 | [CONCEPT.md](./CONCEPT.md) | why this exists, and why watches are files in git |
 | [docs/changedetection.md](./docs/changedetection.md) | how it is deployed, and the three decisions behind it |
+| [docs/notifications.md](./docs/notifications.md) | how a change reaches the Matrix room, and how to seed the session |
 
 ## Licence
 

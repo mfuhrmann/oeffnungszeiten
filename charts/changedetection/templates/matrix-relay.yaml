@@ -1,0 +1,132 @@
+{{- if .Values.matrixRelay.enabled }}
+# Apprise cannot talk to matrix.org any more. The homeserver delegates authentication to MAS, so
+# access tokens are short-lived OAuth tokens; Apprise stores one static string and has no refresh,
+# which is why `matrixs://:<token>@matrix.org/...` dies with M_UNKNOWN_TOKEN. This relay owns the
+# session instead — it keeps the refresh token, mints access tokens, and posts into the room.
+# changedetection reaches it as `json://<name>-matrix-relay:8099/notify`, which carries no token
+# and is therefore not a secret.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "changedetection.name" . }}-matrix-relay
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+data:
+  matrix_relay.py: |
+{{ .Files.Get "files/matrix_relay.py" | indent 4 }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "changedetection.name" . }}-matrix-relay-state
+  annotations:
+    # MAS refresh tokens are single use: the relay rewrites this file on every refresh, and the
+    # newest one is the only way back into the session. Losing the volume means seeding again
+    # with the bot's password, so it outlives a Helm uninstall like the datastore does.
+    helm.sh/resource-policy: keep
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+spec:
+  accessModes: [{{ .Values.matrixRelay.persistence.accessMode }}]
+  {{- with .Values.matrixRelay.persistence.className }}
+  storageClassName: {{ . }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.matrixRelay.persistence.size }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "changedetection.name" . }}-matrix-relay
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.matrixRelay.replicas }}
+  strategy:
+    # Recreate, never RollingUpdate: two relays would race each other rewriting the state file
+    # after a refresh, and the loser's refresh token is already spent. Same reason the volume is
+    # ReadWriteOnce.
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "changedetection.name" . }}-matrix-relay
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "changedetection.name" . }}-matrix-relay
+        app.kubernetes.io/instance: {{ .Release.Name }}
+      annotations:
+        # Roll the pod when the relay code changes — the ConfigMap is mounted, so an updated
+        # object alone would only take effect at some unrelated later restart. Hashing the source
+        # file rather than the rendered ConfigMap avoids a template that includes itself.
+        checksum/relay: {{ .Files.Get "files/matrix_relay.py" | sha256sum }}
+    spec:
+      containers:
+        - name: matrix-relay
+          image: {{ .Values.matrixRelay.image }}
+          command: ["python3", "/app/matrix_relay.py"]
+          ports:
+            - name: relay
+              containerPort: 8099
+          volumeMounts:
+            - name: app
+              mountPath: /app
+            - name: state
+              mountPath: /config
+          resources: {{- toYaml .Values.matrixRelay.resources | nindent 12 }}
+          # TCP, not `GET /health`: health means "the Matrix session works", and a homeserver
+          # incident is not something a restart fixes. Probing it would take the only relay pod
+          # down for the duration of somebody else's outage, losing the notifications it could
+          # still have retried. This probe covers what a restart does fix — a wedged listener.
+          # `GET /health` stays for asking by hand.
+          livenessProbe:
+            tcpSocket: { port: relay }
+            initialDelaySeconds: 10
+            periodSeconds: 30
+      volumes:
+        - name: app
+          configMap:
+            name: {{ include "changedetection.name" . }}-matrix-relay
+        - name: state
+          persistentVolumeClaim:
+            claimName: {{ include "changedetection.name" . }}-matrix-relay-state
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "changedetection.name" . }}-matrix-relay
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8099
+      targetPort: relay
+      name: relay
+  selector:
+    app.kubernetes.io/name: {{ include "changedetection.name" . }}-matrix-relay
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- if .Values.networkPolicy.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "changedetection.name" . }}-matrix-relay
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "changedetection.name" . }}-matrix-relay
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  policyTypes: [Ingress]
+  ingress:
+    # Anything that reaches this port can post into a room shared with other mappers, so unlike
+    # the UI it is not opened to the whole namespace — only changedetection sends notifications.
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ include "changedetection.name" . }}
+              app.kubernetes.io/instance: {{ .Release.Name }}
+      ports:
+        - port: 8099
+          protocol: TCP
+{{- end }}
+{{- end }}

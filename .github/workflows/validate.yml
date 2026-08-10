@@ -59,6 +59,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: azure/setup-helm@v4
       - run: helm lint ./charts/changedetection
+      - name: relay source compiles
+        # files/matrix_relay.py ships as ConfigMap data, so nothing else would notice a syntax
+        # error until the relay crash-loops in the cluster.
+        run: python3 -m py_compile charts/changedetection/files/matrix_relay.py
       - name: unit tests
         run: |
           helm plugin install https://github.com/helm-unittest/helm-unittest --verify=false
