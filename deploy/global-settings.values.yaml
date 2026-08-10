@@ -34,6 +34,12 @@
       ],
       "global_subtractive_selectors": [],
       "ignore_whitespace": true,
+      "notification_body": "{{watch_url}}\n{{diff}}",
+      "notification_format": "text",
+      "notification_title": "Öffnungszeiten geändert: {{watch_title}}",
+      "notification_urls": [
+        "json://changedetection-matrix-relay:8099/notify"
+      ],
       "render_anchor_tag_content": false,
       "strip_ignored_lines": false
     },
