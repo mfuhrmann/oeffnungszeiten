@@ -29,9 +29,11 @@ MAS refresh tokens are SINGLE USE: every refresh returns a new one, so the state
 file is rewritten atomically after each refresh. Keep it on a persistent volume.
 """
 import argparse
+import html as html_mod
 import json
 import logging
 import os
+import re
 import tempfile
 import threading
 import urllib.error
@@ -46,6 +48,67 @@ STATE_PATH = os.environ.get("MATRIX_RELAY_STATE", "/config/matrix_relay.json")
 # at all — the one case where knowing that something changed matters most. Truncate well below
 # the limit: the message is a pointer to the watch, not the record of the change.
 MAX_BODY = 8000
+# Header lines of the notification body: "Webseite: <url>", "OpenStreetMap: <url>", or a bare
+# URL (the global body, used by the few entries without an osm_id) which is labelled Webseite.
+LINK_LINE = re.compile(r"^(?:([^:]{1,30}):\s*)?(https?://\S+)\s*$")
+DEFAULT_LINK_LABEL = "Webseite"
+
+# changedetection prefixes each changed line with (added) / (removed) / (changed).
+DIFF_MARKER = re.compile(r"^\((added|removed|changed)\)\s?")
+SIGIL = {"added": "+", "removed": "−", "changed": "~"}
+COLOR = {"added": "#2e7d32", "removed": "#c62828", "changed": "#ef6c00"}
+
+
+def format_message(title, message):
+    """Render one notification as (plain_text, html).
+
+    The body changedetection sends is the watch's notification_body: "Webseite: <url>", an
+    "OpenStreetMap: <url>" line where the entry has an osm_id, then {{diff}}. Leading link
+    lines become the header; the rest is the diff.
+
+    Nothing is dropped except blank lines and the page's own indentation — how long a real
+    diff gets is still being measured (see the line counts in the send log). The only size
+    limit is MAX_BODY in send(), which exists because matrix.org rejects oversized events.
+    """
+    lines = message.splitlines()
+    head = []
+    while lines:
+        m = LINK_LINE.match(lines[0].strip())
+        if not m:
+            break
+        lines.pop(0)
+        head.append((m.group(1) or DEFAULT_LINK_LABEL, m.group(2)))
+
+    kept = []
+    for raw in lines:
+        stripped = raw.strip()
+        m = DIFF_MARKER.match(stripped)
+        text = DIFF_MARKER.sub("", stripped).strip()
+        if not text:                       # blank, with or without a marker
+            continue
+        kept.append((m.group(1) if m else None, text))
+
+    text_parts = ([title] if title else []) + [f"{label}: {url}" for label, url in head] + [""]
+    text_parts += [f"{SIGIL.get(kind, ' ')} {t}" for kind, t in kept]
+
+    def esc(s):
+        return html_mod.escape(s, quote=False)
+
+    html_parts = []
+    if title:
+        html_parts.append(f"<b>{esc(title)}</b>")
+    for label, url in head:
+        href = html_mod.escape(url, quote=True)
+        html_parts.append(f'{esc(label)}: <a href="{href}">{esc(url)}</a>')
+    for kind, t in kept:
+        body = esc(t)
+        if kind == "removed":
+            body = f"<del>{body}</del>"
+        if kind in COLOR:
+            body = f'<font color="{COLOR[kind]}">{body}</font>'
+        html_parts.append(body)
+
+    return "\n".join(text_parts), "<br/>".join(html_parts)
 
 
 class MatrixSession:
@@ -183,6 +246,10 @@ class MatrixSession:
         """Send one m.text message, refreshing once if the token was rejected."""
         if len(text) > MAX_BODY:
             text = text[:MAX_BODY] + "\n[…] gekürzt, vollständige Änderung im UI"
+        # Truncating markup would emit unbalanced tags, so an oversized formatted_body is
+        # dropped instead — the plain body still carries the change.
+        if html and len(html) > MAX_BODY:
+            html = None
         content = {"msgtype": "m.text", "body": text}
         if html:
             content.update({"format": "org.matrix.custom.html", "formatted_body": html})
@@ -235,17 +302,21 @@ def make_handler(session):
                 payload = {"message": raw.decode("utf8", "replace")}
             title = (payload.get("title") or "").strip()
             message = (payload.get("message") or payload.get("body") or "").strip()
-            text = f"{title}\n{message}".strip() if title else message
-            if not text:
+            text, formatted = format_message(title, message)
+            if not text.strip():
                 self._reply(400, {"error": "empty notification"})
                 return
             try:
-                event_id = session.send(text)
+                event_id = session.send(text, html=formatted)
             except Exception as e:
                 log.error("send failed: %s", e)
                 self._reply(502, {"error": str(e)[:300]})
                 return
-            log.info("sent %s (%d chars)", event_id, len(text))
+            # Line counts in and out: how verbose real diffs get decides whether a cap is
+            # needed at all. Deciding that from measurements, not from one bad example.
+            diff_lines = sum(1 for ln in text.splitlines() if ln[:1] in ("+", "−", "~"))
+            log.info("sent %s (%d chars, %d diff lines from %d raw)",
+                     event_id, len(text), diff_lines, len(message.splitlines()))
             self._reply(200, {"ok": True, "event_id": event_id})
 
         def log_message(self, fmt, *args):

@@ -37,6 +37,8 @@ import osm_cd_common as C
 
 # Entry field -> changedetection field. Everything listed is ENFORCED: if the entry and the
 # watch disagree, the watch loses.
+OSM_BASE = "https://www.openstreetmap.org"
+
 FIELD_MAP = {
     "url": "url",
     "fetch_backend": "fetch_backend",
@@ -98,6 +100,15 @@ def desired(entry, tag_uuids=None):
         if ef in entry:
             want[wf] = entry[ef]
     want["include_filters"] = [entry["filter"]] if entry.get("filter") else []
+    # A per-watch body is the only place the OSM id fits: the cascade is watch -> tag -> global,
+    # and a non-empty value here wins outright (no companion "use_default" flag, unlike
+    # time_between_check). Entries without an osm_id fall through to the global body.
+    if entry.get("osm_id"):
+        want["notification_body"] = (
+            "Webseite: {{watch_url}}\n"
+            f"OpenStreetMap: {OSM_BASE}/{entry['osm_id']}\n"
+            "{{diff}}"
+        )
     return want
 
 
