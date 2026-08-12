@@ -105,4 +105,15 @@ sync:
   # -- apply=false runs the plan only, which is the safe way to introduce the CronJob
   apply: false
 
+auditReport:
+  # -- Off by default like sync, and for the same reason: without a real `sync.repo` the
+  # CronJob fails at `git clone`. It reports only the audit's RED verdict — a fetch error, an
+  # empty filter result, an ignore pattern that ate the hours, a filter that was blind from the
+  # start. Those four send no notification of their own; everything else already does.
+  enabled: false
+  # -- Weekly, Mondays 06:40. Watches run on a 3-day cadence, so a longer gap would leave a
+  # broken watch standing for weeks. Nothing is sent when there is no RED, so a quiet week
+  # costs one Job and no message.
+  schedule: "40 6 * * 1"
+
 env: []

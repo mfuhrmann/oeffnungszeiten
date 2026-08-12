@@ -1,0 +1,48 @@
+suite: Audit report CronJob
+templates:
+  - 'audit-report-cronjob.yaml'
+tests:
+  - it: renders nothing by default
+    # Same reason as the sync job: without a real repository it would fail at git clone.
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: refuses to render when enabled without a repository
+    set:
+      auditReport:
+        enabled: true
+    asserts:
+      - failedTemplate:
+          errorMessage: "auditReport.enabled requires sync.repo (the repository holding the scripts)"
+
+  - it: renders a weekly CronJob that reaches the relay
+    set:
+      auditReport:
+        enabled: true
+      sync:
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isKind:
+          of: CronJob
+      - equal:
+          path: spec.schedule
+          value: "40 6 * * 1"
+      - matchRegex:
+          path: spec.jobTemplate.spec.template.spec.containers[0].args[0]
+          pattern: "scripts/audit_report.py"
+
+  - it: labels the job pod distinctly from the app
+    # Carrying changedetection's own labels would let the Deployment's ReplicaSet selector
+    # adopt this pod and then delete it.
+    set:
+      auditReport:
+        enabled: true
+      sync:
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+    asserts:
+      - equal:
+          path: spec.jobTemplate.spec.template.metadata.labels['app.kubernetes.io/name']
+          value: changedetection-audit-report
