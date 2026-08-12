@@ -599,7 +599,11 @@ def main():
                          "comma-separated. Without one the watch loses its grouping — and the "
                          "notification setup is copied from a sibling with the same tag.")
     ap.add_argument("--json", action="store_true", help="print candidates as JSON, no prompt")
-    ap.add_argument("--base-url", default="http://localhost:5000")
+    ap.add_argument("--base-url",
+                    default=os.environ.get("CD_BASE_URL", "http://localhost:5000"),
+                    help="changedetection API root; defaults to $CD_BASE_URL, so the same call "
+                         "works in-cluster, on the VPS and through a tunnel "
+                         "(see scripts/cd_env.sh)")
     ap.add_argument("--api-key", default=None)
     ap.add_argument("--container", default="changedetection",
                     help="container name (docker) or pod/deployment (kubectl)")

@@ -32,6 +32,7 @@ import argparse
 import concurrent.futures as cf
 import html as html_mod
 import json
+import os
 import re
 import sys
 import time
@@ -309,7 +310,11 @@ def main():
     ap.add_argument("--settings", default=DEFAULT_SETTINGS, metavar="FILE",
                     help="managed global settings, checked for ignore patterns that discard "
                          "hours lines (default: %(default)s; skipped if absent)")
-    ap.add_argument("--base-url", default="http://localhost:5000")
+    ap.add_argument("--base-url",
+                    default=os.environ.get("CD_BASE_URL", "http://localhost:5000"),
+                    help="changedetection API root; defaults to $CD_BASE_URL, so the same call "
+                         "works in-cluster, on the VPS and through a tunnel "
+                         "(see scripts/cd_env.sh)")
     ap.add_argument("--api-key", default=None)
     ap.add_argument("--container", default="changedetection")
     args = ap.parse_args()

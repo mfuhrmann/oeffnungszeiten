@@ -184,7 +184,11 @@ def main():
     ap.add_argument("--with-secrets", action="store_true",
                     help="include notification_urls — LOCAL backups only, they contain tokens")
     ap.add_argument("--no-globals", action="store_true")
-    ap.add_argument("--base-url", default="http://localhost:5000")
+    ap.add_argument("--base-url",
+                    default=os.environ.get("CD_BASE_URL", "http://localhost:5000"),
+                    help="changedetection API root; defaults to $CD_BASE_URL, so the same call "
+                         "works in-cluster, on the VPS and through a tunnel "
+                         "(see scripts/cd_env.sh)")
     ap.add_argument("--api-key", default=None)
     ap.add_argument("--container", default="changedetection")
     ap.add_argument("--workers", type=int, default=8)

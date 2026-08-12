@@ -141,7 +141,11 @@ def main():
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--prune", action="store_true",
                     help="delete watches that no entry claims (needs --apply)")
-    ap.add_argument("--base-url", default="http://localhost:5000")
+    ap.add_argument("--base-url",
+                    default=os.environ.get("CD_BASE_URL", "http://localhost:5000"),
+                    help="changedetection API root; defaults to $CD_BASE_URL, so the same call "
+                         "works in-cluster, on the VPS and through a tunnel "
+                         "(see scripts/cd_env.sh)")
     ap.add_argument("--api-key", default=None)
     ap.add_argument("--container", default="changedetection")
     ap.add_argument("--tag", default="fulda", help="tag for newly created watches")
