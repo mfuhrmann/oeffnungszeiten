@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "ÖffnungszeitenMontag09:00-16:00 UhrDienstag09:00-16:00 UhrMittwoch09:00-16:00 UhrDonnerstag09:00-16:00 UhrFreitag09:00-16:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Sparkasse Fulda S-Finanzmarkt",
+ "note": "Branch page. Anchored on the h2 \"Oeffnungszeiten\" so the block stays the counter hours; the separate \"Verfuegbarkeit Geldautomat\" block (Mo-So 6:00-23:00) is not opening hours and stays out.",
+ "osm_id": "node/1333664507",
+ "schema": 1,
+ "tags": [
+  "fulda-bank"
+ ],
+ "url": "https://www.sparkasse-fulda.de/de/home/toolbar/filialen/sparkasse-fulda-hauptstelle-s-finanzmarkt-106853.html"
+}

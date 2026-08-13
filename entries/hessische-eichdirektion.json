@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten MO - FR: 8:00 - 12:00 Uhr sowie nach Terminvereinbarung",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Hessische Eichdirektion",
+ "osm_id": "way/386706941",
+ "schema": 1,
+ "tags": [
+  "fulda-government"
+ ],
+ "url": "https://hed.hessen.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Montags-Donnerstags von 7.30 Uhr – 16.30 Uhr Freitags von 7.30 Uhr – 15.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Hessen-Forst Forstamt Fulda",
+ "osm_id": "way/578377283",
+ "schema": 1,
+ "tags": [
+  "fulda-forestry"
+ ],
+ "url": "https://www.hessen-forst.de/forstaemter/forstamt-fulda"
+}

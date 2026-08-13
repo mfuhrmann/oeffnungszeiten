@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Adresse Caritas Altenpflegeheim St. Josef Buseckstraße 12 + 14 36043 Fulda +49 661 3801-0 +49 661 3801-380 +49 661 3801-0 +49 661 3801-380 +49 661 3801-380 st.josefsheim@caritas-fulda.de Öffnungszeiten Verwaltung Montags bis freitags von 09:00 Uhr bis 12:15 Uhr und von 13:15 Uhr bis 16:00 Uhr So finden Sie uns Um die Karte zu laden, müssen Sie in den Datenschutz-Einstellungen den GoogleMaps-Dienst",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Alten- und Pflegeheim St. Josef",
+ "osm_id": "relation/18545152",
+ "schema": 1,
+ "tags": [
+  "fulda-social_facility"
+ ],
+ "url": "https://www.josefsheim-fulda.de/"
+}

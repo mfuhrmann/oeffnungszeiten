@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "BÜROZEITEN Montag - Donnerstag 08:00 Uhr bis 16:30 Uhr Freitag 08:00 Uhr bis 14:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Fröhlich+Röbig Elektrotechnik GmbH",
+ "osm_id": "node/13650215602",
+ "schema": 1,
+ "tags": [
+  "fulda-electrician"
+ ],
+ "url": "https://www.fre-elektro.de/"
+}

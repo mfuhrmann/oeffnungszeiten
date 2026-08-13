@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Nutze das untenstehende Formular, um uns eine Nachricht zu senden, oder kontaktiere uns direkt per E-Mail oder Telefon. Wir sind von Montag bis Donnerstag von 8.00 bis 15.00 Uhr und Freitag von 8.00 bis 13.00 Uhr für dich da.",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Arbeit und Bildung e.V.",
+ "note": "website tag points at https://arbeit-und-bildung.de/, which carries no hours; watching the page that does.",
+ "osm_id": "node/13397387585",
+ "schema": 1,
+ "tags": [
+  "fulda-educational_institution"
+ ],
+ "url": "https://arbeit-und-bildung.de/kontakt"
+}

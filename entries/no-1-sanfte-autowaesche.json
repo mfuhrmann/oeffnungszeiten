@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "PortalwaschanlageMontag - Samstag 07.00 - 22.00 UhrSonntag 10.00 - 18.00 UhrSB Waschboxen",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "No 1 sanfte Autowäsche",
+ "osm_id": "way/1301606404",
+ "schema": 1,
+ "tags": [
+  "fulda-car_wash"
+ ],
+ "url": "https://www.carwashno1.info/Fulda-Andreasberg"
+}

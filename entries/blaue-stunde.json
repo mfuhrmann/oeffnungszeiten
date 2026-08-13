@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag – Freitag: 8.00 – 12.30 und 17.00 – 21.00 UhrSamstag – Sonntag: siehe Kurspläne YOGA / PILATES / WORKSHOPS",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Blaue Stunde",
+ "osm_id": "node/12186921737",
+ "schema": 1,
+ "tags": [
+  "fulda-fitness_centre"
+ ],
+ "url": "https://blauestunde.de/"
+}

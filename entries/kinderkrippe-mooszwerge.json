@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Betreut wird von Montag bis Donnerstag in der Zeit von 7.00 Uhr bis 16.30 Uhr und am Freitag in der Zeit von 7.00 Uhr bis 15.00 Uhr.",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Kinderkrippe Mooszwerge",
+ "osm_id": "node/13482049004",
+ "schema": 1,
+ "tags": [
+  "fulda-childcare"
+ ],
+ "url": "https://www.kleine-stromer.de/verbund-kitas/kitas-im-verbund/kita-im-verbund-krippe-mooszwerge.html"
+}

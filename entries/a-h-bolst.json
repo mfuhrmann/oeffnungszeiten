@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "A. & H. Bolst Christian-Wirth-Straße 14 36043 Fulda Telefon: 0661-94119-0 Fax: 0661-94119-33 Mobilbox: 0661-94119-25 Mobil: 0177-6447777 Geschäftszeiten: Montag – Freitag von 7:30 – 17:30 Uhr Samstag nach Vereinbarung Ihr Ansprechpartner: Andreas Bolst",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "A. & H. Bolst",
+ "osm_id": "node/12500458025",
+ "schema": 1,
+ "tags": [
+  "fulda-painter"
+ ],
+ "url": "https://bolst.de/"
+}

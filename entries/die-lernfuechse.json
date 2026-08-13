@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Flieden Mo-Fr 13.00-17.00 Uhr Fulda Mo-Fr von 13.00-17.00 Uhr Hilders Mo–Fr 13:00–17:00 Uhr Hünfeld Mo–Fr 13:00–17:00 Uhr Lauterbach Mo, Mi, Fr 13:00–17:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(concat(\" \",normalize-space(@class),\" \"),\" phone-float__list \")]",
+ "name": "Die Lernfüchse",
+ "osm_id": "node/12965043484",
+ "schema": 1,
+ "tags": [
+  "fulda-prep_school"
+ ],
+ "url": "https://www.lernfuechse.de/"
+}

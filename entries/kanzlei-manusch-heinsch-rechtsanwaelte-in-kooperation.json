@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten: Mo., Di., Do. 9:00–16:00 Uhr & Mi., Fr. 9:00–13:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Kanzlei Manusch | Heinsch – Rechtsanwälte in Kooperation",
+ "osm_id": "node/1336871611",
+ "schema": 1,
+ "tags": [
+  "fulda-lawyer"
+ ],
+ "url": "https://kanzlei-manusch.de/"
+}

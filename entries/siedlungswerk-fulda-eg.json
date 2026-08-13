@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Neue Öffnungszeiten der Geschäftsstelle: Wir haben unsere Öffnungszeiten erweitert. Ab sofort sind wir an allen Werktagen persönlich für Sie erreichbar. Montag-Donnerstag von 9:00 Uhr bis 12:00 Uhr und von 13:30 Uhr bis 16:00 Uhr Freitag von 9:00 Uhr bis 12:00 Uhr Bei einem speziellen Anliegen bitten wir Sie, einen persönlichen Gesprächstermin (auch außerhalb der genannten Öffnungszeiten) zu verei",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"c565\"]",
+ "name": "Siedlungswerk Fulda eG",
+ "osm_id": "node/12535946926",
+ "schema": 1,
+ "tags": [
+  "fulda-cooperative"
+ ],
+ "url": "https://www.siedlungswerk-fulda.de/"
+}

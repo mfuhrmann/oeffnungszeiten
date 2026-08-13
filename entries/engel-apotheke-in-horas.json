@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten:Mo – Fr 08.00 – 18.00 UhrSa 08.00 – 13.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Engel-Apotheke",
+ "osm_id": "node/429766253",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://die-engel-apotheken.de/engel-apotheke-in-horas/"
+}

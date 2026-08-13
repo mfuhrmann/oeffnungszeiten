@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Petra Werr | Gerloser Weg 68 | 36093 Fulda werr@werr-stb.de +49 (0)661 38028440 Mo-Do: 08:30-16:30 Fr: 08:30-14:00",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" et_pb_blurb_description \")]",
+ "name": "Werr Steuerberaterin",
+ "note": "website tag points at https://www.werr-stb.de/, which carries no hours; watching the page that does.",
+ "osm_id": "node/13451177973",
+ "schema": 1,
+ "tags": [
+  "fulda-tax_advisor"
+ ],
+ "url": "https://www.werr-stb.de/wie-finden-sie-mich"
+}

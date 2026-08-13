@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Unsere Öffnungszeiten Dienstag - Samstagab 17:00 Uhr Sonntag - Montaggeschlossen Wir bieten Ihnen einenbarrierefreien Zugang! kostenlosesW-LAN",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Markt 2",
+ "osm_id": "node/2447045800",
+ "schema": 1,
+ "tags": [
+  "fulda-bar"
+ ],
+ "url": "https://www.markt2.com/"
+}

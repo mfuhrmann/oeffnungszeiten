@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag 08:30–12:30 und 14:00–18:00 Uhr Dienstag 08:30–12:30 und 14:00–18:00 Uhr Mittwoch 08:30–14:00 Uhr Donnerstag 08:30–12:30 und 14:00–20:00 Uhr Freitag 08:30–14:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(concat(\" \",normalize-space(@class),\" \"),\" stacks_in_1056-list \")]",
+ "name": "Drs. Denner & Denner",
+ "osm_id": "node/3138483055",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://dr-denner.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag bis FreitagMo – Fr06:00 – 22:30Von 6 Uhr bis 22 Uhr 30SamstagSa06:30 – 22:30Von 6 Uhr 30 bis 22 Uhr 30SonntagSo, inkl. Feiertage07:00 – 22:30Von 7 Uhr bis 22 Uhr 30inkl. Feiertage Montag bis SonntagMo – So, inkl. Feiertage06:00 – 22:25Von 6 Uhr bis 22 Uhr 25inkl. Feiertage Montag bis SonntagMo – So, inkl. Feiertage06:00 – 22:30Von 6 Uhr bis 22 Uhr 30inkl. Feiertage Montag bis SonntagMo – So",
+ "fetch_backend": "system",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" opening-hours_container__o26VY \")]",
+ "name": "DB Information",
+ "osm_id": "way/1284529861",
+ "schema": 1,
+ "tags": [
+  "fulda-information"
+ ],
+ "url": "https://www.bahnhof.de/fulda"
+}

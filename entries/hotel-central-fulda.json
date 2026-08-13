@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Telefonisch erreichbar 0049 661 75335Montag bis Freitag 07:00 Uhr bis 20:00 UhrSamstag 08:00 Uhr bis 18:00 UhrSonn- und Feiertage 08:00 Uhr bis 12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "HOTEL CENTRAL FULDA",
+ "osm_id": "node/773213037",
+ "schema": 1,
+ "tags": [
+  "fulda-hotel"
+ ],
+ "url": "https://www.hotel-central-fulda.de/"
+}

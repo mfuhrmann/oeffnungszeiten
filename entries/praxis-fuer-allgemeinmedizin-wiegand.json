@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Unsere SprechstundenzeitenÖffnungszeitenMontag08:00 - 12:00 UhrDienstag08:00 - 12:00 Uhr16:00 - 18:00 UhrMittwoch08:00 - 12:00 UhrDonnerstag08:00 - 12:00 Uhr16:00 - 18:00 UhrFreitag08:00 - 12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h1[contains(normalize-space(.),\"Sprechstunde\")])/parent::*/parent::*",
+ "name": "Praxis für Allgemeinmedizin Wiegand",
+ "osm_id": "node/13629479506",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://w-med.de/"
+}

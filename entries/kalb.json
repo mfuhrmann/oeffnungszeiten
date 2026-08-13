@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag bis Freitag: 7:45 bis 17:00 Uhr. Termine außerhalb der Geschäftszeiten nach Vereinbarung. Wir beraten Sie gerne jederzeit. Telefonnummer für Terminvereinbarung und Notdienst: 0661 72706.",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Kalb",
+ "osm_id": "node/12470861085",
+ "schema": 1,
+ "tags": [
+  "fulda-hvac"
+ ],
+ "url": "https://www.kalb.de/"
+}

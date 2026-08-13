@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Kontakt T 0661 86-80-0 info@hotel-goldener-karpfen.de Simpliziusbrunnen 1, 36037 Fulda Rezeption Täglich: 24 Stunden Restaurant Mo - Sa: 12.00 Uhr - 14 Uhr und 18.00 Uhr - 22 Uhr Letzte Bestellannahme 21 Uhr Social Media Instagram Facebook KarriereAnfahrt & Kontakt Rechtliches AGBImpressumDatenschutz",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" e-con-inner \")]",
+ "name": "Hotel Goldener Karpfen",
+ "osm_id": "way/207024246",
+ "schema": 1,
+ "tags": [
+  "fulda-hotel"
+ ],
+ "url": "https://hotel-goldener-karpfen.de/"
+}

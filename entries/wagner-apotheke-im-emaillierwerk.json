@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Apotheke im Emaillierwerk Herr Günther, Frau Moreno-Sanz Am Emaillierwerk 1 · 36043 Fulda · Telefon: 0661 - 90152801 E-Mail: emaillierwerk[at]wagner-apotheken.com Montag bis Samstag von 9.00 bis 20.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(normalize-space(.),\"Am Emaillierwerk 1\")]",
+ "name": "Apotheke im Emaillierwerk",
+ "note": "Six pharmacies share one page; the entry is keyed on the branch address, which is unique per branch and survives a redesign. The page ships a second copy of every branch inside a slider - the <p> anchor picks the list copy only.",
+ "osm_id": "node/1465073245",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.wagner-apotheken.com/ueber-uns/standorte-oeffnungszeiten"
+}

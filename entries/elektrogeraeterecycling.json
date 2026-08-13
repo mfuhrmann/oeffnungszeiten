@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten - Abgabe | Werkstatt: Privat: Montag - Donnerstag von 7.00 bis 15.30 Uhr Freitag von 7.00 bis 12.30 Uhr Gewerblich: Montag - Donnerstag von 7.00 bis 15.30 Uhr Bitte melden Sie ihre Entsorgung an",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Elektrogeräterecycling",
+ "osm_id": "node/12241127416",
+ "schema": 1,
+ "tags": [
+  "fulda-recycling"
+ ],
+ "url": "https://www.gruemel.de/Dienstleistungen/18-3-Elektrogeraeterecycling"
+}

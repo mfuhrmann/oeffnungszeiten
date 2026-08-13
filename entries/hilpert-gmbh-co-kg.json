@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Montag – Donnerstag: 08:00 Uhr – 17:00 Uhr Freitag: 08:00 Uhr – 16:00 Uhr Samstag: nach Vereinbarung BITTE BEACHTEN: Für eine persönliche Beratung bitten wir Sie vorher einen Termin mit uns zu vereinbaren! Gerne stehen wir ihnen alternativ zu den üblichen Öffnungszeiten telefonisch und per e-Mail zur Verfügung, gerne auch via Kontaktformular. Vielen Dank für Ihr Verständnis. Wir fre",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Hilpert GmbH & Co. KG",
+ "note": "website tag points at https://www.hilpert.eu/, which carries no hours; watching the page that does.",
+ "osm_id": "node/10789942694",
+ "schema": 1,
+ "tags": [
+  "fulda-stove_fitter"
+ ],
+ "url": "https://www.hilpert.eu/ueber-uns/kontaktformular/"
+}

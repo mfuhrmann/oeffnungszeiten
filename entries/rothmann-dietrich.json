@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Wir sind für Sie da Mo - Do: 08:30 - 16:00 Uhr Fr: 08:30 - 14:00 Uhr oder nach telefonischer Vereinbarung",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" entries \")]",
+ "name": "Rothmann & Dietrich",
+ "osm_id": "node/5651139509",
+ "schema": 1,
+ "tags": [
+  "fulda-tax_advisor"
+ ],
+ "url": "https://www.rothmann-dietrich.de/"
+}

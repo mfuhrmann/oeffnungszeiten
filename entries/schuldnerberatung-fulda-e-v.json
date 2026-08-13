@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Hier finden Sie uns:Schuldnerberatung Fulda e.V., Flemingstraße 10, 36041 Fulda(gegenüber vom Medicum) Telefonisch erreichbar:Mo. bis Fr. von 9:00 bis 19:00 UhrTel. 0661 / 965 997 13 Google u.a. Top-Bewertungen:Auswahl von verschiedenen PortalenHier Klicken",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" sqr3col \")]",
+ "name": "Schuldnerberatung Fulda e.V.,",
+ "osm_id": "node/13004511901",
+ "schema": 1,
+ "tags": [
+  "fulda-association"
+ ],
+ "url": "https://www.schuldnerberatung-in-fulda.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Montag - Donnerstag 07:30-13:00 Montag 14:00-17:00 Termine nach Vereinbarung",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" bsdata3 \")]",
+ "name": "lohi Lohnsteuerhilfeverein Bayern e.V.",
+ "osm_id": "node/12914251412",
+ "schema": 1,
+ "tags": [
+  "fulda-association"
+ ],
+ "url": "https://www.lohi.de/lohnsteuerhilfe/in/hessen/fulda.html"
+}

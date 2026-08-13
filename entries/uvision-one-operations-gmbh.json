@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "0661 | 9 777 480 Mo-Fr 08:00-17:00 #gerneperDU STUTTGART FULDA ÜBERREGIONAL IT-SYSTEMHAUS DESIGN INDIVIDUAL",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" x_footerblock \")]",
+ "name": "uvision.one operations GmbH",
+ "osm_id": "node/13448893344",
+ "schema": 1,
+ "tags": [
+  "fulda-company"
+ ],
+ "url": "https://uvision.one/"
+}
