@@ -1,10 +1,10 @@
 {
  "added": "2026-08-13",
  "captured_sample": "ÖffnungszeitenMontag09:00-16:00 UhrDienstag09:00-16:00 UhrMittwoch09:00-16:00 UhrDonnerstag09:00-16:00 UhrFreitag09:00-16:00 Uhr",
- "fetch_backend": "system",
+ "fetch_backend": "html_webdriver",
  "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
  "name": "Sparkasse Fulda S-Finanzmarkt",
- "note": "Branch page. Anchored on the h2 \"Oeffnungszeiten\" so the block stays the counter hours; the separate \"Verfuegbarkeit Geldautomat\" block (Mo-So 6:00-23:00) is not opening hours and stays out.",
+ "note": "Branch page. Anchored on the h2 \"Oeffnungszeiten\" so the block stays the counter hours; the separate \"Verfuegbarkeit Geldautomat\" block (Mo-So 6:00-23:00) is not opening hours and stays out. Plain fetch dies with an empty \"Exception:\" while curl and urllib from the same host return 200 and the browser renders 124 KB - so it runs on the browser backend.",
  "osm_id": "node/1333664507",
  "schema": 1,
  "tags": [
