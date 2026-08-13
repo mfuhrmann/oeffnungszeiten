@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "ÖffnungszeitenMontag – Freitag: 08.00 – 18.00 Samstag – Sonntag: 09.00 – 15.00",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Bertelmann",
+ "note": "website tag points at https://pflegedienst-bertelmann.de/, which carries no hours; watching the page that does.",
+ "osm_id": "node/13410492156",
+ "schema": 1,
+ "tags": [
+  "fulda-social_facility"
+ ],
+ "url": "https://pflegedienst-bertelmann.de/kontakt/"
+}

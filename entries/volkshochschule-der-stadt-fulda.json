@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten:Montag 08:30 bis 12:30 Uhr und 14:00 bis 16:00 Uhr Dienstag 08:30 bis 12:30 Uhr Mittwoch 08:30 bis 12:30 Uhr Donnerstag 08:30 bis 12:30 Uhr und 14:00 bis 16:00 Uhr Freitag 08:30 bis 12:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Volkshochschule der Stadt Fulda",
+ "osm_id": "node/1333419012",
+ "schema": 1,
+ "tags": [
+  "fulda-college"
+ ],
+ "url": "https://www.vhsfulda.de/"
+}

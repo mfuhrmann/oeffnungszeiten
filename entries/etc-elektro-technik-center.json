@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Mo. – Fr.: 7.30 – 16.30 Uhr Social Media",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "ETC - Elektro-Technik-Center",
+ "osm_id": "node/12500440614",
+ "schema": 1,
+ "tags": [
+  "fulda-electrician"
+ ],
+ "url": "https://www.etc-fulda.de/"
+}

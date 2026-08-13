@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag bis Donnerstag 08:30 Uhr bis 16:00 UhrFreitag 08:30 Uhr bis 14:30 Uhr Montag 09:30 Uhr bis 11:30 Uhr, 14:00 Uhr bis 15:00 UhrMittwoch 09:30 Uhr bis 11:30 Uhr, 14:00 Uhr bis 15:00 Uhr Die Rechtsantragstelle kann montags und mittwochs von 09:30 Uhr bis 11:30 Uhr und montags und mittwochs von 14:00 Uhr bis 15:00 Uhr persönlich besucht werden oder täglich unter der Telefonnummer +49 661 924 250",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Arbeitsgericht Fulda",
+ "osm_id": "node/13482049002",
+ "schema": 1,
+ "tags": [
+  "fulda-courthouse"
+ ],
+ "url": "https://arbeitsgerichtsbarkeit.hessen.de/arbeitsgerichte-und-landesarbeitsgericht/arbeitsgericht-fulda"
+}

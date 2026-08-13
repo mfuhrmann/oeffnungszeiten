@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Mo:08:00 - 18:00 Uhr Di:08:00 - 18:00 Uhr Mi:08:00 - 14:00 Uhr Do:08:00 - 18:00 Uhr Fr:08:30 - 16:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(concat(\" \",normalize-space(@class),\" \"),\" bhc-liste \")]",
+ "name": "MVZ im Altstadt-Carree Fulda",
+ "note": "website tag points at https://med-on-mvz.de/fulda/, which carries no hours; watching the page that does.",
+ "osm_id": "node/9814942478",
+ "schema": 1,
+ "tags": [
+  "fulda-clinic"
+ ],
+ "url": "https://med-on-mvz.de/standorte/allgemeinmedizin-fulda/"
+}

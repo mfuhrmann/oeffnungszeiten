@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Geschäftszeiten Montag – Freitag8.00 – 17.00 UhrImpressum & Datenschutz",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Geschäftszeiten\")])/parent::*",
+ "name": "IFW Immobilien Consulting und Management GmbH & Co. KG",
+ "osm_id": "node/13393396622",
+ "schema": 1,
+ "tags": [
+  "fulda-estate_agent"
+ ],
+ "url": "https://www.ifw-immobilien.de/"
+}

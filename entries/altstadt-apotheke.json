@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Zu folgenden Zeiten sind wir in der Apotheke für Sie da:MO | DI | DO | FR: 08:30 Uhr - 18:30 UhrMI: 08:00 Uhr - 18:30 Uhr SA: 08:00 Uhr - 14:30 UhrAußerhalb unserer Öffnungszeiten können Sie uns jederzeit per E-Mail oder Fax erreichen.",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Altstadt Apotheke",
+ "osm_id": "node/1332091043",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://altstadt-apotheke-fulda.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "bahnhof@die-engel-apotheken.de Öffnungszeiten: Mo – Fr.: 08.30 – 18.30 Uhr, Sa 09.00 – 12.30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Engel Apotheke am Bahnhof",
+ "osm_id": "node/1332023647",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://die-engel-apotheken.de/engel-apotheke-am-bahnhof/"
+}

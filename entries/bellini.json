@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Montag - Sonntag 12.00 Uhr - 23.00 Uhr Küche bis 22:30 Uhr Zur Anfahrtsroute",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Bellini",
+ "osm_id": "node/4768241148",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurant"
+ ],
+ "url": "https://www.ristorantebellini.de/"
+}

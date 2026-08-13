@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten des Stadtteiltreffs und Familienzentrums: Montag: 9 - 12 Uhr ab 17.08.2026 Dienstag: 14 - 17 Uhr Mittwoch: 9 - 12 Uhr 14 - 17 Uhr Donnerstag: 9 - 12 Uhr 14 - 17 Uhr Freitag: 14 - 17 Uhr Änderung Angebote: Mediatation findet dauerhaft nicht mehr statt. weitere Zeiten nach Vereinbarung oder je nach Angebot",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Stadtteiltreff & Familienzentrum Nordend",
+ "osm_id": "node/11074153437",
+ "schema": 1,
+ "tags": [
+  "fulda-community_centre"
+ ],
+ "url": "https://www.gruemel.de/Familien/2128-2374-Stadtteiltreff"
+}

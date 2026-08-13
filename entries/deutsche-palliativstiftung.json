@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten: Mo.-Fr. 09:00 Uhr bis 14:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Deutsche PalliativStiftung",
+ "osm_id": "node/11916919214",
+ "schema": 1,
+ "tags": [
+  "fulda-foundation"
+ ],
+ "url": "https://palliativstiftung.com/de/"
+}

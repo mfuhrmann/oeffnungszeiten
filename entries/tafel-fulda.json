@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Büro: Montag bis Freitag 07:00 bis 14:00 Uhr Ausweisbüro: Montag10:00 bis 13:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Tafel Fulda",
+ "osm_id": "node/13449338003",
+ "schema": 1,
+ "tags": [
+  "fulda-social_facility"
+ ],
+ "url": "https://www.tafel-fulda.de/"
+}

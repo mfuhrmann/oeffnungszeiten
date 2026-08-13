@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "KONTAKT Service Telefon 0661 - 604350 Sprechzeiten Montag 14.30 Uhr - 16.30 Uhr Donnerstag 10.00 Uhr - 12.00 Uhr oder nach telefonischer Vereinbarung Telefonische Erreichbarkeit Montag–Donnerstag: 09:00–12:00 Uhrund 14:00–16:00 UhrFreitag: 09:00–12:00 Uhr E-Mail Diese E-Mail-Adresse ist vor Spambots geschützt! Zur Anzeige muss JavaScript eingeschaltet sein. Freitag 09:00 - 12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")])]",
+ "name": "Fuldaer Spar- und Bauverein eG",
+ "osm_id": "node/5647084719",
+ "schema": 1,
+ "tags": [
+  "fulda-cooperative"
+ ],
+ "url": "https://www.spar-und-bauverein-fulda.de/"
+}

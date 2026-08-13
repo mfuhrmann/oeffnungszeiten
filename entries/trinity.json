@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Tuesday - Thursday: 17:00-01:00 | Friday & Saturday: 17:00-03:00Sunday: 15:00-22:00 | Monday: closed",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"imTextObject_294_tab0\"]",
+ "name": "Trinity",
+ "osm_id": "node/1332665598",
+ "schema": 1,
+ "tags": [
+  "fulda-pub"
+ ],
+ "url": "https://www.trinitypub.de/"
+}

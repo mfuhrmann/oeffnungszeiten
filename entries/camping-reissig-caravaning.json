@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag - Freitag09:00 - 12:00 Uhr 13:00 - 18:00 UhrSamstag10:00 - 12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Camping Reissig-Caravaning",
+ "osm_id": "node/5334662240",
+ "schema": 1,
+ "tags": [
+  "fulda-company"
+ ],
+ "url": "https://reissig-caravaning.de/"
+}

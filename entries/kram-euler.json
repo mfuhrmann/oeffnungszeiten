@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Montag – Freitag 8:30 – 12:30 Uhr und 14:00 – 17:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"text-3\"]",
+ "name": "Kram & Euler",
+ "osm_id": "node/13366687472",
+ "schema": 1,
+ "tags": [
+  "fulda-lawyer"
+ ],
+ "url": "https://kanzlei-kram.de/"
+}

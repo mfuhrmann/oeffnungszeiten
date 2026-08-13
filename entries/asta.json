@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Mo-Fr 9-16 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" opening-hours \")]",
+ "name": "AStA",
+ "osm_id": "node/12340811098",
+ "schema": 1,
+ "tags": [
+  "fulda-association"
+ ],
+ "url": "https://www.asta.hs-fulda.org/de"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "ÖffnungszeitenMo - Fr: 8:00 Uhr – 16:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "ambinius Seniorentagesstätte",
+ "osm_id": "node/11914270616",
+ "schema": 1,
+ "tags": [
+  "fulda-social_facility"
+ ],
+ "url": "https://www.ambinius.de/senioren-tagesstaette/seniorentagesstaette.html"
+}

@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Büro und Warenannahme Montag bis Donnerstag 09:00 – 16:30 UhrFreitag 09:00 – 13:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Klasmeier Kalibrier- und Messtechnik GmbH",
+ "note": "website tag points at https://www.klasmeier.com/, which carries no hours; watching the page that does.",
+ "osm_id": "node/10789929045",
+ "schema": 1,
+ "tags": [
+  "fulda-company"
+ ],
+ "url": "https://www.klasmeier.com/unternehmen/nehmen-sie-kontakt-mit-uns-auf/"
+}

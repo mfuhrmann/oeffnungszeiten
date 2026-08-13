@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Sprechstunde für Kleintiere Mo. 10 — 11 Uhr und 16 — 19 Uhr Di. 10 — 11 Uhr und 16 — 19 Uhr Mi. 16 — 19 Uhr Do. 10 — 11 Uhr und 16 — 19 Uhr Fr. 10 — 11 Uhr und 16 — 19 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Sprechstunde\")])/parent::*",
+ "name": "Dorit Ladugga",
+ "osm_id": "node/5778837713",
+ "schema": 1,
+ "tags": [
+  "fulda-veterinary"
+ ],
+ "url": "https://tierarztpraxis-ladugga.de/"
+}

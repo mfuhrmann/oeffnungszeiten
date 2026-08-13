@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Sprechzeiten: Mo.:09:00 - 12:00 Uhr Di.:09:00 - 12:00 Uhr Mi.:09:00 - 12:00 Uhr Do.:09:00 - 12:00 & 16:00 - 18:00 Uhr Fr.:09:00 - 12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h6[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*",
+ "name": "Opfer- und Zeugenhilfe e.V.",
+ "osm_id": "node/5651139511",
+ "schema": 1,
+ "tags": [
+  "fulda-office"
+ ],
+ "url": "https://fuldaer-hilfe.de/"
+}

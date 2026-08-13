@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag - Samstag: 09:00-19:00 Sonn- & Feiertage: 09:00-18:00",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"oeffnungszeiten\"]",
+ "name": "Café Glück Fulda",
+ "osm_id": "node/3978092611",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://www.cafe-glueck-fulda.de/"
+}

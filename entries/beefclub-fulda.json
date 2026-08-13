@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "DER SCHNELLSTE WEG ZU UNS ADRESSE Abtstor 2 36037 Fulda ÖFFNUNGSZEITEN Mo-Do 17:00 Uhr - Open End Fr-So 12:00 Uhr - 14:00 Uhr / 17:00 Uhr - Open End Di Geschlossen STEAKHOUSE-BEEFCLUB.EU +49 661 – 83 396 846",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" map-detail \")]",
+ "name": "Beefclub Fulda",
+ "osm_id": "node/1333599015",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurant"
+ ],
+ "url": "https://beefclub-fulda.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten in Fulda Mo. - Do. 08:00 - 12:00 Uhr 13:00 - 15:30 Uhr Fr. 08:00 - 12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Sozialdienst katholischer Frauen (SkF) Fulda",
+ "osm_id": "node/14008142456",
+ "schema": 1,
+ "tags": [
+  "fulda-social_facility"
+ ],
+ "url": "https://www.skf-fulda.de/skffulda/"
+}

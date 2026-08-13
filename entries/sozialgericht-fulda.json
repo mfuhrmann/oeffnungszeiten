@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag bis Freitag 09:00 Uhr bis 12:00 Uhr undMontag bis Donnerstag 13:30 Uhr bis 15:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Sozialgericht Fulda",
+ "osm_id": "node/13482049001",
+ "schema": 1,
+ "tags": [
+  "fulda-courthouse"
+ ],
+ "url": "https://sozialgerichtsbarkeit.hessen.de/sozialgerichte-und-landessozialgericht/sozialgericht-fulda"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Kanalstraße 23 am GemüsemarktDienstag bis Freitag 10:00 – 18:00Samstag 09:00 – 14.00Telefonnummer: 0661 49 98 81 17",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "Emmas Unverpackt Laden",
+ "osm_id": "node/3508043919",
+ "schema": 1,
+ "tags": [
+  "fulda-convenience"
+ ],
+ "url": "https://unverpackt-fulda.de/"
+}

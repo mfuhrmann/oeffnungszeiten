@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "BIC: GENODEM1BKCBürozeiten:Montag bis Donnerstag 8:00 -12:30 Uhrund 13:30 -16:00 UhrFreitag 8:00 - 12:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Bonifatiushaus",
+ "note": "website tag points at https://www.katholische-akademie-fulda.de/katholischeakademie/index.php, which carries no hours; watching the page that does.",
+ "osm_id": "way/24681950",
+ "schema": 1,
+ "tags": [
+  "fulda-conference_centre"
+ ],
+ "url": "https://www.katholische-akademie-fulda.de/katholischeakademie/06_Kontakt-und-Anfahrt/Anfahrtsskizze.php?navid=777091777091"
+}
