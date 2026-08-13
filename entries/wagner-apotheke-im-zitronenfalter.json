@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Apotheke im Zitronenfalter Frau Böschen, Frau Rübsam St.-Vinzenz-Str. 70 · 36041 Fulda · Telefon: 0661 - 2428646 E-Mail: zitronenfalter[at]wagner-apotheken.com Montag bis Freitag von 8.30 bis 18.00 Uhr Samstag von 9.00 bis 13.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(normalize-space(.),\"St.-Vinzenz-Str. 70\")]",
+ "name": "Apotheke im Zitronenfalter",
+ "note": "Six pharmacies share one page; the entry is keyed on the branch address, which is unique per branch and survives a redesign. The page ships a second copy of every branch inside a slider - the <p> anchor picks the list copy only.",
+ "osm_id": "node/254505758",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.wagner-apotheken.com/ueber-uns/standorte-oeffnungszeiten"
+}

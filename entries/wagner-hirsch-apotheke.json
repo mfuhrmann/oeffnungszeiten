@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Hirsch Apotheke Dr. Stefan Wagner, Frau Hertel Adalbertstraße 1 · 36039 Fulda · Telefon: 0661 - 71065 E-Mail: hirsch[at]wagner-apotheken.com Montag, Dienstag & Donnerstag von 8.00 bis 18.30 Uhr Mittwoch & Freitag von 8.00 bis 18.00 Uhr Samstag von 9.00 bis 13.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(normalize-space(.),\"Adalbertstraße 1\")]",
+ "name": "Hirsch Apotheke",
+ "note": "Six pharmacies share one page; the entry is keyed on the branch address, which is unique per branch and survives a redesign. The page ships a second copy of every branch inside a slider - the <p> anchor picks the list copy only.",
+ "osm_id": "node/5807606975",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.wagner-apotheken.com/ueber-uns/standorte-oeffnungszeiten"
+}
