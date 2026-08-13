@@ -50,8 +50,9 @@ DOCS = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
 # carries the long version.
 ACTIONS = (
     ("fetch error: Error - 403",
-     "Seite von hier und von der VPS mit gleicher Kennung abrufen. Nur die VPS 403: der Host "
-     "sperrt Rechenzentrums-IPs, Watch entfernen. Beide 403: die Kennung stoert."),
+     "Erst die Kennung: antwortet die Seite von der VPS mit aktuellem Chrome-UA mit 200, ist "
+     "requests.default_ua veraltet. Sonst von hier und von der VPS vergleichen - nur die VPS "
+     "403 heisst Rechenzentrums-Sperre, Watch entfernen."),
     ("fetch error: Error - 404",
      "Die Seite gibt es nicht mehr. Nachfolger suchen, sonst Watch entfernen."),
     ("fetch error: Error - 5",
