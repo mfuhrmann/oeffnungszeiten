@@ -57,7 +57,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # Pinned: the action's default follows "latest", which crossed the 3.x -> 4.x boundary
+      # mid-PR and broke `helm plugin install` twice in opposite directions.
       - uses: azure/setup-helm@v4
+        with:
+          version: v4.2.2
       - run: helm lint ./charts/changedetection
       - name: relay source compiles
         # files/matrix_relay.py ships as ConfigMap data, so nothing else would notice a syntax

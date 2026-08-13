@@ -109,3 +109,20 @@ tests:
     asserts:
       - hasDocuments:
           count: 4
+
+  - it: opens the relay port for the audit report only when that job exists
+    # The policy is deliberately narrow — anything reaching 8099 can post into a shared room.
+    set:
+      matrixRelay:
+        enabled: true
+      auditReport:
+        enabled: true
+      sync:
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+    documentIndex: 4
+    asserts:
+      - isKind:
+          of: NetworkPolicy
+      - equal:
+          path: spec.ingress[0].from[1].podSelector.matchLabels['app.kubernetes.io/name']
+          value: changedetection-audit-report

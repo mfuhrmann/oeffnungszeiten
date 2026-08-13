@@ -1,0 +1,55 @@
+{{- if .Values.auditReport.enabled }}
+{{- if not .Values.sync.repo }}
+{{- fail "auditReport.enabled requires sync.repo (the repository holding the scripts)" }}
+{{- end }}
+# Three failure states notify nobody on their own — a fetch error, an empty filter result, and
+# an over-wide global ignore pattern. Each looks like a watch on a page that did not change.
+# This posts the audit's RED verdict, which covers all three, and stays silent otherwise:
+# AMBER is the known and explained material and would only train everyone to skip the message.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "changedetection.name" . }}-audit-report
+  labels: {{- include "changedetection.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.auditReport.schedule | quote }}
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        metadata:
+          # Its own name label, not changedetection's: a bare pod carrying the app labels would
+          # match the Deployment's ReplicaSet selector and be adopted, then deleted. The relay's
+          # NetworkPolicy opens port 8099 for exactly this label.
+          labels:
+            app.kubernetes.io/name: {{ include "changedetection.name" . }}-audit-report
+            app.kubernetes.io/instance: {{ .Release.Name }}
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: audit-report
+              image: {{ .Values.sync.image }}
+              command: ["/bin/sh", "-c"]
+              args:
+                - |
+                  set -eu
+                  apk add --no-cache git >/dev/null
+                  git clone --depth 1 --branch {{ .Values.sync.ref }} {{ .Values.sync.repo }} /repo
+                  cd /repo
+                  # Reads the stored snapshots through the API; it never fetches a website, so a
+                  # blocked or slow site cannot make this job hang.
+                  python3 scripts/audit_report.py
+              env:
+                - name: CD_BASE_URL
+                  value: "http://{{ include "changedetection.name" . }}:{{ .Values.service.port }}"
+                - name: RELAY_URL
+                  value: "http://{{ include "changedetection.name" . }}-matrix-relay:8099/notify"
+                - name: CHANGEDETECTION_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ include "changedetection.name" . }}-api
+                      key: api-key
+{{- end }}

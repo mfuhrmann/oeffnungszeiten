@@ -103,6 +103,48 @@ Rolling the relay out and arming the watches are therefore two commits, in that 
 The bot must have **joined** the room; sending into a room it is not in fails with `M_FORBIDDEN`
 even though the alias resolves.
 
+## Was eine Nachricht verlangt
+
+Three kinds of message arrive in the room, and only the first one is usually about opening hours.
+
+**1. `Öffnungszeiten geändert: <name>`** — the watched block changed. Read the diff first, because
+it decides which of two jobs this is:
+
+- the diff shows different **hours** → update OSM, and set `check_date:opening_hours=YYYY-MM-DD`
+  even when you only confirmed what was already there; that date is how the next mapper knows the
+  value was verified.
+- the diff shows a clock, a counter, a rotating teaser, a cookie line → the hours did not move,
+  the filter did. Fix the filter (`filter_wizard.py --uuid <uuid>`), commit the entry, do not mute
+  the watch.
+- the diff shows a temporary notice — Betriebsurlaub, renovation, "ab Montag neue Zeiten" — leave
+  `opening_hours` alone. The regular hours are still the regular hours, and the notice is gone in
+  two weeks.
+
+**2. `CSS/xPath filter was not present in the page`** — changedetection's own message, sent after
+six consecutive misses, so roughly 18 days at a 3-day cadence. Nothing to do in OSM: the site was
+rebuilt and the anchor is gone. Re-run the wizard and commit the new filter.
+
+**3. `N Watches brauchen Aufmerksamkeit`** — the monthly `audit_report.py`. These are the watches
+that will never tell you anything themselves, and each finding carries its own first move:
+
+| finding | what it means | first move |
+|---|---|---|
+| `fetch error: 403` | the host refuses us | fetch the URL from a home connection and from the VPS with the same UA. Only the VPS gets 403 → the host blocks datacenter ranges, drop the watch. Both get 403 → the UA is the problem, not the address |
+| `fetch error: 404` | page is gone | find the successor page, otherwise drop the watch |
+| `fetch error: 5xx` | the site is broken today | wait one cycle before touching anything |
+| `no opening hours on this page at all` | blind watch | look for `/kontakt`, `/oeffnungszeiten`, a branch page; drop it if the business publishes none |
+| `no weekday named` / `only N weekday(s)` | filter caught part of the block | the rest sits in a sibling — anchor on the common ancestor |
+| `every day shows the same 09:00-17:00` | theme default, not this business | find the visible hours instead |
+| `the same hours are captured N×` | the anchor is too high | pick the narrower element |
+| `discarded by the global ignore pattern` | `global_ignore_text` swallows real lines | narrow the pattern in `deploy/global-settings.json` |
+| `captures text identical to N other watch(es)` | two watches on one page | give each business its own key, usually its address ([FILTERS.md](../FILTERS.md) case 12) |
+| `no filter` | whole page is watched | set one |
+
+**A quiet room is not proof.** Three states send nothing at all: a fetch error only sets
+`last_error`, an empty filter result is swallowed, and an over-wide `global_ignore_text` stops the
+checksum from moving. That is precisely what the monthly report is for — if it says
+"nothing to report", it has actually looked.
+
 ## Operating it
 
 - **The liveness probe is TCP, not `/health`.** Health means the Matrix session works, and a
