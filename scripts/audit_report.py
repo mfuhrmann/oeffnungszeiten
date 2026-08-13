@@ -42,6 +42,56 @@ def audit(base_url, api_key):
     return json.loads(out.stdout)
 
 
+DOCS = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
+        "notifications.md#was-eine-nachricht-verlangt")
+
+# A finding names what is broken; a reader still has to know what to do about it. The audit
+# already distinguishes the causes, so each gets its first move here — the doc link at the end
+# carries the long version.
+ACTIONS = (
+    ("fetch error: Error - 403",
+     "Seite von hier und von der VPS mit gleicher Kennung abrufen. Nur die VPS 403: der Host "
+     "sperrt Rechenzentrums-IPs, Watch entfernen. Beide 403: die Kennung stoert."),
+    ("fetch error: Error - 404",
+     "Die Seite gibt es nicht mehr. Nachfolger suchen, sonst Watch entfernen."),
+    ("fetch error: Error - 5",
+     "Serverfehler beim Anbieter. Einen Durchgang abwarten; bleibt es, andere Seite suchen."),
+    ("fetch error",
+     "Abruf scheitert. Seite von hier und von der VPS mit gleicher Kennung testen."),
+    ("no opening hours on this page at all",
+     "Die Seite fuehrt keine Zeiten mehr. Bessere Seite suchen (/kontakt, /oeffnungszeiten, "
+     "Filialseite), sonst Watch entfernen - blind meldet er nie etwas."),
+    ("times found but no weekday named",
+     "Der Filter fasst nur einen Teil des Blocks. Neue Kandidaten: filter_wizard.py --uuid"),
+    ("weekday(s) captured",
+     "Die restlichen Tage stehen im Nachbarelement. Gemeinsamen Vorfahren waehlen: "
+     "filter_wizard.py --uuid"),
+    ("every day shows the same",
+     "Das ist die Theme-Vorgabe, nicht die Zeit des Betriebs. Sichtbare Zeiten auf der Seite "
+     "suchen."),
+    ("the same hours are captured",
+     "Der Filter sitzt zu hoch und trifft mehrere Kopien. Engeres Element waehlen."),
+    ("discarded by the global ignore",
+     "global_ignore_text verschluckt echte Zeilen. Muster in deploy/global-settings.json engen."),
+    ("captures text identical to",
+     "Zwei Watches fangen denselben Text - einer haengt am falschen Element. Je Betrieb ein "
+     "eigener Anker, etwa auf die Filialadresse (FILTERS.md Fall 12)."),
+    ("no filter",
+     "Ohne Filter alarmiert jedes Banner. Filter setzen: filter_wizard.py --uuid"),
+    ("changed", "Verdaechtig haeufig. Diff ansehen: bewegt sich dort eine Uhr statt der Zeiten?"),
+    ("paused", "Watch ist pausiert und prueft nichts."),
+)
+
+
+def action_for(issues):
+    """The first move for a finding, or None when nothing matches."""
+    for issue in issues:
+        for needle, what in ACTIONS:
+            if needle in issue:
+                return what
+    return None
+
+
 def compose(rows):
     """-> (title, body) for the relay, or None when there is nothing worth sending."""
     red = [r for r in rows if r.get("verdict") == "red"]
@@ -49,12 +99,21 @@ def compose(rows):
         return None
     title = (f"{len(red)} Watch braucht Aufmerksamkeit" if len(red) == 1
              else f"{len(red)} Watches brauchen Aufmerksamkeit")
-    lines = []
-    for r in sorted(red, key=lambda r: r.get("name") or ""):
+    # Group by what has to be done, so one 403 wave costs one instruction line and not one per
+    # watch. Findings without a known move come last, under a heading that says so.
+    lines, last = [], object()
+    for r in sorted(red, key=lambda r: (action_for(r.get("issues") or []) or "zzz",
+                                        r.get("name") or "")):
+        what = action_for(r.get("issues") or [])
+        if what != last:
+            lines.append(f"Zu tun: {what}" if what else
+                         "Zu tun: unbekannter Befund - Diff und Filter von Hand ansehen.")
+            last = what
         # The relay treats a leading "Label: <url>" line as a header link, so the URL goes last
         # on its own line and the reason above it.
         lines.append(f"(changed) {r.get('name')}: {'; '.join(r.get('issues') or [])}")
         lines.append(f"Webseite: {r.get('url')}")
+    lines.append(f"Was die Befunde bedeuten: {DOCS}")
     lines.append(f"(von {len(rows)} Watches insgesamt)")
     return title, "\n".join(lines)
 
