@@ -65,7 +65,7 @@ jobs:
         run: python3 -m py_compile charts/changedetection/files/matrix_relay.py
       - name: unit tests
         run: |
-          helm plugin install https://github.com/helm-unittest/helm-unittest --verify=false
+          helm plugin install https://github.com/helm-unittest/helm-unittest
           helm unittest charts/changedetection
       - name: renders with the real base values
         run: |
