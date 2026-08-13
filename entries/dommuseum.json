@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "1. April bis 31. Oktober: Dienstag bis Samstag: 10.00 Uhr bis 12.30 Uhr 13.30 Uhr bis 17.00 Uhr Sonntag/Feiertag: 12.30 Uhr bis 17.00 Uhr Ostermontag, Pfingstmontag ------------------------------------------ 1. November bis 31. März: Dienstag bis Samstag: 10.00 Uhr bis 12.30 Uhr 13.30 Uhr bis 16.00 Uhr Sonntag/Feiertag: 12.30 Uhr bis 16.00 Uhr 2. Weihnachtstag (26.12.), Neujahr (01.01.) ----------",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Dommuseum",
+ "osm_id": "way/90756723",
+ "schema": 1,
+ "tags": [
+  "fulda-museum"
+ ],
+ "url": "https://www.bistum-fulda.de/bistum_fulda/kunst_musik/kunst/dommuseum/"
+}

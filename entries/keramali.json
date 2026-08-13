@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Mi + Fr 15-19 Uhr (findet freitags die Ladies Night statt, haben wir nur bis 18 Uhr geöffnet) Do 15-18 Uhr Sa 11-18 Uhr und nach Vereinbarung (wenn 1 Std. vor Geschäftsschluss keine Maler mehr da sind, schließen wir früher) Bitte reservieren sie vorher! (wir haben KEIN Kartenlesegerät) Tel: 0661/38095474 info@keramali.de DATENSCHUTZERKLÄRUNG Copyright: KERAMALI IMPRESSUM Niesigerstr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//span[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*/parent::*",
+ "name": "Keramali",
+ "note": "website tag points at https://www.keramali.de/, which carries no hours; watching the page that does.",
+ "osm_id": "node/2484142483",
+ "schema": 1,
+ "tags": [
+  "fulda-atelier"
+ ],
+ "url": "https://www.keramali.de/oeffnung.htm"
+}

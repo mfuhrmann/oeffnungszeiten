@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Aschenberg Apotheke Dr. Marion Wagner, Frau Engel Aschenbergplatz 9 · 36039 Fulda · Telefon: 0661 580 188 14 E-Mail: aschenberg[at]wagner-apotheken.com Montag bis Freitag von 8.00 bis 18.00 Uhr Samstag von 8.30 bis 13.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://p[contains(normalize-space(.),\"Aschenbergplatz 9\")]",
+ "name": "Aschenberg Apotheke",
+ "note": "Six pharmacies share one page; the entry is keyed on the branch address, which is unique per branch and survives a redesign. The page ships a second copy of every branch inside a slider - the <p> anchor picks the list copy only.",
+ "osm_id": "node/10251628956",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.wagner-apotheken.com/ueber-uns/standorte-oeffnungszeiten"
+}

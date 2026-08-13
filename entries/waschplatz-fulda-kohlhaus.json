@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten: Mo-Sa: 6:00 - 22:00 UHR",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Waschplatz Fulda-Kohlhaus",
+ "osm_id": "way/1466769778",
+ "schema": 1,
+ "tags": [
+  "fulda-car_wash"
+ ],
+ "url": "https://waschplatz-fulda.com/"
+}

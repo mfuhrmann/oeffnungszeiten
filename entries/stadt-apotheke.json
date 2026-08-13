@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "ÖffnungszeitenMo, Di, Do: 08:30-18:30Mi, Fr: 08:30-18:00Sa: 09:00-16:00",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Stadt-Apotheke",
+ "osm_id": "node/307922172",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.stadtapothekefulda.info/startseite/"
+}

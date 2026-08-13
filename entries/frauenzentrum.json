@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Adresse: Karlstr. 30 36037 FuldaÖffnungszeiten: Mo, Mi, Fr 8:30 – 12:00 Uhr und Di, Do 12:00 – 15:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Frauenzentrum",
+ "osm_id": "node/13535097917",
+ "schema": 1,
+ "tags": [
+  "fulda-government"
+ ],
+ "url": "https://www.fulda.de/stadt-politik/angebote-einrichtungen/frauenbuero-frauenzentrum"
+}

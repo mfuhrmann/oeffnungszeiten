@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Am Rosengarten 436037 FuldaSprechzeiten:Montag bis Freitag 09:00 Uhr bis 12:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Staatsanwaltschaft Fulda",
+ "osm_id": "node/13482049003",
+ "schema": 1,
+ "tags": [
+  "fulda-courthouse"
+ ],
+ "url": "https://staatsanwaltschaften.hessen.de/staatsanwaltschaften/staatsanwaltschaft-fulda"
+}

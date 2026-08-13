@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag15:45 - 20:30 Uhr Dienstag16:45 - 20:30 Uhr Mittwoch15:15 - 19:45 Uhr Donnerstag16:45 - 20:30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Fehrer Taekwon-Do Center",
+ "osm_id": "node/12311829874",
+ "schema": 1,
+ "tags": [
+  "fulda-dojo"
+ ],
+ "url": "https://fulda.taekwon-do-fehrer.de/"
+}

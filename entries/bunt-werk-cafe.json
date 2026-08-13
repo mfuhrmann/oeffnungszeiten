@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Mittagstisch - Bestellungen per Telefon Bestellungen unter 0661 / 380 940 64 aus der Speisekarte Unsere Öffnungszeiten Mo. - Do. 9.00 - 15.30 Uhr Fr. 9.00 - 14.00 Uhr Frühstück 9.00 - 11.00 Uhr Mittagstisch 12.00 - 14.00 Uhr Ansprechpartner Diana Heller & Lars Roder ________________________ Bistro Laden Tagungen Geburtstage Veranstaltungen Kaffee & Snacks",
+ "fetch_backend": "system",
+ "filter": "xpath://article[contains(concat(\" \",normalize-space(@class),\" \"),\" article \")]",
+ "name": "Bunt Werk Cafe",
+ "osm_id": "node/10948728205",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://www.behindertenhilfe-fulda.de/arbeiten/caritas-berufswege-fulda/menschen-mit-psychischen-erkrankungen/carisma/arbeitsfelder/test/test"
+}

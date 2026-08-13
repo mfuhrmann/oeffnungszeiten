@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeitentäglich von 10.00 Uhr bis 22.00 UhrFreitag ab 15.00 Uhr, Samstag ganztags, sowie Sonntag bis 15.00 Uhr, steht die Saunalandschaft exklusiv Übernachtungsgästen unseres Hauses zur Verfügung.Zu den Preisen",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Sauna- und Solelandschaft (Hotel Esperanto)",
+ "osm_id": "node/669208622",
+ "schema": 1,
+ "tags": [
+  "fulda-sauna"
+ ],
+ "url": "https://www.hotel-esperanto.de/saunalandschaft"
+}

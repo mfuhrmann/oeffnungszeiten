@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Edmund Sorg GmbH Kreuzbergstraße 44 36043 Fulda Verkauf: +49 661 495050 Service: +49 661 495010 Fax: +49 661 495077 E-Mail: info@sorg-gruppe.de Öffnungszeiten: Mo. - Fr.: 07.30 - 18.30 Uhr Service: 07.00 - 18.00 Uhr Samstag: 09.00 - 14.00 Uhr Service: 08.00 - 13.00 Uhr Beratung und Verkauf am Samstag bis 14.00 Uhr möglich.",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Ford Sorg",
+ "osm_id": "way/111669120",
+ "schema": 1,
+ "tags": [
+  "fulda-car"
+ ],
+ "url": "https://www.sorg-gruppe.de/"
+}

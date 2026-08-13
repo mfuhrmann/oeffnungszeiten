@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten:Mo + Di + Do 08.00 – 18.30 UhrMi + Fr 08.00 – 18.00 UhrSa 09.00 – 13.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Engel Apotheke",
+ "osm_id": "node/425388577",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://die-engel-apotheken.de/engel-apotheke-am-frauenberg/"
+}

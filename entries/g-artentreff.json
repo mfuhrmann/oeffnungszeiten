@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Kontakt: Sie finden uns im Torhaus am WirGarten g:artentreffSickelser Str. 1036041 Fulda Anfragen und Buchungen: Tel.: 0160/4969010Mail: gartentreff@antonius.de Öffnungszeiten: Do. - So. 09.00 bis 18.00 Uhr Veranstaltungen im g:artentreff Zu den Veranstaltungen Unser Angebot Speisekarte DE-ÖKO-Kontrollnummer:DE-ÖKO-006",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "g:artentreff",
+ "osm_id": "node/12870729885",
+ "schema": 1,
+ "tags": [
+  "fulda-cafe"
+ ],
+ "url": "https://www.antonius.de/einkaufen/gartentreff.html"
+}

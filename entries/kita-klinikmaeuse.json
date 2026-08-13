@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Die Kita Klinikmäuse ist eine Betriebskita des Klinikums Fulda für Kinder im Alter vom vollendeten 12. Lebensmonat bis zur Einschulung.Die reguläre Betreuungszeit ist von Montag bis Freitag in der Zeit von 7.00 Uhr bis 18.00 Uhr. Darüber hinaus wird eine Betreuung in Randzeiten von 5.30 Uhr bis 7.00 Uhr und von 18.00 Uhr bis 22.00 Uhr angeboten.",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" ce-bodytext \")]",
+ "name": "Kita Klinikmaeuse",
+ "osm_id": "node/13595911355",
+ "schema": 1,
+ "tags": [
+  "fulda-childcare"
+ ],
+ "url": "https://www.kleine-stromer.de/verbund-kitas/kitas-im-verbund/kita-klinikmaeuse.html"
+}

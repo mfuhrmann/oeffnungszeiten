@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Fulda Daimler-Benz-Straße 10 36039 Fulda 0661-60069253 / 4 poststelle.9009@schule.landkreis-fulda.de Mo: 10 -13 und 14:30 -17:30 Uhr; Di: 10 -13:00 und 16:30-19:30 Uhr Mi: 10 -13 Uhr; Do: 10 -13 und 14:30-17:30 Uhr Bad Hersfeld Geistalweg 9 36251 Bad Hersfeld 06621-76282 sfe.osthessen@t-online.de Mo: 15 – 17:30; Di: 15:30-17:30 Uhr; Mi: 15-17:30 Uhr;Do: 8:30-13 Uhr und 15 – 17:30 Uhr; Fr: 8 -12 Uh",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" anschrift \")]",
+ "name": "Schule für Erwachsene Osthessen",
+ "note": "website tag points at https://sfe-osthessen.de/, which carries no hours; watching the page that does.",
+ "osm_id": "way/1305138819",
+ "schema": 1,
+ "tags": [
+  "fulda-college"
+ ],
+ "url": "https://sfe-osthessen.de/contact/"
+}

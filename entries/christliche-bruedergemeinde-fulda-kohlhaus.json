@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "jeden Freitag18:30 Uhr bis 20:00 Uhr Sonntag:10:00 – 11:30 Uhr – GottesdienstDienstag:18:30 – 20:30 Uhr – russische Gemeinschaft (русское общение)Freitag:18:30 – 20:00 Uhr – Teenie & Kinderkreise18:30 – 20:00 Uhr – Bibelbetrachtung20:30 – 22:00 Uhr – Jugendkreis",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")])]",
+ "name": "Christliche Brüdergemeinde Fulda-Kohlhaus",
+ "osm_id": "node/13584539897",
+ "schema": 1,
+ "tags": [
+  "fulda-religion"
+ ],
+ "url": "https://cbg-fulda-kh.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "vom 12. – 21. Juni 2026 unsere Öffnungszeiten Mo. – Fr. 10 – 18 Uhr Sa. 10 – 15 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "RZ Wellness & Sun",
+ "osm_id": "node/4985073955",
+ "schema": 1,
+ "tags": [
+  "fulda-beauty"
+ ],
+ "url": "https://www.rz-wellness.de/"
+}

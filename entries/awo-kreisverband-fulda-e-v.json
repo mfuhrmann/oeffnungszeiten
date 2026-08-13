@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten:Mo.-Fr. 08:00 bis 17:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "AWO Kreisverband Fulda e.V.",
+ "osm_id": "node/11812011899",
+ "schema": 1,
+ "tags": [
+  "fulda-association"
+ ],
+ "url": "https://awo-fulda.de/en/kontakt/"
+}

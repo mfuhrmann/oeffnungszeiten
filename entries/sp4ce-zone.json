@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Mo – Do 15:00 – 22:00 Freitag 15:00 - 00:00 Samstag 11:00 – 00:00 Sonntag 11:00 – 22:00",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")])]",
+ "name": "Sp4ce Zone",
+ "osm_id": "node/13595787385",
+ "schema": 1,
+ "tags": [
+  "fulda-amusement_arcade"
+ ],
+ "url": "https://sp4ce-zone.de/"
+}

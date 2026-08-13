@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "ÖFFNUNGSZEITEN BÜRO Montag – Freitag: von 08:30 bis 16:00 Uhr geöffnet Tel: 0661 – 9428517 TAGESPFLEGE Montag – Freitag: von 08:00 bis 16:00 Uhr geöffnet Tel: 0661 – 90151739 AMBULANTER PFLEGEDIENST Unser Bereitschaftsdienst ist 24 Stunden für Sie da",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"text-4\"]",
+ "name": "SiMa Care",
+ "osm_id": "node/12992564274",
+ "schema": 1,
+ "tags": [
+  "fulda-social_facility"
+ ],
+ "url": "https://simacare.de/"
+}

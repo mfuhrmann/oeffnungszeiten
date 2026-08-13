@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Das Haus ist geöffnet 07:00 - 23:00 Uhr Die Rezeption ist geöffnet 07:30 - 22:00 Uhr Check-in 15:00 - 21:30 Uhr Die Öffnungszeiten gelten von Montag bis Samstag. Du möchtest sonntags oder zu einer anderen Uhrzeit einchecken? Sprich uns gerne an.",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "DJH Jugendherberge Fulda",
+ "osm_id": "way/712111994",
+ "schema": 1,
+ "tags": [
+  "fulda-hostel"
+ ],
+ "url": "https://www.jugendherberge.de/jugendherbergen/fulda/"
+}

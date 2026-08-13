@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Notdienst-Apotheken anzeigen Öffnungszeiten Montag 08:30 - 18:00 Dienstag 08:30 - 18:00 Mittwoch 08:30 - 18:00 Donnerstag 08:30 - 18:00 Freitag 08:30 - 18:00",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "St. Lioba-Apotheke",
+ "osm_id": "node/1357829193",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.st-lioba-apotheke.de/"
+}

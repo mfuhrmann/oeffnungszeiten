@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag: 6:00 - 22:00 Dienstag: 6:00 - 22:00 Mittwoch: 6:00 - 22:00 Donnerstag: 6:00 - 22:00 Freitag: 6:00 - 22:00 Samstag: 7:00 - 22:00 Sonntag: 7:00 - 22:00 Montag - Freitag: 6:30-10:00",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "B&B Hotel",
+ "osm_id": "way/37196595",
+ "schema": 1,
+ "tags": [
+  "fulda-hotel"
+ ],
+ "url": "https://www.hotel-bb.com/de/hotel/fulda-hbf"
+}

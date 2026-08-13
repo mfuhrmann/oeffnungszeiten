@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Sprechzeiten:Montag bis Donnerstag: 8.00 Uhr bis 15.30 UhrFreitag: 8.00 Uhr bis 12.00 UhrWeitere Informationen gibt es hierÖffnet sich in einem neuen Fenster",
+ "fetch_backend": "system",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*",
+ "name": "Hessisches Amt für Versorgung und Soziales",
+ "osm_id": "way/134566324",
+ "schema": 1,
+ "tags": [
+  "fulda-government"
+ ],
+ "url": "https://rp-giessen.hessen.de/HAVS-Fulda"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Mo – Sa: 9:00 – 18:00 (Ohne Termin) 18:00 – 20:00 (Mit Termin) Termine außerhalb der genannten Öffnungszeiten auf Anfrage.",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h5[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Fotowerk",
+ "osm_id": "node/6537564082",
+ "schema": 1,
+ "tags": [
+  "fulda-photographer"
+ ],
+ "url": "https://www.fotowerk-fulda.de/"
+}

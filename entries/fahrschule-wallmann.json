@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Büro Fulda Montag 12:00 - 18:00 Uhr Dienstag 12:00 - 16:30 Uhr Mittwoch 12:00 - 18:00 Uhr Donnerstag 12:00 - 16:30 Uhr Freitag 09:00 - 13:00 Uhr und nach Vereinbarung Öffnungszeiten Büro Fulda Montag geschlossen Dienstag geschlossen Mittwoch geschlossen Donnerstag 17:30 - 21:00 Uhr Freitag - geschlossen und nach Vereinbarung",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Fahrschule Wallmann",
+ "osm_id": "node/12965111668",
+ "schema": 1,
+ "tags": [
+  "fulda-driving_school"
+ ],
+ "url": "https://www.fahrschule-wallmann.de/"
+}

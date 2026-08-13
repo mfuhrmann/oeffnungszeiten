@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "ÖffnungszeitenÖffnungszeitenMo.-Fr. Montag-Freitag: 06:30-22:00 UhrSa. Samstag: 07:00-22:00 UhrSo. Sonntag: 07:30-21:00 UhrFalls Sie außerhalb unserer Rezeptions-Öffnungszeiten anreisen möchten, kontaktieren Sie bitte die Rezeption telefonisch.",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Hotel am Schloss",
+ "osm_id": "node/1333476339",
+ "schema": 1,
+ "tags": [
+  "fulda-hotel"
+ ],
+ "url": "https://www.hotel-am-schloss-fulda.de/"
+}

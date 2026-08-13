@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Montag bis Donnerstag09:00 Uhr – 13:00 Uhr14:00 Uhr – 16:30 UhrFreitag09:00 Uhr – 13:00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Spotlight Musicals",
+ "note": "website tag points at https://spotlight-musicals.de/, which carries no hours; watching the page that does.",
+ "osm_id": "node/1332767307",
+ "schema": 1,
+ "tags": [
+  "fulda-company"
+ ],
+ "url": "https://spotlight-musicals.de/kontakt/"
+}

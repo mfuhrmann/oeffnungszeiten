@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-13",
+ "captured_sample": "Öffnungszeiten Mo, Di, Do, Fr: 08:30-18:30Mi: 08:30-18:00Sa: 09:00-14:00",
+ "fetch_backend": "system",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Apotheke am Heertor",
+ "osm_id": "node/524677803",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.heertor-apotheke.de/startseite/"
+}
