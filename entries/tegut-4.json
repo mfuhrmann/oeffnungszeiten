@@ -1,9 +1,10 @@
 {
  "added": "2026-07-26",
- "captured_sample": "Markt Mo-Sa: 07:00 - 20:00 Post Mo-Sa: 09:00 - 19:00 * Parkplatz * Post (selbstbewirtschaftet)",
+ "captured_sample": "Markt Mo-Sa: 07:00 - 22:00",
  "fetch_backend": "system",
- "filter": "xpath://*[@id=\"openingHours_3950\"]",
+ "filter": "xpath://*[@id=\"openingtimesCollapse\"]",
  "name": "tegut",
+ "note": "2026-08-14: der Filter hing an openingHours_3950 - das ist der Markt Merkurstrasse, 2,25 km entfernt. Eigene Zeiten Mo-Sa 07:00-22:00, bewacht wurden 07:00-20:00 eines fremden Marktes. Die Seite listet unter den eigenen Zeiten die Nachbarmaerkte mit je einem openingHours_<nr>-Block; nur openingtimesCollapse gehoert diesem Markt. ",
  "osm_id": "way/134571090",
  "schema": 1,
  "tags": [

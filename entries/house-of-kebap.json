@@ -1,12 +1,15 @@
 {
  "added": "2026-07-25",
- "captured_sample": "[ { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": \"http://schema.org/Monday\", \"opens\": \"11:00\", \"closes\": \"21:00\" }, { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": \"http://schema.org/Tuesda",
- "fetch_backend": "html_requests",
- "filter": "json:$..openingHoursSpecification",
+ "captured_sample": "Öffnungszeiten Küche offen Montag bis Donnerstag Küche offen 11:00-21:00 Küche offen Freitag bis Samstag Küche offen 11:00-21:30 Küche offen Sonntag Küche offen",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://section[contains(concat(\" \",normalize-space(@class),\" \"),\" mod-website-opening-times \")]",
  "name": "House of Kebap",
- "note": "2026-08-01: dropped the :443 port + #contact anchor + lang=en from the URL (that combination returned 504); plain fetch of ?lang=de works and carries JSON-LD hours.",
+ "note": "2026-08-14: sichtbare Zeiten statt JSON-LD. Sie stehen erst nach dem JavaScript im DOM, daher html_webdriver. Der Block traegt beide Zustaende gleichzeitig - \"Wir haben geschlossen\" und \"Kueche offen\" - und CSS zeigt einen davon; .time-closed wird abgezogen, sonst wechselt der Text zweimal taeglich. Das JSON-LD war nicht falsch, aber es meldete zweimal eine verschobene Array-Position ohne jede Aenderung an den Zeiten.",
  "osm_id": "node/4984435237",
  "schema": 1,
+ "subtractive_selectors": [
+  ".time-closed"
+ ],
  "tags": [
   "fulda-fast_food"
  ],
