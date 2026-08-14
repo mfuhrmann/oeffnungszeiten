@@ -138,7 +138,17 @@ that will never tell you anything themselves, and each finding carries its own f
 | `the same hours are captured N×` | the anchor is too high | pick the narrower element |
 | `discarded by the global ignore pattern` | `global_ignore_text` swallows real lines | narrow the pattern in `deploy/global-settings.json` |
 | `captures text identical to N other watch(es)` | two watches on one page | give each business its own key, usually its address ([FILTERS.md](../FILTERS.md) case 12) |
+| `connect_over_cdp: … has been closed` | the shared cluster browser was gone mid-fetch, not a problem with the page | survives the recheck → look at the browser pod |
+| `429` | the host is rate-limiting, not blocking | over several runs it is the hoster, not this page |
+| `no filters were found` | the site was rebuilt, the anchor is gone | `filter_wizard.py --uuid`, then commit the entry |
 | `no filter` | whole page is watched | set one |
+
+**Every fetch error is looked at twice.** One blink of the shared browser writes
+`connect_over_cdp` into every `html_webdriver` watch that was in flight, and a 429 is gone by the
+next fetch — while a 403 stands for weeks. A single audit cannot tell those apart, so the report
+rechecks each fetch error and reports only what survives. A recheck that does not come back in
+time is reported as found: a line too many beats a silent failure. Each finding carries its
+`uuid`, because the moves above end in `--uuid` and the message is where you start.
 
 **A quiet room is not proof.** Three states send nothing at all: a fetch error only sets
 `last_error`, an empty filter result is swallowed, and an over-wide `global_ignore_text` stops the
