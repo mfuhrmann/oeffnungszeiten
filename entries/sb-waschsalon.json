@@ -4,6 +4,7 @@
  "fetch_backend": "system",
  "filter": "json:$..openingHours",
  "name": "SB Waschsalon",
+ "note": "2026-08-14: JSON-LD bleibt. Die Kontaktseite nennt keine einzige Uhrzeit; die Zeiten stehen ausschliesslich im Metadatenfeld.",
  "osm_id": "node/430648222",
  "schema": 1,
  "tags": [

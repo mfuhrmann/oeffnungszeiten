@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-14",
+ "captured_sample": "Öffnungszeiten Montag - Freitag von 7.30 Uhr bis 16.30 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Elektrogroßhandel Trabert",
+ "note": "Die eingetragene Startseite ist ein 93-Byte-Rumpf; die Zeiten stehen im Impressum. Dort sind sie zwar selten gepflegt, aber es ist die einzige Stelle, an der dieser Betrieb sie ueberhaupt nennt.",
+ "osm_id": "node/13452365944",
+ "schema": 1,
+ "tags": [
+  "fulda-electrical"
+ ],
+ "url": "https://trabert.elektro-online.de/impressum.html"
+}

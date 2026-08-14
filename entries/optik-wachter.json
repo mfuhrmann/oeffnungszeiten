@@ -4,6 +4,7 @@
  "fetch_backend": "system",
  "filter": "json:$..openingHours",
  "name": "Optik Wachter",
+ "note": "2026-08-14: JSON-LD bleibt. Die Seite nennt ueberhaupt keine Zeiten; die einzige Uhrzeit im Text ist der WordPress-Zeitstempel des Beitrags.",
  "osm_id": "node/1333293394",
  "schema": 1,
  "tags": [
