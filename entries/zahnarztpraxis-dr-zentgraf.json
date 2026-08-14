@@ -4,6 +4,7 @@
  "fetch_backend": "system",
  "filter": "json:$..openingHours",
  "name": "Zahnarztpraxis Dr. Zentgraf",
+ "note": "2026-08-14: JSON-LD bleibt. Weder /kontakt noch /zahnarzt/standorte noch /zahnarztpraxis nennen Sprechzeiten - die einzigen Uhrzeiten sind die Auswahlfelder des Terminformulars.",
  "osm_id": "node/2322929061",
  "schema": 1,
  "tags": [

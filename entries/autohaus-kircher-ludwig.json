@@ -4,6 +4,7 @@
  "fetch_backend": "html_requests",
  "filter": "json:$..openingHoursSpecification",
  "name": "Autohaus Kircher-Ludwig",
+ "note": "2026-08-14: JSON-LD bleibt. Die sichtbaren Zeiten stehen zwar auf der Haendlerseite, aber der einzige Anker ist die generierte Klasse \"lnPnsd\" - genau der Fall, fuer den FILTERS.md das Metadatenfeld vorsieht. Beim naechsten Umbau von volkswagen.de heisst sie anders.",
  "osm_id": "way/141655552",
  "schema": 1,
  "tags": [
