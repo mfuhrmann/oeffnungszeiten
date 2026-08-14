@@ -100,6 +100,12 @@ data:
       repo: https://github.com/mfuhrmann/oeffnungszeiten.git
       ref: main
 
+    # The three silent failure states — a fetch error, an empty filter result, an ignore pattern
+    # that ate the hours — notify nobody on their own, so a broken watch is indistinguishable
+    # from a page that did not change. This is the only thing that says so.
+    auditReport:
+      enabled: true
+
     # Matrix delivery. Apprise cannot hold a matrix.org session (MAS hands out short-lived
     # tokens and Apprise has no refresh), so the relay owns the session and the watches post to
     # it. On by design even before the session is seeded: unseeded it answers 503 and picks the
