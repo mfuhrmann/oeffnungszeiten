@@ -1,13 +1,14 @@
 {
  "added": "2026-08-13",
- "captured_sample": "Öffnungszeiten:Mo.-Fr. 08:00 bis 17:00 Uhr",
+ "captured_sample": "Öffnungszeiten:Montag bis Freitag von 08:00 bis 16:00 Uhr",
  "fetch_backend": "system",
- "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "filter": "xpath://*[contains(normalize-space(.),\"Montag bis Freitag von\")][not(.//*[contains(normalize-space(.),\"Montag bis Freitag von\")])]",
  "name": "AWO Kreisverband Fulda e.V.",
+ "note": "2026-08-14: hing an der englischen Seite und dort an der seitenweiten Fusszeile, die auf jeder Unterseite steht - deshalb fing dieser Watch denselben Text wie der Familientreff. Jetzt die Geschaeftsstellenseite mit ihren eigenen Zeiten. Achtung: die Fusszeile sagt Mo-Fr 08:00-17:00, diese Seite 08:00-16:00; OSM traegt 17:00. Die Seite der Geschaeftsstelle ist die genauere Quelle.",
  "osm_id": "node/11812011899",
  "schema": 1,
  "tags": [
   "fulda-association"
  ],
- "url": "https://awo-fulda.de/en/kontakt/"
+ "url": "https://awo-fulda.de/geschaeftsstelle-kontakt/"
 }
