@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-14",
+ "captured_sample": "SprechstundenzeitenMontag15:00 - 19.00 Dienstag09:00 - 13:00 UhrMittwoch11:30 - 14:00 UhrDonnerstag09:00 - 13:00 UhrFreitagnach VereinbarungSondertermine nach Vereinbarung.Terminvereinbarung: Telefonisch: Unter 0661 9015191 während der Rezeptionszeiten.Per E-Mail: über unsere Mailadresse \"rezeption@dr-habermann.de\".Immer erreichbarPatientinnen, die bei uns bekannt sind, erreichen den Praxisinhaber",
+ "fetch_backend": "system",
+ "filter": "xpath://*[@id=\"content_container\"]",
+ "name": "Dr. Peter G. Habermann",
+ "note": "Die Startseite verlinkt die Zeiten nur ueber einen Bildknopf ohne Alt-Text bzw. unter einem nummerierten Pfad; die Linkbewertung fand das erst mit dem Wortstamm.",
+ "osm_id": "node/13230067452",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "http://www.peterhabermann.de/32.html"
+}

@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-14",
+ "captured_sample": "Öffnungszeiten Montag bis Freitag 07.30 - 17.30 Uhr Samstag 09.00 - 12.00 Uhr",
+ "fetch_backend": "system",
+ "filter": "xpath://table[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//table[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Heitz+Draut",
+ "note": "Die Startseite verlinkt die Zeiten nur ueber einen Bildknopf ohne Alt-Text bzw. unter einem nummerierten Pfad; die Linkbewertung fand das erst mit dem Wortstamm.",
+ "osm_id": "node/12500448659",
+ "schema": 1,
+ "tags": [
+  "fulda-vehicle_inspection"
+ ],
+ "url": "https://heitz-draut.de/oeffnung.php"
+}

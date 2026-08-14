@@ -21,12 +21,20 @@ UA = {"User-Agent": "Mozilla/5.0 (compatible; changedetection-setup/1.0)"}
 # Overpass rejects UAs containing "Mozilla"/"(compatible;" (HTTP 406) — use a plain one
 OVERPASS_UA = {"User-Agent": "osm-cd-sync/1.0"}
 
-# keyword -> score, used to pick the best "opening hours" subpage from a homepage
+# pattern -> score, used to pick the best "opening hours" subpage from a homepage.
+# Stems, not whole words: heitz-draut.de links its hours as `oeffnung.php` behind an image
+# button with no alt text, scored zero on the full word and was never opened — while the page
+# holds exactly what we look for. Measured over 157 pages the scan had written off, the stem
+# finds two more and costs nothing.
+# The lookbehind matters as much: "Eröffnung der e-Bike Welt" and "Neueröffnungen" are news, and
+# without it they outrank the real contact page.
 LINK_PRIORITY = [
-    ("oeffnungszeiten", 5), ("öffnungszeiten", 5), ("offnungszeiten", 5), ("opening", 5),
-    ("kontakt", 3), ("contact", 3),
-    ("anfahrt", 2), ("standort", 2),
-    ("impressum", 1),
+    (r"(?<!er)(?<!neuer)(?:oe|ö|o)ffnungszeiten", 5), (r"opening", 5),
+    (r"(?<!er)(?<!neuer)(?:oe|ö|o)ffnung", 4),
+    (r"sprechzeit|sprechstunde(?!n?video)|betreuungszeit|(?:geschäfts|geschaefts|büro|buero)zeit", 4),
+    (r"kontakt", 3), (r"contact", 3),
+    (r"anfahrt", 2), (r"standort", 2),
+    (r"impressum", 1),
 ]
 MIN_REPOINT_SCORE = 2
 
@@ -175,8 +183,8 @@ def _fetch(url, timeout=15):
 def _score_link(href, text):
     blob = (href + " " + text).lower()
     best = 0
-    for kw, w in LINK_PRIORITY:
-        if kw in blob:
+    for pattern, w in LINK_PRIORITY:
+        if re.search(pattern, blob):
             best = max(best, w)
     return best
 
