@@ -1,12 +1,15 @@
 {
  "added": "2026-07-25",
- "captured_sample": "[ { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": \"http://schema.org/Monday\", \"opens\": \"00:00\", \"closes\": \"00:00\" }, { \"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": \"http://schema.org/Tuesda",
- "fetch_backend": "html_requests",
- "filter": "json:$..openingHoursSpecification",
+ "captured_sample": "Öffnungszeiten Küche offen Montag Küche offen Dienstag bis Sonntag Küche offen 17:00-23:00 Küche offen Küche offen 17:00-22:00",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://section[contains(concat(\" \",normalize-space(@class),\" \"),\" mod-website-opening-times \")]",
  "name": "Tandurem",
- "note": "2026-08-01: dropped the :443 port + #contact anchor + lang=en from the URL (that combination returned 504); plain fetch of ?lang=de works and carries JSON-LD hours.",
+ "note": "2026-08-14: sichtbare Zeiten statt JSON-LD, erst nach dem JavaScript im DOM (html_webdriver). Wie bei House of Kebap traegt der Block beide Zustaende gleichzeitig; .time-closed wird abgezogen, sonst wechselt der Text zweimal taeglich. Das JSON-LD meldete zuletzt nur eine verschobene Array-Position, ohne dass sich eine Zeit geaendert haette.",
  "osm_id": "node/270382294",
  "schema": 1,
+ "subtractive_selectors": [
+  ".time-closed"
+ ],
  "tags": [
   "fulda-restaurants"
  ],

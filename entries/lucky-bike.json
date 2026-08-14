@@ -1,12 +1,15 @@
 {
  "added": "2026-07-26",
- "captured_sample": "Geöffnet Montag – Freitag: 10 – 19 Uhr Samstag: 10 – 18 Uhr Die Filiale ist am 25.08.2026 geschlossen",
+ "captured_sample": "Montag – Freitag: 10 – 19 Uhr Samstag: 10 – 18 Uhr Die Filiale ist am 25.08.2026 geschlossen",
  "fetch_backend": "system",
  "filter": "xpath://span[contains(concat(\" \",normalize-space(@class),\" \"),\" e-paragraph-base \")]",
  "name": "Lucky Bike",
- "note": "2026-08-06: sichtbarer Text statt JSON-LD. Der frühere ancestor::div-Ausdruck wurde von lxml und changedetection unterschiedlich gelesen, dieser nicht.",
+ "note": "2026-08-06: sichtbarer Text statt JSON-LD. Der frühere ancestor::div-Ausdruck wurde von lxml und changedetection unterschiedlich gelesen, dieser nicht. 2026-08-14: Das Live-Feld im selben Span (\"Geschlossen\" / \"Öffnet heute um 10 Uhr\") liess den Watch taeglich feuern; .lb--status__badge wird jetzt abgezogen, die Wochenzeiten und der Feiertagshinweis bleiben.",
  "osm_id": "way/117695812",
  "schema": 1,
+ "subtractive_selectors": [
+  ".lb--status__badge"
+ ],
  "tags": [
   "fulda-bicycle"
  ],
