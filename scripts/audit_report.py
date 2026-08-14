@@ -22,6 +22,7 @@ other script here.
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import urllib.request
@@ -111,8 +112,10 @@ def compose(rows):
                          "Zu tun: unbekannter Befund - Diff und Filter von Hand ansehen.")
             last = what
         # The relay treats a leading "Label: <url>" line as a header link, so the URL goes last
-        # on its own line and the reason above it.
-        lines.append(f"(changed) {r.get('name')}: {'; '.join(r.get('issues') or [])}")
+        # on its own line and the reason above it. Playwright errors arrive as a multi-line call
+        # log, which would break that shape into unreadable fragments — collapse them.
+        issues = re.sub(r'\s+', ' ', '; '.join(r.get('issues') or [])).strip()
+        lines.append(f"(changed) {r.get('name')}: {issues[:160]}")
         lines.append(f"Webseite: {r.get('url')}")
     lines.append(f"Was die Befunde bedeuten: {DOCS}")
     lines.append(f"(von {len(rows)} Watches insgesamt)")
