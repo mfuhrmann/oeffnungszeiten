@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Unsere Telefonsprechzeiten sind täglich von 9:00 bis 16:00 Uhr, außer Donnerstags.",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"donnerstag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"donnerstag\")])]",
+ "name": "Dörr Ergotherapie",
+ "note": "2026-08-15: Die Praxis veroeffentlicht nur Telefonsprechzeiten (\"taeglich 9:00 bis 16:00 Uhr, ausser donnerstags\"), keine Oeffnungszeiten.",
+ "osm_id": "node/5549966349",
+ "schema": 1,
+ "tags": [
+  "fulda-occupational_therapist"
+ ],
+ "url": "https://ergotherapie-doerr.de/?page_id=22"
+}

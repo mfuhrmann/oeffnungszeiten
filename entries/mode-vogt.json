@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten Mo. - Fr.: 10.00 - 18.30 Uhr Sa.: 10.00 - 18.00 Uhr",
+ "filter": "xpath:(//b[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Mode Vogt",
+ "note": "2026-08-15: Die Startseite zeigte die Zeiten der Zentrale in Huenfeld (Vorwahl 06652). Fulda hat eine eigene Filialseite, Marktstraße 21 — dorthin zeigt jetzt auch der website-Tag.",
+ "osm_id": "node/1333364668",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.mode-vogt.de/filialen/mode-vogt-fulda"
+}

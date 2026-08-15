@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten: Mo–Fr: 10–18.30 Uhr Sa: 9–15 Uhr",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Vinum",
+ "osm_id": "node/1333603625",
+ "schema": 1,
+ "tags": [
+  "fulda-beverages"
+ ],
+ "url": "https://www.vinum-fulda.de/"
+}

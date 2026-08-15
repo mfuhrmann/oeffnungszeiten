@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Wir sind gerne für Sie da: Montag-Donnerstag von 10.00 bis 17.00 Uhr, sowie nach Vereinbarung.",
+ "filter": "xpath://span[contains(.,\"Montag-Donnerstag\")]/parent::*",
+ "name": "Cantique",
+ "note": "2026-08-15: Die Zeiten stehen mitten im Fliesstext, es gibt keinen eigenen Block. Deshalb der ganze Absatz — eine Umformulierung des Werbetextes loest damit auch aus.",
+ "osm_id": "node/1333620263",
+ "schema": 1,
+ "tags": [
+  "fulda-beauty"
+ ],
+ "url": "http://www.cantique.de/"
+}

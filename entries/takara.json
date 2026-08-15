@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten Di. bis So. 11:30 - 15:00 Uhr & 17:30 - 23:00 Uhr Montag Ruhetag",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" hometext \")][contains(.,\"Öffnungszeiten\")]",
+ "name": "Takara",
+ "note": "2026-08-15: Der Wizard nahm #content-1column, also die halbe Startseite. Die Seite hat drei gleichartige .hometext-Kaesten (Location, Oeffnungszeiten, All you can eat); genommen ist der mittlere. Die Buffetzeiten im dritten Kasten bleiben bewusst draussen.",
+ "osm_id": "node/1333352664",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.takara-fulda.de/"
+}

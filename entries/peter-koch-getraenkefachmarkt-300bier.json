@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Mo – Fr: 8:00 – 18:00 UhrSamstag: 8:00 – 17:00 Uhr",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"samstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"samstag\")])]",
+ "name": "Peter Koch Getränkefachmarkt / 300Bier",
+ "osm_id": "node/4984437562",
+ "schema": 1,
+ "tags": [
+  "fulda-beverages"
+ ],
+ "url": "https://www.300bier.de/kontakt/"
+}

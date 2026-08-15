@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Sprechzeiten Mo–Fr: 9:00–12:00 Uhr und 15:00–18:00 Uhr Termine nach telefonischer Absprache!",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*",
+ "name": "Detlef Pöhlmann",
+ "osm_id": "node/1333367657",
+ "schema": 1,
+ "tags": [
+  "fulda-alternative"
+ ],
+ "url": "https://www.heilpraktiker-poehlmann.de/"
+}

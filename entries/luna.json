@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Montag-Samstag 10-18 Uhr",
+ "filter": "xpath://strong[contains(.,\"Montag-Samstag\")]",
+ "name": "Luna",
+ "note": "2026-08-15: Ohne Anker haette der Wizard die ganze Seite genommen. Ein textgleicher Treffer steckt auch im JSON-LD und in einem Baukasten-Skript; die Verengung auf <strong> nimmt genau den sichtbaren.",
+ "osm_id": "node/1328294767",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.luna-fulda.de/"
+}
