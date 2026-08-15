@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Sprechzeiten Unsere SprechzeitenMo + Mi +Fr 08:00 - 13:00 Uhr | 14:30 - 18:00 UhrDi + Do 08:00 - 13:00 Uhr | 14:00 - 17:30 Uhr",
+ "filter": "xpath:(//h1[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*",
+ "name": "Knapp Manske",
+ "osm_id": "node/1328325073",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://www.knapp-manske.de/"
+}

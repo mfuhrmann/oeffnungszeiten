@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Magdeburger Straße 13–1536037 FuldaMontag: 16:00–22:30Dienstag: geschlossenMittwoch–Freitag: 16:00–22:30Samstag–Sonntag: 12:00–22:30",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Pars",
+ "osm_id": "node/2412957094",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://pars-fulda.de/"
+}

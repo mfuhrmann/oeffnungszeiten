@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Montag GeschlossenDienstag 15:00 - 23:00Mittwoch 15:00 - 23:00Donnerstag 15:00 - 23:00Freitag 15:00 - 23:00Samstag 15:00 - 23:00Sonntag 15:00 - 00:00",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" openingtimes \")]",
+ "name": "Mr. Pizza",
+ "osm_id": "node/13282957227",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.mrpizza-fulda.de/contact"
+}

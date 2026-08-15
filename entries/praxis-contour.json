@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Praxis Contour Fulda Ästhetisch-Plastische Chirurgie Friedrichstraße 13 36037 Fulda Sie erreichen uns unter Fulda +49 (0) 661 / 94 269 26 Öffnungszeiten Mo. bis Fr. 9:00 Uhr - 18:00 Uhr",
+ "filter": "xpath://div[contains(.,\"Friedrichstraße 13\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Friedrichstraße 13\") and contains(.,\"Uhr\")])]",
+ "name": "Praxis Contour",
+ "note": "2026-08-15: Die Praxis hat zwei Standorte, und .praxis_contour_main_box fasst beide Kaesten - der Frankfurter stand zuerst. Deshalb nach Adresse geschluesselt (FILTERS.md Fall 12); Frankfurt und Fulda haben zufaellig dieselben Zeiten, eine Verwechslung waere also nicht aufgefallen.",
+ "osm_id": "node/1328307720",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://praxis-contour.de/praxis/plastische-chirurgie-fulda/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Montag geschlossen Dienstag geschlossen Mittwoch geschlossen Donnerstag 7–11:30 pm Freitag 7 pm–1 am Samstag 5 pm–1 am Sonntag geschlossen",
+ "filter": "xpath://table[contains(concat(\" \",normalize-space(@class),\" \"),\" openinghours \")]",
+ "name": "Highlander",
+ "note": "2026-08-15: Gleiche Plattform wie Gleis 10 (9gg.de), gleiches Wetter-Widget, gleiche Verengung auf .openinghours.",
+ "osm_id": "node/13668925067",
+ "schema": 1,
+ "tags": [
+  "fulda-pub"
+ ],
+ "url": "https://highlander.9gg.de/"
+}
