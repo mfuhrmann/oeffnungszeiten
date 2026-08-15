@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Tuesday, Wednesday, Thursday, Friday 09:00-19:00 · Saturday 09:00-14:00",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Haargalerie",
+ "note": "2026-08-15: JSON-LD, Werte pro Tag.",
+ "osm_id": "node/1333261926",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://www.haargalerie-fulda.de/"
+}

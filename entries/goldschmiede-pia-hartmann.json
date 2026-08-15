@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Kontakt Goldschmiede Pia HartmannSchlitzer Str. 7736039 Fulda Telefon: 0661 / 51778info@goldschmiede-hartmann.com Öffnungszeiten An den beiden Samstagen 1. und 8. August 2026 haben wir geschlossen! Mo",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Goldschmiede Pia Hartmann",
+ "note": "2026-08-15: Fasst Kontaktdaten mit ein, der Anker ist dafuer stabil.",
+ "osm_id": "node/13004344104",
+ "schema": 1,
+ "tags": [
+  "fulda-jewelry"
+ ],
+ "url": "https://www.goldschmiede-hartmann.com/"
+}

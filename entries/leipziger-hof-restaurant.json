@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-14",
+ "captured_sample": "Montag:GeschlossenDienstag:17:30 bis 22:00Mittwoch:17:30 bis 22:00Donnerstag:17:30 bis 22:00Freitag:17:30 bis 22:00Samstag:17:30 bis 22:00Sonntag:11:30 bis 14:3017:30 bis 22:00",
+ "fetch_backend": "system",
+ "filter": "xpath://ul[contains(concat(\" \",normalize-space(@class),\" \"),\" opening-hours-list \")]",
+ "name": "Leipziger Hof (Restaurant)",
+ "note": "Hotel and restaurant share leipzigerhof-fulda.de, which carries no hours and needs JavaScript. The restaurant keeps its own domain, and its /kontakt page serves the hours in plain HTML. This entry is the restaurant only; the hotel node is unwatched.",
+ "osm_id": "node/6322711068",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.restaurant-leipzigerhof.de/kontakt/"
+}

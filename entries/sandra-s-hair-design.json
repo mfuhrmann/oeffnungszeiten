@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Dienstag – Freitag 09:00 – 18:00 Samstag 09:00 – 14:00",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "Sandra´s Hair Design",
+ "osm_id": "node/1336887350",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://hairdesign-fulda.de/"
+}

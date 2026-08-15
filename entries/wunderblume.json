@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Wir haben für Sie geöffnet Mo-Fr: 9:00-17:00, Sa: 9:00-16:00, So: 10:00-12:00.",
+ "filter": "xpath://*[contains(.,\"Wir haben für Sie geöffnet\")][not(.//*[contains(.,\"Wir haben für Sie geöffnet\")])]",
+ "name": "Wunderblume",
+ "note": "2026-08-15: Zeiten stehen in einem Satz mitten im Text; ohne Anker nimmt der Wizard die ganze Seite.",
+ "osm_id": "node/5498251253",
+ "schema": 1,
+ "tags": [
+  "fulda-florist"
+ ],
+ "url": "https://www.wunder-blume.de/"
+}

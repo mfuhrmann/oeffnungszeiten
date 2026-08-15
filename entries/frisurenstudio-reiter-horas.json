@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Friseur Fulda / Horas Schlitzer Straße 87 36039 Fulda/Horas Telefon: 0661 53311 Öffnungszeiten: Di + Mi: 9.00 – 18.00 Uhr Do + Fr: 9.00 – 19.00 Uhr Sa: 8.00 – 14.00",
+ "filter": "xpath://*[contains(.,\"Öffnungszeiten\")][not(.//*[contains(.,\"Öffnungszeiten\")])]/parent::*",
+ "name": "Frisurenstudio Reiter (Horas)",
+ "note": "2026-08-15: Das JSON-LD der Kette traegt auf jeder Filialseite die Schema-Vorgabe Monday-Sunday 09:00-17:00 — die Boilerplate-Falle aus FILTERS.md. Deshalb der sichtbare Block. Der Filialname steht im Entry-Namen, weil beide Salons in OSM gleich heissen und sonst denselben Slug bekaemen.",
+ "osm_id": "node/13123688543",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://www.frisurenstudio-reiter.de/filialen/friseur-fulda-horas/"
+}

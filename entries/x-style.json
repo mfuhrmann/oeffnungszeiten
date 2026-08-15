@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten Mo: Geschlossen Di: 09:00 – 18:00 Uhr Mi: 09:00 – 18:00 Uhr Do: 09:00 – 18:00 Uhr Fr: 09:00 – 19:00 Uhr Sa: 09:00 – 15:00 Uhr",
+ "filter": "xpath:(//div[contains(concat(\" \",normalize-space(@class),\" \"),\" widget \")][contains(.,\"Öffnungszeiten\")])[1]",
+ "name": "X-Style",
+ "note": "2026-08-15: Die Seite liefert den Block zweimal (Desktop und Mobil, textgleich); ohne die Eingrenzung auf den ersten steht alles doppelt im Snapshot.",
+ "osm_id": "node/3762321857",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://haarstudio-x-style.de/"
+}

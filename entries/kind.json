@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Monday 09:00-18:00 · Tuesday 09:00-18:00 · … (JSON-LD der Filialseite)",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Kind",
+ "note": "2026-08-15: JSON-LD der Filialseite, Werte pro Tag. watch_audit meldet die Watch als RED (\"no opening hours\"), weil openingHoursSpecification \"opens\" und \"closes\" getrennt fuehrt und der Audit-Test eine Zeitspanne im Text sucht. Der Snapshot ist korrekt und die Watch feuert bei Aenderung - der Befund ist ein Grenzfall des Pruefers, kein Fehler des Filters.",
+ "osm_id": "node/1317117819",
+ "schema": 1,
+ "tags": [
+  "fulda-optician"
+ ],
+ "url": "https://www.kind.com/de-de/fachgeschaefte/hoergeraete-brillen-fulda"
+}

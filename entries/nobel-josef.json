@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten Di. - Sa. 9 bis 15 Uhr So. & Mo. Ruhetag",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Nobel & Josef ",
+ "osm_id": "node/5504610300",
+ "schema": 1,
+ "tags": [
+  "fulda-deli"
+ ],
+ "url": "https://www.nobelundjosef.de/"
+}

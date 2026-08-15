@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Klinikum Fulda Pacelliallee 4 36043 Fulda Telefon 01515 – 614 7744 WhatsApp 01515 – 614 7744 Öffnungszeiten: Montag bis Donnerstag von 09:00 bis 17:30 Uhr (ohne Termin möglich) Freitag & Samstag nur n",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" textwidget \")]",
+ "name": "Haarstudio Barock",
+ "note": "2026-08-15: Salon im Foyer des Klinikums; der Block traegt auch Adresse und Telefon.",
+ "osm_id": "node/2579217026",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://haarstudio-barock.de/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Friseur Fulda / Young Hair Design Niesiger Str. 1 36039 Fulda Telefon: 0661 56161 Öffnungszeiten: Di – Fr: 09.00 – 19.00 Uhr Sa: 8.00 – 14.00 Uhr",
+ "filter": "xpath://*[contains(.,\"Öffnungszeiten\")][not(.//*[contains(.,\"Öffnungszeiten\")])]/parent::*",
+ "name": "Young Hair Design",
+ "note": "2026-08-15: Wie bei den Reiter-Filialen: JSON-LD ist Boilerplate, der sichtbare Block gilt.",
+ "osm_id": "node/4472632873",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://www.frisurenstudio-reiter.de/filialen/young-hair-design/"
+}

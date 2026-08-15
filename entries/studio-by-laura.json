@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Peterstor 6 36037 Fulda Di. - Fr. 09:00 - 21:00 Uhr Sa. geschlossen",
+ "filter": "xpath://*[contains(.,\"Peterstor 6\") and contains(.,\"Uhr\")][not(.//*[contains(.,\"Peterstor 6\") and contains(.,\"Uhr\")])]",
+ "name": "Studio by Laura",
+ "note": "2026-08-15: Zwei Salons auf einer Seite (Fulda und Lauterbach) mit verschiedenen Zeiten; ohne Schluessel faengt der Filter beide.",
+ "osm_id": "way/207009130",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://bylaura.de/"
+}

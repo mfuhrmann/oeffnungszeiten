@@ -55,7 +55,10 @@ LANGS = {
 # 08:00 / 8.00 / "11 : 00" (some sites space out the colon) — but NOT inside an IP
 # address, a decimal or a date, hence the lookarounds rejecting an adjacent digit or dot.
 # "27.03.2025" is rejected because the lookahead sees the dot after "03".
-_CLOCK = r'(?<![\d.:])\d{1,2}\s*[:.]\s*\d{2}(?![\d.:])'
+# The optional seconds are for JSON-LD: `openingHoursSpecification` writes "opens": "09:00:00",
+# and without them the lookahead tripped over the second colon — which made watch_audit report
+# a working KIND watch as "no opening hours on this page at all".
+_CLOCK = r'(?<![\d.:])\d{1,2}\s*[:.]\s*\d{2}(?::\d{2})?(?![\d.:])'
 # "10 - 18 Uhr", "10–18 Uhr", "10 bis 18 Uhr", "18 Uhr"
 _GERMAN_BARE = r'(?<!\d)\d{1,2}\s*(?:[-–—]|bis)\s*\d{1,2}\s*Uhr|(?<!\d)\d{1,2}(?:[.:]\d{2})?\s*Uhr'
 # "Mo-Di 11-24h", "11 - 2 h" — German shorthand with an h suffix and no minutes
