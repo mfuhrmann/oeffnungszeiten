@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Di. - Fr.10:00 – 18.30 Uhr Sa.10.00 – 16.00 Uhr",
+ "filter": "xpath://ul[contains(concat(\" \",normalize-space(@class),\" \"),\" d-md-flex \")]",
+ "name": "Brillen optika",
+ "osm_id": "node/12871672773",
+ "schema": 1,
+ "tags": [
+  "fulda-optometrist"
+ ],
+ "url": "https://www.brillen-optika.de/"
+}

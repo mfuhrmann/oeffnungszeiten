@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Montag 5–9:30 pm Dienstag 5–11 pm Mittwoch 5–11 pm Donnerstag 5–11 pm Freitag 5–11 pm Samstag 4 pm–1 am Sonntag 4:30–10 pm",
+ "filter": "xpath://table[contains(concat(\" \",normalize-space(@class),\" \"),\" openinghours \")]",
+ "name": "Biereck",
+ "note": "2026-08-15: Dritter Laden auf der Plattform 9gg.de nach Gleis 10 und Highlander, gleiche Falle: die Nachbartabelle mit derselben Klasse \"table\" ist ein Wetter-Widget und haette jede Pruefung ausgeloest. Zeiten stehen dort englisch als am/pm.",
+ "osm_id": "node/5814042167",
+ "schema": 1,
+ "tags": [
+  "fulda-pub"
+ ],
+ "url": "https://zum-biereck.9gg.de/"
+}

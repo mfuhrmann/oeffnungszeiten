@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten So–Fr 09–17 Uhr Sa 08–17 Uhr",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Schick",
+ "osm_id": "node/7396009046",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://friseursalon-schick.jimdofree.com/kontakt/"
+}

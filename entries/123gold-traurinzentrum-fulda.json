@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Montag 10:00 - 18:00 Dienstag 10:00 - 18:00 Mittwoch 10:00 - 18:00 Donnerstag 10:00 - 18:00 Freitag 10:00 - 18:00 Samstag 10:00 - 15:00 Sonntag Geschlossen",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" opening-hours \")]",
+ "name": "123gold Traurinzentrum Fulda",
+ "osm_id": "node/11409977289",
+ "schema": 1,
+ "tags": [
+  "fulda-jewelry"
+ ],
+ "url": "https://www.123gold.de/standorte/fulda/"
+}

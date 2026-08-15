@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "ÖFFNUNGSZEITEN DI, MI und FR: 7:30 – 16:30 Uhr SA: 7:30 – 15:00 Uhr MO, DO und SO: geschlossen An Feiertagen: geschlossen",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*",
+ "name": "Ballmeier",
+ "osm_id": "node/1333642054",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://baeckerei-ballmaier.de/"
+}

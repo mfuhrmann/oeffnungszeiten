@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Kontakt Fulda, Hinterburg 10 info@o-wind.de 0661 / 9019 9010 Öffnungszeiten Mittwoch bis Freitag: 09:00 bis 18:00und nach Vereinbarung Impressum Datenschutz Cookie-Richtlinie (EU) Barrierefreiheit Imp",
+ "filter": "xpath:(//div[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "La Biosthetique Odile Wind",
+ "note": "2026-08-15: Nur drei Tage (Mi-Fr), mehr veroeffentlicht der Salon nicht; der Rest laeuft nach Vereinbarung. Adresse und Telefon haengen mit im Block.",
+ "osm_id": "node/13668911716",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://o-wind.de/"
+}

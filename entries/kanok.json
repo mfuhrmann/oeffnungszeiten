@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten: Montag - Samstag 10:00 - 20:00 Uhr",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Kanok",
+ "osm_id": "node/11812118040",
+ "schema": 1,
+ "tags": [
+  "fulda-massage"
+ ],
+ "url": "https://kanok-fulda.de/"
+}
