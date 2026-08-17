@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Mo - Fr 8 - 18 | Sa 8 - 13",
+ "filter": "xpath://span[contains(concat(\" \",normalize-space(@class),\" \"),\" g-menu-item-title \")][contains(.,\"Mo - Fr\")]",
+ "name": "Marien-Apotheke",
+ "note": "Einseiter; die Zeiten stehen als Eintrag in der Menueleiste, daher der Textanker.",
+ "osm_id": "node/3859970480",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://marienapotheke.eu/"
+}

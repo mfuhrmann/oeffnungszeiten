@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "über 1.250 kostenlose Parkplätze · Mo. – Sa. 8 – 19 Uhr",
+ "filter": "xpath://span[contains(concat(\" \",normalize-space(@class),\" \"),\" start_box_txt2 \")]",
+ "name": "Apotheke Marbaise Kaiserwiesen",
+ "note": "Die Zeile nennt neben den Zeiten die Zahl der Parkplaetze; ein kuerzerer Anker existiert auf der Seite nicht.",
+ "osm_id": "node/5324716970",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.apotheke-kaiserwiesen.de/"
+}

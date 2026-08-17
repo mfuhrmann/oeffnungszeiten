@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "[{\"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [\"Monday\"], \"opens\": \"08:30\", \"closes\": \"18:00\"}, {\"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [\"Tuesday\"], \"opens\": \"08:30\", \"closes\": \"18:00\"}, {\"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [\"Wednesday\"], \"opens\": \"08:30\", \"closes\": \"18:00\"}, {\"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [\"Thursday\"], \"opens\": \"08:30\", \"clos",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "St. Georg Apotheke",
+ "note": "Wie die Loewen-Apotheke eine JS-Anwendung derselben Vorlage; das JSON-LD stimmt mit dem Kartenwert ueberein.",
+ "osm_id": "node/6636616118",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.st-georg-apotheke-fulda.de/"
+}

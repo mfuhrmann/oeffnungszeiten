@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "[{\"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [\"Monday\"], \"opens\": \"08:00\", \"closes\": \"18:00\"}, {\"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [\"Tuesday\"], \"opens\": \"08:00\", \"closes\": \"18:00\"}, {\"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [\"Wednesday\"], \"opens\": \"08:00\", \"closes\": \"18:00\"}, {\"@type\": \"OpeningHoursSpecification\", \"dayOfWeek\": [\"Thursday\"], \"opens\": \"08:00\", \"clos",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Löwen Apotheke",
+ "note": "Die sichtbare Seite ist eine JS-Anwendung und liefert im HTML nur Platzhalter; das JSON-LD stimmt mit dem Kartenwert ueberein.",
+ "osm_id": "node/1328297212",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.loewen-apotheke-fulda.de/"
+}
