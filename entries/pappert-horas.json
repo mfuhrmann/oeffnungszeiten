@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "ÖffnungszeitenMontag: 06:00 - 18:00 Dienstag: 06:00 - 18:00 Mittwoch: 06:00 - 18:00 Donnerstag: 06:00 - 18:00 Freitag: 06:00 - 18:00 Samstag: 06:00 - 16:00 Sonntag: 07:00 - 12:00",
+ "fetch_backend": "html_requests",
+ "filter": ".detail-dealer-open-hours",
+ "name": "Pappert (horas)",
+ "note": "Filialseite der Kette unter /dealer/<slug>/; dieselbe Vorlage wie die uebrigen Pappert-Watches, die Zeiten unterscheiden sich je Filiale.",
+ "osm_id": "node/432011473",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://www.papperts.de/dealer/fil-fulda-horas/"
+}
