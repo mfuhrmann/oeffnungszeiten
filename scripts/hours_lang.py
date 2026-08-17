@@ -63,9 +63,16 @@ _CLOCK = r'(?<![\d.:])\d{1,2}\s*[:.]\s*\d{2}(?::\d{2})?(?![\d.:])'
 _GERMAN_BARE = r'(?<!\d)\d{1,2}\s*(?:[-–—]|bis)\s*\d{1,2}\s*Uhr|(?<!\d)\d{1,2}(?:[.:]\d{2})?\s*Uhr'
 # "Mo-Di 11-24h", "11 - 2 h" — German shorthand with an h suffix and no minutes
 _GERMAN_H = r'(?<!\d)\d{1,2}\s*[-–—]\s*\d{1,2}\s*h\b'
+# "Mo - Fr 8 - 18 | Sa 8 - 13" — a bare range with no unit at all. Only counted when a weekday
+# stands directly in front of it, because "1 - 3" on its own is a price, a shoe size or a
+# delivery estimate. Marien-Apotheke states its hours exactly once and exactly like this; without
+# this shape the audit called a correct filter "no opening hours on this page at all".
+_DAY_BARE = (r'\b(?:mo|di|mi|do|fr|sa|so)[a-zäöü]*\.?'
+             r'(?:\s*(?:[-–—]|bis)\s*(?:mo|di|mi|do|fr|sa|so)[a-zäöü]*\.?)?'
+             r'[\s:]*(?<![\d.:])\d{1,2}\s*[-–—]\s*\d{1,2}(?![\d.:])')
 _ENGLISH_BARE = r'(?<!\d)\d{1,2}(?::\d{2})?\s*(?:am|pm|a\.m\.|p\.m\.)'
 
-TIME_RE = re.compile(f'{_CLOCK}|{_GERMAN_BARE}|{_GERMAN_H}|{_ENGLISH_BARE}', re.I)
+TIME_RE = re.compile(f'{_CLOCK}|{_GERMAN_BARE}|{_GERMAN_H}|{_DAY_BARE}|{_ENGLISH_BARE}', re.I)
 
 # Text shapes of an anti-bot / error interstitial. Phrases must be DISTINCTIVE: a bare
 # "captcha" or "forbidden" also occurs in ordinary contact forms and legal text, and
