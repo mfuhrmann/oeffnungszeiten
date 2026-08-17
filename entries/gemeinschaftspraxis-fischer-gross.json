@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Sprechzeiten Geänderte Sprechzeiten 13.08. - 11.09.2026Montag8.00 – 12.00 Uhr15.00 – 17.30UhrDienstag8.00 – 12.00 Uhr14.00 – 17.30UhrMittwoch8.00 – 12.00 Uhr Donnerstag8.00 – 12.00 Uhr14.00 – 17.30Uhr",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Gemeinschaftspraxis Fischer & Groß",
+ "note": "2026-08-15: Der Block enthaelt auch die befristete Meldung \"Geaenderte Sprechzeiten 13.08.-11.09.2026\" - das ist Oeffnungszeiten-Information, kein Rauschen.",
+ "osm_id": "node/8112218489",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.fischergross-fulda.de/"
+}

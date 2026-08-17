@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Montag: geschlossen Dienstag bis Freitag: 10.00 bis 18.00 Uhr Samstag: 10.00 bis 14.00 Uhr gerne auch nach Vereinbarung",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Aureus Goldschmiede",
+ "osm_id": "node/1333667022",
+ "schema": 1,
+ "tags": [
+  "fulda-jewelry"
+ ],
+ "url": "https://www.goldschmiede-aureus.de/"
+}

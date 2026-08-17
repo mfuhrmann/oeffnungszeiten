@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten: Mo – Fr.: 9:00 – 21:00 Uhr Sa – So.: 10:00 – 20:00 Uhr",
+ "filter": "xpath:(//h6[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Holiday Wellness",
+ "osm_id": "node/1332762623",
+ "schema": 1,
+ "tags": [
+  "fulda-tanning_salon"
+ ],
+ "url": "https://holiday-wellness-fulda.de/contacts/"
+}

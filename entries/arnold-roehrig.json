@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "ÖFFNUNGSZEITEN Mo. - Fr.: 08 – 13 Uhr Mo./DI./DO.: 14 – 18 Uhr",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*",
+ "name": "Arnold Röhrig",
+ "osm_id": "node/13155225388",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://zahnarztpraxis-edelzell.de/"
+}

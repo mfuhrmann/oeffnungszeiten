@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Café am Frauenberg Gerloser Weg 20 36039 Fulda T 0661 380 79780 Anfahrt Mo. - Fri. 06:00 - 18:00 Uhr Sa. 06:00 - 16:00 Uhr So. 07:00 - 17:00 Uhr",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://div[contains(.,\"Gerloser Weg 20\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Gerloser Weg 20\") and contains(.,\"Uhr\")])]",
+ "name": "Café Bäckerei Happ (Gerloser Weg)",
+ "note": "2026-08-15: Dritte Watch auf /fachgeschaefte/, nach Adresse geschluesselt wie Kanalstraße und Rabanusstraße. Happ fuehrt die Filiale als \"Café am Frauenberg\". Ohne Browser zeigt die Seite die Zeiten nicht - eine Pruefung im Klartext haelt die Filiale faelschlich fuer zeitenlos.",
+ "osm_id": "node/1708904713",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://baecker-happ.de/fachgeschaefte/"
+}

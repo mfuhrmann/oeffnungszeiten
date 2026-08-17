@@ -334,6 +334,7 @@ naive pattern:
 | `donnerstags8:00` | Jordan's Mensa | misses the **weekday** — `\b` fails between `s` and `8` |
 | `212.110.223.68` | anti-bot block pages | **false hit** inside the IP address |
 | `27.03.2025` | closure notices | false hit unless dates are excluded |
+| `"opens": "09:00:00"` | JSON-LD `openingHoursSpecification` (KIND) | misses it — the lookahead guarding against IPs trips over the second colon, so a working watch is reported as having no hours at all |
 
 ```python
 import hours_lang as L

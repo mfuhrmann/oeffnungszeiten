@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten Montag: 9:30 – 12.30 nachmittags nach telefonischer Vereinbarung Mittwoch: 9:30 – 12.30 nachmittags nach telefonischer Vereinbarung Freitag: 9:30 – 12:30 nachmittags nach telefonischer ",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Müller Schött Naturheilpraxis",
+ "note": "2026-08-15: Nur Mo, Mi, Fr — mehr steht nicht auf der Seite, der Rest laeuft nach Vereinbarung.",
+ "osm_id": "node/1332536650",
+ "schema": 1,
+ "tags": [
+  "fulda-alternative"
+ ],
+ "url": "https://www.naturheilpraxis-sms.de/"
+}

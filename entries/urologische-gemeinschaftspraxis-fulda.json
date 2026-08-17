@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "SprechzeitenFuldaMontag bis Freitag08:00 bis 11:00 UhrMontag, Dienstag, Donnerstag13:30 bis 16:00 UhrTermine nach VereinbarungGersfeldDienstag, Donnerstag08:00 bis 11:00 Uhr13:00 bis 17:00 Uhr",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "Urologische Gemeinschaftspraxis Fulda",
+ "note": "2026-08-15: Der Block fuehrt Fulda UND Gersfeld ohne trennendes Element; eine Aenderung in Gersfeld loest deshalb mit aus. Kein Filter kann das hier auseinanderhalten.",
+ "osm_id": "node/12917631614",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://www.urologie-fulda.de/"
+}

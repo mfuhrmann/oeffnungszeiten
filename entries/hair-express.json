@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten Sonntag Geschlossen Montag 09:00 - 19:00 Dienstag 09:00 - 19:00 Mittwoch 09:00 - 19:00 Donnerstag 09:00 - 19:00 Freitag 09:00 - 19:00 Samstag 09:00 - 19:00",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Hair Express",
+ "note": "2026-08-15: Jeden Werktag dieselben Zeiten - bei einem Walk-in-Friseur im Kaufland plausibel.",
+ "osm_id": "node/5328038754",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://www.hairexpress-friseur.de/salons/details/fulda/5358"
+}

@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Die Türen zur Windmühle in Fulda sind täglich geöffnet: von Montag bis Donnerstag zwischen 11 Uhr morgens und 1 Uhr nachts. Freitags von 11 Uhr morgens bis 3 Uhr nachts, samstags immer von 10 Uhr morg",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Zur Windmühle",
+ "osm_id": "node/1600299320",
+ "schema": 1,
+ "tags": [
+  "fulda-pub"
+ ],
+ "url": "https://www.windmuehle-fulda.de/"
+}

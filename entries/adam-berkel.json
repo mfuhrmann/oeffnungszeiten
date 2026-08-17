@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Habelbergstraße 6 36043 Fulda Tel. 0661 497-0 E-Mail: info@berkel.de Geschäftszeiten: Mo – Fr: 7.30 – 17.00 Uhr",
+ "filter": "xpath://*[contains(normalize-space(.),\"Habelbergstraße 6\")][contains(normalize-space(.),\"Geschäftszeiten\")][not(.//*[contains(normalize-space(.),\"Habelbergstraße 6\")][contains(normalize-space(.),\"Geschäftszeiten\")])]",
+ "name": "Adam Berkel",
+ "note": "Die Startseite und das Impressum fuehren keine Zeiten, nur /kontakt/. Die Seite listet auch Paderborn und die Abholverkauf-Zeiten; der Anker haengt am innersten Block, der Habelbergstrasse 6 und Geschaeftszeiten zugleich traegt.",
+ "osm_id": "node/9160323333",
+ "schema": 1,
+ "tags": [
+  "fulda-doityourself"
+ ],
+ "url": "https://www.berkel.de/kontakt/"
+}

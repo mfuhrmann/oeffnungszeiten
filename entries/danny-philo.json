@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Mo: 08:00 - 15:00 Di : 08:00 - 15:00 Mi : 08:00 - 15:00 Do : 08:00 - 15:00 Fr : 08:00 - 15:00",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" et_pb_blurb_description \")]",
+ "name": "Danny Philo",
+ "osm_id": "node/13021487177",
+ "schema": 1,
+ "tags": [
+  "fulda-doctors"
+ ],
+ "url": "https://neuropsych-fulda.de/"
+}

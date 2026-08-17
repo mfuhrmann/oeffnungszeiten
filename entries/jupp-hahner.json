@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Montag bis Freitag 10–18 UhrSamstag 10–14 Uhr",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Jupp Hahner",
+ "osm_id": "node/1333397004",
+ "schema": 1,
+ "tags": [
+  "fulda-alcohol"
+ ],
+ "url": "https://www.jupp-hahner.de/"
+}

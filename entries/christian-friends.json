@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "✻ Öffnungszeiten Dinner Mittwoch bis Samstag 19:00- 22:00 Uhr Oder Termine nach Vereinbarung, eine Reservierung ist jedoch erforderlich. ✻ Partner :",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Christian & Friends",
+ "note": "2026-08-15: Nur die Dinner-Zeiten Mi-Sa; das Lokal arbeitet sonst auf Reservierung.",
+ "osm_id": "node/9839441022",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://christianandfriends.de/"
+}

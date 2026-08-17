@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Montag geschlossen Dienstag 4:30–10 pm Mittwoch 4:30–10 pm Donnerstag 4:30–10 pm Freitag 4:30–11 pm Samstag 4:30–11 pm Sonntag geschlossen",
+ "filter": "xpath://table[contains(concat(\" \",normalize-space(@class),\" \"),\" openinghours \")]",
+ "name": "Gleis 10",
+ "note": "2026-08-15: Auf .openinghours verengt. Die Seite fuehrt eine zweite Tabelle mit derselben Klasse \"table\" fuer ein Wetter-Widget (\"Temperatur N/A °C\"), das jede Pruefung ausgeloest haette. Die Zeiten stehen englisch als am/pm da, so liefert die Plattform sie aus.",
+ "osm_id": "node/773212969",
+ "schema": 1,
+ "tags": [
+  "fulda-pub"
+ ],
+ "url": "https://gleis-10.9gg.de/"
+}

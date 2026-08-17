@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Bürgerzentrum Ziehers-Süd Dingelstedtstraße 12 36043 Fulda Öffnungszeiten: Mo. – Do. 10:00 – 16:00 Uhr Fr. 10:00 – 13:00 Uhr Ansprechpartner:innen vor Ort",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*",
+ "name": "Bürgerzentrum Ziehers-Süd",
+ "note": "Der Kontaktblock ist der einzige Anker, der die Zeiten des Zentrums traegt — das \"Öffnungszeiten\"-Absatzpaar daneben gehoert zur AWO-Geschaeftsstelle (Mo-Fr 08:00-17:00). Ein Personalwechsel im selben Block loest deshalb mit aus.",
+ "osm_id": "way/774733521",
+ "schema": 1,
+ "tags": [
+  "fulda-community_centre"
+ ],
+ "url": "https://awo-fulda.de/buergerzentrum-ziehers-sued/"
+}

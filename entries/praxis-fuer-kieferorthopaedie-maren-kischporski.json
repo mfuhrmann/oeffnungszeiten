@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Unsere Sprechzeiten Montag - Donnerstag 08:00 bis 12:00 Uhr 13:00 bis 17:00 Uh Freitag 08:00 bis 13:00 Uhr",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Sprechzeiten\")])/parent::*",
+ "name": "Praxis für Kieferorthopädie Maren Kischporski",
+ "osm_id": "node/9259564432",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://www.kieferorthopaedie-kischporski.de/"
+}

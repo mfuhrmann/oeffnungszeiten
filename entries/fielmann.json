@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Monday 09:00-19:00 · Tuesday 09:00-19:00 · Wednesday 09:00-19:00 · Thursday 09:00-19:00 · Friday 09:00-19:00 · Saturday 09:00-16:00",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Fielmann",
+ "note": "2026-08-15: JSON-LD der Filialseite, Werte pro Tag.",
+ "osm_id": "node/1333372715",
+ "schema": 1,
+ "tags": [
+  "fulda-optician"
+ ],
+ "url": "https://www.fielmann.de/niederlassungen/fulda/36037-marktstrasse-14/"
+}

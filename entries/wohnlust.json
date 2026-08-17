@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "ÖFFNUNGSZEITEN Montag bis Samstag, 10-18 Uhr",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Wohnlust",
+ "osm_id": "node/1332705381",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.wohnlust.de/kontakt/store-fulda"
+}

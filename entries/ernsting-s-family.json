@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Mo 09:00-20:00 · Tu 09:00-20:00 · We 09:00-20:00 · Th 09:00-20:00 · Fr 09:00-20:00 · Sa 09:00-20:00",
+ "filter": "json:$..openingHours",
+ "name": "Ernsting's family",
+ "note": "2026-08-15: JSON-LD der Filialseite. Der sichtbare Block liegt hinter Javascript.",
+ "osm_id": "node/1465073284",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://store-locator.ernstings-family.de/fulda-am-emaillierwerk-1"
+}

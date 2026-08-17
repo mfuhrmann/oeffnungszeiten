@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": ": 9:30 - 19:00Mo.9:30 - 19:00Di.9:30 - 19:00Mi.9:30 - 19:00Do.9:30 - 19:00Fr.9:30 - 19:00Sa.9:30 - 19:00So.Geschlossen",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" geodir-field-business_hours \")]",
+ "name": "Adler",
+ "note": "2026-08-15: Klasse geodir-field-business_hours, die Tage stehen dort hinter den Zeiten.",
+ "osm_id": "node/1406092120",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://adler.de/standorte/fulda/"
+}

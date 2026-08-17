@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Tuesday 09:00-18:30 · Thursday 09:00-18:30 · Friday 09:00-18:30 · Saturday 09:00-16:00 · Monday 09:00-18:30 · Wednesday 09:00-18:30",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "NeuSehLand",
+ "note": "2026-08-15: JSON-LD der Filialseite, Werte pro Tag.",
+ "osm_id": "node/1333515672",
+ "schema": 1,
+ "tags": [
+  "fulda-optician"
+ ],
+ "url": "https://neusehland.de/niederlassung/fulda/"
+}

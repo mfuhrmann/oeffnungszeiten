@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungzeiten Mo, Di, Do 9 – 12 Uhr und 15 – 18 Uhr Mi + Fr 8.30 – 13.30 Uhr",
+ "filter": "xpath://*[@id=\"text-5\"]",
+ "name": "Michael Rehberg",
+ "osm_id": "node/12962119493",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://www.zahnarzt-rehberg-fulda.de/"
+}

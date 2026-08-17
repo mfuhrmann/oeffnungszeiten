@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Öffnungszeiten Montag 09:00 - 19:00 Dienstag 09:00 - 19:00 Mittwoch 09:00 - 19:00 Donnerstag 09:00 - 19:00 Freitag 09:00 - 19:00 Samstag 09:00 - 16:00 Sonntag Geschlossen",
+ "filter": "xpath://*[contains(.,\"Öffnungszeiten\")][not(.//*[contains(.,\"Öffnungszeiten\")])]/parent::*",
+ "name": "eyes and more",
+ "note": "2026-08-15: Erst auf json:$..openingHoursSpecification gesetzt - darauf warf changedetection \"string index out of range\", auch mit [*]. Die Seite liefert die Zeiten aber sichtbar im Klartext-HTML, also anchor auf die Ueberschrift. JSON-LD ist hier kein Vorteil, nur ein Umweg.",
+ "osm_id": "node/1333515651",
+ "schema": 1,
+ "tags": [
+  "fulda-optician"
+ ],
+ "url": "https://www.eyesandmore.de/optiker/fulda/borgiasplatz-1/"
+}

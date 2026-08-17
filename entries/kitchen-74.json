@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "Fulda Innenstadt Kanalstraße 74 36037 Fulda Tel.: 0661 – 90 15 20 47 E-Mail: info@kitchen74.de Öffnungszeiten Montag – Samstag: 11:00 – 18:00 Uhr Parkplätze Parkplätze befinden sich umliegend Zahlungs",
+ "filter": "xpath:(//h5[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Kitchen 74",
+ "note": "2026-08-15: Fasst Adresse und Telefon mit ein; die aendern sich selten, dafuer ist der Anker die h5-Ueberschrift und damit stabil.",
+ "osm_id": "node/1336881814",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://kitchen74.de/kontakt/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "An der A7 Michelsrombacher Str. 4 36039 Fulda Telefon: +49 661 96211314 rosis@autohof-fulda.de Öffnungszeiten Tankshop: 24/7 Backshop: 24/7 Restaurant: Mo–Fr von 11:00 Uhr bis 21:30 Uhr Sa–So von 11:0",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Rosi's",
+ "note": "2026-08-15: Autohof: Tankshop und Backshop 24/7, nur das Restaurant hat Zeiten. Der Block traegt alle drei, deshalb auch Adresse und Telefon.",
+ "osm_id": "node/8348108830",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://rosis-autohof.de/standorte/rosis-fulda-nord/"
+}

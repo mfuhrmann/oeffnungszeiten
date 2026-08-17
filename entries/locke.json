@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-15",
+ "captured_sample": "- LOCKE -ÖFFNUNGSZEITEN Mo: 09:00 - 19:00 Uhr Di: 10:00 - 19:00 Uhr Mi: 10:00 - 19:00 Uhr Do: 10:00 - 19:00 Uhr Fr: 10:00 - 19:00 Uhr Sa: 09:00 - 17:00 Uhr So: Geschlossen",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*",
+ "name": "Locke",
+ "osm_id": "node/1333281073",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://locke-fulda.de/"
+}
