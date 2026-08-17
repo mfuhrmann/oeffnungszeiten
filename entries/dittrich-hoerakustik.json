@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Filiale Fulda Dittrich Hörakustik Lindenstr. 12 Tel. 0661-90 16 480 Öffnungszeiten: Mo. - Fr. 9.00 - 13.00 und 14.00 - 18.00 Uhr und nach Vereinbarung",
+ "filter": "xpath://*[@id=\"text-2\"]",
+ "name": "Dittrich Hörakustik",
+ "osm_id": "node/1333309918",
+ "schema": 1,
+ "tags": [
+  "fulda-hearing_aids"
+ ],
+ "url": "https://dittrich-hoerakustik.de/filiale-fulda/"
+}

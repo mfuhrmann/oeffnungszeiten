@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Bürozeiten Mo - Do von 11 bis 13 Uhr - 0661 / 9012040 - info ÄT ffortissimo-musikschule.de",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" x-colophon-content \")]",
+ "name": "ffortissimo Musikschule Fulda",
+ "note": "Buerozeiten der Musikschule.",
+ "osm_id": "node/1332760952",
+ "schema": 1,
+ "tags": [
+  "fulda-music"
+ ],
+ "url": "https://ffortissimo-musikschule.de/"
+}

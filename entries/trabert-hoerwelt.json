@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "ÖffnungszeitenMo. 08:00 - 18:00 UhrDi. 08:00 - 18:00 UhrMi. 08:00 - 18:00 UhrDo. 08:00 - 18:00 UhrFr. 08:00 - 18:00 Uhrund nach Vereinbarung",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Trabert",
+ "osm_id": "node/11812185022",
+ "schema": 1,
+ "tags": [
+  "fulda-hearing_aids"
+ ],
+ "url": "https://trabert-meine-hoerwelt.de/filialen/fulda/"
+}

@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Unsere Öffnungszeiten Mo - Sa von 10 - 14 Uhr (Stand 04.01.2021) Öffnungszeiten",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Reisekulinarium",
+ "osm_id": "node/1333404247",
+ "schema": 1,
+ "tags": [
+  "fulda-travel_agency"
+ ],
+ "url": "https://reisekulinarium.com/"
+}

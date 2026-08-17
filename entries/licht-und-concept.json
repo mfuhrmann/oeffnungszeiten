@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten:Di-Fr. 9:30 – 18:30 UhrSa: 10:00 – 14:00 Uhr Your Content Goes Here Öffnungszeiten:",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Licht & Concept GmbH",
+ "osm_id": "node/668554388",
+ "schema": 1,
+ "tags": [
+  "fulda-interior_decoration"
+ ],
+ "url": "https://lichtundconcept.de/"
+}

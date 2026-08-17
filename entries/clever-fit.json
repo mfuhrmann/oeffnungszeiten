@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten: Mo 06:00 - 00:00 Di 06:00 - 00:00 Mi 06:00 - 00:00 Do 06:00 - 00:00 Fr 06:00 - 00:00 Sa 09:00 - 21:00 So 09:00 - 21:00",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" studio__info-bar--opening-times \")]",
+ "name": "Clever fit",
+ "note": "Sichtbarer Block statt JSON-LD; der Kursplan daneben ist keine Oeffnungszeit.",
+ "osm_id": "node/6792339726",
+ "schema": 1,
+ "tags": [
+  "fulda-fitness_centre"
+ ],
+ "url": "https://www.clever-fit.com/de/fitnessstudio/fulda/"
+}

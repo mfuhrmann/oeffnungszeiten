@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Montag09:00 - 18:00Dienstag09:00 - 18:00Mittwoch09:00 - 18:00Donnerstag09:00 - 18:00Freitag09:00 - 18:00Samstag09:00 - 16:00SonntagGeschlossen",
+ "filter": "xpath://dl[contains(concat(\" \",normalize-space(@class),\" \"),\" location-opening-hours__list \")]",
+ "name": "Apollo-Optik",
+ "osm_id": "node/1327224133",
+ "schema": 1,
+ "tags": [
+  "fulda-optician"
+ ],
+ "url": "https://www.apollo.de/filialen/fulda/bahnhofstr-13-6045"
+}

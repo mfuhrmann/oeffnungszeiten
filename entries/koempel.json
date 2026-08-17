@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten: Mo-Fr 8:00 - 18:00 Uhr Sa 9:00 - 13:00 Uhr",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Kömpel",
+ "osm_id": "node/11640712000",
+ "schema": 1,
+ "tags": [
+  "fulda-laundry"
+ ],
+ "url": "https://www.koempel-textilpflege.de/"
+}

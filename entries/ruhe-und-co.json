@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Geschäftszeiten Montag – Donnerstag 7:00 – 16:30 Uhr Freitag 7:00 – 13:00 Uhr Öffnungszeiten der Ausstellung Montag – Donnerstag7:00 – 16:30 Uhr Freitag7:00 – 13:00 Uhr. Bitte vereinbaren Sie einen Termin.",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Ruhe & Co.",
+ "note": "Geschaeftszeiten und Ausstellungszeiten stehen beide im Block.",
+ "osm_id": "node/3378121087",
+ "schema": 1,
+ "tags": [
+  "fulda-flooring"
+ ],
+ "url": "https://www.ruhe.de/standorte/fulda"
+}

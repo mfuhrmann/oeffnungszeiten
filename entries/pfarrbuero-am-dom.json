@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Montag von 9:00 - 12:00 Uhr von 14:00 -16:00 Uhr Dienstag von 9:00 - 12:00 UhrMittwoch von 9:00 - 12:00 UhrDonnerstag geschlossenFreitag von 9:00 - 12:00 Uhr",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Pfarrbüro am Dom",
+ "osm_id": "node/13668896106",
+ "schema": 1,
+ "tags": [
+  "fulda-office"
+ ],
+ "url": "https://cms.bistum-fulda.de/fuldakatholischestadtpfarrei/vierpfarreien/stadtpfarrei/einrichtungen/Pfarrbuero.php"
+}

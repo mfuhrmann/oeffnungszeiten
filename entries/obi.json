@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Wochentag Stunden Montag08:00 - 20:00Dienstag08:00 - 20:00Mittwoch08:00 - 20:00Donnerstag08:00 - 20:00Freitag08:00 - 20:00Samstag08:00 - 20:00SonntagGeschlossen",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "OBI",
+ "note": "Sichtbare Tabelle statt JSON-LD, weil sie den Sonntag ausdruecklich nennt.",
+ "osm_id": "node/1406092124",
+ "schema": 1,
+ "tags": [
+  "fulda-doityourself"
+ ],
+ "url": "https://www.obi.de/markt/fulda"
+}

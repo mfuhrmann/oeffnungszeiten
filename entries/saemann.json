@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Kategorien Sämann Store Luckenberg 1 36037 Fulda Mo. - Fr. 10:30 - 16:30 Sa. 11:00 - 14:30",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" navigation-offcanvas-overlay-content \")]",
+ "name": "Sämann",
+ "osm_id": "node/13929836297",
+ "schema": 1,
+ "tags": [
+  "fulda-baby_goods"
+ ],
+ "url": "https://www.laufgitter-baby.de/"
+}

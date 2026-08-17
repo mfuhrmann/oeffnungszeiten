@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "WochentagÖffnungszeiten (ohne Terminvereinbarung)Montag09:00 - 13:00 und 14:00 - 16:00 UhrDienstag09:00 - 13:00 und 14:00 - 16:00 UhrMittwoch09:00 - 13:00 UhrDonnerstag09:00 - 13:00 und 14:00 - 18:00 UhrFreitag09:00 - 13:00 und 14:00 - 16:00 Uhr",
+ "filter": "xpath:(//th[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Sparda-Bank Hessen",
+ "note": "Tabelle \"Oeffnungszeiten (ohne Terminvereinbarung)\"; die Telefonzeit daneben bleibt draussen.",
+ "osm_id": "node/524677817",
+ "schema": 1,
+ "tags": [
+  "fulda-bank"
+ ],
+ "url": "https://www.sparda-hessen.de/filialseiten/fulda.html"
+}

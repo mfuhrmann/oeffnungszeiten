@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Montag09.00 bis 12.00 Uhr und 13.00 bis 18.00 Uhr Dienstag09.00 bis 12.00 Uhr und 13.00 bis 18.00 Uhr Mittwoch09.00 bis 12.00 Uhr und 13.00 bis 18.00 Uhr Donnerstag09.00 bis 12.00 Uhr und 13.00 bis 18.00 Uhr Freitag09.00 bis 12.00 Uhr und 13.00 bis 18.00 Uhr Samstaggeschlossen Sonntaggeschlossen",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" brxe-fplvkh \")]",
+ "name": "B. Schmitt mobile",
+ "osm_id": "node/5792787384",
+ "schema": 1,
+ "tags": [
+  "fulda-mobile_phone"
+ ],
+ "url": "https://www.b-schmitt.de/location/fulda/"
+}

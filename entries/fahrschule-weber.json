@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Montag von 14:00 bis 19:45 Uhr. Dienstag von 14.00 bis 18.00 Uhr. Mittwoch von 14.00 bis 19.45 Uhr. Donnerstag von 14.00 Uhr bis 18.00 Uhr. Freitag von 14.00 Uhr bis 18.00 Uhr. Sehr gerne auch Termine nach Vereinbarung.",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Fahrschule Weber",
+ "osm_id": "node/1333640092",
+ "schema": 1,
+ "tags": [
+  "fulda-driving_school"
+ ],
+ "url": "https://www.fahrschule-g-weber.de/"
+}

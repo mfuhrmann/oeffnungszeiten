@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Ausleihe, Fernleihe, Lesesaal WochentagUhrzeitMontag 9.30 - 17.00Dienstag9.30 - 18.00Mittwoch9.30 - 17.00Donnerstag9.30 - 17.00Freitag9.30 - 18.00Samstag9.30 - 12.30 SchausammlungWochentagUhrzeitMo. - Do. 09.30 - 16.0009.30 - 16.00Freitag 09.30 - 15.00 WochentagUhrzeitMo - Do 08.00 - 17.30Freitag 08.00 - 16.00 Sa+So geschlossen (nur für Weiterbildungen des ZWW Zentrum für wissenschaftliche Weiterb",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")])]",
+ "name": "12 (Hochschul-, Landes- und Stadtbibliothek)",
+ "note": "Zweites OSM-Objekt am Heinrich-von-Bibra-Platz; die Watch der Hochschul- und Landesbibliothek haengt an /hlsb/oeffnungszeiten, diese an der Uebersichtsseite.",
+ "osm_id": "relation/21074012",
+ "schema": 1,
+ "tags": [
+  "fulda-library"
+ ],
+ "url": "https://www.hs-fulda.de/oeffnungszeiten"
+}

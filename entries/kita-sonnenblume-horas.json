@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Vorstellung/Besonderheiten Öffnungszeiten: Vormittag: Montag - Freitag: 07:15 - 12:30 Uhr (ohne Mittagessen) Vormittag + Mittag: Montag - Freitag: 07:15 - 14:00 Uhr (mit Mittagessen) Ganztag: Montag - Donnerstag: 07:15 - 16:30 Uhr (mit Mittagessen)",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Kindertagesstätte Sonnenblume Horas",
+ "note": "Die Seite fuehrt mehrere Buchungsmodelle; alle stehen im Block.",
+ "osm_id": "way/582887567",
+ "schema": 1,
+ "tags": [
+  "fulda-childcare"
+ ],
+ "url": "https://kinderbetreuung-fulda.little-bird.de/Fulda/Kindertagesstaette-Sonnenblume-Horas"
+}

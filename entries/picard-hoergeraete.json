@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 U",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" openingHoursTable \")]",
+ "name": "Picard Hörgeräte",
+ "note": "Die Seite gibt den Block zweimal aus; der Text ist beide Male derselbe.",
+ "osm_id": "node/12887405320",
+ "schema": 1,
+ "tags": [
+  "fulda-hearing_aids"
+ ],
+ "url": "https://picard-hoergeraete.de/"
+}

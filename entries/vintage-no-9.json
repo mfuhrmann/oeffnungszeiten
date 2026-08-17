@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "ÖFFNUNGSZEITENMo. bis Sa. 11.00 bis 18.00 UhrTextilannahme:bitte nach Terminabsprache",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])/parent::*",
+ "name": "Vintage No. 9",
+ "osm_id": "node/13260948412",
+ "schema": 1,
+ "tags": [
+  "fulda-second_hand"
+ ],
+ "url": "https://vintage-no9.de/"
+}

@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "ÖffnungszeitenMontag14:00 - 16:00 UhrDienstag09:00 - 12:30 UhrMittwochGeschlossenDonnerstag09:00 - 12:30 UhrFreitag14:00 - 16:00 UhrSamstagGeschlossenSonntagGeschlossen",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Sparkasse Fulda",
+ "osm_id": "node/10251628955",
+ "schema": 1,
+ "tags": [
+  "fulda-bank"
+ ],
+ "url": "https://www.sparkasse.de/standorte/filialen/sparkasse-fulda-filiale-aschenberg-8544"
+}

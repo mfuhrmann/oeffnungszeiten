@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Die Erfahrungen und Begegnungen mit Künstlern unserer Region, die mich in den vergangenen Jahrzehnten mit der im Fuldaer Vonderau Museum veranstalteten Ausstellungsreihe art ist (2008 - 2016) ungemein persönlich bereichert haben, wollen an einem neuen Ort und in einem neuen Kontext eine Fortsetzung finden.Die Galerie soll daher ein Ort des Austauschs und eine Begegnungsplattform mit zeitgenössisch",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Galerie Kabinett",
+ "note": "Das JSON-LD der Seite widerspricht der sichtbaren Angabe (Di-Sa gegen sichtbar Mi-Fr). Sichtbar gewinnt.",
+ "osm_id": "node/11818636250",
+ "schema": 1,
+ "tags": [
+  "fulda-gallery"
+ ],
+ "url": "https://www.galerie-kabinett.com/"
+}

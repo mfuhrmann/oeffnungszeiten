@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten: 7 bis 22 UhrTelefon: 0171 / 6516320E-Mail: info@washndry.de",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "washndry SB Waschsalon",
+ "osm_id": "node/4984436974",
+ "schema": 1,
+ "tags": [
+  "fulda-laundry"
+ ],
+ "url": "https://washndry.de/"
+}

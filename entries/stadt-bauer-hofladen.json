@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "ÖFFNUNGSZEITEN HOFLADEN: täglich von 8:00 bis 19:00 Uhr | auch an Sonn- und Feiertagen",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"ÖFFNUNGSZEITEN\")])",
+ "name": "Stadt Bauer",
+ "osm_id": "node/7529380927",
+ "schema": 1,
+ "tags": [
+  "fulda-farm"
+ ],
+ "url": "https://www.stadtbauer-fulda.de/hofladen/"
+}

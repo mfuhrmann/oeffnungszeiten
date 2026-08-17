@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Dienstag09:00 - 13:00 Uhr und 14:00 - 16:00 UhrDonnerstag09:00 - 13:00 Uhr und 14:00 - 16:00 Uhr",
+ "filter": "xpath://tbody[contains(concat(\" \",normalize-space(@class),\" \"),\" MuiTableBody-root \")]",
+ "name": "LBS",
+ "osm_id": "node/12568022206",
+ "schema": 1,
+ "tags": [
+  "fulda-bank"
+ ],
+ "url": "https://www.lbs.de/standorte/fulda-ht_457701"
+}

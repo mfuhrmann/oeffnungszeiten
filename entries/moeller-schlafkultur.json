@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Unsere TERMIN-ÖffnungszeitenDienstag bis Freitag von 10:00 bis 18:00 UhrSamstags von 10:00 bis 13:00 Uhr",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "Möller Schlafkultur",
+ "note": "Die Seite nennt Termin-Oeffnungszeiten; das JSON-LD widerspricht ihnen und bleibt draussen.",
+ "osm_id": "node/4857586525",
+ "schema": 1,
+ "tags": [
+  "fulda-bed"
+ ],
+ "url": "https://www.moeller-schlafkultur.de/"
+}

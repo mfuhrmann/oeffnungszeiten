@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Sie finden uns am Aschenberg in der Einhardstraße 56 (Untergeschoss des Bürgerzentrums). Entdecken Sie die besondere Atmosphäre unseres Gebrauchtwaren-Kaufhauses!Unsere Öffnungszeiten: Montag bis Freitag von 14:00 Uhr bis 18:00 Uhr, samstags geschlossen.",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Kaufhaus mit Herz",
+ "note": "Die Seite fuehrt zwei Zeiten: 08:00-17:00 gehoert der AWO-Geschaeftsstelle, 14:00-18:00 dem Kaufhaus. Der Anker haengt am Absatz des Kaufhauses.",
+ "osm_id": "node/10186293220",
+ "schema": 1,
+ "tags": [
+  "fulda-charity"
+ ],
+ "url": "https://awo-fulda.de/arbeit-bildung/kaufhaus-mit-herz/"
+}

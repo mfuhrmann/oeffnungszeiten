@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Therapie Mo-Do 8:00 bis 20:00 h Fr 8:00 bis 15:00 h Training Mo-Do 9:00 bis 13:00 h 15:00 bis 19:00 h Fr 9:00 bis 15:00 h",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Dirk Niestroy",
+ "note": "Therapie und Training haben eigene Zeiten, beide im Block.",
+ "osm_id": "node/12911431323",
+ "schema": 1,
+ "tags": [
+  "fulda-physiotherapist"
+ ],
+ "url": "https://www.niestroyphysio.de/"
+}

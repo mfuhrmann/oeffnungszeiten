@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Haber Glasbau Königstrasse 15 a - c 36037 Fulda Unsere Öffnungszeiten: Mo.-Do. 08:00-17.00 Uhr Fr. 08:00-16:00 Uhr Mittagspause 12.30-14.00 Uhr E-Mail: kontakt@haber-glasbau.de",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Haber Glasbau",
+ "note": "Mittagspause steht im selben Block.",
+ "osm_id": "node/1332073128",
+ "schema": 1,
+ "tags": [
+  "fulda-doityourself"
+ ],
+ "url": "http://www.haber-glasbau.de/"
+}

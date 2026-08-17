@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Di.-Fr. 8 Uhr bis 18 UhrSa. 7:30 Uhr bis 13:30 Uhr",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Salon Peer",
+ "osm_id": "node/1336845923",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://www.salon-peer.de/"
+}

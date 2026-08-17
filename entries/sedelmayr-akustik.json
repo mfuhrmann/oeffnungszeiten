@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Montag - Freitag: 9:00 - 13:0013:30 -17:30 Samstag: geschlossen Montag - Freitag: 9:00 - 13:0013:30 -17:30 Samstag: geschlossen Montag - Freitag: 9:00 - 13:0013:30 -17:30 Samstag: geschlossen",
+ "filter": "xpath://tbody[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//tbody[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Sedlmayr",
+ "note": "Die Seite gibt den Block dreimal aus; der Text ist jedes Mal derselbe.",
+ "osm_id": "node/1333298979",
+ "schema": 1,
+ "tags": [
+  "fulda-hearing_aids"
+ ],
+ "url": "https://sedelmayr.de/filialen/akustik/fulda"
+}

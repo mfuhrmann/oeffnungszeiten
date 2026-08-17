@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Montag 8:30 am–7 pm Dienstag 8:30 am–7 pm Mittwoch 8:30 am–7 pm Donnerstag 8:30 am–7 pm Freitag 8:30 am–7 pm Samstag 8:30 am–6 pm Sonntag geschlossen",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" openinghours \")]",
+ "name": "Wertmarkt",
+ "note": "Der Seitengenerator (9gg.de) setzt die Zeiten im en-US-Format.",
+ "osm_id": "node/7014878637",
+ "schema": 1,
+ "tags": [
+  "fulda-supermarket"
+ ],
+ "url": "https://fulda-wert-markt.9gg.de/"
+}

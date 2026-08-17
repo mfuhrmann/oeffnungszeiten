@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Montag + Dienstag geschlossen Mittwoch 11:00 - 18:00 Uhr Donnerstag 14:00 - 18:00 Uhr Freitag 14:00 - 18:00 Uhr Samstag 11:00 - 17:00 Uhr",
+ "filter": "xpath://span[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//span[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Ellen Wess",
+ "osm_id": "node/1333385390",
+ "schema": 1,
+ "tags": [
+  "fulda-gift"
+ ],
+ "url": "https://ellenwess.de/"
+}

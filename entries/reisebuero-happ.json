@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Montag bis Freitag 10:00 – 17:00 Uhr Samstag 10:00 – 13:30 Uhr",
+ "filter": "xpath://*[@id=\"c4615\"]",
+ "name": "Reisebüro Happ",
+ "osm_id": "node/5508083102",
+ "schema": 1,
+ "tags": [
+  "fulda-travel_agency"
+ ],
+ "url": "https://www.reisebuero-happ.de/ueber-uns/reisebueros/reisebuero-fulda/"
+}

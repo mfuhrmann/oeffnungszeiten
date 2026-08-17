@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten:Montag bis Freitag: 09:00-18:00 Uhr Außerdem sind Termine nach Vereinbarung möglich",
+ "filter": "xpath:(//b[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Krönung",
+ "osm_id": "node/12967641534",
+ "schema": 1,
+ "tags": [
+  "fulda-hearing_aids"
+ ],
+ "url": "https://www.kroenung-hoerzentrum.de/kontakt/filialen/fulda/"
+}

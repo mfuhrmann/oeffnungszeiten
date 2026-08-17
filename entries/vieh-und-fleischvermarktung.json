@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Fleischverkauf Mo. -Fr.: 6:00 - 14:30 Uhr Sa. 6:00 - 10:00 Uhr",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Landwirtschaftliche Vieh- und Fleischvermarktung Fulda - Hünfeld eG",
+ "osm_id": "node/13570818645",
+ "schema": 1,
+ "tags": [
+  "fulda-butcher"
+ ],
+ "url": "https://viehundfleisch.com/"
+}

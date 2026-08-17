@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Seit 5 Jahren Vielseitige Führerscheinklassen 3 Standorte Erfahrenes und engagiertes Team Fahrschule Dinnebier Hauptstr. 16 36103 Flieden Fulda: Mo - Fr 12:00 - 19:00 Uhr Flieden: Mo & Do 18:00 - 19:00 Uhr Eichenzell: Di & Mi 18:00 - 19:00 Uhr",
+ "filter": "xpath://ul[contains(concat(\" \",normalize-space(@class),\" \"),\" elementor-icon-list-items \")]",
+ "name": "Fahrschule Dinnebier",
+ "note": "Die Liste fuehrt alle drei Standorte (Fulda, Flieden, Eichenzell); eine Aenderung an einem anderen Standort loest hier mit aus.",
+ "osm_id": "node/1332764717",
+ "schema": 1,
+ "tags": [
+  "fulda-driving_school"
+ ],
+ "url": "https://fahrschule-dinnebier.de/"
+}

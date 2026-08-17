@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Büro-Öffnungszeiten Montag bis Donnerstag 09:00 - 18:00 Uhr Freitag 09:00 - 17:00 Uhr Samstag und Sonntag geschlossen",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Fahrschule Krebs",
+ "note": "Buero-Oeffnungszeiten; der Theorieunterricht daneben ist keine Oeffnungszeit.",
+ "osm_id": "way/1284529873",
+ "schema": 1,
+ "tags": [
+  "fulda-driving_school"
+ ],
+ "url": "https://fulda.fahrschule-krebs.de/"
+}

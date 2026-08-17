@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Im Centerplan anzeigen Öffnungszeiten Asia Imbiss Mo. - Sa. 10:00 Uhr bis 20:00 Uhr Anbieterinformationen Asia Imbiss, Inh. Chen Yu Heinrichstraße 85 36043 Fulda",
+ "filter": "xpath://*[@id=\"shop-details-informations\"]",
+ "name": "Asia Imbiss",
+ "note": "Ladenseite im Center Emaillierwerk; die Zeiten stehen dort je Geschaeft.",
+ "osm_id": "node/10091957709",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "https://www.emaillierwerk-fulda.de/einkaufswelt/geschaefte/4418/"
+}

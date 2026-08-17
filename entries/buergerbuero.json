@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Bürgerbüro Montag, Dienstag, Donnerstag8:00 - 18:00 Uhr Mittwoch8:00 - 12:00 Uhr Freitag8:00 - 15:00 Uhr Samstag9:00 - 12:00 Uhr Telefonischer Bürgerservice Montag - Donnerstag8:00 - 17:00 Uhr Freitag8:00 - 15:00 Uhr Termin im Bürgerbüro Jetzt vereinbaren",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Bürgerbüro",
+ "osm_id": "node/1328277241",
+ "schema": 1,
+ "tags": [
+  "fulda-government"
+ ],
+ "url": "https://www.fulda.de/serviceportal/eintrag/buergerbuero"
+}
