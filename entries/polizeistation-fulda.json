@@ -3,6 +3,7 @@
  "captured_sample": "Öffnungszeiten:Montag, Dienstag, Donnerstag, Freitag: 9 Uhr bis 17 UhrMittwoch: 09 Uhr bis 12 UhrSamstag und Sonntag ist die Stadtwache geschlossen.",
  "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
  "name": "Polizeistation Fulda",
+ "note": "Polizeistation und Stadtwache teilen sich diese Seite; zwei OSM-Objekte, ein Text - das Audit meldet das als identisches Capture.",
  "osm_id": "node/11967694617",
  "schema": 1,
  "tags": [

@@ -3,6 +3,7 @@
  "captured_sample": "Dienstag09:00 - 13:00 Uhr und 14:00 - 16:00 UhrDonnerstag09:00 - 13:00 Uhr und 14:00 - 16:00 Uhr",
  "filter": "xpath://tbody[contains(concat(\" \",normalize-space(@class),\" \"),\" MuiTableBody-root \")]",
  "name": "LBS",
+ "note": "Die Filiale oeffnet nur Dienstag und Donnerstag; das Audit meldet darum \"nur 2 Wochentage\".",
  "osm_id": "node/12568022206",
  "schema": 1,
  "tags": [

@@ -4,7 +4,7 @@
  "fetch_backend": "html_requests",
  "filter": ".detail-dealer-open-hours",
  "name": "Pappert (dalbergstrasse)",
- "note": "Filialseite der Kette unter /dealer/<slug>/; dieselbe Vorlage wie die uebrigen Pappert-Watches, die Zeiten unterscheiden sich je Filiale.",
+ "note": "Filialseite der Kette unter /dealer/<slug>/; dieselbe Vorlage wie die uebrigen Pappert-Watches. Die Zeiten sind derzeit identisch mit der Filiale Emaillierwerk, darum meldet das Audit \"identischer Text\".",
  "osm_id": "node/2411418216",
  "schema": 1,
  "tags": [

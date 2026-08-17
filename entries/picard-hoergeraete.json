@@ -1,9 +1,9 @@
 {
  "added": "2026-08-17",
- "captured_sample": "Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr Mo+ Di 9 - 13 U",
- "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" openingHoursTable \")]",
+ "captured_sample": "Mo+ Di 9 - 13 Uhr 14 - 18 Uhr Mi 9 - 13 Uhr - Do + Fr 9 - 13 Uhr 14 - 18 Uhr",
+ "filter": "xpath:(//*[contains(concat(\" \",normalize-space(@class),\" \"),\" openingHoursTable \")])[1]",
  "name": "Picard Hörgeräte",
- "note": "Die Seite gibt den Block zweimal aus; der Text ist beide Male derselbe.",
+ "note": "Die Seite gibt den Block achtmal aus (Desktop- und Mobilfassung); ohne [1] meldet das Audit einen taeglichen Diff. Der Hinweis \"Mittwochs 14-18 wegen Fortbildung geschlossen\" steht in einem eigenen Element und bleibt draussen.",
  "osm_id": "node/12887405320",
  "schema": 1,
  "tags": [
