@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Mo–Sa 10:00–18:00",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" wkAgency__office \")][.//p[@data-location=\"Fulda\"]]//div[contains(concat(\" \",normalize-space(@class),\" \"),\" wkAgency__openingHours__content \")]",
+ "name": "HOLIDAY LAND Reisebüro Fulda",
+ "note": "Die Startseite fuehrt alle drei Filialen der Kette (Alsfeld, Fulda, Bad Langensalza); der Anker haengt am Block mit data-location=\"Fulda\". Der Trigger daneben zeigt \"Jetzt geöffnet/geschlossen\" und bleibt draussen.",
+ "osm_id": "node/5275787998",
+ "schema": 1,
+ "tags": [
+  "fulda-travel_agency"
+ ],
+ "url": "https://www.holidayland-fulda.de/"
+}

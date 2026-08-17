@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Filiale Montag 14:00 - 16:00 Dienstag Geschlossen Mittwoch 09:00 - 12:00 Donnerstag 09:00 - 12:00 und 14:00 - 16:00 Freitag Geschlossen SB-Bereich Montag 05:00 - 23:00",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" opening-times-container \")]",
+ "name": "Raiffeisenbank im Fuldaer Land — KompetenzCenter Haimbach",
+ "note": "Die Zeiten stehen in einem Angular-Widget; der einfache Abruf liefert nur Tabellenkoepfe, deshalb html_webdriver. Das JSON-LD der Seite fuehrt 05:00-23:00 — das ist der SB-Bereich, nicht der Schalter.",
+ "osm_id": "node/272404322",
+ "schema": 1,
+ "tags": [
+  "fulda-bank"
+ ],
+ "url": "https://www.rb-fuldaerland.de/meine-bank/filialen/filialen-uebersicht/kompetenzcenter-haimbach.html"
+}

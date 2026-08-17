@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Unser Shop hat ab dem 1. Juni 2021 zu den gewohnten Zeiten geöffnet: Mo – Fr: von 10.00 Uhr bis 17.30 Uhr So: von 13.00 bis 17.30 Uhr",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "MuseumsShop der Kinder-Akademie Fulda",
+ "note": "Eigene Seite des Shops; die Zeiten des Museums stehen unter /ueber-uns/oeffnungszeiten/ und werden von kinder-akademie-fulda bewacht.",
+ "osm_id": "node/12087269704",
+ "schema": 1,
+ "tags": [
+  "fulda-gift"
+ ],
+ "url": "https://www.kaf.de/service/museumsshop/"
+}

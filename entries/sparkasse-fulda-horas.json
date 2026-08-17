@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Montag 14:00-16:00 Uhr Dienstag 09:00-12:30 Uhr Donnerstag 09:00-12:30 Uhr Freitag 14:00-16:00 Uhr",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Sparkasse Fulda — Filiale Horas",
+ "note": "Gleicher Anker wie die anderen Sparkassen-Filialen. Die Beratungszeiten stehen im Nachbarblock cbox-half und bleiben bewusst draussen.",
+ "osm_id": "way/320422845",
+ "schema": 1,
+ "tags": [
+  "fulda-bank"
+ ],
+ "url": "https://www.sparkasse-fulda.de/de/home/toolbar/filialen/sparkasse-fulda-filiale-horas-8543.html"
+}

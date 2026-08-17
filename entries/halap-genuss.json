@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-17",
+ "captured_sample": "Öffnungszeiten Mon-Sa: 09:00-20:00",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Halap Genuss",
+ "note": "Das JSON-LD der Seite widerspricht der sichtbaren Angabe (Mo-Fr 09:00-19:00, Sa 09:00-18:00 gegen sichtbar Mo-Sa 09:00-20:00). Sichtbar gewinnt.",
+ "osm_id": "node/13175595227",
+ "schema": 1,
+ "tags": [
+  "fulda-deli"
+ ],
+ "url": "https://halapgenuss.de/"
+}
