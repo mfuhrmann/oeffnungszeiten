@@ -308,6 +308,15 @@
    "note": "Eigene Domain tot, einziger Auftritt ist Lieferando; dort werden alle Bots mit 403 abgewiesen."
   },
   {
+   "osm_id": "node/13282957227",
+   "name": "Mr. Pizza",
+   "reason": "delivery-platform-only",
+   "established": "2026-08-18",
+   "source": "https://www.mrpizza-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "mrpizza-fulda.de schreibt selbst: \"Diese Website wird betrieben und verwaltet durch Lieferando.\" Damit sind die Zeiten Lieferfenster, keine Oeffnungszeiten."
+  },
+  {
    "osm_id": "node/12111215704",
    "name": "Pizza Nemrut",
    "reason": "delivery-platform-only",
@@ -326,6 +335,15 @@
    "note": "Nur Lieferando; DataDome blockt changedetection in allen Abrufarten mit 403."
   },
   {
+   "osm_id": "node/13954120037",
+   "name": "Star Kebap Haus 2",
+   "reason": "delivery-platform-only",
+   "established": "2026-08-18",
+   "source": "https://www.starkebaphausfulda.de/",
+   "recheck": "2027-02-18",
+   "note": "starkebaphausfulda.de schreibt selbst: \"Diese Website wird betrieben und verwaltet durch Lieferando.\" Die Zeiten dort sind Lieferfenster."
+  },
+  {
    "osm_id": "node/431412287",
    "name": "Star Kebap Haus Fulda",
    "reason": "delivery-platform-only",
@@ -333,6 +351,24 @@
    "source": "https://www.starkebaphausfulda.de/",
    "recheck": "2027-02-04",
    "note": "Nur eine von Lieferando gehostete Microsite. Sie zeigt 'Liefer zeiten', also das Lieferfenster, nicht die Oeffnungszeit — und springt auf 'Geschlossen', sobald der Laden offline schaltet."
+  },
+  {
+   "osm_id": "node/5508083100",
+   "name": "Tat Döner 49",
+   "reason": "delivery-platform-only",
+   "established": "2026-08-18",
+   "source": "https://www.tat-doener-49-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "tat-doener-49-fulda.de wird laut eigenem Hinweis von Lieferando betrieben; die Zeiten sind Lieferfenster."
+  },
+  {
+   "osm_id": "node/1333244512",
+   "name": "Öz Urfa Grill",
+   "reason": "delivery-platform-only",
+   "established": "2026-08-18",
+   "source": "https://www.oezurfagrill.de/",
+   "recheck": "2027-02-18",
+   "note": "Von Lieferando betriebene Microsite. Genau hier wurde einmal ein Lieferfenster als opening_hours nach OSM geschrieben und musste zurueckgenommen werden."
   },
   {
    "osm_id": "way/575988229",
@@ -380,6 +416,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/3978092610",
+   "name": "Bodega",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "http://www.hotel-esperanto.de/",
+   "recheck": "2027-02-18",
+   "note": "Outlet des Hotel Esperanto ohne eigene Unterseite; die Hotelseite nennt keine Zeiten fuer die Bodega. Der Kartenwert lautet \"nach Vereinbarung\"."
+  },
+  {
    "osm_id": "node/1328317941",
    "name": "Bürger*inneninitative L14.2",
    "reason": "no-hours-on-page",
@@ -387,6 +432,15 @@
    "source": "https://l14zwo.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/9254542549",
+   "name": "Café Auszeit",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://cafeauszeit.net/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite ist eine Javascript-Anwendung; auch vollstaendig gerendert bleiben nur 122 Zeichen Navigation, keine Uhrzeit. Der Kartenwert stammt offenbar aus einer Erhebung vor Ort."
   },
   {
    "osm_id": "node/5508155668",
@@ -684,6 +738,15 @@
    "source": "https://jaroschenko.com/",
    "recheck": "2027-02-18",
    "note": "Weder Start- noch Kontakt- noch Impressumsseite nennt eine Uhrzeit, am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/604346794",
+   "name": "Joe's Burger",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://joes-burger.com/",
+   "recheck": "2027-02-18",
+   "note": "joes-burger.com nennt auf der ganzen Seite keine einzige Uhrzeit; ausser einem Cookie-Banner traegt sie keinen Zeitenblock."
   },
   {
    "osm_id": "node/12500536797",
@@ -1323,6 +1386,15 @@
    "source": "https://medicum-fulda.medicum-deutschland.de/fachrichtung/laboratoriumsmedizin/",
    "recheck": "2027-02-18",
    "note": "medicum-deutschland.de liefert ein Zertifikat, das die Pruefung nicht besteht, am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/7261079421",
+   "name": "Os Sabores",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "http://www.ossabores.de/",
+   "recheck": "2027-02-18",
+   "note": "ossabores.de antwortet mit HTTP 500 (Internal Server Error), am 18.08.2026 zweimal geprueft. Frueher trug die Seite einen Zeitenblock unter .et_pb_text_1."
   },
   {
    "osm_id": "node/9782317212",

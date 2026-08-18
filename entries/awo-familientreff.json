@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten:Mo.-Fr. 08:00 bis 17:00 Uhr",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "AWO Familientreff",
+ "note": "Dritte Watch auf awo-fulda.de neben Kaufhaus mit Herz und Buergerzentrum Ziehers-Sued; jede haengt an ihrer eigenen Unterseite.",
+ "osm_id": "node/1680934592",
+ "schema": 1,
+ "tags": [
+  "fulda-community_centre"
+ ],
+ "url": "https://awo-fulda.de/begegnungsstaetten/familientreff-suedend"
+}
