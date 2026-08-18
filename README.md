@@ -42,7 +42,7 @@ occur in practice, and what counts as proof that a filter is right:
 ```
 entries/            one file per watch — the source of truth
   .lock.json        slug → watch uuid, per changedetection instance
-scripts/            wizard, sync, audit, renderer  (stdlib only, except lxml)
+scripts/            wizard, sync, audit, renderer, OSM export  (stdlib only, except lxml)
 deploy/             managed global settings — noise-suppression patterns, recheck interval
 charts/             Helm chart for changedetection and its browser
 apps/               Flux HelmRelease and the values for this cluster
@@ -64,6 +64,36 @@ docker-compose.yml  optional local trial; not needed to contribute
 | `matrix_relay_seed.py` | mint the Matrix session the notification relay runs on |
 
 Each has `--help`. Nothing writes to changedetection without `--apply`.
+
+### Writing back to OpenStreetMap
+
+Watching a page is half the job; the other half is carrying what changed into the map. These
+build JOSM files — they never upload anything themselves, a mapper opens the file and looks at
+every object before it goes up.
+
+| | |
+|---|---|
+| `zeiten_osm.py` | raw hours text from a page → an `opening_hours` proposal, without touching the original |
+| `pruefe_syntax.py` | check a value against `opening_hours.js`, the reference library, in a throwaway browser |
+| `josm_export.py` | write `.osm` files with `action="modify"` — `website`, `phone`, `email`, `check_date:opening_hours` |
+| `zeiten_bestaetigen.py` | where a block of the page matches the map exactly, set only `check_date:opening_hours` |
+| `zeiten_durchsehen.py` | sort the disagreements by the question each one asks, for a human to answer |
+| `zeiten_hand.py` | apply those answers, still checking syntax, a changed OSM value and a newer `check_date` |
+| `zeiten_export.py` | the fully automatic path: replace `opening_hours` where four conditions hold |
+
+`opening_hours` is only ever **widened or replaced after a human decision** — never narrowed
+because a page stayed silent about a day. A website can be as stale as the map.
+
+They read their input from CSV files in the working directory, so they are called from wherever
+that research lives, not from the repository root:
+
+```bash
+cd ../my-research && python3 ../oeffnungszeiten/scripts/zeiten_durchsehen.py
+```
+
+**The working data stays out of this repository on purpose.** It holds phone numbers and mail
+addresses gathered from business pages, it changes with every run, and none of it is needed to
+review a watch. What belongs here is the tooling and the rules it encodes.
 
 ## Documentation
 
