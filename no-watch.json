@@ -1370,6 +1370,24 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/3676274870",
+   "name": "Blockfloetensanatorium.de",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://Blockfloetensanatorium.de",
+   "recheck": "2027-02-18",
+   "note": "Der TLS-Handschlag bricht ab (TLSV1_ALERT_INTERNAL_ERROR), am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/7135797470",
+   "name": "Bundespolizeirevier Fulda",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://www.bundespolizei.de/SharedDocs/Webs/Web/Organisationseinheiten/BPOLR/Fulda.html",
+   "recheck": "2027-02-18",
+   "note": "Der Server bricht die Verbindung ab (Connection reset by peer), am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/13114969651",
    "name": "Da Sergio",
    "reason": "site-unreachable",
@@ -1449,6 +1467,15 @@
    "source": "http://www.steinmetz-enders.de",
    "recheck": "2027-02-18",
    "note": "steinmetz-enders.de loest nicht mehr auf (DNS), am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/1332532866",
+   "name": "Storm Sportsbar",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "http://www.storm-casinos.com/restaurants-bars/storm-sportsbar-restaurant-fulda/",
+   "recheck": "2027-02-18",
+   "note": "Die als website getaggte Seite antwortet mit 404, am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/13629398040",

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Montag - Donnerstag 07:00 - 17:00 Uhr Freitag 07:00 - 15:30 Uhr",
+ "filter": "xpath:(//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])])[1]",
+ "name": "Liebig Haustechnik",
+ "note": "Die Seite gibt den Block zweimal aus; [1] nimmt den ersten.",
+ "osm_id": "node/13511798552",
+ "schema": 1,
+ "tags": [
+  "fulda-electrician"
+ ],
+ "url": "https://www.liebighaustechnik.de/"
+}

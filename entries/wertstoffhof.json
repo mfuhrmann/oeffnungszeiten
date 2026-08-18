@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten des Wertstoffhofs: Dienstag bis Freitag: 09:00 - 17:30 UhrSamstag: 09:00 - 13:30 Uhr",
+ "filter": "xpath:(//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"samstag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"samstag\")])])[1]",
+ "name": "Wertstoffhof",
+ "note": "Die Seite fuehrt daneben die Erreichbarkeit des Umwelttelefons; der Anker haengt am Absatz des Hofs. Der Block steht zweimal auf der Seite; [1] nimmt den ersten.",
+ "osm_id": "node/11249990432",
+ "schema": 1,
+ "tags": [
+  "fulda-recycling"
+ ],
+ "url": "https://www.fulda.de/serviceportal/eintrag/wertstoffhof"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten donnerstags, 16:30 - 18:30",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Bücherei Gläserzell",
+ "note": "Der weitere Block auf der Seite fuehrt ein \"geschlossen\" mit, das zum Tagesstatus gehoert; dieser Anker bleibt bei der Regel.",
+ "osm_id": "node/726830530",
+ "schema": 1,
+ "tags": [
+  "fulda-library"
+ ],
+ "url": "https://www.bibkat.de/fulda-glaeserzell/"
+}
