@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Rangstraße Rangstraße 3736043 FuldaT 0661 952 58970 Anfahrt Mo. - Fri. 06:00 - 18:00 Uhr Sa. 06:00 - 18:00 Uhr So. 07:00 - 17:00 Uhr",
+ "filter": "xpath://div[contains(.,\"Rangstraße 37\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Rangstraße 37\") and contains(.,\"Uhr\")])]",
+ "name": "Bäckerei Happ (Rangstraße)",
+ "note": "Das OSM-Objekt traegt keine Adresse; die Filiale ist ueber die Koordinaten bestimmt (Nominatim) und dann wie die uebrigen Happ-Watches ueber die Strasse verschluesselt.",
+ "osm_id": "node/13140682652",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://baecker-happ.de/fachgeschaefte/"
+}

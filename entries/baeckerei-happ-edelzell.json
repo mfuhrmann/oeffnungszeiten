@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Edelzell Chattenstraße 2636043 Fulda-EdelzellT 0661 480 0762 Anfahrt Mo. - Fri. 06:00 - 18:00 Uhr Sa. 06:00 - 13:00 Uhr So. 07:00 - 11:00 Uhr",
+ "filter": "xpath://div[contains(.,\"Chattenstraße 26\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Chattenstraße 26\") and contains(.,\"Uhr\")])]",
+ "name": "Bäckerei Happ (Edelzell)",
+ "note": "Das OSM-Objekt traegt keine Adresse; die Filiale ist ueber die Koordinaten bestimmt (Nominatim) und dann wie die uebrigen Happ-Watches ueber die Strasse verschluesselt.",
+ "osm_id": "node/1357551716",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://baecker-happ.de/fachgeschaefte/"
+}
