@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Sonntag: Geschlossen Montag: 10:00–20:00 Dienstag: 10:00–20:00 Mittwoch: 10:00–20:00 Donnerstag: 10:00–20:00 Freitag: 10:00–20:00 Samstag: 10:00–20:00",
+ "filter": "xpath://ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//ul[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Helge Romberg",
+ "note": "Sichtbarer Block statt JSON-LD: das JSON-LD behauptet 00:00-23:59 an sieben Tagen und widerspricht der sichtbaren Angabe.",
+ "osm_id": "node/7242597183",
+ "schema": 1,
+ "tags": [
+  "fulda-optician"
+ ],
+ "url": "https://www.ra-bruestle.de/helge-romberg-rechtsanwalt-in-fulda-marktstrasse-18/"
+}

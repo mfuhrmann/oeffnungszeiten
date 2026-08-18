@@ -560,6 +560,24 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/13190946734",
+   "name": "Belle Agio",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.belle-agio.com/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/2413750507",
+   "name": "Bijou Brigitte",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.bijou-brigitte.com/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/3978092610",
    "name": "Bodega",
    "reason": "no-hours-on-page",
@@ -567,6 +585,15 @@
    "source": "http://www.hotel-esperanto.de/",
    "recheck": "2027-02-18",
    "note": "Outlet des Hotel Esperanto ohne eigene Unterseite; die Hotelseite nennt keine Zeiten fuer die Bodega. Der Kartenwert lautet \"nach Vereinbarung\"."
+  },
+  {
+   "osm_id": "node/1336860144",
+   "name": "Body Tuning Tosch",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "http://www.bodytuning-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "way/1202349993",
@@ -619,6 +646,15 @@
    "reason": "no-hours-on-page",
    "established": "2026-08-18",
    "source": "https://www.cdu-kreisverband-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/12311829861",
+   "name": "CDU Stadtverband Fulda",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.cdu-fulda.de/",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
@@ -695,6 +731,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/1333620825",
+   "name": "DVAG Reiner Pelinka",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.dvag.de/rainer.pelinka/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "way/372677216",
    "name": "Dalberg Klinik",
    "reason": "no-hours-on-page",
@@ -702,6 +747,15 @@
    "source": "https://meliva.de/standort/dalberg-klinik-fulda/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1406092121",
+   "name": "Deichmann",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://stores.deichmann.com/de-de/de/hessen/fulda/keltenstrasse-20",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/5491491239",
@@ -938,6 +992,15 @@
    "note": "Die Seite nennt ausdruecklich nur telefonische Sprechzeiten."
   },
   {
+   "osm_id": "node/1332024645",
+   "name": "Geigenbau Pietzsch",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://geigenbau-pietzsch.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/10748180169",
    "name": "Goldschmiede Heike Füchtenhans",
    "reason": "no-hours-on-page",
@@ -954,6 +1017,15 @@
    "source": "http://www.guter-gerlach.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12862862619",
+   "name": "Halemba",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.halemba-style.de",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/12745492901",
@@ -1136,6 +1208,33 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/1332648196",
+   "name": "Küchen Kabsch",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.moebel-kabsch.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/13279395682",
+   "name": "LGS Löwenherz",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.youtube.com/channel/UCysttryFqNVj7yHZF6NPVMA/videos",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/14008066503",
+   "name": "La Ina Loca Ceramics",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.lainaloca.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/4855441321",
    "name": "Landeplatz",
    "reason": "no-hours-on-page",
@@ -1154,6 +1253,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/1328355745",
+   "name": "Lebens Sinn-Fonie Manuela Leibold",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://lebens-sinn-fonie.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/1709663606",
    "name": "Leitsch Bäder Heizung",
    "reason": "no-hours-on-page",
@@ -1170,6 +1278,15 @@
    "source": "https://www.lifeart-ob.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 von Hand nachgesehen: die Seite publiziert keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/1332583451",
+   "name": "Lippert Ski und Sport Ohg",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.sportlippert.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/8021278739",
@@ -1568,6 +1685,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "way/1284529853",
+   "name": "Press P&B Book",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://pressbooks.buchhandlung.de/shop/magazine/102274/fulda.html",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/12887396868",
    "name": "Rathaus Buchhandlung",
    "reason": "no-hours-on-page",
@@ -1575,6 +1701,24 @@
    "source": "https://rathaus-buchhandlung.buchkatalog.de/",
    "recheck": "2027-02-18",
    "note": "Die Shopseite zeigt Veranstaltungstermine der Buchhandlung, keine Ladenzeiten."
+  },
+  {
+   "osm_id": "node/12962068997",
+   "name": "Raum und Ton",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://raum-ton.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/5318548684",
+   "name": "Reformhaus Herrmann KG Liwell",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.reformhaus-herrmann.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "way/207224355",
@@ -1586,6 +1730,15 @@
    "note": "Sichtbar stehen nur Adresse und Telefon; das JSON-LD traegt Mo-So 09:00-17:00 — die WordPress-Vorlagenkonstante aus FILTERS.md, keine Angabe der Kanzlei."
   },
   {
+   "osm_id": "node/12980626184",
+   "name": "Ristorante da Vinci",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://davinci-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "way/1284529862",
    "name": "Rossmann Express",
    "reason": "no-hours-on-page",
@@ -1593,6 +1746,15 @@
    "source": "https://www.rossmann.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13959404351",
+   "name": "Rützel Orthopädie-Schuhtechnik",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.orthopaedie-schuhtechnik-ruetzel.com/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/1406067275",
@@ -1757,6 +1919,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/1333514071",
+   "name": "brillen.de",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.brillen.de/storepage/?store=221186",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/12500440659",
    "name": "brillux",
    "reason": "no-hours-on-page",
@@ -1838,6 +2009,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "way/150682710",
+   "name": "logo Getränke-Fachmarkt",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.logo-getraenke.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/1465073382",
    "name": "mister*lady",
    "reason": "no-hours-on-page",
@@ -1845,6 +2025,15 @@
    "source": "https://www.mister-lady.com",
    "recheck": "2027-02-04",
    "note": "Die Filialseite mister-lady.com/305-fulda-fulda nennt nur Adresse und Telefon."
+  },
+  {
+   "osm_id": "node/13191604599",
+   "name": "nexato",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://nexato.de",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/1465073392",
@@ -1971,6 +2160,15 @@
    "source": "https://medicum-fulda.medicum-deutschland.de/fachrichtung/laboratoriumsmedizin/",
    "recheck": "2027-02-18",
    "note": "medicum-deutschland.de liefert ein Zertifikat, das die Pruefung nicht besteht, am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/13448893345",
+   "name": "Manpower",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://www.manpower.de/de/ueber-uns/standorte/fulda/",
+   "recheck": "2027-02-18",
+   "note": "Am 18.08.2026 nicht erreichbar: HTTPError: 404"
   },
   {
    "osm_id": "node/7261079421",

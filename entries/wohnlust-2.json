@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "ÖFFNUNGSZEITEN Montag bis Samstag, 10-18 Uhr",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Wohnlust Interior & Lifestyle",
+ "osm_id": "node/1332708834",
+ "schema": 1,
+ "tags": [
+  "fulda-interior_decoration"
+ ],
+ "url": "https://www.wohnlust.de/kontakt/store-fulda"
+}

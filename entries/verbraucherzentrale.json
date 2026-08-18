@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten Montag: 10:00-14:00Dienstag: 13:00-17:00",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Verbraucherzentrale Hessen",
+ "note": "Der Block daneben ist der Veranstaltungskalender und bleibt draussen.",
+ "osm_id": "node/1332029099",
+ "schema": 1,
+ "tags": [
+  "fulda-office"
+ ],
+ "url": "https://www.verbraucherzentrale-hessen.de/beratungsstellen/fulda"
+}
