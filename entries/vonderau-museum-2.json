@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten Montag geschlossenDienstag - Sonntag 10-17 UhrJeden dritten Dienstag 10-20 Uhr",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
+ "name": "Vonderau Museum",
+ "note": "Der Block nennt neben den Wochenzeiten den langen dritten Dienstag.",
+ "osm_id": "relation/161084",
+ "schema": 1,
+ "tags": [
+  "fulda-museum"
+ ],
+ "url": "https://www.fulda.de/stadt-politik/angebote-einrichtungen/vonderau-museum"
+}

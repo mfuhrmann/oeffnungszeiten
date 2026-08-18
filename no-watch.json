@@ -587,6 +587,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/5510392089",
+   "name": "Blume 2000",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.blume2000.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt die Zeiten der Service-Hotline der Kette, nicht die dieser Filiale; eine Watch darauf wuerde die Zentrale ueberwachen."
+  },
+  {
    "osm_id": "node/432864249",
    "name": "Blumen Hartung",
    "reason": "no-hours-on-page",
@@ -639,6 +648,15 @@
    "source": "https://www.burgerking.de/store-locator/store/27306/keltenstra%C3%9Fe-20-fulda--fulda----36043",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/5513616865",
+   "name": "Bündnis 90/Die Grünen",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://gruene-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite zeigt den Veranstaltungskalender des Kreisverbands, keine Oeffnungszeit der Geschaeftsstelle."
   },
   {
    "osm_id": "node/1328317941",
@@ -738,6 +756,15 @@
    "source": "http://casa-espana.info/",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/1333398802",
+   "name": "Cecil",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.cecil.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt die Zeiten der Service-Hotline der Kette, nicht die dieser Filiale; eine Watch darauf wuerde die Zentrale ueberwachen."
   },
   {
    "osm_id": "node/1465073268",
@@ -1244,6 +1271,24 @@
    "note": "joes-burger.com nennt auf der ganzen Seite keine einzige Uhrzeit; ausser einem Cookie-Banner traegt sie keinen Zeitenblock."
   },
   {
+   "osm_id": "node/13584539898",
+   "name": "Julius Dannemann GmbH & Co. KG",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://heizung-dannemann.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/1328301240",
+   "name": "Juwelier Bott",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.juwelier-bott.de/",
+   "recheck": "2027-02-18",
+   "note": "Der einzige Zeitfund gehoert zu einer Verkaufsveranstaltung, nicht zu den Ladenzeiten."
+  },
+  {
    "osm_id": "node/1332106958",
    "name": "Juwelier Meister Müller",
    "reason": "no-hours-on-page",
@@ -1422,6 +1467,15 @@
    "source": "https://lebens-sinn-fonie.de/",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/12534667696",
+   "name": "Leguano",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.leguano.eu/barfusslaeden/deutschlandweit",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt die Zeiten der Service-Hotline der Kette, nicht die dieser Filiale; eine Watch darauf wuerde die Zentrale ueberwachen."
   },
   {
    "osm_id": "node/1709663606",
@@ -1757,6 +1811,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/13619760496",
+   "name": "Medizinisches Zentrum für Menschen mit Behinderung",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.antonius.de/begleiten/mzeb-fulda.html",
+   "recheck": "2027-02-18",
+   "note": "Die Seite fuehrt Gottesdienst- und Veranstaltungstermine des Traegers, keine Zeiten des Zentrums."
+  },
+  {
    "osm_id": "node/12953764199",
    "name": "Menschen und Medien e.V.",
    "reason": "no-hours-on-page",
@@ -1847,6 +1910,33 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/1333374833",
+   "name": "O2",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.o2online.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt die Zeiten der Service-Hotline der Kette, nicht die dieser Filiale; eine Watch darauf wuerde die Zentrale ueberwachen."
+  },
+  {
+   "osm_id": "node/1465073272",
+   "name": "O2",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.o2online.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt die Zeiten der Service-Hotline der Kette, nicht die dieser Filiale; eine Watch darauf wuerde die Zentrale ueberwachen."
+  },
+  {
+   "osm_id": "node/13194361122",
+   "name": "O2",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.o2online.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt die Zeiten der Service-Hotline der Kette, nicht die dieser Filiale; eine Watch darauf wuerde die Zentrale ueberwachen."
+  },
+  {
    "osm_id": "node/12915267017",
    "name": "ONLY",
    "reason": "no-hours-on-page",
@@ -1865,6 +1955,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/1333357705",
+   "name": "Oui",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.oui.com/eu/de/about-oui/storefinder",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt die Zeiten der Service-Hotline der Kette, nicht die dieser Filiale; eine Watch darauf wuerde die Zentrale ueberwachen."
+  },
+  {
    "osm_id": "node/13455916505",
    "name": "PROSOL Lacke + Farben GmbH",
    "reason": "no-hours-on-page",
@@ -1872,6 +1971,15 @@
    "source": "https://www.prosol-farben.de",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach und gerendert geprueft: die Seite traegt keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/3508043924",
+   "name": "PW Store",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.pw-store.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt die Zeiten der Service-Hotline der Kette, nicht die dieser Filiale; eine Watch darauf wuerde die Zentrale ueberwachen."
   },
   {
    "osm_id": "node/431039985",
@@ -1901,6 +2009,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "way/137134404",
+   "name": "Pfarrbüro Versöhnungskirche-Matthäuskirche",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://versoehnungskirche-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt Gemeindetermine wie den Spielenachmittag, keine Pfarrbuero-Oeffnungszeit."
+  },
+  {
    "osm_id": "node/1600298549",
    "name": "Planetarium im Vonderau Museum",
    "reason": "no-hours-on-page",
@@ -1926,6 +2043,15 @@
    "source": "https://www.priller-berater.de/",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "way/278015295",
+   "name": "Rabanus-Maurus-Schule",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.rms-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt Probenzeiten der Arbeitsgruppen, keine Oeffnungszeit des Sekretariats."
   },
   {
    "osm_id": "node/12887396868",
@@ -2367,6 +2493,15 @@
    "source": "https://www.drk-fulda.de/angebote/existenzsichernde-hilfe/jedermanns.html",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/11176384962",
+   "name": "liberty",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.liberty-woman.com/cms/unternehmen/filialen.html",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt die Zeiten der Service-Hotline der Kette, nicht die dieser Filiale; eine Watch darauf wuerde die Zentrale ueberwachen."
   },
   {
    "osm_id": "node/4984464007",

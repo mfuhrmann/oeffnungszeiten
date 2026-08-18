@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Montag – Samstag:09:00 – 20:00 Uhr*Die individuellen Öffnungszeiten von einzelnen Geschäften können abweichen.",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Fachmarktzentrum Kaiserwiesen",
+ "note": "Der Hinweis, dass einzelne Geschaefte abweichen, steht im selben Block.",
+ "osm_id": "way/26695837",
+ "schema": 1,
+ "tags": [
+  "fulda-mall"
+ ],
+ "url": "https://www.fuldakaiserwiesen.de"
+}

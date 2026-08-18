@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten: Mo – Fr: 08:00 – 17:00 Uhr",
+ "filter": "xpath:((//p[contains(normalize-space(.),\"Öffnungszeiten\")]))[1]",
+ "name": "Sanitätshaus Spiegel",
+ "note": "Der Block steht zweimal auf der Kontaktseite.",
+ "osm_id": "node/3780518918",
+ "schema": 1,
+ "tags": [
+  "fulda-medical_supply"
+ ],
+ "url": "https://www.spiegel.care/kontakt"
+}
