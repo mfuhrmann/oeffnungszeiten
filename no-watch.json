@@ -11,15 +11,6 @@
    "note": "teo ist unbesetzt und rund um die Uhr geoeffnet (teo.de/standorte: 'rund um die Uhr, 365 Tage'). Eine Seite je Filiale gibt es nicht — es gibt nichts zu beobachten."
   },
   {
-   "osm_id": "way/1024664035",
-   "name": "tegut… teo",
-   "reason": "always-open",
-   "established": "2026-08-01",
-   "source": "https://www.tegut.com/teo.html",
-   "recheck": "never",
-   "note": "teo ist unbesetzt und rund um die Uhr geoeffnet (teo.de/standorte: 'rund um die Uhr, 365 Tage'). Eine Seite je Filiale gibt es nicht — es gibt nichts zu beobachten."
-  },
-  {
    "osm_id": "way/1024665835",
    "name": "tegut… teo",
    "reason": "always-open",
@@ -376,15 +367,6 @@
    "reason": "no-hours-on-page",
    "established": "2026-08-04",
    "source": "https://l14zwo.de/",
-   "recheck": "2027-02-04",
-   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
-  },
-  {
-   "osm_id": "node/8051559014",
-   "name": "Bürgerzentrum Ziehers Süd",
-   "reason": "no-hours-on-page",
-   "established": "2026-08-04",
-   "source": "https://www.allerleihrad.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },

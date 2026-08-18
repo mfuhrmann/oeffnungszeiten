@@ -64,6 +64,7 @@ docker-compose.yml  optional local trial; not needed to contribute
 | `apply_global_settings.py` | merge `deploy/global-settings.json` into an instance |
 | `matrix_relay_seed.py` | mint the Matrix session the notification relay runs on |
 | `no_watch.py` | the absence list: what is deliberately not watched, and what is due for another look |
+| `coverage.py` | the denominator: every OSM object that could have hours, and which of them are covered |
 
 Each has `--help`. Nothing writes to changedetection without `--apply`.
 
@@ -114,6 +115,29 @@ One record, in full:
   "note": "Einziger Auftritt ist eine Facebook-Seite: Login-Wand davor, dahinter rotierende
            Follower-Zahlen und kein stabiler Anker fuer die Zeiten." }
 ```
+
+### How much is left
+
+`entries/` and `no-watch.json` are both numerators. `scripts/coverage.py` asks OSM for the
+denominator: every object in the area that could plausibly carry opening hours, sorted into four
+states — watched, a recorded absence, no website tag in OSM, or open.
+
+Selection is by exclusion rather than by a curated list of shop types: everything under
+`shop`/`craft`/`office`/`healthcare`/`amenity`/`leisure`/`tourism` with a `name`, `operator` or
+`brand`, minus an explicit list of infrastructure that has no hours. A curated list can only find
+what someone thought of, and this project has twice been surprised by what it did not think of.
+
+It also cross-tabulates against `opening_hours`, because the two halves are different jobs: an
+object with a website and **no** hours in OSM is the cheapest work here — nothing to overwrite,
+the tag is simply added — while one with both needs a page-against-map comparison.
+
+```bash
+python3 scripts/coverage.py                  # summary
+python3 scripts/coverage.py --csv offen.csv  # the open ones, to work through
+```
+
+The run also names watches and absences whose OSM object no longer turns up, which is how a
+deleted or retagged object gets noticed at all.
 
 ### Writing back to OpenStreetMap
 
