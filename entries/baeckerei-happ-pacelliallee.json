@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Café im Klinikum Pacelliallee 436043 FuldaT 0661 901 90476 Anfahrt Mo. - Fri. 06:00 - 19:00 Uhr Sa. 06:00 - 18:00 Uhr So. 06:00 - 18:00 Uhr",
+ "filter": "xpath://div[contains(.,\"Pacelliallee 4\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Pacelliallee 4\") and contains(.,\"Uhr\")])]",
+ "name": "Bäckerei Café Happ (Pacelliallee)",
+ "note": "Vierte Happ-Filiale auf derselben Uebersichtsseite; der Anker haengt wie bei den drei anderen an der Strasse dieser Filiale.",
+ "osm_id": "node/2504690099",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://baecker-happ.de/fachgeschaefte/"
+}

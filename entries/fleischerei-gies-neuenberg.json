@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Adresse: Neuenberger Straße 36 36041 Fulda Tel.: 06 61 / 7 53 45 Öffnungszeiten: Mo.- Fr.: 07.00 Uhr – 18.00 Uhr Sa.: 07.00 Uhr – 13.00 Uhr",
+ "filter": "xpath:(//*[contains(normalize-space(.),\"Öffnungszeiten:\")][not(.//*[contains(normalize-space(.),\"Öffnungszeiten:\")])])/parent::*",
+ "name": "Fleischerei Gies (Neuenberg)",
+ "note": "Eigene Filialseite unter /filialen/<ort>/; die Uebersichtsseite fuehrt alle Filialen zusammen und waere zu breit. Der Anker haengt am Text, weil die Klassen der Vorlage generierte Namen tragen.",
+ "osm_id": "node/268279240",
+ "schema": 1,
+ "tags": [
+  "fulda-butcher"
+ ],
+ "url": "https://fleischerei-gies.de/filialen/fulda-neuenberg/"
+}

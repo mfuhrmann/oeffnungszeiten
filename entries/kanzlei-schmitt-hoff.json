@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten:Montag – Freitag: 8.00 – 12.00und 14.00 – 17.00 Uhr",
+ "filter": "xpath:(//span[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//span[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])])[1]",
+ "name": "Kanzlei Schmitt Hoff Hutzel",
+ "note": "Der Block steht zweimal auf der Seite.",
+ "osm_id": "node/5513504549",
+ "schema": 1,
+ "tags": [
+  "fulda-lawyer"
+ ],
+ "url": "https://schmitt-hoff.de"
+}

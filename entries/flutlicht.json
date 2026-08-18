@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten: montags: 17:00 - 22:00 Uhr dienstags: 17:00 - 23:00 Uhr mittwochs: 17:00 - 23:00 Uhr donnerstags: Ruhetag freitags: 17:00 - 24:00 Uhr samstags: 15:00 Uhr - 24:00 Uhr sonntags Frühschoppen 10:00 -13:00 Uhr; 15:30 Uhr – 22:00 Uhr In der bundesligafreien Zeit öffnen wir erst um 17:00 Uhr!",
+ "filter": "xpath:(//b[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Flutlicht",
+ "note": "Gaststaette des SG Johannesberg; die Zeiten stehen unter einer fett gesetzten Zeile, der Donnerstag ausdruecklich als Ruhetag.",
+ "osm_id": "node/14074761549",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurants"
+ ],
+ "url": "http://sg-johannesberg.de/gaststaette"
+}

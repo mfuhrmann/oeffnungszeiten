@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Monday 14:00-16:00 · Tuesday 09:00-12:30 · Thursday 09:00-12:30 · Friday 14:00-16:00",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Sparkasse Fulda (Hauptstelle)",
+ "note": "JSON-LD, weil die Seite keinen brauchbaren sichtbaren Anker hat: der h2-Anker, mit dem die Filiale Aschenberg laeuft, trifft hier nicht (andere Vorlage), und der einzige enge sichtbare Block haengt an einer generierten Klasse (FinalGridItem-xs8-sm12-md4) und enthaelt nur Uhrzeiten ohne Wochentag. Das JSON-LD nennt die Schalterzeiten; die Beratungszeiten 08:00-20:00 daneben sind keine Oeffnungszeit.",
+ "osm_id": "way/449921945",
+ "schema": 1,
+ "tags": [
+  "fulda-bank"
+ ],
+ "url": "https://www.sparkasse.de/standorte/filialen/sparkasse-fulda-filiale-hauptstelle-8543"
+}

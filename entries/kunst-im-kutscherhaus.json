@@ -1,11 +1,10 @@
 {
- "added": "2026-08-03",
- "captured_sample": "Schön, dass Sie uns besuchen! GALERIE KUNST IM KUTSCHERHAUS Gutenbergstraße 4 36037 Fulda Öffnungszeiten für Besucher: Dienstag bis Freitag 16-18 Uhr Freitags Künstlertisch 18-20 Ihr Telefon: 0162-420",
- "fetch_backend": "system",
- "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten für Besucher: Dienstag bis Freitag 16-18 Uhr Freitags Künstlertisch 18-20 Ihr",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
  "name": "Kunst im Kutscherhaus",
- "note": "Hours are on the homepage. OSM MERGE CANDIDATE: node/12964258539 and way/207053158 are both 'Kunst im Kutscherhaus' with the same website tag.",
- "osm_id": "node/12964258539",
+ "note": "Neben den Besuchszeiten nennt der Block den Kuenstlertisch am Freitag.",
+ "osm_id": "way/207053158",
  "schema": 1,
  "tags": [
   "fulda-gallery"

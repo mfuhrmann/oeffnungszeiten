@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten Mo, Di, Do 08 - 18:30 Uhr Mi 08 - 18 Uhr, Fr 08 - 15 Uhr",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "ZAR Ambulante Reha",
+ "note": "Sichtbarer Block statt JSON-LD: das JSON-LD nennt Mo-Fr 08:00-17:00 und widerspricht damit der sichtbaren Angabe (Mo, Di, Do bis 18:30, Fr bis 15:00).",
+ "osm_id": "node/12650591150",
+ "schema": 1,
+ "tags": [
+  "fulda-clinic"
+ ],
+ "url": "https://www.zar.de/fulda"
+}

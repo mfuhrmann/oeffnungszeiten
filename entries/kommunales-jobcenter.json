@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "ÖffnungszeitenBÜRGERSERVICE IM LANDRATSAMTMONTAG – DONNERSTAG8 Uhr – 18 UhrFREITAG8 Uhr – 14 UhrZU DEN ÖFFNUNGSZEITEN DER AUSSENSTELLEN",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" id-content-second-column \")]",
+ "name": "Kommunales Jobcenter",
+ "note": "Der Block nennt zugleich den Buergerservice im Landratsamt; beide Zeiten stehen darin.",
+ "osm_id": "node/13392801719",
+ "schema": 1,
+ "tags": [
+  "fulda-government"
+ ],
+ "url": "https://job-fulda.de/"
+}

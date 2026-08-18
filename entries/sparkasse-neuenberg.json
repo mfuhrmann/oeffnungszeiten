@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Monday 09:00-12:30 · Tuesday 14:00-16:00 · Thursday 14:00-16:00 · Friday 09:00-12:30",
+ "filter": "json:$..openingHoursSpecification",
+ "name": "Sparkasse",
+ "note": "Dieselbe Filialseiten-Vorlage wie die Hauptstelle: kein brauchbarer sichtbarer Anker, der einzige enge Block haengt an einer generierten Klasse und nennt keine Wochentage. Das JSON-LD traegt die Schalterzeiten.",
+ "osm_id": "node/5593991341",
+ "schema": 1,
+ "tags": [
+  "fulda-bank"
+ ],
+ "url": "https://www.sparkasse.de/standorte/filialen/sparkasse-fulda-filiale-haimbacher-strasse-8552"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungs­zeitenBeratung & Vermittlungnach vorheriger TerminabspracheCafejede gerade Kalenderwoche samstags von 15-17 UhrSollten Sie ein Fundtier aufgenommen haben und uns telefonisch nicht erreichen, melden Sie sich bitte bei der örtlichen Polizeidienststelle unter 0661/1050.",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnung\")])/parent::*",
+ "name": "Tierheim Fulda-Hünfeld e. V.",
+ "note": "Die Seite trennt Beratung und Vermittlung (nur nach Terminabsprache) vom Cafe, das jede gerade Kalenderwoche samstags oeffnet - beides steht im Block.",
+ "osm_id": "way/121654669",
+ "schema": 1,
+ "tags": [
+  "fulda-animal_shelter"
+ ],
+ "url": "https://tierheim-fulda.de"
+}

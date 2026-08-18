@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Montag: 00:00 - 24:00 Uhr Dienstag: 00:00 - 24:00 Uhr Mittwoch: 00:00 - 24:00 Uhr Donnerstag: 00:00 - 24:00 Uhr Freitag: 00:00 - 24:00 Uhr Samstag: 00:00 - 24:00 Uhr Sonntag: 00:00 - 24:00 Uhr",
+ "filter": "xpath://*[@id=\"acc-tsdetails-1\"]",
+ "name": "Avia",
+ "note": "Tankstelle mit 24-Stunden-Betrieb; der Block nennt jeden Tag 00:00-24:00. Er meldet sich, wenn das einmal nicht mehr gilt.",
+ "osm_id": "node/732713368",
+ "schema": 1,
+ "tags": [
+  "fulda-fuel"
+ ],
+ "url": "https://www.avia.de/privatkunden/tanken/tankstellensuche/tankstellen-details?facilityID=2245"
+}

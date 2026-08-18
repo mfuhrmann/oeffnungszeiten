@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten:Mo.-Fr. 08:00 bis 17:00 Uhr",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Kita Wirbelwind",
+ "osm_id": "way/1550049267",
+ "schema": 1,
+ "tags": [
+  "fulda-childcare"
+ ],
+ "url": "https://awo-fulda.de/begegnungsstaetten/kita/"
+}

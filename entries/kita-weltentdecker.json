@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten Krippe / U3 Vormittag: Montag - Freitag: 07:15 - 12:30 Uhr (ohne Mittagessen) Ganztag: Montag - Donnerstag: 07:15 - 16:30 Uhr und freitags 07:15 - 15:30 Uhr (mit Mittagessen) Kita / Ü3 Vormittag: Montag - Freitag: 07:15 - 12:30 Uhr (ohne Mittagessen) Vormittag + Mittag: Montag - Freitag: 07:15 - 14:00 Uhr (mit Mittagessen) Ganztag: Montag - Donnerstag: 07:15 - 16:30 Uhr und freitags",
+ "filter": "xpath:(//p[contains(normalize-space(.),\"Öffnungszeiten\")])",
+ "name": "Kindertagesstätte Weltentdecker",
+ "note": "Dieselbe little-bird-Vorlage wie die uebrigen Kitas; die Seite fuehrt mehrere Buchungsmodelle.",
+ "osm_id": "way/1429351097",
+ "schema": 1,
+ "tags": [
+  "fulda-childcare"
+ ],
+ "url": "https://kinderbetreuung-fulda.little-bird.de/Fulda/Kindertagesstaette-Weltentdecker"
+}

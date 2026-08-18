@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Ziehers Goerdelerstraße 2836037 FuldaT 0661 380 8098 Anfahrt Mo. - Fri. 06:00 - 19:00 Uhr Sa. 06:00 - 17:00 Uhr So. 07:00 - 17:00 Uhr",
+ "filter": "xpath://div[contains(.,\"Goerdelerstraße 28\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Goerdelerstraße 28\") and contains(.,\"Uhr\")])]",
+ "name": "Bäckerei Happ (Ziehers)",
+ "note": "Filialzeile der Uebersichtsseite, verschluesselt ueber die Strasse dieser Filiale - wie die uebrigen Happ-Watches.",
+ "osm_id": "way/1120071139",
+ "schema": 1,
+ "tags": [
+  "fulda-bakery"
+ ],
+ "url": "https://baecker-happ.de/fachgeschaefte/"
+}

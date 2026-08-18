@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Montag bis Donnerstag: 8:00 bis 12:00 Uhr und 13:30 bis 15:30 Uhr Freitag: 8:00 Uhr bis 12:00 Uhr",
+ "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Amt für Bodenmanagement Fulda",
+ "osm_id": "way/134566376",
+ "schema": 1,
+ "tags": [
+  "fulda-government"
+ ],
+ "url": "https://hvbg.hessen.de/ueber-uns/dienststellen/amt-fuer-bodenmanagement-fulda"
+}

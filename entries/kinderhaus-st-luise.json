@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Montag bis Donnerstag: 07:00 - 17:00 UhrFreitag: 07:00 - 16:30 Uhr",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "Kinderhaus St. Luise",
+ "osm_id": "way/1048031561",
+ "schema": 1,
+ "tags": [
+  "fulda-childcare"
+ ],
+ "url": "https://www.sozialewerke.de/fulda/kinderhaus-st-luise.html"
+}

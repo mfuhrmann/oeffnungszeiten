@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten In Fulda – Hauptgeschäftsstelle Montag bis Freitag von 10:00 Uhr – 16:30 Uhr, Samstag von 10:00 – 12:00 Uhr! Unsere Fahrschule befindet sich in der Kurfürstenstraße 38, gleich schräg gegenüber dem Bahnhof. Zweigstelle Petersberg-Steinau In der Zweigstelle in Steinau in der Hauptstraße 26 sind die Öffnungszeiten und Unterrichte montags um 18:00 Uhr und donnerstags um 18:00 Uhr. Anmel",
+ "filter": "xpath:(//h1[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Fahrschule Mihm",
+ "note": "Die Seite /oeffnungszeiten fuehrt alle Geschaeftsstellen; Fulda steht als Hauptgeschaeftsstelle darin. Eine Aenderung an einer anderen Stelle loest hier mit aus.",
+ "osm_id": "node/1328327673",
+ "schema": 1,
+ "tags": [
+  "fulda-driving_school"
+ ],
+ "url": "https://www.fahrschule-mihm.de/oeffnungszeiten"
+}

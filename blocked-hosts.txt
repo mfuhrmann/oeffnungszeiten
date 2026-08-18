@@ -1,0 +1,17 @@
+# Hosts this instance cannot fetch, beyond what no-watch.json already records.
+#
+# Most blocked hosts arrive here as a `datacenter-block` or `anti-bot` record in no-watch.json,
+# and scripts read the host out of that file. These few have no record because the watches were
+# removed before that list existed — the businesses behind them are real and would otherwise be
+# proposed again on every pass.
+#
+# A candidate on one of these hosts looks perfectly healthy from a home connection and turns red
+# the moment it runs in the cluster. Measured: 200 from here, 403 from the VPS, same user agent,
+# same second.
+#
+# one host per line, reason after the hash
+euronics.de          # 403 to the whole site from the VPS, 199-byte Apache page, no challenge
+hotel-bb.com         # same shape
+luna-fulda.de        # same shape
+re-gruppe.de         # 212.218.67.130 — RhönEnergie: three baths plus Bistro 52
+re-fd.de             # same address, same block — also the Kundencenter Busbahnhof

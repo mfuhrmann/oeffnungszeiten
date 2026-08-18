@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten: Mo.-Fr.: 09:00 – 18:00 Uhr Sa.: 09:00 – 15:00 Uhr",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Barbier ala Turka",
+ "osm_id": "node/1328305682",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://barbieralaturka.de"
+}
