@@ -76,12 +76,21 @@ one of the two lists, and CI fails if it appears in both.
 
 Two kinds of reason, and `wieder_pruefen` carries the difference:
 
-- a property of the **business** — publishes no hours, only a Facebook page, only a Lieferando
-  microsite, site gone — gets a date. A new owner builds a website; twice a year is often enough.
+- a property of the **business** — the page states no hours, appointment only, only a social
+  profile, only a delivery microsite, site gone — gets a date. The question at that date is not
+  "can we fetch it now" but *has this business got its own page yet*. That distinction matters
+  for the platform cases: a Lieferando microsite publishes **delivery** windows that flip when
+  the shop toggles offline, and a social profile hides its hours behind a login wall among
+  rotating follower counts. Neither becomes usable by fetching from somewhere else.
 - a property of **this instance** — `anti-bot`, `datacenter-block` — gets `bei-standortwechsel`.
   Time changes nothing there: the block is the same tomorrow. What changes it is the instance
   moving to a residential address, or the pinned user agent being bumped. Measured on one host:
   200 from a home connection, 403 from the VPS, same user agent, same second.
+
+Every reason names the **cause**, not the symptom, and the note has to say what the page *does*
+show and how that was checked — CI rejects a record without one. "No hours published" was the old
+wording, and it swept three different things into one bucket: a page that really states nothing,
+a chain whose branch link nobody found, and our own discovery landing on a site-wide footer link.
 
 What does **not** belong in this list is work nobody has done yet — a filter that needs a browser,
 a chain page whose branch link has not been found, a `website` tag pointing at the wrong company.

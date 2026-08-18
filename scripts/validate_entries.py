@@ -172,8 +172,23 @@ def check_live(e, lang_default="de", browser_ws=None):
 # The absence list is the counterpart to `entries/`: an object appears in exactly one of them,
 # either because it is watched or because there is a recorded reason why it is not. Without it
 # every pass re-examines the same hopeless cases, and "how much is left" stays unanswerable.
-GRUENDE = {"keine-zeiten", "nur-social", "lieferando", "anti-bot", "datacenter-block",
-           "seite-weg", "24-7"}
+# The reason names the CAUSE, not the symptom. "no hours published" was the old wording and it
+# swept three different things into one bucket: a page that really states nothing, a chain whose
+# branch link nobody found, and our own discovery landing on a footer link. Only the first is an
+# absence; the other two are work, and work must not hide in a file named "not watched".
+GRUENDE = {
+    "keine-zeiten-auf-der-seite",   # operator page, checked plain AND rendered, states none
+    "nur-nach-vereinbarung",        # the page says so — a fact about the business, not a gap
+    "nur-social",                   # only presence is a social profile: login wall, rotating counters
+    "nur-lieferdienst",             # only presence is a delivery platform — those are DELIVERY
+                                    # windows and flip with the shop toggle; a better address
+                                    # would not help, so this stays a business property
+    "nur-tagesstatus",              # the page shows only "today", never the week
+    "seite-nicht-erreichbar",       # DNS failure or 404
+    "anti-bot",                     # 403 in every fetch mode, from here as well
+    "datacenter-block",             # 200 from a home line, 403 from the VPS, same user agent
+    "rund-um-die-uhr",              # hours known and constant — nothing to observe
+}
 # A business property gets a date; a property of *our* instance gets an event, because time
 # does not change it — a datacenter block is the same tomorrow. "nie" is for what cannot move.
 WIEDER = re.compile(r'^(20\d\d-\d\d-\d\d|bei-standortwechsel|nie)$')
@@ -201,6 +216,10 @@ def check_absences(path, watched):
             errs.append(f"{path}: {wer}: grund {r.get('grund')!r} not one of {sorted(GRUENDE)}")
         if not re.match(r'^20\d\d-\d\d-\d\d$', r.get("belegt_am") or ""):
             errs.append(f"{path}: {wer}: belegt_am missing or not a date")
+        # A reason nobody can read is not a reason. The note says what IS on the page.
+        if len((r.get("note") or "").strip()) < 30:
+            errs.append(f"{path}: {wer}: note must say what the page does show, and how it "
+                        f"was checked")
         if not WIEDER.match(r.get("wieder_pruefen") or ""):
             errs.append(f"{path}: {wer}: wieder_pruefen must be a date, "
                         f"bei-standortwechsel or nie")

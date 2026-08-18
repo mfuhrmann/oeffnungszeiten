@@ -9,12 +9,20 @@ left" has no answer.
 
 The reasons fall into two kinds, and `wieder_pruefen` carries the difference:
 
-  * a property of the **business** (`keine-zeiten`, `nur-social`, `lieferando`, `seite-weg`)
-    gets a date. A new owner builds a website; that is worth looking at twice a year.
-  * a property of **our instance** (`anti-bot`, `datacenter-block`) gets `bei-standortwechsel`.
-    Time changes nothing here — the block is the same tomorrow. What changes it is the instance
+  * a property of the **business** — `keine-zeiten-auf-der-seite`, `nur-nach-vereinbarung`,
+    `nur-social`, `nur-lieferdienst`, `nur-tagesstatus`, `seite-nicht-erreichbar` — gets a date.
+    The question at that date is not "can we fetch it now" but **"has this business got its own
+    page yet"**. That matters for the platform cases: a delivery microsite publishes delivery
+    windows, and a social profile hides its hours behind a login wall — neither is fixed by
+    fetching from somewhere else.
+  * a property of **our instance** — `anti-bot`, `datacenter-block` — gets `bei-standortwechsel`.
+    Time changes nothing there; the block is the same tomorrow. What changes it is the instance
     moving to a residential address, or the pinned user agent being bumped.
-  * `nie` is for what cannot move: `24-7` means the hours are known and constant.
+  * `nie` is for what cannot move: `rund-um-die-uhr` means the hours are known and constant.
+
+What is **not** in this list is work nobody has done yet — a chain whose branch link was never
+found, a `website` tag pointing at the wrong company, a page our own discovery picked badly.
+Those keep counting as open.
 
     python3 scripts/no_watch.py                    # summary per reason
     python3 scripts/no_watch.py --faellig          # what is due today
