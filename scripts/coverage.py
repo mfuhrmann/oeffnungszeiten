@@ -50,10 +50,7 @@ import osm_cd_common as C  # noqa: E402
 
 SCHLUESSEL = ["shop", "craft", "office", "healthcare", "amenity", "leisure", "tourism"]
 # Infrastructure: named, but nothing opens or closes. Kept as an explicit list so a reader can
-# argue with it — every entry here is an object the count deliberately ignores. Two that look
-# like infrastructure are NOT here: a staffed `tourism=information` desk and a `amenity=recycling`
-# yard both keep hours, and this project watches one of each. The first version of the list
-# excluded them and quietly dropped two live watches out of the denominator.
+# argue with it — every entry here is an object the count deliberately ignores.
 OHNE_ZEITEN = {
     "bench", "waste_basket", "waste_disposal", "parking", "parking_space",
     "parking_entrance", "bicycle_parking", "motorcycle_parking", "atm", "post_box",
@@ -68,7 +65,14 @@ OHNE_ZEITEN = {
 }
 
 
-def overpass(rel_id, url=None, versuche=4):
+# One query of this size several times in an afternoon is enough to be rate-limited, and the
+# 429 arrives as a plain HTTPError. Fall back to a mirror rather than fail the run.
+SPIEGEL = ["https://overpass-api.de/api/interpreter",
+           "https://overpass.kumi.systems/api/interpreter",
+           "https://overpass.private.coffee/api/interpreter"]
+
+
+def overpass(rel_id, url=None, versuche=3):
     q = f"""
     [out:json][timeout:180];
     rel({rel_id}); map_to_area -> .a;
@@ -78,17 +82,37 @@ def overpass(rel_id, url=None, versuche=4):
     );
     out tags center;
     """
-    ziel = url or C.DEFAULT_OVERPASS
-    for n in range(versuche):
-        try:
-            req = urllib.request.Request(ziel, data=urllib.parse.urlencode({"data": q}).encode(),
-                                         headers=C.OVERPASS_UA)
-            with urllib.request.urlopen(req, timeout=300) as r:
-                return json.load(r)["elements"]
-        except Exception as e:
-            print(f"Overpass {type(e).__name__} ({n + 1}/{versuche}) — retrying", file=sys.stderr)
-            time.sleep(20)
-    sys.exit("Overpass did not answer")
+    ziele = [url] if url else SPIEGEL
+    for ziel in ziele:
+        for n in range(versuche):
+            try:
+                req = urllib.request.Request(
+                    ziel, data=urllib.parse.urlencode({"data": q}).encode(),
+                    headers=C.OVERPASS_UA)
+                with urllib.request.urlopen(req, timeout=300) as r:
+                    return json.load(r)["elements"]
+            except Exception as e:
+                print(f"{ziel.split('/')[2]}: {type(e).__name__} ({n + 1}/{versuche})",
+                      file=sys.stderr)
+                time.sleep(15 * (n + 1))
+    sys.exit("no Overpass mirror answered")
+
+
+# Two categories split down the middle, and OSM has a subkey for exactly that. A staffed tourist
+# office and a recycling yard keep hours; an information board on a road and a glass container do
+# not — and Fulda has 38 Hessen-Mobil boards and a row of containers that would otherwise pad the
+# denominator. Dropping the pair wholesale is just as wrong: this project watches a DB information
+# desk and a recycling yard.
+BEMANNT = {"information": {"office", "visitor_centre"},
+           "recycling": {"centre"}}
+
+
+def unbemannt(t):
+    if t.get("tourism") == "information":
+        return t.get("information") not in BEMANNT["information"]
+    if t.get("amenity") == "recycling":
+        return t.get("recycling_type") not in BEMANNT["recycling"]
+    return False
 
 
 def kategorie(t):
@@ -133,6 +157,8 @@ def main():
         kategorien = [t[k] for k in SCHLUESSEL if t.get(k)]
         if kategorien and all(v in OHNE_ZEITEN for v in kategorien):
             continue
+        if unbemannt(t):
+            continue
         oid = f"{e['type']}/{e['id']}"
         website = t.get("website") or t.get("contact:website") or ""
         objekte.append({
@@ -140,13 +166,35 @@ def main():
             "name": t.get("name") or t.get("operator") or t.get("brand", ""),
             "kategorie": kategorie(t),
             "website": website, "opening_hours": t.get("opening_hours", ""),
+            "lat": e.get("lat", (e.get("center") or {}).get("lat")),
+            "lon": e.get("lon", (e.get("center") or {}).get("lon")),
             "status": ("watched" if oid in watched else
                        "absent" if oid in absent else
                        "no-website" if not website else "open"),
         })
 
+    # The same business mapped twice — a node sitting inside its own building way — counts twice.
+    # Same name and category is NOT enough to call that: Pappert has seven branches under one
+    # name. A pair only counts as one place when the types differ and they are within 50 m.
+    nach_name = collections.defaultdict(list)
+    for o in objekte:
+        if o["name"]:
+            nach_name[(o["name"].lower(), o["kategorie"])].append(o)
+    doppelt = 0
+    for gruppe in nach_name.values():
+        for i, a in enumerate(gruppe):
+            for b in gruppe[i + 1:]:
+                if a["osm_id"].split("/")[0] == b["osm_id"].split("/")[0]:
+                    continue
+                if None in (a["lat"], b["lat"]):
+                    continue
+                if (abs(a["lat"] - b["lat"]) < 0.00045
+                        and abs(a["lon"] - b["lon"]) < 0.0007):
+                    doppelt += 1
+
     zaehler = collections.Counter(o["status"] for o in objekte)
-    print(f"{len(objekte)} objects in the area that could carry opening hours\n")
+    print(f"{len(objekte)} objects in the area that could carry opening hours "
+          f"({doppelt} of them a node and a way for the same place)\n")
     for s in ("watched", "absent", "no-website", "open"):
         print(f"{zaehler[s]:6}  {s}")
 
@@ -179,8 +227,8 @@ def main():
 
     if args.csv:
         with open(args.csv, "w", newline="", encoding="utf-8") as fh:
-            w = csv.DictWriter(fh, fieldnames=["osm_id", "name", "kategorie", "website",
-                                               "opening_hours", "status"])
+            felder = ["osm_id", "name", "kategorie", "website", "opening_hours", "status"]
+            w = csv.DictWriter(fh, fieldnames=felder, extrasaction="ignore")
             w.writeheader()
             w.writerows(sorted(offen, key=lambda o: (o["kategorie"], o["name"])))
         print(f"\n-> {args.csv} ({len(offen)} rows)")
