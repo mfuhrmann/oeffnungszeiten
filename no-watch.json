@@ -344,6 +344,24 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/13323148299",
+   "name": "Autenrieth + Wehner GmbH",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.autenrieth-wehner.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder Start- noch Kontakt- noch Impressumsseite nennt eine Uhrzeit, am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "way/550425733",
+   "name": "Autosattlerei-Planen Adolf Schwab",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://schwab-planen.de/",
+   "recheck": "2027-02-18",
+   "note": "schwab-planen.de nennt keine Uhrzeit."
+  },
+  {
    "osm_id": "node/6954079580",
    "name": "Backstage Fulda - Jazz & Live-Club",
    "reason": "no-hours-on-page",
@@ -623,6 +641,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "way/578396919",
+   "name": "Hochstift Brauerei",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.hochstift.de/",
+   "recheck": "2027-02-18",
+   "note": "hochstift.de nennt keine Uhrzeit; die Seite ist eine Markenseite ohne Ausschank."
+  },
+  {
    "osm_id": "way/117872035",
    "name": "Hotel Gasthof Jägerhaus",
    "reason": "no-hours-on-page",
@@ -639,6 +666,24 @@
    "source": "http://www.platzhirsch-fulda.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13448773517",
+   "name": "HypoVereinsbank",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.hypovereinsbank.de/hvb/kontaktwege/filiale/l/fulda/dalbergstrasse-7/131",
+   "recheck": "2027-02-18",
+   "note": "Die Kontaktwege-Seite fuehrt Chat und Terminvereinbarung; auf ihr und den drei verlinkten Unterseiten steht keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12500569010",
+   "name": "Jaroschenko Heizung-Sanitär",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://jaroschenko.com/",
+   "recheck": "2027-02-18",
+   "note": "Weder Start- noch Kontakt- noch Impressumsseite nennt eine Uhrzeit, am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/12500536797",
@@ -956,6 +1001,15 @@
    "note": "mvz-im-medicum-fulda.de hat eine Seite je Standort, aber keine davon nennt Sprechzeiten; auch gerendert kein Zeitmuster."
   },
   {
+   "osm_id": "node/13756737852",
+   "name": "Malerfachbetrieb Hofmann",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.hofmann-malerbetrieb.de",
+   "recheck": "2027-02-18",
+   "note": "hofmann-malerbetrieb.de nennt keine Uhrzeit."
+  },
+  {
    "osm_id": "node/12499070406",
    "name": "Massatelier Eva Schönherr",
    "reason": "no-hours-on-page",
@@ -1037,6 +1091,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/1406067275",
+   "name": "S-CLUB",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://s-club-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "s-club-fulda.de nennt Veranstaltungen, aber keine Oeffnungszeit."
+  },
+  {
    "osm_id": "node/13584539900",
    "name": "SCHMITT & ORSCHLER GmbH & Co. Farben- und Heimtex KG",
    "reason": "no-hours-on-page",
@@ -1053,6 +1116,24 @@
    "source": "https://www2.schuh-schmid.com/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1332054289",
+   "name": "Schöppchen",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "http://www.schöppchen.de/",
+   "recheck": "2027-02-18",
+   "note": "schoeppchen.de antwortet unter dem Punycode-Namen mit 200, nennt aber keine Uhrzeit."
+  },
+  {
+   "osm_id": "way/449921945",
+   "name": "Sparkasse Fulda",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.sparkasse.de/standorte/filialen/sparkasse-fulda-filiale-wallweg-8551",
+   "recheck": "2027-02-18",
+   "note": "Die Startseite nennt keine Uhrzeit; Filialzeiten stehen nur auf den Filialseiten, dieses OSM-Objekt hat keine."
   },
   {
    "osm_id": "node/14077552878",
@@ -1107,6 +1188,15 @@
    "source": "https://www.vs-furniere.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13357264887",
+   "name": "Veynest Cuisine",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.veynest-cuisine.de/",
+   "recheck": "2027-02-18",
+   "note": "veynest-cuisine.de nennt keine Uhrzeit (Catering nach Absprache)."
   },
   {
    "osm_id": "node/12500440660",
@@ -1208,6 +1298,15 @@
    "note": "Seit dem 2026-07-26 nicht erreichbar: DNS- beziehungsweise Verbindungsfehler."
   },
   {
+   "osm_id": "node/13230067453",
+   "name": "Elisabeth Rammler",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "http://www.naturkosmetik-atelier.de/",
+   "recheck": "2027-02-18",
+   "note": "naturkosmetik-atelier.de loest nicht mehr auf (DNS), am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/11251655465",
    "name": "Fusion Kitchen",
    "reason": "site-unreachable",
@@ -1217,6 +1316,24 @@
    "note": "Seit dem 2026-07-26 nicht erreichbar: DNS- beziehungsweise Verbindungsfehler."
   },
   {
+   "osm_id": "node/13959404348",
+   "name": "MVZ im Medicum Labor",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://medicum-fulda.medicum-deutschland.de/fachrichtung/laboratoriumsmedizin/",
+   "recheck": "2027-02-18",
+   "note": "medicum-deutschland.de liefert ein Zertifikat, das die Pruefung nicht besteht, am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/9782317212",
+   "name": "Praxis für Bildgebende Diagnostik",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://radiologe-fulda.de",
+   "recheck": "2027-02-18",
+   "note": "radiologe-fulda.de weist die Verbindung ab (Connection refused), am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/1333322181",
    "name": "Satinee Strumpfmoden",
    "reason": "site-unreachable",
@@ -1224,6 +1341,33 @@
    "source": "http://www.satinee.eu/filialen-satinee/satinee-strumpfmoden-in-fulda/",
    "recheck": "2027-02-18",
    "note": "Die Filialseite antwortet 404; der zuletzt gespeicherte Rohtext endet mitten im Satz."
+  },
+  {
+   "osm_id": "node/9169981263",
+   "name": "Stadtteilcafè Ostend",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://stadtteilcafe-ostend.de",
+   "recheck": "2027-02-18",
+   "note": "stadtteilcafe-ostend.de loest nicht mehr auf (DNS), am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/5519083340",
+   "name": "Steinmetz Enders",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "http://www.steinmetz-enders.de",
+   "recheck": "2027-02-18",
+   "note": "steinmetz-enders.de loest nicht mehr auf (DNS), am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/13629398040",
+   "name": "Wandura e.K.",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://www.maler-voelker.de",
+   "recheck": "2027-02-18",
+   "note": "maler-voelker.de bricht den TLS-Handschlag ab (TLSV1_ALERT_INTERNAL_ERROR), am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/1336880570",
