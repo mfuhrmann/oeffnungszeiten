@@ -42,6 +42,7 @@ occur in practice, and what counts as proof that a filter is right:
 ```
 entries/            one file per watch — the source of truth
   .lock.json        slug → watch uuid, per changedetection instance
+no-watch.json       objects deliberately not watched, with the reason and when to look again
 scripts/            wizard, sync, audit, renderer, OSM export  (stdlib only, except lxml)
 deploy/             managed global settings — noise-suppression patterns, recheck interval
 charts/             Helm chart for changedetection and its browser
@@ -62,8 +63,35 @@ docker-compose.yml  optional local trial; not needed to contribute
 | `cd_export.py` | turn a UI experiment back into entry files |
 | `apply_global_settings.py` | merge `deploy/global-settings.json` into an instance |
 | `matrix_relay_seed.py` | mint the Matrix session the notification relay runs on |
+| `no_watch.py` | the absence list: what is deliberately not watched, and what is due for another look |
 
 Each has `--help`. Nothing writes to changedetection without `--apply`.
+
+### What is *not* watched
+
+`entries/` answers "what do we watch". On its own that number means little — 502 of how many? The
+counterpart is [`no-watch.json`](./no-watch.json): every object that deliberately has no watch,
+with the reason, the date it was established, and when to look again. An object belongs in exactly
+one of the two lists, and CI fails if it appears in both.
+
+Two kinds of reason, and `wieder_pruefen` carries the difference:
+
+- a property of the **business** — publishes no hours, only a Facebook page, only a Lieferando
+  microsite, site gone — gets a date. A new owner builds a website; twice a year is often enough.
+- a property of **this instance** — `anti-bot`, `datacenter-block` — gets `bei-standortwechsel`.
+  Time changes nothing there: the block is the same tomorrow. What changes it is the instance
+  moving to a residential address, or the pinned user agent being bumped. Measured on one host:
+  200 from a home connection, 403 from the VPS, same user agent, same second.
+
+What does **not** belong in this list is work nobody has done yet — a filter that needs a browser,
+a chain page whose branch link has not been found, a `website` tag pointing at the wrong company.
+That is backlog, and putting it under a heading like "unmonitorable" is how it disappears.
+
+```bash
+python3 scripts/no_watch.py                    # summary per reason
+python3 scripts/no_watch.py --faellig          # due for another look today
+python3 scripts/no_watch.py --standortwechsel  # what a move would put back in play
+```
 
 ### Writing back to OpenStreetMap
 
