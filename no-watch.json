@@ -272,6 +272,15 @@
    "note": "Von hier 200, vom VPS 403 bei identischem UA — gemessen 2026-08-18."
   },
   {
+   "osm_id": "way/206908087",
+   "name": "Kundencenter Busbahnhof Stadtschloss",
+   "reason": "datacenter-block",
+   "established": "2026-08-18",
+   "source": "https://re-fd.de/nahverkehr",
+   "recheck": "on-relocation",
+   "note": "re-fd.de liegt auf 212.218.67.130 und antwortet dem VPS mit 403; von hier nennt die Seite unter /nahverkehr taeglich 8:00 bis 22:00. Dieselbe Adresse sperrt re-gruppe.de."
+  },
+  {
    "osm_id": "node/11812148620",
    "name": "Von Poll Immobilien",
    "reason": "datacenter-block",

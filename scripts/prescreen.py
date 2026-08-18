@@ -9,6 +9,9 @@ machine-readable, and so are a dead domain and a page without a single clock val
 
 So this fetches each page once and sorts it:
 
+    blocked     the host is one this instance cannot fetch — from a home connection it looks
+                healthy, in the cluster it is a permanent 403. Read out of no-watch.json
+                (`datacenter-block`, `anti-bot`) and blocked-hosts.txt
     platform    the page says a delivery platform runs it — those are DELIVERY windows, and a
                 better fetch would not change that
     unreachable DNS failure, refused connection, broken TLS, 4xx/5xx
@@ -34,6 +37,7 @@ import argparse
 import collections
 import csv
 import itertools
+import json
 import re
 import sys
 import urllib.error
@@ -55,6 +59,29 @@ ZEIT = re.compile(r'\d{1,2}[:.]\d{2}\s*(?:-|–|—|bis)\s*\d{1,2}[:.]\d{2}'
                   r'|\d{1,2}\s*(?:-|–|bis)\s*\d{1,2}\s*Uhr')
 TAG = re.compile(r'\b(mo|di|mi|do|fr|sa|so|montag|dienstag|mittwoch|donnerstag|freitag|samstag'
                  r'|sonntag)', re.I)
+
+
+def gesperrte_hosts(no_watch="no-watch.json", liste="blocked-hosts.txt"):
+    """Hosts that answer here and refuse in the cluster. Two sources, one meaning."""
+    raus = set()
+    try:
+        for r in json.load(open(no_watch, encoding="utf-8"))["records"]:
+            if r.get("reason") in ("datacenter-block", "anti-bot") and r.get("source"):
+                wirt = urllib.parse.urlsplit(r["source"]).netloc.lower()
+                if wirt.startswith("www."):
+                    wirt = wirt[4:]
+                if wirt:
+                    raus.add(wirt)
+    except FileNotFoundError:
+        pass
+    try:
+        for zeile in open(liste, encoding="utf-8"):
+            zeile = zeile.split("#")[0].strip()
+            if zeile:
+                raus.add(zeile.lower())
+    except FileNotFoundError:
+        pass
+    return raus
 
 
 def reihum(rows):
@@ -125,9 +152,15 @@ def main():
     rows = [r for r in csv.DictReader(open(args.csv, encoding="utf-8"))
             if r["name"] not in args.ueberspringen
             and (not args.kategorie or r["kategorie"].startswith(args.kategorie))]
+    gesperrt = gesperrte_hosts()
     zaehler = collections.Counter()
     for r in reihum(rows)[:args.anzahl]:
-        art, beleg = pruefe(r["website"])
+        wirt = urllib.parse.urlsplit(r["website"]).netloc.lower()
+        wirt = wirt[4:] if wirt.startswith("www.") else wirt
+        if any(wirt == g or wirt.endswith("." + g) for g in gesperrt):
+            art, beleg = "blocked", f"{wirt} is unreachable from the cluster"
+        else:
+            art, beleg = pruefe(r["website"])
         zaehler[art] += 1
         print(f"{art:<12} {r['name'][:26]:<26} {r['kategorie'][:16]:<16} {beleg[:80]}")
         if art == "worth-it":
