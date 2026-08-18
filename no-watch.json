@@ -731,6 +731,15 @@
    "note": "Die Kontaktwege-Seite fuehrt Chat und Terminvereinbarung; auf ihr und den drei verlinkten Unterseiten steht keine Uhrzeit."
   },
   {
+   "osm_id": "node/1712465365",
+   "name": "HypoVereinsbank",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "http://www.hypovereinsbank.de",
+   "recheck": "2027-02-18",
+   "note": "Das Objekt traegt die Konzern-Startseite als website; sie nennt keine Uhrzeit. Zweites HypoVereinsbank-Objekt in Fulda, das erste haengt an der Kontaktwege-Seite."
+  },
+  {
    "osm_id": "node/12500569010",
    "name": "Jaroschenko Heizung-Sanitär",
    "reason": "no-hours-on-page",
@@ -1190,13 +1199,13 @@
    "note": "schoeppchen.de antwortet unter dem Punycode-Namen mit 200, nennt aber keine Uhrzeit."
   },
   {
-   "osm_id": "way/449921945",
+   "osm_id": "node/1328561108",
    "name": "Sparkasse Fulda",
    "reason": "no-hours-on-page",
    "established": "2026-08-18",
-   "source": "https://www.sparkasse.de/standorte/filialen/sparkasse-fulda-filiale-wallweg-8551",
+   "source": "https://www.sparkasse-fulda.de/",
    "recheck": "2027-02-18",
-   "note": "Die Startseite nennt keine Uhrzeit; Filialzeiten stehen nur auf den Filialseiten, dieses OSM-Objekt hat keine."
+   "note": "sparkasse-fulda.de nennt auf 12423 Zeichen keine Uhrzeit; die Filialzeiten stehen auf den Filialseiten unter sparkasse.de, und die haengen an eigenen OSM-Objekten. Korrigiert am 18.08.2026: der Eintrag hing zuerst an der Hauptstelle (way/449921945), die sehr wohl Zeiten publiziert und jetzt eine Watch hat."
   },
   {
    "osm_id": "node/14077552878",
