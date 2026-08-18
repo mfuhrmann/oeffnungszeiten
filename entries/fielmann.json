@@ -3,7 +3,7 @@
  "captured_sample": "Monday 09:00-19:00 · Tuesday 09:00-19:00 · Wednesday 09:00-19:00 · Thursday 09:00-19:00 · Friday 09:00-19:00 · Saturday 09:00-16:00",
  "filter": "json:$..openingHoursSpecification",
  "name": "Fielmann",
- "note": "2026-08-15: JSON-LD der Filialseite, Werte pro Tag.",
+ "note": "2026-08-18: JSON-LD bleibt. Im gelieferten HTML steht keine einzige Filialzeit; die einzige sichtbare Uhrzeit ist die Servicenummer im Fuss (Mo-Fr 09-18, Sa 09-16), und die weicht von den Filialzeiten ab (Mo-Fr 09:00-19:00, Sa 09:00-16:00). Der sichtbare Block der Filiale entsteht erst per Javascript.",
  "osm_id": "node/1333372715",
  "schema": 1,
  "tags": [
