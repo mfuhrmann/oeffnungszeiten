@@ -272,6 +272,24 @@
    "note": "Von hier 200, vom VPS 403 bei identischem UA — gemessen 2026-08-18."
   },
   {
+   "osm_id": "node/13302038742",
+   "name": "Bistro 52",
+   "reason": "datacenter-block",
+   "established": "2026-08-18",
+   "source": "https://re-gruppe.de/gruppe/bistro-52/",
+   "recheck": "on-relocation",
+   "note": "re-gruppe.de antwortet dem VPS mit 403 (212.218.67.130)."
+  },
+  {
+   "osm_id": "way/23462098",
+   "name": "Freibad Rosenau (Rosenbad)",
+   "reason": "datacenter-block",
+   "established": "2026-08-18",
+   "source": "https://re-gruppe.de/baeder/freibad-rosenau/",
+   "recheck": "on-relocation",
+   "note": "re-gruppe.de antwortet dem VPS mit 403 (212.218.67.130)."
+  },
+  {
    "osm_id": "way/206908087",
    "name": "Kundencenter Busbahnhof Stadtschloss",
    "reason": "datacenter-block",
@@ -279,6 +297,15 @@
    "source": "https://re-fd.de/nahverkehr",
    "recheck": "on-relocation",
    "note": "re-fd.de liegt auf 212.218.67.130 und antwortet dem VPS mit 403; von hier nennt die Seite unter /nahverkehr taeglich 8:00 bis 22:00. Dieselbe Adresse sperrt re-gruppe.de."
+  },
+  {
+   "osm_id": "way/25560330",
+   "name": "Sportbad Ziehers",
+   "reason": "datacenter-block",
+   "established": "2026-08-18",
+   "source": "https://re-fd.de/sportbad-ziehers",
+   "recheck": "on-relocation",
+   "note": "re-fd.de antwortet dem VPS mit 403; dieselbe Adresse sperrt re-gruppe.de."
   },
   {
    "osm_id": "node/11812148620",
@@ -1395,6 +1422,15 @@
    "source": "https://dasergio-restaurant.de/",
    "recheck": "2027-01-26",
    "note": "Seit dem 2026-07-26 nicht erreichbar: DNS- beziehungsweise Verbindungsfehler."
+  },
+  {
+   "osm_id": "node/13959404352",
+   "name": "Dr. med. Ismayil Tokmak",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://medicum-fulda.medicum-deutschland.de/arzt/tokmak/",
+   "recheck": "2027-02-18",
+   "note": "Das Zertifikat besteht die Pruefung nicht (CERTIFICATE_VERIFY_FAILED), am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/13230067453",

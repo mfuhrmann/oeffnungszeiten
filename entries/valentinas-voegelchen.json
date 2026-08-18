@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten07:30 - 14:30 Uhr",
+ "filter": "xpath:(//th[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Valentinas Vögelchen",
+ "note": "Die Kita nennt ein einziges Zeitfenster ohne Wochentag; das Audit meldet darum \"kein Wochentag genannt\".",
+ "osm_id": "node/12992564288",
+ "schema": 1,
+ "tags": [
+  "fulda-childcare"
+ ],
+ "url": "https://kinderbetreuung-fulda.little-bird.de/Fulda/Valentinas-Voegelchen-Valentina-Janzen"
+}

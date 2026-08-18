@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "öffnungszeiten Mo 8.00 – 19.00 Uhr Di, Mi, Fr 8.30 – 18.00 Uhr Do 8.30 – 19.00 Uhr Sa 8.30 – 13.00 Uhr",
+ "filter": "xpath:(//h4[contains(normalize-space(.),\"öffnungszeiten\")])/parent::*",
+ "name": "Burg Apotheke",
+ "note": "Die Startseite rendert ihre Zeiten per Javascript; im Impressum stehen sie als Text. Deshalb zeigt die Watch dorthin.",
+ "osm_id": "node/1427984756",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://www.burg-apotheke-fulda.de/impressum"
+}
