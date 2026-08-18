@@ -308,6 +308,15 @@
    "note": "re-fd.de liegt auf 212.218.67.130 und antwortet dem VPS mit 403; von hier nennt die Seite unter /nahverkehr taeglich 8:00 bis 22:00. Dieselbe Adresse sperrt re-gruppe.de."
   },
   {
+   "osm_id": "node/1328294767",
+   "name": "Luna",
+   "reason": "datacenter-block",
+   "established": "2026-08-18",
+   "source": "https://www.luna-fulda.de/",
+   "recheck": "on-relocation",
+   "note": "Der Host antwortet dem VPS mit 403; von hier ist die Seite erreichbar."
+  },
+  {
    "osm_id": "way/607295307",
    "name": "RhönEnergie",
    "reason": "datacenter-block",
@@ -578,6 +587,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/432864249",
+   "name": "Blumen Hartung",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.blumen-hartung.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/3978092610",
    "name": "Bodega",
    "reason": "no-hours-on-page",
@@ -666,6 +684,42 @@
    "source": "https://cafeauszeit.net/",
    "recheck": "2027-02-18",
    "note": "Die Seite ist eine Javascript-Anwendung; auch vollstaendig gerendert bleiben nur 122 Zeichen Navigation, keine Uhrzeit. Der Kartenwert stammt offenbar aus einer Erhebung vor Ort."
+  },
+  {
+   "osm_id": "node/1332257610",
+   "name": "Café Bäckerei Storch",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.baeckereistorch.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/10144755011",
+   "name": "Café Bäckerei Storch",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.baeckereistorch.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/6992755544",
+   "name": "Café Bäckerei Storch im DB Zentrum",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.baeckereistorch.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/5324638624",
+   "name": "Café Bäckerei Storch im OBI",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.baeckereistorch.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/5508155668",
@@ -758,6 +812,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/1465073252",
+   "name": "Deichmann",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://stores.deichmann.com/de-de/de/hessen/fulda/am-emaillierwerk-1",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/5491491239",
    "name": "Die Brillenmacher",
    "reason": "no-hours-on-page",
@@ -765,6 +828,15 @@
    "source": "https://www.die-brillenmacher-fulda.de/",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "way/1284529869",
+   "name": "Ditsch",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.ditsch.de/de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/1333484918",
@@ -902,6 +974,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "way/671033611",
+   "name": "Fahrschule Wohlschlegel",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://fahrschule-wohlschlegel.jimdofree.com/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/8640280732",
    "name": "Fairteiler Lutherkirche",
    "reason": "no-hours-on-page",
@@ -936,6 +1017,15 @@
    "source": "https://www.finanzamt.hessen.de",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/12449881315",
+   "name": "Flawless by Tanriverdi",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://flawless-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/13522967501",
@@ -1082,6 +1172,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/1333285158",
+   "name": "Hunkemöller",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.hunkemoller.de/?utm_source=GMB&utm_medium=organic&utm_campaign=Website&utm_content=3632",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/13448773517",
    "name": "HypoVereinsbank",
    "reason": "no-hours-on-page",
@@ -1109,6 +1208,24 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/11176391935",
+   "name": "Jack & Jones",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.jackjones.com/de/de/jj/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "way/207914798",
+   "name": "Jacques' Wein-Depot",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.jacques.de/fulda",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/12500569010",
    "name": "Jaroschenko Heizung-Sanitär",
    "reason": "no-hours-on-page",
@@ -1125,6 +1242,15 @@
    "source": "https://joes-burger.com/",
    "recheck": "2027-02-18",
    "note": "joes-burger.com nennt auf der ganzen Seite keine einzige Uhrzeit; ausser einem Cookie-Banner traegt sie keinen Zeitenblock."
+  },
+  {
+   "osm_id": "node/1332106958",
+   "name": "Juwelier Meister Müller",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.meistermueller.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/12500536797",
@@ -1154,6 +1280,33 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/1328393229",
+   "name": "KiK",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.kik.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/5702791259",
+   "name": "KiK",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.kik.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/5792787383",
+   "name": "KiK",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.kik.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "way/582887566",
    "name": "Kindertagesstätte Dreikäsehoch",
    "reason": "no-hours-on-page",
@@ -1170,6 +1323,15 @@
    "source": "https://kinderbetreuung-fulda.little-bird.de/Fulda/Integrative-Kindertagesstaette-Sonnenschein",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/13698080859",
+   "name": "Kindertreff Zitrone",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://padlet.com/zitone/kindertreff-zitrone-uarjuxi6y1kma7fl",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/5562044609",
@@ -1269,6 +1431,15 @@
    "source": "https://www.leitsch-baeder-heizung.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "way/24775057",
+   "name": "Lidl",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.lidl.de/s/de-DE/filialen/fulda/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/13191604600",
@@ -1613,6 +1784,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/12167881673",
+   "name": "Moretti",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://creatione-moretti.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/12745488901",
    "name": "Mortimer English Club",
    "reason": "no-hours-on-page",
@@ -1631,6 +1811,33 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/12962082237",
+   "name": "Münzhandel Nass",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.muenzhandel-nass.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/5170409077",
+   "name": "Naturheilpraxis Bildhäuser",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.heilpraktiker-fulda.com/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/1332025054",
+   "name": "New Yorker",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.newyorker.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/1333292538",
    "name": "Nordsee",
    "reason": "no-hours-on-page",
@@ -1638,6 +1845,15 @@
    "source": "http://www.nordsee.com/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12915267017",
+   "name": "ONLY",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.only.com/de/de/on/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "way/579485420",
@@ -1656,6 +1872,15 @@
    "source": "https://www.prosol-farben.de",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach und gerendert geprueft: die Seite traegt keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/431039985",
+   "name": "Pappert",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.papperts.de/wir-sind-hier/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/12911373739",
@@ -1694,6 +1919,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/12914205393",
+   "name": "Priller Berater",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.priller-berater.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/12887396868",
    "name": "Rathaus Buchhandlung",
    "reason": "no-hours-on-page",
@@ -1728,6 +1962,15 @@
    "source": "https://www.ra-reinhard.de/",
    "recheck": "2027-02-18",
    "note": "Sichtbar stehen nur Adresse und Telefon; das JSON-LD traegt Mo-So 09:00-17:00 — die WordPress-Vorlagenkonstante aus FILTERS.md, keine Angabe der Kanzlei."
+  },
+  {
+   "osm_id": "node/1333315793",
+   "name": "Reisebüro Krug",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.derpart.com/krugfulda",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/12980626184",
@@ -1793,6 +2036,33 @@
    "note": "schoeppchen.de antwortet unter dem Punycode-Namen mit 200, nennt aber keine Uhrzeit."
   },
   {
+   "osm_id": "node/1336873844",
+   "name": "Sieling Küche und Design",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.sieling-kuechen.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/14079256836",
+   "name": "Smartphonezentrum",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://smartphonezentrum.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/12871726494",
+   "name": "Snipes",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.snipes.com/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/1328561108",
    "name": "Sparkasse Fulda",
    "reason": "no-hours-on-page",
@@ -1847,6 +2117,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/1332153151",
+   "name": "Te'Dea Waxing Göttin",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://waxing-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/4985263244",
    "name": "Theater mittendrin",
    "reason": "no-hours-on-page",
@@ -1854,6 +2133,24 @@
    "source": "https://www.theater-mittendrin.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/482628057",
+   "name": "Tourist-Info",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.tourismus-fulda.de/home.html",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/12962114815",
+   "name": "U.M.7",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.umsieben.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/1333285140",
@@ -1883,6 +2180,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/1332025091",
+   "name": "Vero Moda",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.veromoda.com/de/de/vm/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/13357264887",
    "name": "Veynest Cuisine",
    "reason": "no-hours-on-page",
@@ -1890,6 +2196,24 @@
    "source": "https://www.veynest-cuisine.de/",
    "recheck": "2027-02-18",
    "note": "veynest-cuisine.de nennt keine Uhrzeit (Catering nach Absprache)."
+  },
+  {
+   "osm_id": "node/1432666963",
+   "name": "Vodafone",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://shops.vodafone.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/7854858370",
+   "name": "Vodafone",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://shops.vodafone.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/12500440660",
@@ -1901,6 +2225,33 @@
    "note": "Am 2026-08-04 einfach und gerendert geprueft: die Seite traegt keine Oeffnungszeiten."
   },
   {
+   "osm_id": "way/130190473",
+   "name": "Weinrich GmbH & Co. KG",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.weinrich.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "node/13042783314",
+   "name": "Wohnmobilstellplatz Fulda",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.tourismus-fulda.de/uebernachten-in-fulda/wohnmobilstellplaetze/pois/FLD/743b43c2-7f67-499e-8a95-a7fa9f5cb3d9/wohnmobilstellplatz--fulda-aue-",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "way/141624132",
+   "name": "Zieherser Hof",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "http://www.zieherserhof.de",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/612111417",
    "name": "Zum Stiftskämmerer",
    "reason": "no-hours-on-page",
@@ -1908,6 +2259,15 @@
    "source": "http://www.stiftskaemmerer.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "way/1284247584",
+   "name": "ambinius Kita",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.ambinius.de/kita/paedagogisches-konzept.html",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/2425198944",
@@ -1964,6 +2324,15 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/1333601168",
+   "name": "engbers",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.engbers.com/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
    "osm_id": "node/13004479898",
    "name": "ffortissimo",
    "reason": "no-hours-on-page",
@@ -2016,6 +2385,24 @@
    "source": "https://www.logo-getraenke.de/",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "way/575988230",
+   "name": "logo Getränke-Fachmarkt",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.logo-getraenke.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
+  },
+  {
+   "osm_id": "way/1155286917",
+   "name": "logo Getränke-Fachmarkt",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.logo-getraenke.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 2026-08-18 geprueft."
   },
   {
    "osm_id": "node/1465073382",
@@ -2135,6 +2522,15 @@
    "note": "Das website-Tag in OSM ist unvollstaendig (unknown url type: 'www.fliesen-eckstein.d') - es fehlt das Schema, die Adresse ist so nicht aufloesbar. Eine Kartenkorrektur, keine tote Seite."
   },
   {
+   "osm_id": "way/141871230",
+   "name": "Fulda Speicher - First Elephant Self Storage Fulda",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://www.firstelephant.de/fulda/",
+   "recheck": "2027-02-18",
+   "note": "Am 2026-08-18 nicht erreichbar: Fulda Speicher - First E HTTPError: 404"
+  },
+  {
    "osm_id": "node/11251655465",
    "name": "Fusion Kitchen",
    "reason": "site-unreachable",
@@ -2142,6 +2538,24 @@
    "source": "https://www.fusionkitchen.eu",
    "recheck": "2027-01-26",
    "note": "Seit dem 2026-07-26 nicht erreichbar: DNS- beziehungsweise Verbindungsfehler."
+  },
+  {
+   "osm_id": "node/12962212805",
+   "name": "Jeans Fritz",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://www.jeans-fritz.com/",
+   "recheck": "2027-02-18",
+   "note": "Am 2026-08-18 nicht erreichbar: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate"
+  },
+  {
+   "osm_id": "node/5504610302",
+   "name": "K&S Sauer Herrenmoden",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://www.dressedfulda.com",
+   "recheck": "2027-02-18",
+   "note": "Am 2026-08-18 nicht erreichbar: URLError: <urlopen error [Errno -2] Name or service not known>"
   },
   {
    "osm_id": "node/12893337945",
@@ -2169,6 +2583,24 @@
    "source": "https://www.manpower.de/de/ueber-uns/standorte/fulda/",
    "recheck": "2027-02-18",
    "note": "Am 18.08.2026 nicht erreichbar: HTTPError: 404"
+  },
+  {
+   "osm_id": "node/1347089775",
+   "name": "Modehaus Erna Schneider",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://www.modehaus-schneider.de/",
+   "recheck": "2027-02-18",
+   "note": "Am 2026-08-18 nicht erreichbar: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate"
+  },
+  {
+   "osm_id": "node/430771842",
+   "name": "Norma",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "www.norma-online.de",
+   "recheck": "2027-02-18",
+   "note": "Das website-Tag in OSM ist unvollstaendig (unknown url type: 'www.norma-online.de'); ohne Schema nicht aufloesbar. Kartenkorrektur, keine tote Seite."
   },
   {
    "osm_id": "node/7261079421",
@@ -2234,6 +2666,15 @@
    "note": "steinmetz-enders.de loest nicht mehr auf (DNS), am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/1333368690",
+   "name": "Storebox",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://www.yourstorebox.com/de/location-details/storebox-fulda-innenstadt",
+   "recheck": "2027-02-18",
+   "note": "Am 2026-08-18 nicht erreichbar: HTTPError: 404"
+  },
+  {
    "osm_id": "node/1332532866",
    "name": "Storm Sportsbar",
    "reason": "site-unreachable",
@@ -2252,6 +2693,15 @@
    "note": "Am 18.08.2026 nicht erreichbar: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate"
   },
   {
+   "osm_id": "node/1336852142",
+   "name": "Unverblümt",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "http://www.unverbluehmt-fulda.de",
+   "recheck": "2027-02-18",
+   "note": "Am 2026-08-18 nicht erreichbar: URLError: <urlopen error [Errno -2] Name or service not known>"
+  },
+  {
    "osm_id": "node/13629398040",
    "name": "Wandura e.K.",
    "reason": "site-unreachable",
@@ -2259,6 +2709,15 @@
    "source": "https://www.maler-voelker.de",
    "recheck": "2027-02-18",
    "note": "maler-voelker.de bricht den TLS-Handschlag ab (TLSV1_ALERT_INTERNAL_ERROR), am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/1115868979",
+   "name": "Wirtshaus Schwarzer Hahn",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://schwarzerhahn-fulda.de/de/",
+   "recheck": "2027-02-18",
+   "note": "Am 2026-08-18 nicht erreichbar: Wirtshaus Schwarzer Hahn HTTPError: 404"
   },
   {
    "osm_id": "node/1333235903",

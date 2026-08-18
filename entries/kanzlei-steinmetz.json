@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Öffnungszeiten Mo - Fr:08:00 – 13:00 14:00 – 17:00 und nach Vereinbarung Königstraße 7a, 36037 Fulda",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" footer-time \")]",
+ "name": "Kanzlei Steinmetz",
+ "osm_id": "node/12174391187",
+ "schema": 1,
+ "tags": [
+  "fulda-lawyer"
+ ],
+ "url": "https://www.kanzlei-steinmetz.de/"
+}

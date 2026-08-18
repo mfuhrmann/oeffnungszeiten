@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-18",
+ "captured_sample": "Montag09:00 - 19:00Dienstag09:00 - 19:00Mittwoch09:00 - 19:00Donnerstag09:00 - 19:00Freitag09:00 - 19:00Samstag09:00 - 17:00",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
+ "name": "NKD",
+ "note": "Filialseite der Kette mit Zeiten je Tag.",
+ "osm_id": "node/1333263702",
+ "schema": 1,
+ "tags": [
+  "fulda-clothes"
+ ],
+ "url": "https://www.nkd.com/filialen/2429/fulda/36037/nkd-mittelstr-28-32"
+}
