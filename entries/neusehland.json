@@ -1,9 +1,9 @@
 {
  "added": "2026-08-15",
- "captured_sample": "Tuesday 09:00-18:30 · Thursday 09:00-18:30 · Friday 09:00-18:30 · Saturday 09:00-16:00 · Monday 09:00-18:30 · Wednesday 09:00-18:30",
- "filter": "json:$..openingHoursSpecification",
+ "captured_sample": "ÖffnungszeitenMo.09:00 - 18:30 UhrDi.09:00 - 18:30 UhrMi.09:00 - 18:30 UhrDo.09:00 - 18:30 UhrFr.09:00 - 18:30 UhrSa.09:00 - 16:00 UhrSo.Geschlossen",
+ "filter": "xpath:((//p[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*)[2]",
  "name": "NeuSehLand",
- "note": "2026-08-15: JSON-LD der Filialseite, Werte pro Tag.",
+ "note": "2026-08-18: von JSON-LD auf den sichtbaren Block umgestellt. Die Seite fuehrt zwei Bloecke - eine Zusammenfassung (Mo.-Fr., Sa.) und eine Tabelle je Tag; [2] nimmt die Tabelle, weil sie den Sonntag ausdruecklich als geschlossen nennt. Anlass war ein Alarm, dessen Diff aus rohem JSON bestand: die Filiale trug einen verkaufsoffenen Sonntag (23.08.2026, 13:00-18:00) als validFrom/validThrough ins JSON-LD ein.",
  "osm_id": "node/1333515672",
  "schema": 1,
  "tags": [

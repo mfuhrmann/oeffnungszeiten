@@ -1,9 +1,9 @@
 {
  "added": "2026-08-15",
- "captured_sample": "Tuesday, Wednesday, Thursday, Friday 09:00-19:00 · Saturday 09:00-14:00",
- "filter": "json:$..openingHoursSpecification",
+ "captured_sample": "Öffnungszeiten Di. - Fr.09:00-19:00 Uhr Sa.09:00-14:00 Uhr",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
  "name": "Haargalerie",
- "note": "2026-08-15: JSON-LD, Werte pro Tag.",
+ "note": "2026-08-18: von JSON-LD auf den sichtbaren Block umgestellt — die Seite nennt die Zeiten unter einer h3-Ueberschrift, das JSON-LD war nicht noetig.",
  "osm_id": "node/1333261926",
  "schema": 1,
  "tags": [
