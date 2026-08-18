@@ -1,9 +1,10 @@
 {
  "added": "2026-08-03",
- "captured_sample": "Warme Küche Mo – Fr: 12:00 – 21:00 Uhr Sa: 12:30 – 21:00 Uhr So: 13:30 – 21:00 Uhr Frühstücksbüffet Sa: 09:00 – 12:00 Uhr So: 09:00 – 13:00 Uhr Für weitere Infos zur Alten Schule: Folgen Sie uns auf F",
+ "captured_sample": "Öffnungszeiten Montag 11:00 - 00:00 Uhr Dienstag - Freitag 11:00 - 02:00 Uhr Samstag, Sonntag 09:00 - 02:00 Uhr Sonntag 09:00 - 23:00 Uhr Jetzt reservieren Tel.: 0661 / 240029 Unsere Küchenzeiten findest du hier Geschenk gesucht? Unser Gutschein, ein tolles Geschenk für alle Anlässe. Unseren Gutschein kaufen Unser neuestes Projekt: Zu Karlchen vom Dach",
  "fetch_backend": "html_webdriver",
- "filter": "xpath://p[contains(concat(\" \",normalize-space(@class),\" \"),\" karma \")]",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
  "name": "Alte Schule",
+ "note": "2026-08-18: Filter von Hand neu gesetzt, der alte Klassenanker griff nicht mehr.",
  "osm_id": "node/1333326732",
  "schema": 1,
  "tags": [

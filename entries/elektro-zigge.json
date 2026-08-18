@@ -1,9 +1,10 @@
 {
  "added": "2026-07-26",
- "captured_sample": "Montag: 10:00-18:00 Dienstag: 10:00-18:00 Mittwoch: 10:00-18:00 Donnerstag: 10:00-18:00 Freitag: 10:00-18:00 Samstag: 10:00-18:00 Sonntag: Geschlossen",
+ "captured_sample": "Öffnungszeiten Montag: 10:00 - 18:00 Uhr Dienstag: 10:00 - 18:00 Uhr Mittwoch: 10:00 - 18:00 Uhr Donnerstag: 10:00 - 18:00 Uhr Freitag: 10:00 - 18:00 Uhr Samstag: 10:00 - 18:00 Uhr Sonntag: Geschlossen",
  "fetch_backend": "html_webdriver",
- "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" moorl-opening-hours \")]",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
  "name": "Elektro Zigge",
+ "note": "2026-08-18: Filter von Hand neu gesetzt, der alte Klassenanker griff nicht mehr.",
  "osm_id": "node/4984468159",
  "schema": 1,
  "tags": [
