@@ -42,6 +42,7 @@ occur in practice, and what counts as proof that a filter is right:
 ```
 entries/            one file per watch — the source of truth
   .lock.json        slug → watch uuid, per changedetection instance
+no-watch.json       objects deliberately not watched, with the reason and when to look again
 scripts/            wizard, sync, audit, renderer, OSM export  (stdlib only, except lxml)
 deploy/             managed global settings — noise-suppression patterns, recheck interval
 charts/             Helm chart for changedetection and its browser
@@ -62,8 +63,57 @@ docker-compose.yml  optional local trial; not needed to contribute
 | `cd_export.py` | turn a UI experiment back into entry files |
 | `apply_global_settings.py` | merge `deploy/global-settings.json` into an instance |
 | `matrix_relay_seed.py` | mint the Matrix session the notification relay runs on |
+| `no_watch.py` | the absence list: what is deliberately not watched, and what is due for another look |
 
 Each has `--help`. Nothing writes to changedetection without `--apply`.
+
+### What is *not* watched
+
+`entries/` answers "what do we watch". On its own that number means little — 502 of how many? The
+counterpart is [`no-watch.json`](./no-watch.json): every object that deliberately has no watch,
+with the reason, the date it was established, and when to look again. An object belongs in exactly
+one of the two lists, and CI fails if it appears in both.
+
+Two kinds of reason, and `recheck` carries the difference:
+
+- a property of the **business** — the page states no hours, appointment only, only a social
+  profile, only a delivery microsite, site gone — gets a date. The question at that date is not
+  "can we fetch it now" but *has this business got its own page yet*. That distinction matters
+  for the platform cases: a Lieferando microsite publishes **delivery** windows that flip when
+  the shop toggles offline, and a social profile hides its hours behind a login wall among
+  rotating follower counts. Neither becomes usable by fetching from somewhere else.
+- a property of **this instance** — `anti-bot`, `datacenter-block` — gets `on-relocation`.
+  Time changes nothing there: the block is the same tomorrow. What changes it is the instance
+  moving to a residential address, or the pinned user agent being bumped. Measured on one host:
+  200 from a home connection, 403 from the VPS, same user agent, same second.
+
+Every reason names the **cause**, not the symptom, and the note has to say what the page *does*
+show and how that was checked — CI rejects a record without one. "No hours published" was the old
+wording, and it swept three different things into one bucket: a page that really states nothing,
+a chain whose branch link nobody found, and our own discovery landing on a site-wide footer link.
+
+What does **not** belong in this list is work nobody has done yet — a filter that needs a browser,
+a chain page whose branch link has not been found, a `website` tag pointing at the wrong company.
+That is backlog, and putting it under a heading like "unmonitorable" is how it disappears.
+
+```bash
+python3 scripts/no_watch.py                    # summary per reason
+python3 scripts/no_watch.py --faellig          # due for another look today
+python3 scripts/no_watch.py --standortwechsel  # what a move would put back in play
+```
+
+One record, in full:
+
+```json
+{ "osm_id": "node/12842624670",
+  "name": "Kopfarbeit",
+  "reason": "social-only",
+  "established": "2026-08-01",
+  "source": "https://www.facebook.com/…",
+  "recheck": "2027-02-01",
+  "note": "Einziger Auftritt ist eine Facebook-Seite: Login-Wand davor, dahinter rotierende
+           Follower-Zahlen und kein stabiler Anker fuer die Zeiten." }
+```
 
 ### Writing back to OpenStreetMap
 

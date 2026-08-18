@@ -7,6 +7,17 @@ You do not need the running service, an API key, or any knowledge of XPath.
 
 ---
 
+
+## Which language
+
+**Structure and documentation are English. Evidence about one Fulda business is German.**
+
+Field names, reason values, code, comments, README, FILTERS.md — English, so that someone setting
+this up for another city can read it. The `note` on an entry or on an absence is German: it quotes
+what the page actually says ("Liefer zeiten", "Termine nur nach Vereinbarung", "Praxisurlaub"), and
+translating a quote weakens it as evidence. The Matrix messages are German too — they are read by
+whoever maps Fulda.
+
 ## Add a business
 
 **1. Find the page that actually carries the hours.** Usually the homepage, `/kontakt` or
