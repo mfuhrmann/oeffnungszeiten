@@ -176,22 +176,22 @@ def check_live(e, lang_default="de", browser_ws=None):
 # swept three different things into one bucket: a page that really states nothing, a chain whose
 # branch link nobody found, and our own discovery landing on a footer link. Only the first is an
 # absence; the other two are work, and work must not hide in a file named "not watched".
-GRUENDE = {
-    "keine-zeiten-auf-der-seite",   # operator page, checked plain AND rendered, states none
-    "nur-nach-vereinbarung",        # the page says so — a fact about the business, not a gap
-    "nur-social",                   # only presence is a social profile: login wall, rotating counters
-    "nur-lieferdienst",             # only presence is a delivery platform — those are DELIVERY
-                                    # windows and flip with the shop toggle; a better address
-                                    # would not help, so this stays a business property
-    "nur-tagesstatus",              # the page shows only "today", never the week
-    "seite-nicht-erreichbar",       # DNS failure or 404
-    "anti-bot",                     # 403 in every fetch mode, from here as well
-    "datacenter-block",             # 200 from a home line, 403 from the VPS, same user agent
-    "rund-um-die-uhr",              # hours known and constant — nothing to observe
+REASONS = {
+    "no-hours-on-page",        # operator page, checked plain AND rendered, states none
+    "appointment-only",        # the page says so — a fact about the business, not a gap
+    "social-only",             # only presence is a social profile: login wall, rotating counters
+    "delivery-platform-only",  # only presence is a delivery microsite — those are DELIVERY
+                               # windows and flip with the shop toggle, so a better address
+                               # would not help; this stays a property of the business
+    "today-only",              # the page shows only "today", never the week
+    "site-unreachable",        # DNS failure or 404
+    "anti-bot",                # 403 in every fetch mode, from a home line as well
+    "datacenter-block",        # 200 from a home line, 403 from the VPS, same user agent
+    "always-open",             # hours known and constant — nothing to observe
 }
 # A business property gets a date; a property of *our* instance gets an event, because time
 # does not change it — a datacenter block is the same tomorrow. "nie" is for what cannot move.
-WIEDER = re.compile(r'^(20\d\d-\d\d-\d\d|bei-standortwechsel|nie)$')
+RECHECK = re.compile(r'^(20\d\d-\d\d-\d\d|on-relocation|never)$')
 OSM_ID = re.compile(r'^(node|way|relation)/\d+$')
 
 
@@ -212,17 +212,19 @@ def check_absences(path, watched):
         wer = r.get("name") or r.get("osm_id") or "?"
         if not OSM_ID.match(r.get("osm_id") or ""):
             errs.append(f"{path}: {wer}: osm_id {r.get('osm_id')!r} is not type/id")
-        if r.get("grund") not in GRUENDE:
-            errs.append(f"{path}: {wer}: grund {r.get('grund')!r} not one of {sorted(GRUENDE)}")
-        if not re.match(r'^20\d\d-\d\d-\d\d$', r.get("belegt_am") or ""):
-            errs.append(f"{path}: {wer}: belegt_am missing or not a date")
-        # A reason nobody can read is not a reason. The note says what IS on the page.
+        if r.get("reason") not in REASONS:
+            errs.append(f"{path}: {wer}: reason {r.get('reason')!r} not one of {sorted(REASONS)}")
+        if not re.match(r'^20\d\d-\d\d-\d\d$', r.get("established") or ""):
+            errs.append(f"{path}: {wer}: established missing or not a date")
+        # A reason nobody can read is not a reason. The note says what IS on the page, and it is
+        # written in German: it quotes a German page ("Liefer zeiten", "Termine nur nach
+        # Vereinbarung") and is read by the mapper who works on Fulda. Structure and docs are
+        # English so the project can be reused; the evidence about one shop is not.
         if len((r.get("note") or "").strip()) < 30:
             errs.append(f"{path}: {wer}: note must say what the page does show, and how it "
                         f"was checked")
-        if not WIEDER.match(r.get("wieder_pruefen") or ""):
-            errs.append(f"{path}: {wer}: wieder_pruefen must be a date, "
-                        f"bei-standortwechsel or nie")
+        if not RECHECK.match(r.get("recheck") or ""):
+            errs.append(f"{path}: {wer}: recheck must be a date, on-relocation or never")
         if r.get("osm_id") in gesehen:
             errs.append(f"{path}: {wer}: osm_id listed twice")
         gesehen.add(r.get("osm_id"))

@@ -9,16 +9,16 @@ left" has no answer.
 
 The reasons fall into two kinds, and `wieder_pruefen` carries the difference:
 
-  * a property of the **business** — `keine-zeiten-auf-der-seite`, `nur-nach-vereinbarung`,
-    `nur-social`, `nur-lieferdienst`, `nur-tagesstatus`, `seite-nicht-erreichbar` — gets a date.
+  * a property of the **business** — `no-hours-on-page`, `appointment-only`, `social-only`,
+    `delivery-platform-only`, `today-only`, `site-unreachable` — gets a date.
     The question at that date is not "can we fetch it now" but **"has this business got its own
     page yet"**. That matters for the platform cases: a delivery microsite publishes delivery
     windows, and a social profile hides its hours behind a login wall — neither is fixed by
     fetching from somewhere else.
-  * a property of **our instance** — `anti-bot`, `datacenter-block` — gets `bei-standortwechsel`.
+  * a property of **our instance** — `anti-bot`, `datacenter-block` — gets `on-relocation`.
     Time changes nothing there; the block is the same tomorrow. What changes it is the instance
     moving to a residential address, or the pinned user agent being bumped.
-  * `nie` is for what cannot move: `rund-um-die-uhr` means the hours are known and constant.
+  * `never` is for what cannot move: `always-open` means the hours are known and constant.
 
 What is **not** in this list is work nobody has done yet — a chain whose branch link was never
 found, a `website` tag pointing at the wrong company, a page our own discovery picked badly.
@@ -51,24 +51,24 @@ def main():
     recs = laden(args.datei)
 
     if args.standortwechsel:
-        treffer = [r for r in recs if r.get("wieder_pruefen") == "bei-standortwechsel"]
+        treffer = [r for r in recs if r.get("recheck") == "on-relocation"]
     elif args.faellig:
         treffer = [r for r in recs
-                   if (r.get("wieder_pruefen") or "").startswith("20")
-                   and r["wieder_pruefen"] <= args.am]
+                   if (r.get("recheck") or "").startswith("20")
+                   and r["recheck"] <= args.am]
     else:
-        for grund, n in collections.Counter(r["grund"] for r in recs).most_common():
+        for grund, n in collections.Counter(r["reason"] for r in recs).most_common():
             print(f"{n:4}  {grund}")
-        faellig = sum(1 for r in recs if (r.get("wieder_pruefen") or "").startswith("20")
-                      and r["wieder_pruefen"] <= args.am)
-        ereignis = sum(1 for r in recs if r.get("wieder_pruefen") == "bei-standortwechsel")
+        faellig = sum(1 for r in recs if (r.get("recheck") or "").startswith("20")
+                      and r["recheck"] <= args.am)
+        ereignis = sum(1 for r in recs if r.get("recheck") == "on-relocation")
         print(f"\n{len(recs)} objects · {faellig} due on {args.am} · "
               f"{ereignis} waiting on a change of address")
         return
 
-    for r in sorted(treffer, key=lambda x: (x.get("wieder_pruefen", ""), x.get("name", ""))):
-        print(f"{r.get('wieder_pruefen',''):<20} {r.get('grund',''):<18} "
-              f"{(r.get('name') or '?')[:30]:<30} {r.get('quelle','')[:44]}")
+    for r in sorted(treffer, key=lambda x: (x.get("recheck", ""), x.get("name", ""))):
+        print(f"{r.get('recheck',''):<20} {r.get('reason',''):<18} "
+              f"{(r.get('name') or '?')[:30]:<30} {r.get('source','')[:44]}")
     print(f"\n{len(treffer)} objects")
 
 

@@ -2,1291 +2,1291 @@
  "schema": 1,
  "records": [
   {
+   "osm_id": "way/996678398",
+   "name": "tegut... teo",
+   "reason": "always-open",
+   "established": "2026-08-01",
+   "source": "https://www.tegut.com/maerkte/markt/tegut-fulda-pacelliallee-4.html",
+   "recheck": "never",
+   "note": "teo ist unbesetzt und rund um die Uhr geoeffnet (teo.de/standorte: 'rund um die Uhr, 365 Tage'). Eine Seite je Filiale gibt es nicht — es gibt nichts zu beobachten."
+  },
+  {
+   "osm_id": "way/1024664035",
+   "name": "tegut… teo",
+   "reason": "always-open",
+   "established": "2026-08-01",
+   "source": "https://www.tegut.com/teo.html",
+   "recheck": "never",
+   "note": "teo ist unbesetzt und rund um die Uhr geoeffnet (teo.de/standorte: 'rund um die Uhr, 365 Tage'). Eine Seite je Filiale gibt es nicht — es gibt nichts zu beobachten."
+  },
+  {
+   "osm_id": "way/1024665835",
+   "name": "tegut… teo",
+   "reason": "always-open",
+   "established": "2026-08-01",
+   "source": "https://www.tegut.com/maerkte/markt/tegut-fulda-bronnzeller-strasse-4.html",
+   "recheck": "never",
+   "note": "teo ist unbesetzt und rund um die Uhr geoeffnet (teo.de/standorte: 'rund um die Uhr, 365 Tage'). Eine Seite je Filiale gibt es nicht — es gibt nichts zu beobachten."
+  },
+  {
+   "osm_id": "way/867970814",
+   "name": "tegut… teo",
+   "reason": "always-open",
+   "established": "2026-08-01",
+   "source": "https://www.tegut.com/teo.html",
+   "recheck": "never",
+   "note": "teo ist unbesetzt und rund um die Uhr geoeffnet (teo.de/standorte: 'rund um die Uhr, 365 Tage'). Eine Seite je Filiale gibt es nicht — es gibt nichts zu beobachten."
+  },
+  {
+   "osm_id": "way/1000323229",
+   "name": "teo",
+   "reason": "always-open",
+   "established": "2026-08-01",
+   "source": "https://www.teo.de/",
+   "recheck": "never",
+   "note": "teo ist unbesetzt und rund um die Uhr geoeffnet (teo.de/standorte: 'rund um die Uhr, 365 Tage'). Eine Seite je Filiale gibt es nicht — es gibt nichts zu beobachten."
+  },
+  {
+   "osm_id": "way/985988519",
+   "name": "teo",
+   "reason": "always-open",
+   "established": "2026-08-01",
+   "source": "https://www.teo-markt.com",
+   "recheck": "never",
+   "note": "teo ist unbesetzt und rund um die Uhr geoeffnet (teo.de/standorte: 'rund um die Uhr, 365 Tage'). Eine Seite je Filiale gibt es nicht — es gibt nichts zu beobachten."
+  },
+  {
    "osm_id": "way/1203278250",
    "name": "A.T.U",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://autowerkstatt.atu.de/hessen/fulda/frankfurter-str-65",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://autowerkstatt.atu.de/hessen/fulda/frankfurter-str-65). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://autowerkstatt.atu.de/hessen/fulda/frankfurter-str-65",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/1465073290",
    "name": "Action",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.action.com/de-de/laden/fulda-heinrichstrasse-85/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.action.com/de-de/laden/). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.action.com/de-de/laden/fulda-heinrichstrasse-85/",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "way/1151588539",
    "name": "Biergarten des Restaurants 3 Linden",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-18",
-   "quelle": "https://www.dreilinden-fulda.de/",
-   "wieder_pruefen": "bei-standortwechsel",
+   "reason": "anti-bot",
+   "established": "2026-08-18",
+   "source": "https://www.dreilinden-fulda.de/",
+   "recheck": "on-relocation",
    "note": "NinjaFirewall antwortet 403, auch von einer Privatleitung."
   },
   {
    "osm_id": "node/11212180017",
    "name": "Chaarmant",
-   "grund": "anti-bot",
-   "belegt_am": "2026-07-27",
-   "quelle": "https://chaarmant.edan.io",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "edan.io anti-bot fingerprints the changedetection fetcher (403 in all modes); hours are in static HTML and plain scripts get 200, but CD is blocked (flagged 2026-07-27)"
+   "reason": "anti-bot",
+   "established": "2026-07-27",
+   "source": "https://chaarmant.edan.io",
+   "recheck": "on-relocation",
+   "note": "edan.io erkennt den changedetection-Abruf und antwortet 403 in allen Modi; die Zeiten stehen im statischen HTML und waeren sonst greifbar."
   },
   {
    "osm_id": "node/7875070473",
    "name": "Decathlon",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.decathlon.de/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.decathlon.de/). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.decathlon.de/",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/12465433935",
    "name": "Douglas",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.douglas.de",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.douglas.de). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.douglas.de",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "way/37041692",
    "name": "EDEKA Getränkemarkt",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.edeka.de/maerkte/061144/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.edeka.de/maerkte/061144/). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.edeka.de/maerkte/061144/",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "way/37041698",
    "name": "Edeka",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.edeka.de/maerkte/061144/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.edeka.de/maerkte/061144/). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.edeka.de/maerkte/061144/",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/13584564404",
    "name": "Eurocar-Fulda",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://home.mobile.de/EUROCARFULDA",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://home.mobile.de/EUROCARFULDA). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://home.mobile.de/EUROCARFULDA",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/13410493669",
    "name": "Iggy's Vintage Guitar",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://reverb.com/shop/igor-vintage-gear",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://reverb.com/shop/igor-vintage-gear). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://reverb.com/shop/igor-vintage-gear",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/14008073811",
    "name": "LaPIDI ENGEL & STEINE",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.lapidiengelundsteine.de/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.lapidiengelundsteine.de/kontakt/). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot: changedetection container IP gets 403 even under webdriver (host reachable). Not fetchable from here. (flagged 2026-"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.lapidiengelundsteine.de/",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/1333344152",
    "name": "Louis Motorrad Fulda",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.louis.de/filialen/louis-fulda",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.louis.de/filialen/louis-fulda). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.louis.de/filialen/louis-fulda",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "way/1117881646",
    "name": "Netto Marken-Discount",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.netto-online.de/filialen/Fulda/Adenauerstrasse-7/8074/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.netto-online.de/filialen/Fulda/Adenauerstrasse-7/8074/). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.netto-online.de/filialen/Fulda/Adenauerstrasse-7/8074/",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "way/1120071142",
    "name": "Netto Marken-Discount",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.netto-online.de/filialen/Fulda/Goerdelerstr-28/8127/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.netto-online.de/filialen/Fulda/Goerdelerstr-28/8127/). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.netto-online.de/filialen/Fulda/Goerdelerstr-28/8127/",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "way/117695811",
    "name": "Netto Marken-Discount",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.netto-online.de/filialen/Fulda/Rangstr-41/4384/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.netto-online.de/filialen/Fulda/Rangstr-41/4384/). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.netto-online.de/filialen/Fulda/Rangstr-41/4384/",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/5493276942",
    "name": "Orthopädie Dr. Jahn",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.dr-jahn-go.de/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "Blocked: dr-jahn-go.de returns anti-bot 403 to plain fetch and renders 25 chars under Playwright. Retried each harvest in case the block is lifted."
+   "reason": "anti-bot",
+   "established": "2026-08-04",
+   "source": "https://www.dr-jahn-go.de/",
+   "recheck": "on-relocation",
+   "note": "dr-jahn-go.de antwortet 403 auf den einfachen Abruf und liefert unter Playwright nur 25 Zeichen. Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/2537103066",
    "name": "Scherenschnitt",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.sonja-und-connys-scherenschnitt.de/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.sonja-und-connys-scherenschnitt.de/). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.sonja-und-connys-scherenschnitt.de/",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/13584564403",
    "name": "TE-DETAILING – Premium CarCare",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.te-detailing.de",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.te-detailing.de/#KONTAKT). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot: changedetection container IP gets 403 even under webdriver (host reachable). Not fetchable from here. (flagged 2026-07-27)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.te-detailing.de",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/1641575405",
    "name": "Thalia",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://thalia.de",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://thalia.de). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://thalia.de",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "way/207936265",
    "name": "URBANIC fitness",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.urbanic-fitness.de/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "Blocked: urbanic-fitness.de returns anti-bot 403 to plain fetch and renders 757 chars with no hours under Playwright. Retried each harvest."
+   "reason": "anti-bot",
+   "established": "2026-08-04",
+   "source": "https://www.urbanic-fitness.de/",
+   "recheck": "on-relocation",
+   "note": "urbanic-fitness.de antwortet 403 auf den einfachen Abruf; unter Playwright kommen 757 Zeichen ohne jede Zeitangabe."
   },
   {
    "osm_id": "way/185093725",
    "name": "XXXLutz",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.xxxlutz.de/c/xxxlutz-buhl-fulda",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "2026-08-01: watch deleted - anti-bot 403 in all fetch modes (https://www.xxxlutz.de/faq). Listed in UNMONITORABLE.md; harvest retries discovery each run. | anti-bot 403 (auto-flagged 2026-07-26)"
+   "reason": "anti-bot",
+   "established": "2026-08-01",
+   "source": "https://www.xxxlutz.de/c/xxxlutz-buhl-fulda",
+   "recheck": "on-relocation",
+   "note": "Am 2026-08-01 entfernt: 403 in allen Abrufarten (einfach, mit Browser-Kennung, vollstaendige Header, Playwright). Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/12170457496",
    "name": "Yoga 36",
-   "grund": "anti-bot",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.yoga36.de/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "Blocked: yoga36.de returns anti-bot 403 to plain fetch. Retried each harvest."
-  },
-  {
-   "osm_id": "node/13392928514",
-   "name": "Beauty Nails",
-   "grund": "datacenter-block",
-   "belegt_am": "2026-08-18",
-   "quelle": "https://beauty-nails-fulda.edan.io/",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "Von hier 200, vom VPS 403 bei identischem UA — gemessen 2026-08-18."
-  },
-  {
-   "osm_id": "node/11812148620",
-   "name": "Von Poll Immobilien",
-   "grund": "datacenter-block",
-   "belegt_am": "2026-08-18",
-   "quelle": "https://www.von-poll.com/de/immobilienmakler/fulda",
-   "wieder_pruefen": "bei-standortwechsel",
-   "note": "Antwortet 403 auf browseraehnliche UAs von ueberall, 200 nur auf den schlichten Bot-UA — den bekommt der VPS nicht durch. Ein Eintrag kann keinen eigenen Header tragen."
-  },
-  {
-   "osm_id": "way/575988229",
-   "name": "ABC-Florist Neuhann",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://abc-florist-neuhann.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/6954079580",
-   "name": "Backstage Fulda - Jazz & Live-Club",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.backstage-fulda.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/4374614844",
-   "name": "Backwerk",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.back-werk.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1328317941",
-   "name": "Bürger*inneninitative L14.2",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://l14zwo.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/8051559014",
-   "name": "Bürgerzentrum Ziehers Süd",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.allerleihrad.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/5508155668",
-   "name": "Café Herzlich",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.heilemann.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1465073268",
-   "name": "China Buffet Town Fulda",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.chinarestaurant-buffettown-fulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: business-directory page with a live weather widget and a UI that flips between German and English; the only digits on it are coordinates."
-  },
-  {
-   "osm_id": "node/13592881389",
-   "name": "Cilento",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.ristorante-cilento.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1600298302",
-   "name": "CineStar",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.cinestar.de/kino-fulda",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/5170409076",
-   "name": "Creme de la Cremes",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://cdlc.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "way/372677216",
-   "name": "Dalberg Klinik",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://meliva.de/standort/dalberg-klinik-fulda/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1333484918",
-   "name": "Dom Cafe Wess",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.cafe-wess.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1333627363",
-   "name": "Dr. Arndt Neidhardt, Dr. Anja Kintzi-Schultheis",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.dr-neidhardt.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/3138483057",
-   "name": "Dr. Krempin & Mitsche",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.arztpraxis-fulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12963797193",
-   "name": "Dr. Maximilian Bock",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://bissig-kfo.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12893337944",
-   "name": "Dr. med Thomas Klitsch",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.gesundheitsnetzosthessen.de/fuer-patienten/arztsuche/detail/dr-med-thomas-klitsch/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13410573207",
-   "name": "Dr. med. Ulrich Salzberger & Dr. med. Catrin Fischer Fachärzte für Kinder- und Jugendmedizin, Kinderdiabetologie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.kidsdoc-fulda.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12848247038",
-   "name": "Dr.Med.Dent Bernd-Robert Koch",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.dr-koch-fulda.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "way/608273897",
-   "name": "Drei Linden",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.dreilinden-fulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12962150846",
-   "name": "EMS Lounge",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.ems-lounge.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: ems-lounge.de/standorte/ lists locations but carries 0 time patterns."
-  },
-  {
-   "osm_id": "node/1332647379",
-   "name": "Ellason",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://ellason.com",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12500532007",
-   "name": "Ernd Fahrzeugtechnik",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.ernd-ft.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13448841086",
-   "name": "Filius: Kinder-, Jugendzahnarztpraxis & Kieferorthopädie, MSc. Nadine Smith",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://dr-zahn.de/zahnarzt/filius-kinder-jugendzahnarztpraxis-kieferorthopaedie-msc-nadine-smith/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/4984511612",
-   "name": "Filzshop Outlet Store",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://filzfabrik-fulda.de/de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/5807621530",
-   "name": "Frauenarztpraxis am Frauenberg",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.mvz-im-medicum-fulda.de/adalbertstra%C3%9Fe",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-im-medicum-fulda.de has a page per location but none carries Sprechzeiten - 0 time patterns on the fully rendered page. Retried each harvest."
-  },
-  {
-   "osm_id": "node/13439658935",
-   "name": "Friederike Lips Maßschneiderei",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.friederike-nimmt-mass.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1548699163",
-   "name": "Frucht Hartmann GmbH",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.fruchthartmann.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "way/137866029",
-   "name": "GERRIT-Entertainment GmbH & Co. KG",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.gerrit.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13707766047",
-   "name": "GSW Wohnungsgesellschaft mbH / GWG Fulda GmbH",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-18",
-   "quelle": "https://www.gsw-ffm.de/gsw/standorte/fulda/",
-   "wieder_pruefen": "2027-02-18",
-   "note": "Die Seite nennt ausdruecklich nur telefonische Sprechzeiten."
-  },
-  {
-   "osm_id": "node/10748180169",
-   "name": "Goldschmiede Heike Füchtenhans",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.goldschmiede-fuechtenhans.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1679948997",
-   "name": "Guter Gerlach",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.guter-gerlach.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12745492901",
-   "name": "Heiko's Kfz - Werkstatt",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.werkstatt-heiko-fulda.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12500541638",
-   "name": "Hennig Fahrzeugteile",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.hennig-fahrzeugteile.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "way/117872035",
-   "name": "Hotel Gasthof Jägerhaus",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.hotelgasthof-jaegerhaus.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/3779504132",
-   "name": "Hotel Platzhirsch | Bar & Lounge",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.platzhirsch-fulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12500536797",
-   "name": "Katharina van Delft",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.katharinas-physiotherapie.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/4984512133",
-   "name": "Katzers Backhaus",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.katzers-backhaus.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/5562044609",
-   "name": "Kino35",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.35kino.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/11057838205",
-   "name": "Klinik für Psychiatrie und Psychotherapie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://klinikum-fulda.de/medizin-pflege/psychiatrie-und-psychotherapie/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13392976217",
-   "name": "Kunstschmiede Bernhardt",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.kunstschmiede-bernhardt.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/4855441321",
-   "name": "Landeplatz",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.landeplatz-fulda.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/3976923213",
-   "name": "Landgasthof Schubbkoarn's Ruh",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.schubbkoarnsruh.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1709663606",
-   "name": "Leitsch Bäder Heizung",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.leitsch-baeder-heizung.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13191604600",
-   "name": "LifeArt - Privatpraxis für Physiotherapie und Ortho-Bionomy",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.lifeart-ob.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "no opening hours published (confirmed by hand 2026-08-04)"
-  },
-  {
-   "osm_id": "node/1333326683",
-   "name": "Lomb, Möller und Gröbels Zahnärzte",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.zahnaerzte-fulda.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13397387583",
-   "name": "M-Physio",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.m-physio.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13543575052",
-   "name": "MVZ Allgemein",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575051",
-   "name": "MVZ Allgemein- und Viszeralchirurgie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575050",
-   "name": "MVZ Dermatologie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575049",
-   "name": "MVZ Gefäßchirurgie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575048",
-   "name": "MVZ Gynäkologie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575045",
-   "name": "MVZ HNO",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575047",
-   "name": "MVZ Handchirurgie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575046",
-   "name": "MVZ Herzinsuffizienz",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575044",
-   "name": "MVZ Innere Medizin",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575043",
-   "name": "MVZ Kinder-Diabetologie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575042",
-   "name": "MVZ Labor",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575041",
-   "name": "MVZ Neurochirurgie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575040",
-   "name": "MVZ Neurologie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575039",
-   "name": "MVZ Nuklearmedizin",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575038",
-   "name": "MVZ Onkologie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575037",
-   "name": "MVZ Orthopädie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575036",
-   "name": "MVZ Palliativmedizin",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575035",
-   "name": "MVZ Pathologie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575034",
-   "name": "MVZ Plastische Chirurgie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575033",
-   "name": "MVZ Psychiatrie und Psychotherapie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575032",
-   "name": "MVZ Psychosomatik",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575031",
-   "name": "MVZ Strahlentherapie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/13543575030",
-   "name": "MVZ Unfallchirurgie",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://mvz-osthessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-osthessen.de is a placeholder ('Unsere Internetseite wird aktuell ueberarbeitet') listing only a phone number and an e-mail per department - 0 time patterns on the rendered page. 23 OSM department objects share this one site. Retried each harvest, so it revives if the rebuilt"
-  },
-  {
-   "osm_id": "node/5807606974",
-   "name": "MVZ im Medicum Frauenheilkunde",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.mvz-im-medicum-fulda.de/flemingstra%C3%9Fe",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: mvz-im-medicum-fulda.de has a page per location but none carries Sprechzeiten - 0 time patterns on the fully rendered page. Retried each harvest."
-  },
-  {
-   "osm_id": "node/12499070406",
-   "name": "Massatelier Eva Schönherr",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-07-27",
-   "quelle": "https://www.der-schoene-herr.de/herrenausstatter-fulwiline/",
-   "wieder_pruefen": "2027-01-27",
-   "note": "no opening hours published anywhere on the site (flagged 2026-07-27)"
-  },
-  {
-   "osm_id": "node/1336854980",
-   "name": "Mediterran Delikate",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.mediterran-delikate.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1333292538",
-   "name": "Nordsee",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.nordsee.com/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13455916505",
-   "name": "PROSOL Lacke + Farben GmbH",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.prosol-farben.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "| 2026-08-04: page carries no opening hours (plain + rendered); retired to absence"
-  },
-  {
-   "osm_id": "node/12911373739",
-   "name": "Perilli Eis",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://perillieis.com",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1327237623",
-   "name": "Perilli Eis Cafe",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://perillieis.com/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12887396868",
-   "name": "Rathaus Buchhandlung",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-18",
-   "quelle": "https://rathaus-buchhandlung.buchkatalog.de/",
-   "wieder_pruefen": "2027-02-18",
-   "note": "Die Shopseite zeigt Veranstaltungstermine der Buchhandlung, keine Ladenzeiten."
-  },
-  {
-   "osm_id": "way/207224355",
-   "name": "Reinhard und Dworazik",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-18",
-   "quelle": "https://www.ra-reinhard.de/",
-   "wieder_pruefen": "2027-02-18",
-   "note": "Sichtbar stehen nur Adresse und Telefon; das JSON-LD traegt Mo-So 09:00-17:00 — die WordPress-Vorlagenkonstante aus FILTERS.md, keine Angabe der Kanzlei."
-  },
-  {
-   "osm_id": "way/1284529862",
-   "name": "Rossmann Express",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.rossmann.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13584539900",
-   "name": "SCHMITT & ORSCHLER GmbH & Co. Farben- und Heimtex KG",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.sundo.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1465073288",
-   "name": "Schmid",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www2.schuh-schmid.com/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/14077552878",
-   "name": "Studierendenwerk Gießen",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-18",
-   "quelle": "https://www.stwgi.de/",
-   "wieder_pruefen": "2027-02-18",
-   "note": "Die Seite gehoert der Zentrale in Giessen und nennt deren Verwaltungszeiten, nicht die des Fuldaer Standorts."
-  },
-  {
-   "osm_id": "way/250784824",
-   "name": "TC Grün Weiß Fulda",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.gruen-weiss-fulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "no opening hours published (confirmed by hand 2026-08-04)"
-  },
-  {
-   "osm_id": "node/5505379112",
-   "name": "TEDi",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.tedi.com/stores/4416/de/HESSEN/Fulda/Rangstr-39",
-   "wieder_pruefen": "2027-02-04",
-   "note": "| 2026-08-04: page carries no opening hours (plain + rendered); retired to absence"
-  },
-  {
-   "osm_id": "node/4985263244",
-   "name": "Theater mittendrin",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.theater-mittendrin.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1333285140",
-   "name": "Ulenspiegel Buchhandlung und Antiquariat",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.ulenspiegel.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12500464026",
-   "name": "V+S Furniere",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.vs-furniere.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12500440660",
-   "name": "WM SE",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.wm.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "| 2026-08-04: page carries no opening hours (plain + rendered); retired to absence"
-  },
-  {
-   "osm_id": "node/612111417",
-   "name": "Zum Stiftskämmerer",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.stiftskaemmerer.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/2425198944",
-   "name": "antonius LadenCafé",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.antonius-fulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/12500440659",
-   "name": "brillux",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.brillux.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "way/142898556",
-   "name": "burgerme",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.burgerme.de/fulda/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/11818788258",
-   "name": "damfastore",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-18",
-   "quelle": "https://www.damfastore-fulda.de/",
-   "wieder_pruefen": "2027-02-18",
-   "note": "Die Seite nennt eine Service-Hotline Mo-Fr 10:00-19:00 und sonst nichts; Ladenzeiten fehlen."
-  },
-  {
-   "osm_id": "node/7395984011",
-   "name": "jedermanns",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.drk-fulda.de/angebote/existenzsichernde-hilfe/jedermanns.html",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/1465073382",
-   "name": "mister*lady",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.mister-lady.com",
-   "wieder_pruefen": "2027-02-04",
-   "note": "Hours not published online: store page https://www.mister-lady.com/305-fulda-fulda has address+phone only (neti locator openingTimes=null). /kontakt/ is corporate form. Unmonitorable."
-  },
-  {
-   "osm_id": "node/1465073392",
-   "name": "taste",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.tastefashion.de",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/2560860888",
-   "name": "Ärztlicher Bereitschaftsdienst",
-   "grund": "keine-zeiten-auf-der-seite",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.bereitschaftsdienst-hessen.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published on the watched page: checked 2026-08-04 both as plain fetch and fully rendered via Playwright - no weekday/time text of any kind. Retried each harvest, so it revives if the site starts publishing hours."
-  },
-  {
-   "osm_id": "node/13200387481",
-   "name": "Deluxe Pizza",
-   "grund": "nur-lieferdienst",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.deluxepizza-fulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "Lieferando-hosted microsite; page shows delivery availability (\"Liefer zeiten\"), not Oeffnungszeiten - flips to Geschlossen when shop toggles offline. Not monitorable."
-  },
-  {
-   "osm_id": "node/524677845",
-   "name": "La Romantica",
-   "grund": "nur-lieferdienst",
-   "belegt_am": "2026-07-27",
-   "quelle": "http://www.laromantica-fulda.de/",
-   "wieder_pruefen": "2027-01-27",
-   "note": "only web presence is lieferando (own domain dead) — DataDome-class anti-bot, unmonitorable (flagged 2026-07-27)"
-  },
-  {
-   "osm_id": "node/1333324387",
-   "name": "Mix Döner",
-   "grund": "nur-lieferdienst",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.mixdoener.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "own domain dead; only presence is lieferando which blocks all bots (403)"
-  },
-  {
-   "osm_id": "node/12111215704",
-   "name": "Pizza Nemrut",
-   "grund": "nur-lieferdienst",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://nemrut-fulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "Lieferando-hosted microsite; page shows delivery availability (\"Liefer zeiten\"), not Oeffnungszeiten - flips to Geschlossen when shop toggles offline. Not monitorable."
-  },
-  {
-   "osm_id": "node/12111215703",
-   "name": "Schnitzelhaus",
-   "grund": "nur-lieferdienst",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.lieferando.de/speisekarte/schnitzelhaus-fulda",
-   "wieder_pruefen": "2027-02-04",
-   "note": "lieferando-only; DataDome anti-bot blocks changedetection in all fetch modes (403)"
-  },
-  {
-   "osm_id": "node/431412287",
-   "name": "Star Kebap Haus Fulda",
-   "grund": "nur-lieferdienst",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.starkebaphausfulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "Lieferando-hosted microsite; page shows delivery availability (\"Liefer zeiten\"), not Oeffnungszeiten - flips to Geschlossen when shop toggles offline. Not monitorable."
+   "reason": "anti-bot",
+   "established": "2026-08-04",
+   "source": "https://www.yoga36.de/",
+   "recheck": "on-relocation",
+   "note": "yoga36.de antwortet 403 auf den einfachen Abruf. Der Harvest probiert es weiter."
   },
   {
    "osm_id": "node/12553619483",
    "name": "HNO-Praxis Heinrich-von-Bibra-Platz",
-   "grund": "nur-nach-vereinbarung",
-   "belegt_am": "2026-08-18",
-   "quelle": "https://www.hnopraxis-fulda.de/",
-   "wieder_pruefen": "2027-08-18",
+   "reason": "appointment-only",
+   "established": "2026-08-18",
+   "source": "https://www.hnopraxis-fulda.de/",
+   "recheck": "2027-08-18",
    "note": "Die Seite sagt \"Termine nur nach Vereinbarung\" und nennt ein Notfallfenster 08:00-09:00 an vier Tagen."
   },
   {
    "osm_id": "node/1328375226",
    "name": "The One Brautmode",
-   "grund": "nur-nach-vereinbarung",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://the-one-couture.de/",
-   "wieder_pruefen": "2027-08-01",
-   "note": "2026-08-01: unmonitorable. the-one-couture.de has no hours (bridal studio, appointment only); /about/ and /impressum/ carry none; watch fired on the embedded Instagram feed."
+   "reason": "appointment-only",
+   "established": "2026-08-01",
+   "source": "https://the-one-couture.de/",
+   "recheck": "2027-08-01",
+   "note": "the-one-couture.de nennt keine Zeiten — Brautmodenatelier, ausschliesslich nach Termin; auch /about/ und /impressum/ tragen keine."
   },
   {
-   "osm_id": "node/1336880570",
-   "name": "Altstadt",
-   "grund": "nur-social",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.altstadt-fulda.com/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: web presence is Facebook/Instagram only; altstadt-fulda.com does not answer. Nothing to diff."
+   "osm_id": "node/13392928514",
+   "name": "Beauty Nails",
+   "reason": "datacenter-block",
+   "established": "2026-08-18",
+   "source": "https://beauty-nails-fulda.edan.io/",
+   "recheck": "on-relocation",
+   "note": "Von hier 200, vom VPS 403 bei identischem UA — gemessen 2026-08-18."
   },
   {
-   "osm_id": "node/1333388679",
-   "name": "Barolo Café & Weinbar",
-   "grund": "nur-social",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.weinbar-barolo.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: web presence is Facebook/Instagram only; weinbar-barolo.de 404s. Nothing to diff."
+   "osm_id": "node/11812148620",
+   "name": "Von Poll Immobilien",
+   "reason": "datacenter-block",
+   "established": "2026-08-18",
+   "source": "https://www.von-poll.com/de/immobilienmakler/fulda",
+   "recheck": "on-relocation",
+   "note": "Antwortet 403 auf browseraehnliche UAs von ueberall, 200 nur auf den schlichten Bot-UA — den bekommt der VPS nicht durch. Ein Eintrag kann keinen eigenen Header tragen."
   },
   {
-   "osm_id": "node/12842624670",
-   "name": "Kopfarbeit",
-   "grund": "nur-social",
-   "belegt_am": "2026-08-04",
-   "quelle": "https://www.facebook.com/people/kopfarbeit-mandy-kr%c3%bcger/100063624850654/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "only web presence is a Facebook page (login wall + follower-counter noise; no stable hours selector)"
+   "osm_id": "node/13200387481",
+   "name": "Deluxe Pizza",
+   "reason": "delivery-platform-only",
+   "established": "2026-08-04",
+   "source": "https://www.deluxepizza-fulda.de/",
+   "recheck": "2027-02-04",
+   "note": "Nur eine von Lieferando gehostete Microsite. Sie zeigt 'Liefer zeiten', also das Lieferfenster, nicht die Oeffnungszeit — und springt auf 'Geschlossen', sobald der Laden offline schaltet."
   },
   {
-   "osm_id": "node/1333630787",
-   "name": "Zum Stadtwächter",
-   "grund": "nur-social",
-   "belegt_am": "2026-08-04",
-   "quelle": "http://www.stadtwaechter-fulda.de/",
-   "wieder_pruefen": "2027-02-04",
-   "note": "No hours published: stadtwaechter-fulda.de is only a Facebook page embed - follower and review counts, post timestamps and a live 'Derzeit geschlossen' widget, all self-changing. Nothing to filter."
+   "osm_id": "node/524677845",
+   "name": "La Romantica",
+   "reason": "delivery-platform-only",
+   "established": "2026-07-27",
+   "source": "http://www.laromantica-fulda.de/",
+   "recheck": "2027-01-27",
+   "note": "Einziger Auftritt ist Lieferando, die eigene Domain ist tot. Dort blockt DataDome jeden Abruf — und die Seite zeigte ohnehin Lieferzeiten."
   },
   {
-   "osm_id": "node/10687960646",
-   "name": "e-motion e-Bike Welt Fulda",
-   "grund": "nur-tagesstatus",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://emotion-ebikes.de/standorte/he/fulda",
-   "wieder_pruefen": "2027-08-01",
-   "note": "2026-08-01: unmonitorable. Page shows only a live 'Heute: ...' widget; the weekly table sits in Next.js flight-data script (openingHours.general) which changedetection strips with script tags, and the accordion renders nothing until clicked."
+   "osm_id": "node/1333324387",
+   "name": "Mix Döner",
+   "reason": "delivery-platform-only",
+   "established": "2026-08-04",
+   "source": "http://www.mixdoener.de/",
+   "recheck": "2027-02-04",
+   "note": "Eigene Domain tot, einziger Auftritt ist Lieferando; dort werden alle Bots mit 403 abgewiesen."
   },
   {
-   "osm_id": "way/996678398",
-   "name": "tegut... teo",
-   "grund": "rund-um-die-uhr",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.tegut.com/maerkte/markt/tegut-fulda-pacelliallee-4.html",
-   "wieder_pruefen": "nie",
-   "note": "2026-08-01 re-checked: teo is unstaffed and open 24/7 - teo.de/standorte states \"teo hat rund um die Uhr fuer Dich geoeffnet, an 365 Tagen im Jahr\". No per-store page exists (not in tegut stores sitemap, no Fulda entry on teo.de). Nothing to monitor; OSM value is a static opening_hours=24/7."
+   "osm_id": "node/12111215704",
+   "name": "Pizza Nemrut",
+   "reason": "delivery-platform-only",
+   "established": "2026-08-04",
+   "source": "https://nemrut-fulda.de/",
+   "recheck": "2027-02-04",
+   "note": "Nur eine von Lieferando gehostete Microsite. Sie zeigt 'Liefer zeiten', also das Lieferfenster, nicht die Oeffnungszeit — und springt auf 'Geschlossen', sobald der Laden offline schaltet."
   },
   {
-   "osm_id": "way/1024664035",
-   "name": "tegut… teo",
-   "grund": "rund-um-die-uhr",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.tegut.com/teo.html",
-   "wieder_pruefen": "nie",
-   "note": "2026-08-01 re-checked: teo is unstaffed and open 24/7 (teo.de/standorte: rund um die Uhr, 365 Tage). No per-store page exists. Nothing to monitor."
+   "osm_id": "node/12111215703",
+   "name": "Schnitzelhaus",
+   "reason": "delivery-platform-only",
+   "established": "2026-08-04",
+   "source": "https://www.lieferando.de/speisekarte/schnitzelhaus-fulda",
+   "recheck": "2027-02-04",
+   "note": "Nur Lieferando; DataDome blockt changedetection in allen Abrufarten mit 403."
   },
   {
-   "osm_id": "way/1024665835",
-   "name": "tegut… teo",
-   "grund": "rund-um-die-uhr",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.tegut.com/maerkte/markt/tegut-fulda-bronnzeller-strasse-4.html",
-   "wieder_pruefen": "nie",
-   "note": "2026-08-01 re-checked: teo is unstaffed and open 24/7 (teo.de/standorte: rund um die Uhr, 365 Tage). No per-store page exists. Nothing to monitor."
+   "osm_id": "node/431412287",
+   "name": "Star Kebap Haus Fulda",
+   "reason": "delivery-platform-only",
+   "established": "2026-08-04",
+   "source": "https://www.starkebaphausfulda.de/",
+   "recheck": "2027-02-04",
+   "note": "Nur eine von Lieferando gehostete Microsite. Sie zeigt 'Liefer zeiten', also das Lieferfenster, nicht die Oeffnungszeit — und springt auf 'Geschlossen', sobald der Laden offline schaltet."
   },
   {
-   "osm_id": "way/867970814",
-   "name": "tegut… teo",
-   "grund": "rund-um-die-uhr",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.tegut.com/teo.html",
-   "wieder_pruefen": "nie",
-   "note": "2026-08-01 re-checked: teo is unstaffed and open 24/7 (teo.de/standorte: rund um die Uhr, 365 Tage). No per-store page exists. Nothing to monitor."
+   "osm_id": "way/575988229",
+   "name": "ABC-Florist Neuhann",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://abc-florist-neuhann.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
-   "osm_id": "way/1000323229",
-   "name": "teo",
-   "grund": "rund-um-die-uhr",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.teo.de/",
-   "wieder_pruefen": "nie",
-   "note": "2026-08-01 re-checked: teo is unstaffed and open 24/7 (teo.de/standorte: rund um die Uhr, 365 Tage). No per-store page exists. Nothing to monitor."
+   "osm_id": "node/6954079580",
+   "name": "Backstage Fulda - Jazz & Live-Club",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.backstage-fulda.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
-   "osm_id": "way/985988519",
-   "name": "teo",
-   "grund": "rund-um-die-uhr",
-   "belegt_am": "2026-08-01",
-   "quelle": "https://www.teo-markt.com",
-   "wieder_pruefen": "nie",
-   "note": "2026-08-01 re-checked: teo is unstaffed and open 24/7 (teo.de/standorte: rund um die Uhr, 365 Tage). No per-store page exists. Nothing to monitor."
+   "osm_id": "node/4374614844",
+   "name": "Backwerk",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.back-werk.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1328317941",
+   "name": "Bürger*inneninitative L14.2",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://l14zwo.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/8051559014",
+   "name": "Bürgerzentrum Ziehers Süd",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.allerleihrad.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/5508155668",
+   "name": "Café Herzlich",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.heilemann.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1465073268",
+   "name": "China Buffet Town Fulda",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.chinarestaurant-buffettown-fulda.de/",
+   "recheck": "2027-02-04",
+   "note": "Branchenbuchseite mit Wetter-Widget, deren Oberflaeche zwischen Deutsch und Englisch springt — keine belastbare Zeitangabe."
+  },
+  {
+   "osm_id": "node/13592881389",
+   "name": "Cilento",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.ristorante-cilento.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1600298302",
+   "name": "CineStar",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.cinestar.de/kino-fulda",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/5170409076",
+   "name": "Creme de la Cremes",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://cdlc.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "way/372677216",
+   "name": "Dalberg Klinik",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://meliva.de/standort/dalberg-klinik-fulda/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1333484918",
+   "name": "Dom Cafe Wess",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.cafe-wess.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1333627363",
+   "name": "Dr. Arndt Neidhardt, Dr. Anja Kintzi-Schultheis",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.dr-neidhardt.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/3138483057",
+   "name": "Dr. Krempin & Mitsche",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.arztpraxis-fulda.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12963797193",
+   "name": "Dr. Maximilian Bock",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://bissig-kfo.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12893337944",
+   "name": "Dr. med Thomas Klitsch",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.gesundheitsnetzosthessen.de/fuer-patienten/arztsuche/detail/dr-med-thomas-klitsch/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13410573207",
+   "name": "Dr. med. Ulrich Salzberger & Dr. med. Catrin Fischer Fachärzte für Kinder- und Jugendmedizin, Kinderdiabetologie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.kidsdoc-fulda.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12848247038",
+   "name": "Dr.Med.Dent Bernd-Robert Koch",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.dr-koch-fulda.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "way/608273897",
+   "name": "Drei Linden",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.dreilinden-fulda.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12962150846",
+   "name": "EMS Lounge",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.ems-lounge.de",
+   "recheck": "2027-02-04",
+   "note": "ems-lounge.de/standorte/ listet die Standorte, nennt aber an keiner Stelle eine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1332647379",
+   "name": "Ellason",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://ellason.com",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12500532007",
+   "name": "Ernd Fahrzeugtechnik",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.ernd-ft.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13448841086",
+   "name": "Filius: Kinder-, Jugendzahnarztpraxis & Kieferorthopädie, MSc. Nadine Smith",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://dr-zahn.de/zahnarzt/filius-kinder-jugendzahnarztpraxis-kieferorthopaedie-msc-nadine-smith/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/4984511612",
+   "name": "Filzshop Outlet Store",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://filzfabrik-fulda.de/de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/5807621530",
+   "name": "Frauenarztpraxis am Frauenberg",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.mvz-im-medicum-fulda.de/adalbertstra%C3%9Fe",
+   "recheck": "2027-02-04",
+   "note": "mvz-im-medicum-fulda.de hat eine Seite je Standort, aber keine davon nennt Sprechzeiten; auch gerendert kein Zeitmuster."
+  },
+  {
+   "osm_id": "node/13439658935",
+   "name": "Friederike Lips Maßschneiderei",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.friederike-nimmt-mass.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1548699163",
+   "name": "Frucht Hartmann GmbH",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.fruchthartmann.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "way/137866029",
+   "name": "GERRIT-Entertainment GmbH & Co. KG",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.gerrit.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13707766047",
+   "name": "GSW Wohnungsgesellschaft mbH / GWG Fulda GmbH",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.gsw-ffm.de/gsw/standorte/fulda/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt ausdruecklich nur telefonische Sprechzeiten."
+  },
+  {
+   "osm_id": "node/10748180169",
+   "name": "Goldschmiede Heike Füchtenhans",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.goldschmiede-fuechtenhans.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1679948997",
+   "name": "Guter Gerlach",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.guter-gerlach.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12745492901",
+   "name": "Heiko's Kfz - Werkstatt",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.werkstatt-heiko-fulda.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12500541638",
+   "name": "Hennig Fahrzeugteile",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.hennig-fahrzeugteile.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "way/117872035",
+   "name": "Hotel Gasthof Jägerhaus",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.hotelgasthof-jaegerhaus.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/3779504132",
+   "name": "Hotel Platzhirsch | Bar & Lounge",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.platzhirsch-fulda.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12500536797",
+   "name": "Katharina van Delft",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.katharinas-physiotherapie.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/4984512133",
+   "name": "Katzers Backhaus",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.katzers-backhaus.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/5562044609",
+   "name": "Kino35",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.35kino.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/11057838205",
+   "name": "Klinik für Psychiatrie und Psychotherapie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://klinikum-fulda.de/medizin-pflege/psychiatrie-und-psychotherapie/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13392976217",
+   "name": "Kunstschmiede Bernhardt",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.kunstschmiede-bernhardt.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/4855441321",
+   "name": "Landeplatz",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.landeplatz-fulda.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/3976923213",
+   "name": "Landgasthof Schubbkoarn's Ruh",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.schubbkoarnsruh.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1709663606",
+   "name": "Leitsch Bäder Heizung",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.leitsch-baeder-heizung.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13191604600",
+   "name": "LifeArt - Privatpraxis für Physiotherapie und Ortho-Bionomy",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.lifeart-ob.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 von Hand nachgesehen: die Seite publiziert keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/1333326683",
+   "name": "Lomb, Möller und Gröbels Zahnärzte",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.zahnaerzte-fulda.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13397387583",
+   "name": "M-Physio",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.m-physio.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13543575052",
+   "name": "MVZ Allgemein",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575051",
+   "name": "MVZ Allgemein- und Viszeralchirurgie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575050",
+   "name": "MVZ Dermatologie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575049",
+   "name": "MVZ Gefäßchirurgie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575048",
+   "name": "MVZ Gynäkologie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575045",
+   "name": "MVZ HNO",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575047",
+   "name": "MVZ Handchirurgie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575046",
+   "name": "MVZ Herzinsuffizienz",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575044",
+   "name": "MVZ Innere Medizin",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575043",
+   "name": "MVZ Kinder-Diabetologie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575042",
+   "name": "MVZ Labor",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575041",
+   "name": "MVZ Neurochirurgie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575040",
+   "name": "MVZ Neurologie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575039",
+   "name": "MVZ Nuklearmedizin",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575038",
+   "name": "MVZ Onkologie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575037",
+   "name": "MVZ Orthopädie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575036",
+   "name": "MVZ Palliativmedizin",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575035",
+   "name": "MVZ Pathologie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575034",
+   "name": "MVZ Plastische Chirurgie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575033",
+   "name": "MVZ Psychiatrie und Psychotherapie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575032",
+   "name": "MVZ Psychosomatik",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575031",
+   "name": "MVZ Strahlentherapie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/13543575030",
+   "name": "MVZ Unfallchirurgie",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://mvz-osthessen.de/",
+   "recheck": "2027-02-04",
+   "note": "mvz-osthessen.de ist eine Platzhalterseite ('Unsere Internetseite wird aktuell ueberarbeitet') und nennt nur eine Telefonnummer."
+  },
+  {
+   "osm_id": "node/5807606974",
+   "name": "MVZ im Medicum Frauenheilkunde",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.mvz-im-medicum-fulda.de/flemingstra%C3%9Fe",
+   "recheck": "2027-02-04",
+   "note": "mvz-im-medicum-fulda.de hat eine Seite je Standort, aber keine davon nennt Sprechzeiten; auch gerendert kein Zeitmuster."
+  },
+  {
+   "osm_id": "node/12499070406",
+   "name": "Massatelier Eva Schönherr",
+   "reason": "no-hours-on-page",
+   "established": "2026-07-27",
+   "source": "https://www.der-schoene-herr.de/herrenausstatter-fulwiline/",
+   "recheck": "2027-01-27",
+   "note": "Am 27.07.2026 geprueft: nirgends auf der Seite stehen Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/1336854980",
+   "name": "Mediterran Delikate",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.mediterran-delikate.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1333292538",
+   "name": "Nordsee",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.nordsee.com/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13455916505",
+   "name": "PROSOL Lacke + Farben GmbH",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.prosol-farben.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach und gerendert geprueft: die Seite traegt keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/12911373739",
+   "name": "Perilli Eis",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://perillieis.com",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1327237623",
+   "name": "Perilli Eis Cafe",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://perillieis.com/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12887396868",
+   "name": "Rathaus Buchhandlung",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://rathaus-buchhandlung.buchkatalog.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Shopseite zeigt Veranstaltungstermine der Buchhandlung, keine Ladenzeiten."
+  },
+  {
+   "osm_id": "way/207224355",
+   "name": "Reinhard und Dworazik",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.ra-reinhard.de/",
+   "recheck": "2027-02-18",
+   "note": "Sichtbar stehen nur Adresse und Telefon; das JSON-LD traegt Mo-So 09:00-17:00 — die WordPress-Vorlagenkonstante aus FILTERS.md, keine Angabe der Kanzlei."
+  },
+  {
+   "osm_id": "way/1284529862",
+   "name": "Rossmann Express",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.rossmann.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13584539900",
+   "name": "SCHMITT & ORSCHLER GmbH & Co. Farben- und Heimtex KG",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.sundo.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1465073288",
+   "name": "Schmid",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www2.schuh-schmid.com/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/14077552878",
+   "name": "Studierendenwerk Gießen",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.stwgi.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite gehoert der Zentrale in Giessen und nennt deren Verwaltungszeiten, nicht die des Fuldaer Standorts."
+  },
+  {
+   "osm_id": "way/250784824",
+   "name": "TC Grün Weiß Fulda",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.gruen-weiss-fulda.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 von Hand nachgesehen: die Seite publiziert keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/5505379112",
+   "name": "TEDi",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.tedi.com/stores/4416/de/HESSEN/Fulda/Rangstr-39",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach und gerendert geprueft: die Seite traegt keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/4985263244",
+   "name": "Theater mittendrin",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.theater-mittendrin.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1333285140",
+   "name": "Ulenspiegel Buchhandlung und Antiquariat",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.ulenspiegel.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12500464026",
+   "name": "V+S Furniere",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.vs-furniere.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12500440660",
+   "name": "WM SE",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.wm.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach und gerendert geprueft: die Seite traegt keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/612111417",
+   "name": "Zum Stiftskämmerer",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.stiftskaemmerer.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/2425198944",
+   "name": "antonius LadenCafé",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "http://www.antonius-fulda.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/12500440659",
+   "name": "brillux",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.brillux.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "way/142898556",
+   "name": "burgerme",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.burgerme.de/fulda/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/11818788258",
+   "name": "damfastore",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.damfastore-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Die Seite nennt eine Service-Hotline Mo-Fr 10:00-19:00 und sonst nichts; Ladenzeiten fehlen."
+  },
+  {
+   "osm_id": "node/7395984011",
+   "name": "jedermanns",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.drk-fulda.de/angebote/existenzsichernde-hilfe/jedermanns.html",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1465073382",
+   "name": "mister*lady",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.mister-lady.com",
+   "recheck": "2027-02-04",
+   "note": "Die Filialseite mister-lady.com/305-fulda-fulda nennt nur Adresse und Telefon."
+  },
+  {
+   "osm_id": "node/1465073392",
+   "name": "taste",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.tastefashion.de",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/2560860888",
+   "name": "Ärztlicher Bereitschaftsdienst",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-04",
+   "source": "https://www.bereitschaftsdienst-hessen.de/",
+   "recheck": "2027-02-04",
+   "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
    "osm_id": "node/13114969651",
    "name": "Da Sergio",
-   "grund": "seite-nicht-erreichbar",
-   "belegt_am": "2026-07-26",
-   "quelle": "https://dasergio-restaurant.de/",
-   "wieder_pruefen": "2027-01-26",
-   "note": "DNS/connection failure (auto-flagged 2026-07-26)"
+   "reason": "site-unreachable",
+   "established": "2026-07-26",
+   "source": "https://dasergio-restaurant.de/",
+   "recheck": "2027-01-26",
+   "note": "Seit dem 2026-07-26 nicht erreichbar: DNS- beziehungsweise Verbindungsfehler."
   },
   {
    "osm_id": "node/11251655465",
    "name": "Fusion Kitchen",
-   "grund": "seite-nicht-erreichbar",
-   "belegt_am": "2026-07-26",
-   "quelle": "https://www.fusionkitchen.eu",
-   "wieder_pruefen": "2027-01-26",
-   "note": "DNS/connection failure (auto-flagged 2026-07-26)"
+   "reason": "site-unreachable",
+   "established": "2026-07-26",
+   "source": "https://www.fusionkitchen.eu",
+   "recheck": "2027-01-26",
+   "note": "Seit dem 2026-07-26 nicht erreichbar: DNS- beziehungsweise Verbindungsfehler."
   },
   {
    "osm_id": "node/1333322181",
    "name": "Satinee Strumpfmoden",
-   "grund": "seite-nicht-erreichbar",
-   "belegt_am": "2026-08-18",
-   "quelle": "http://www.satinee.eu/filialen-satinee/satinee-strumpfmoden-in-fulda/",
-   "wieder_pruefen": "2027-02-18",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "http://www.satinee.eu/filialen-satinee/satinee-strumpfmoden-in-fulda/",
+   "recheck": "2027-02-18",
    "note": "Die Filialseite antwortet 404; der zuletzt gespeicherte Rohtext endet mitten im Satz."
+  },
+  {
+   "osm_id": "node/1336880570",
+   "name": "Altstadt",
+   "reason": "social-only",
+   "established": "2026-08-04",
+   "source": "http://www.altstadt-fulda.com/",
+   "recheck": "2027-02-04",
+   "note": "Auftritt nur bei Facebook und Instagram; altstadt-fulda.com antwortet nicht."
+  },
+  {
+   "osm_id": "node/1333388679",
+   "name": "Barolo Café & Weinbar",
+   "reason": "social-only",
+   "established": "2026-08-04",
+   "source": "https://www.weinbar-barolo.de/",
+   "recheck": "2027-02-04",
+   "note": "Auftritt nur bei Facebook und Instagram; weinbar-barolo.de antwortet mit 404."
+  },
+  {
+   "osm_id": "node/12842624670",
+   "name": "Kopfarbeit",
+   "reason": "social-only",
+   "established": "2026-08-04",
+   "source": "https://www.facebook.com/people/kopfarbeit-mandy-kr%c3%bcger/100063624850654/",
+   "recheck": "2027-02-04",
+   "note": "Einziger Auftritt ist eine Facebook-Seite: Login-Wand davor, dahinter rotierende Follower-Zahlen und kein stabiler Anker fuer die Zeiten."
+  },
+  {
+   "osm_id": "node/1333630787",
+   "name": "Zum Stadtwächter",
+   "reason": "social-only",
+   "established": "2026-08-04",
+   "source": "http://www.stadtwaechter-fulda.de/",
+   "recheck": "2027-02-04",
+   "note": "stadtwaechter-fulda.de ist nur eine eingebettete Facebook-Seite — Follower- und Bewertungszahlen, Beitragszeiten, keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/10687960646",
+   "name": "e-motion e-Bike Welt Fulda",
+   "reason": "today-only",
+   "established": "2026-08-01",
+   "source": "https://emotion-ebikes.de/standorte/he/fulda",
+   "recheck": "2027-08-01",
+   "note": "Die Seite zeigt nur ein Live-Widget \"Heute: …\"; die Wochentabelle steckt in den Next.js-Flight-Daten, und changedetection wirft Skripttext weg."
   }
  ]
 }

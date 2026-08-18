@@ -74,7 +74,7 @@ counterpart is [`no-watch.json`](./no-watch.json): every object that deliberatel
 with the reason, the date it was established, and when to look again. An object belongs in exactly
 one of the two lists, and CI fails if it appears in both.
 
-Two kinds of reason, and `wieder_pruefen` carries the difference:
+Two kinds of reason, and `recheck` carries the difference:
 
 - a property of the **business** — the page states no hours, appointment only, only a social
   profile, only a delivery microsite, site gone — gets a date. The question at that date is not
@@ -82,7 +82,7 @@ Two kinds of reason, and `wieder_pruefen` carries the difference:
   for the platform cases: a Lieferando microsite publishes **delivery** windows that flip when
   the shop toggles offline, and a social profile hides its hours behind a login wall among
   rotating follower counts. Neither becomes usable by fetching from somewhere else.
-- a property of **this instance** — `anti-bot`, `datacenter-block` — gets `bei-standortwechsel`.
+- a property of **this instance** — `anti-bot`, `datacenter-block` — gets `on-relocation`.
   Time changes nothing there: the block is the same tomorrow. What changes it is the instance
   moving to a residential address, or the pinned user agent being bumped. Measured on one host:
   200 from a home connection, 403 from the VPS, same user agent, same second.
@@ -100,6 +100,19 @@ That is backlog, and putting it under a heading like "unmonitorable" is how it d
 python3 scripts/no_watch.py                    # summary per reason
 python3 scripts/no_watch.py --faellig          # due for another look today
 python3 scripts/no_watch.py --standortwechsel  # what a move would put back in play
+```
+
+One record, in full:
+
+```json
+{ "osm_id": "node/12842624670",
+  "name": "Kopfarbeit",
+  "reason": "social-only",
+  "established": "2026-08-01",
+  "source": "https://www.facebook.com/…",
+  "recheck": "2027-02-01",
+  "note": "Einziger Auftritt ist eine Facebook-Seite: Login-Wand davor, dahinter rotierende
+           Follower-Zahlen und kein stabiler Anker fuer die Zeiten." }
 ```
 
 ### Writing back to OpenStreetMap
