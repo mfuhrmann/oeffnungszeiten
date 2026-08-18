@@ -308,6 +308,15 @@
    "note": "re-fd.de antwortet dem VPS mit 403; dieselbe Adresse sperrt re-gruppe.de."
   },
   {
+   "osm_id": "way/138350858",
+   "name": "Stadtbad Esperanto",
+   "reason": "datacenter-block",
+   "established": "2026-08-18",
+   "source": "https://re-gruppe.de/baeder/stadtbad-esperanto/",
+   "recheck": "on-relocation",
+   "note": "Der Host antwortet dem VPS mit 403; von hier ist die Seite erreichbar."
+  },
+  {
    "osm_id": "node/11812148620",
    "name": "Von Poll Immobilien",
    "reason": "datacenter-block",
@@ -416,6 +425,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/6534389253",
+   "name": "AOK Hessen",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.aok.de/pk/hessen/region/fulda-krankenkasse/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/12887406226",
    "name": "Alexandra Plüschke",
    "reason": "no-hours-on-page",
@@ -439,6 +457,15 @@
    "reason": "no-hours-on-page",
    "established": "2026-08-18",
    "source": "https://www.angelsportverein-fulda.de",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/13755376351",
+   "name": "Anjee J. Nestroi",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "http://www.koerper-und-psychotherapie-fulda.de/",
    "recheck": "2027-02-18",
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
@@ -486,6 +513,15 @@
    "source": "https://www.back-werk.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/3316883992",
+   "name": "Bahnhofsmission",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://bahnhofsmission.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/3978092610",
@@ -576,6 +612,15 @@
    "source": "https://cdlc.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/11010236131",
+   "name": "DLRG Bezirk Osthessen-Fulda e.V.",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://bez-osthessen-fulda.dlrg.de",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "way/372677216",
@@ -902,6 +947,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "way/1002370857",
+   "name": "Katharinenschule Gläserzell",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://gs-glaeserzell.fulda.schule.hessen.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/4984512133",
    "name": "Katzers Backhaus",
    "reason": "no-hours-on-page",
@@ -990,6 +1044,15 @@
    "source": "https://www.lifeart-ob.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 von Hand nachgesehen: die Seite publiziert keine Oeffnungszeiten."
+  },
+  {
+   "osm_id": "node/8021278739",
+   "name": "LogMyTime Zeiterfassung",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.logmytime.de",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/1333326683",
@@ -1271,6 +1334,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/12953764199",
+   "name": "Menschen und Medien e.V.",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.meme-ev.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/1332697365",
    "name": "Merkur Privat Bank",
    "reason": "no-hours-on-page",
@@ -1296,6 +1368,15 @@
    "source": "http://www.nordsee.com/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "way/579485420",
+   "name": "Osthessennetz",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.osthessennetz.de/kontakt",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/13455916505",
@@ -1460,6 +1541,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/12992564286",
+   "name": "Vera Jakuschinksi",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://verajakuschinski.com/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/13357264887",
    "name": "Veynest Cuisine",
    "reason": "no-hours-on-page",
@@ -1523,6 +1613,15 @@
    "note": "Die Seite nennt eine Service-Hotline Mo-Fr 10:00-19:00 und sonst nichts; Ladenzeiten fehlen."
   },
   {
+   "osm_id": "node/12475194399",
+   "name": "filmreflex",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.filmreflex.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/7395984011",
    "name": "jedermanns",
    "reason": "no-hours-on-page",
@@ -1577,6 +1676,15 @@
    "note": "Der Server bricht die Verbindung ab (Connection reset by peer), am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/12992564290",
+   "name": "Civitas Fulda GmbH Ambulanter Intensivpflegedienst",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://civitas-fulda.de",
+   "recheck": "2027-02-18",
+   "note": "Am 18.08.2026 nicht erreichbar: Civitas Fulda GmbH Ambul HTTPError: 500"
+  },
+  {
    "osm_id": "node/13114969651",
    "name": "Da Sergio",
    "reason": "site-unreachable",
@@ -1602,6 +1710,24 @@
    "source": "http://www.naturkosmetik-atelier.de/",
    "recheck": "2027-02-18",
    "note": "naturkosmetik-atelier.de loest nicht mehr auf (DNS), am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/9046381552",
+   "name": "Fachärzte für Hautkrankheiten und Allergologie, Dr. Barbara Jörg, Dr. Helmut Erhard",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "www.hautärzte-fulda.de",
+   "recheck": "2027-02-18",
+   "note": "Das website-Tag in OSM ist unvollstaendig (unknown url type: 'www.hautärzte-fulda.de') - es fehlt das Schema, die Adresse ist so nicht aufloesbar. Eine Kartenkorrektur, keine tote Seite."
+  },
+  {
+   "osm_id": "node/13004511908",
+   "name": "Fliesen Eckstein",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "www.fliesen-eckstein.d",
+   "recheck": "2027-02-18",
+   "note": "Das website-Tag in OSM ist unvollstaendig (unknown url type: 'www.fliesen-eckstein.d') - es fehlt das Schema, die Adresse ist so nicht aufloesbar. Eine Kartenkorrektur, keine tote Seite."
   },
   {
    "osm_id": "node/11251655465",
@@ -1640,6 +1766,15 @@
    "note": "radiologe-fulda.de weist die Verbindung ab (Connection refused), am 18.08.2026 geprueft."
   },
   {
+   "osm_id": "node/9155665837",
+   "name": "S3 Fulda",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "https://s3fulda.de",
+   "recheck": "2027-02-18",
+   "note": "Am 18.08.2026 nicht erreichbar: URLError: <urlopen error [Errno -2] Name or service not known>"
+  },
+  {
    "osm_id": "node/1333322181",
    "name": "Satinee Strumpfmoden",
    "reason": "site-unreachable",
@@ -1656,6 +1791,15 @@
    "source": "https://stadtteilcafe-ostend.de",
    "recheck": "2027-02-18",
    "note": "stadtteilcafe-ostend.de loest nicht mehr auf (DNS), am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/5000070560",
+   "name": "Statt-Physio Physiotherapie",
+   "reason": "site-unreachable",
+   "established": "2026-08-18",
+   "source": "http://statt-physio.de/",
+   "recheck": "2027-02-18",
+   "note": "Am 18.08.2026 nicht erreichbar: Statt-Physio Physiothera URLError: <urlopen error [Errno -2] Name or service not known>"
   },
   {
    "osm_id": "node/5519083340",
