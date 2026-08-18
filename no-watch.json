@@ -416,6 +416,33 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/12887406226",
+   "name": "Alexandra Plüschke",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://koerperpsychotherapiefulda.de",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/11811952963",
+   "name": "Andrea Funke",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://heilpraktikerin-andrea-funke.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/13085195044",
+   "name": "Angelsportverein Fulda e.V. 1904",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.angelsportverein-fulda.de",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/13323148299",
    "name": "Autenrieth + Wehner GmbH",
    "reason": "no-hours-on-page",
@@ -432,6 +459,15 @@
    "source": "https://schwab-planen.de/",
    "recheck": "2027-02-18",
    "note": "schwab-planen.de nennt keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1327222597",
+   "name": "BDH Rechtsabteilung Hessen/Thüringen Kreisverband Fulda",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.bdh-reha.de/de/verband/ansprechpartner-regionalgeschaeftsstelle.php",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/6954079580",
@@ -459,6 +495,24 @@
    "source": "http://www.hotel-esperanto.de/",
    "recheck": "2027-02-18",
    "note": "Outlet des Hotel Esperanto ohne eigene Unterseite; die Hotelseite nennt keine Zeiten fuer die Bodega. Der Kartenwert lautet \"nach Vereinbarung\"."
+  },
+  {
+   "osm_id": "way/1202349993",
+   "name": "Bonifatiusschule",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.bonifatiusschule-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "way/713607031",
+   "name": "Burger King",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.burgerking.de/store-locator/store/27306/keltenstra%C3%9Fe-20-fulda--fulda----36043",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/1328317941",
@@ -531,6 +585,15 @@
    "source": "https://meliva.de/standort/dalberg-klinik-fulda/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/5491491239",
+   "name": "Die Brillenmacher",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.die-brillenmacher-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/1333484918",
@@ -632,6 +695,24 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "node/12892657500",
+   "name": "Ernährungsberatung Osthessen Dr. Lucia Scholl",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.ernaehrungsberatung-osthessen.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/8640280732",
+   "name": "Fairteiler Lutherkirche",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://foodsharing.de/?page=fairteiler&sub=ft&bid=379&id=1906",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/13448841086",
    "name": "Filius: Kinder-, Jugendzahnarztpraxis & Kieferorthopädie, MSc. Nadine Smith",
    "reason": "no-hours-on-page",
@@ -648,6 +729,15 @@
    "source": "https://filzfabrik-fulda.de/de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13522967501",
+   "name": "Fotodesign Rammler",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://rammler.com",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/5807621530",
@@ -776,6 +866,15 @@
    "note": "Das Objekt traegt die Konzern-Startseite als website; sie nennt keine Uhrzeit. Zweites HypoVereinsbank-Objekt in Fulda, das erste haengt an der Kontaktwege-Seite."
   },
   {
+   "osm_id": "node/14078428610",
+   "name": "Integrationsfachdienst (IFD) der Diakonie Fulda",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.diakonie-fulda.de/integrationsfachdienst-ifd/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/12500569010",
    "name": "Jaroschenko Heizung-Sanitär",
    "reason": "no-hours-on-page",
@@ -812,6 +911,15 @@
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
   },
   {
+   "osm_id": "way/582887566",
+   "name": "Kindertagesstätte Dreikäsehoch",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.kleine-stromer.de/verbund-kitas/kitas-im-verbund/kita-im-verbund-dreikaesehoch.html",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/5562044609",
    "name": "Kino35",
    "reason": "no-hours-on-page",
@@ -828,6 +936,15 @@
    "source": "https://klinikum-fulda.de/medizin-pflege/psychiatrie-und-psychotherapie/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13722524673",
+   "name": "Klinikum Fulda gAG",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://klinikum-fulda.de/medizin-pflege/zentrale-notaufnahme/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/13392976217",
@@ -1109,6 +1226,15 @@
    "note": "mvz-im-medicum-fulda.de hat eine Seite je Standort, aber keine davon nennt Sprechzeiten; auch gerendert kein Zeitmuster."
   },
   {
+   "osm_id": "node/7925564250",
+   "name": "Magrathea Laboratories",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://maglab.space/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
    "osm_id": "node/13756737852",
    "name": "Malerfachbetrieb Hofmann",
    "reason": "no-hours-on-page",
@@ -1116,6 +1242,15 @@
    "source": "https://www.hofmann-malerbetrieb.de",
    "recheck": "2027-02-18",
    "note": "hofmann-malerbetrieb.de nennt keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/13893873804",
+   "name": "Mariposa",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.mariposa-therapie.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/12499070406",
@@ -1134,6 +1269,24 @@
    "source": "http://www.mediterran-delikate.de/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1332697365",
+   "name": "Merkur Privat Bank",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://merkur-privatbank.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
+  },
+  {
+   "osm_id": "node/12745488901",
+   "name": "Mortimer English Club",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.sprachschulefulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/1333292538",
@@ -1170,6 +1323,15 @@
    "source": "https://perillieis.com/",
    "recheck": "2027-02-04",
    "note": "Am 2026-08-04 einfach abgerufen und vollstaendig gerendert geprueft: auf der Seite steht kein Wochentag und keine Uhrzeit."
+  },
+  {
+   "osm_id": "node/1600298549",
+   "name": "Planetarium im Vonderau Museum",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-18",
+   "source": "https://www.planetarium-fulda.de/",
+   "recheck": "2027-02-18",
+   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
    "osm_id": "node/12887396868",

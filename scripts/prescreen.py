@@ -162,7 +162,9 @@ def main():
         else:
             art, beleg = pruefe(r["website"])
         zaehler[art] += 1
-        print(f"{art:<12} {r['name'][:26]:<26} {r['kategorie'][:16]:<16} {beleg[:80]}")
+        # The osm_id, not the name, is the key: "Sparkasse Fulda" is two objects in this city,
+        # and filing a finding against the wrong one buried a branch that does publish its hours.
+        print(f"{art:<12} {r['osm_id']:<18} {r['name'][:24]:<24} {beleg[:70]}")
         if art == "worth-it":
             print(f"             {r['website'][:100]}")
     print("\n" + "  ".join(f"{k}: {v}" for k, v in zaehler.most_common()))
