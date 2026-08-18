@@ -13,10 +13,18 @@ AMBER does not: it is the known and explained material — two watches deliberat
 page, a practice that only publishes two weekdays — which is why this reports RED only and
 therefore stays quiet on its own. Nothing is sent when there is nothing to report.
 
+Every fetch error gets a second look before it is reported: the watch is rechecked and audited
+again, and only what survives that costs a line. One blink of the shared cluster browser writes
+`connect_over_cdp` into every `html_webdriver` watch that was in flight — 8 of 12 findings in one
+monthly run — and those are gone by the next fetch, while a 403 that has stood for three weeks is
+not. A single audit cannot tell the two apart, and a reader who opens the report days later has
+no way to either.
+
 Runs from the sync CronJob's image and reads CD_BASE_URL and CHANGEDETECTION_API_KEY like every
 other script here.
 
     python3 scripts/audit_report.py --dry-run    # print what would be sent
+    python3 scripts/audit_report.py --dry-run --no-recheck   # faster, reports the blinks too
     python3 scripts/audit_report.py --relay http://changedetection-matrix-relay:8099/notify
 """
 import argparse
@@ -25,22 +33,91 @@ import os
 import re
 import subprocess
 import sys
+import time
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+
+import osm_cd_common as C     # noqa: E402
 
 
-def audit(base_url, api_key):
+def audit(base_url, api_key, uuids=()):
     """Run watch_audit.py and return its rows. Exit 1 there means 'found a RED', not a crash."""
     cmd = [sys.executable, os.path.join(HERE, "watch_audit.py"), "--json"]
     if base_url:
         cmd += ["--base-url", base_url]
     if api_key:
         cmd += ["--api-key", api_key]
+    for u in uuids:
+        cmd += ["--uuid", u]
     out = subprocess.run(cmd, capture_output=True, text=True)
     if not out.stdout.strip():
         sys.exit(f"watch_audit failed:\n{out.stderr[-800:]}")
     return json.loads(out.stdout)
+
+
+RECHECK_BUDGET = 420        # seconds to wait for the rechecks to come back
+RECHECK_POLL = 15
+
+
+def confirmed(rows, base_url, api_key, budget=RECHECK_BUDGET):
+    """Give every fetch error a second look before it costs a line in the report.
+
+    A fetch error is exactly what this report exists for: nothing else tells anyone about it.
+    But not every one of them is standing. The shared cluster browser dropping its connection
+    takes out whatever was in flight, so one blink writes `connect_over_cdp` into every
+    `html_webdriver` watch at once — measured: 8 of 12 findings in one monthly run — and a 429
+    is gone by the next fetch as well. A single audit cannot tell those from a 403 that has
+    stood for three weeks, and the reader, who sees the report days later, cannot either.
+
+    So the suspects are rechecked and audited again, and only what survives is reported. A watch
+    whose recheck does not come back inside the budget keeps its original row: a line too many
+    beats a silent failure. Costs nothing at this size — a monthly run finds a dozen at most.
+    """
+    suspects = [r for r in rows
+                if r.get("verdict") == "red" and r.get("uuid")
+                and any("fetch error" in i for i in r.get("issues") or [])]
+    if not suspects:
+        return rows
+
+    api = C.CDIO(base_url, api_key)
+    before, asked = {}, []
+    for r in suspects:
+        u = r["uuid"]
+        try:
+            before[u] = (api.get(u) or {}).get("last_checked")
+            api.recheck(u)
+            asked.append(u)
+        except Exception as e:
+            print(f"recheck {u} failed: {e}", file=sys.stderr)
+    if not asked:
+        return rows
+
+    print(f"rechecking {len(asked)} fetch error(s), up to {budget}s …", file=sys.stderr)
+    deadline, done = time.time() + budget, set()
+    while asked and time.time() < deadline:
+        time.sleep(RECHECK_POLL)
+        for u in list(asked):
+            try:
+                if (api.get(u) or {}).get("last_checked") != before[u]:
+                    done.add(u)
+                    asked.remove(u)
+            except Exception:
+                pass
+    if asked:
+        print(f"{len(asked)} recheck(s) did not come back in time — reported as found",
+              file=sys.stderr)
+    if not done:
+        return rows
+
+    # The rechecked rows are replaced whatever their new verdict is, never dropped, so the
+    # "von N Watches insgesamt" at the end of the report still counts every watch.
+    fresh = {r["uuid"]: r for r in audit(base_url, api_key, sorted(done))}
+    out = [fresh.get(r.get("uuid"), r) if r.get("uuid") in done else r for r in rows]
+    healed = sum(1 for u in done if fresh.get(u, {}).get("verdict") != "red")
+    print(f"{healed} of {len(done)} healed on the second look", file=sys.stderr)
+    return out
 
 
 DOCS = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
@@ -58,6 +135,15 @@ ACTIONS = (
      "Die Seite gibt es nicht mehr. Nachfolger suchen, sonst Watch entfernen."),
     ("fetch error: Error - 5",
      "Serverfehler beim Anbieter. Einen Durchgang abwarten; bleibt es, andere Seite suchen."),
+    ("connect_over_cdp",
+     "Der geteilte Browser im Cluster war weg, als der Abruf lief - kein Problem der Seite. "
+     "Ueberlebt das den Recheck, ist der Pod selbst dran: kubectl -n changedetection get pods."),
+    ("429",
+     "Ratenbegrenzung des Anbieters, keine Sperre. Bleibt sie ueber mehrere Durchgaenge, "
+     "trifft sie wahrscheinlich den Hoster und nicht diese eine Seite."),
+    ("no filters were found",
+     "Der Filter trifft nicht mehr, die Seite wurde umgebaut. Neue Kandidaten: "
+     "filter_wizard.py --uuid"),
     ("fetch error",
      "Abruf scheitert. Seite von hier und von der VPS mit gleicher Kennung testen."),
     ("no opening hours on this page at all",
@@ -117,6 +203,9 @@ def compose(rows):
         issues = re.sub(r'\s+', ' ', '; '.join(r.get('issues') or [])).strip()
         lines.append(f"(changed) {r.get('name')}: {issues[:160]}")
         lines.append(f"Webseite: {r.get('url')}")
+        # Several of the moves above end in "--uuid", and the report is the only place the
+        # reader has it: the Matrix message is where they start, not the watch list.
+        lines.append(f"uuid: {r.get('uuid')}")
     lines.append(f"Was die Befunde bedeuten: {DOCS}")
     lines.append(f"(von {len(rows)} Watches insgesamt)")
     return title, "\n".join(lines)
@@ -129,9 +218,16 @@ def main():
     ap.add_argument("--relay", default=os.environ.get(
         "RELAY_URL", "http://changedetection-matrix-relay:8099/notify"))
     ap.add_argument("--dry-run", action="store_true", help="print instead of sending")
+    ap.add_argument("--no-recheck", action="store_true",
+                    help="report fetch errors as found, without the second look")
+    ap.add_argument("--recheck-budget", type=int, default=RECHECK_BUDGET, metavar="SECONDS",
+                    help="how long to wait for the rechecks (default: %(default)s)")
     args = ap.parse_args()
 
     rows = audit(args.base_url, args.api_key)
+    if not args.no_recheck:
+        rows = confirmed(rows, args.base_url, C.resolve_api_key(args.api_key),
+                         args.recheck_budget)
     message = compose(rows)
     if message is None:
         print(f"{len(rows)} watches, no RED — nothing sent")
