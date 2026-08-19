@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "Öffnungszeiten MONTAG – FREITAG09:30 – 13:00 UHR UND 14:00 – 18:00 UHR SAMSTAGS JEWEILS 1. UND 3. IM MONAT:09:30 – 13:30 UHR EDELMETALLSHOP FULDAGemüsemarkt 11,36037 FuldaTEEFON: 0661 94529481E-MAIL: info@edelmetallshop-fulda.de",
+ "filter": "xpath://p[contains(translate(.,\"MONTAG\",\"montag\"),\"montag\")]/ancestor::div[contains(concat(\" \",normalize-space(@class),\" \"),\" elementor-widget-wrap \")][1]",
+ "name": "Metallorum Edelmetallshop",
+ "note": "Die Startseite nennt die Geschaeftszeiten der Zentrale Unterpleichfeld; nur diese Unterseite fuehrt die Fuldaer Zeiten mit Mittagspause.",
+ "osm_id": "node/1333393318",
+ "schema": 1,
+ "tags": [
+  "fulda-pawnbroker"
+ ],
+ "url": "https://edelmetallshop-fulda.de/index.php/oeffnungszeiten-und-anfahrt/"
+}

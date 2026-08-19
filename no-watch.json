@@ -641,15 +641,6 @@
    "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
   },
   {
-   "osm_id": "way/713607031",
-   "name": "Burger King",
-   "reason": "no-hours-on-page",
-   "established": "2026-08-18",
-   "source": "https://www.burgerking.de/store-locator/store/27306/keltenstra%C3%9Fe-20-fulda--fulda----36043",
-   "recheck": "2027-02-18",
-   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft."
-  },
-  {
    "osm_id": "node/5513616865",
    "name": "Bündnis 90/Die Grünen",
    "reason": "no-hours-on-page",
@@ -2916,6 +2907,15 @@
    "source": "https://emotion-ebikes.de/standorte/he/fulda",
    "recheck": "2027-08-01",
    "note": "Die Seite zeigt nur ein Live-Widget \"Heute: …\"; die Wochentabelle steckt in den Next.js-Flight-Daten, und changedetection wirft Skripttext weg."
+  },
+  {
+   "osm_id": "node/1333477028",
+   "name": "Herget Zahnarztpraxis",
+   "reason": "appointment-only",
+   "established": "2026-08-19",
+   "source": "https://www.herget-zahnarztpraxis.de/",
+   "recheck": "2027-02-19",
+   "note": "Die Seite bietet nur Terminbuchung an. Ein Extraktionslauf vom 17.08.2026 fand noch zwei Behandler-Fahrplaene; am 19.08. steht auf keiner Seite mehr eine Zeit."
   }
  ]
 }

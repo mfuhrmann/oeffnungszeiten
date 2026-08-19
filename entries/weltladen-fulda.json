@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "Öffnungszeiten: Montag bis Freitag 10 bis 18 Uhr und Samstag von 10 bis 13 Uhr",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Weltladen Fulda",
+ "osm_id": "node/10761214693",
+ "schema": 1,
+ "tags": [
+  "fulda-variety_store"
+ ],
+ "url": "https://www.weltladen-fulda.de/kontaktoeffnungszeiten/"
+}

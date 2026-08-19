@@ -1,0 +1,12 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "ÖffnungszeitenMontag–Freitag: 10:00 – 19:00 Uhr",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "name": "Sabai Thai Massage",
+ "osm_id": "node/13392790154",
+ "schema": 1,
+ "tags": [
+  "fulda-massage"
+ ],
+ "url": "https://www.sabai-massage.de/contact"
+}

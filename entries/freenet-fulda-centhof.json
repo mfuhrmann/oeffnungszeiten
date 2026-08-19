@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "09:00 – 18:00 09:00 – 18:00 09:00 – 18:00 09:00 – 18:00 09:00 – 18:00 10:00 – 18:00 Geschlossen",
+ "filter": "xpath://lib-day-opening-times/div/span[2]",
+ "name": "freenet Shop Fulda",
+ "note": "Die Wochenliste rollt: der laufende Tag heisst 'Heute' und die uebrigen sechs folgen ab morgen, also wandert jeden Tag ein anderer Wochentagsname durch den Block. Deshalb faengt der Filter nur die Zeitspalte und sortiert sie - die Menge der Zeiten bleibt stabil, bis sich eine wirklich aendert. Preis dafuer: welcher Tag sich geaendert hat, sagt der Alarm nicht.",
+ "osm_id": "node/9949758889",
+ "schema": 1,
+ "sort_text_alphabetically": true,
+ "tags": [
+  "fulda-telecommunication"
+ ],
+ "url": "https://www.freenet.de/shops/fulda-centhof/"
+}

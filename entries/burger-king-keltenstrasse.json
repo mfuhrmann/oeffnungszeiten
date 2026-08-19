@@ -1,0 +1,17 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "ÖffnungszeitenMontag10:30 - 00:00Dienstag10:30 - 00:00Mittwoch10:30 - 00:00Donnerstag10:30 - 00:00Freitag10:30 - 02:00Samstag10:30 - 02:00Sonntag11:00 - 00:00",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath:(//h3[contains(normalize-space(.),\"Öffnungszeiten\")])[1]/parent::*",
+ "name": "Burger King (Keltenstraße)",
+ "note": "Der Block traegt am laufenden Tag ein Live-Abzeichen ('Mittwoch • Open Now'), das sonst jeden Tag diffen wuerde; subtractive_selectors nimmt es heraus. Der Filter greift nur den Restaurantblock - der zweite h3 ist der Drive-in.",
+ "osm_id": "way/713607031",
+ "schema": 1,
+ "subtractive_selectors": [
+  "xpath://p[normalize-space(.)=\"Open Now\"]/parent::*"
+ ],
+ "tags": [
+  "fulda-fast_food"
+ ],
+ "url": "https://www.burgerking.de/store-locator/store/27306/keltenstra%C3%9Fe-20-fulda--fulda----36043"
+}

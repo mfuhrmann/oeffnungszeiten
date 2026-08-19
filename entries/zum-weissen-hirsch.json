@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "Küchenöffnungszeiten Montag und Dienstag Ruhetag Mittwoch bis Samstag von 17 Uhr - 21 Uhr Sonntag von 11:30 Uhr - 13:45 Uhr und von 17 Uhr - 20:30 Uhr Restaurant Öffnungszeiten Montag und Dienstag Ruhetag Mittwoch bis Freitag von 17:00 Uhr - 22 Uhr Samstag von 17 Uhr - 22 Uhr Sonntag von 11:30 Uhr - 14 Uhr und von 17 Uhr - 21 Uhr Sonntags-Buffet An folgenden Sonntagen findet jeweils von 11:30 - 13",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" single-item__details-opening \")]",
+ "name": "Zum Weißen Hirsch",
+ "note": "Der Block fuehrt Kuechen- und Restaurantzeiten und die Sonntage mit Mittagsbuffet, an denen keine Karte laeuft - das sind Sonderoeffnungszeiten, kein Rauschen.",
+ "osm_id": "node/5890528723",
+ "schema": 1,
+ "tags": [
+  "fulda-restaurant"
+ ],
+ "url": "https://www.zum-weissen-hirsch.com/"
+}

@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "montag - freitag:09:00 - 18:00 Uhrsamstag:08:00 - 16:00 uhr",
+ "filter": "xpath://h2[contains(translate(.,\"ÖFFNUNGSZEITEN\",\"öffnungszeiten\"),\"öffnungszeiten\")]/ancestor::section[1]/following-sibling::section[1]",
+ "name": "Deluxe Barbier",
+ "note": "Eine Seite, zwei OSM-Objekte (Deluxe Barbier und Deluxe Barbier II).",
+ "osm_id": "node/11812128771",
+ "schema": 1,
+ "tags": [
+  "fulda-hairdresser"
+ ],
+ "url": "https://deluxebarbier.de/"
+}
