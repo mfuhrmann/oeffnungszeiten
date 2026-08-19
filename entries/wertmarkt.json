@@ -3,7 +3,7 @@
  "captured_sample": "Montag 8:30 am–7 pm Dienstag 8:30 am–7 pm Mittwoch 8:30 am–7 pm Donnerstag 8:30 am–7 pm Freitag 8:30 am–7 pm Samstag 8:30 am–6 pm Sonntag geschlossen",
  "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" openinghours \")]",
  "name": "Wertmarkt",
- "note": "Der Seitengenerator (9gg.de) setzt die Zeiten im en-US-Format.",
+ "note": "Der Seitengenerator (9gg.de) setzt die Zeiten im en-US-Format. 2026-08-19: 9gg.de schreibt zwischen Zahl und \"pm\" ein schmales geschuetztes Leerzeichen (U+202F) und liefert im HTTP-Header keinen charset, nur im Meta-Tag. Wird das Byte nicht als UTF-8 gelesen, stehen im Snapshot drei Ersatzzeichen statt des Leerzeichens - \"4���pm\" gegen \"4 pm\". Das sieht wie eine Zeitenaenderung aus, ist aber dieselbe Seite. Vor dem Deuten den vorherigen Snapshot ansehen.",
  "osm_id": "node/7014878637",
  "schema": 1,
  "tags": [
