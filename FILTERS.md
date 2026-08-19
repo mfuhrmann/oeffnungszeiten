@@ -158,6 +158,21 @@ trigger** (`#elementor-action%3A…`).
 `.location-detail-opentime.highlight` "today" widget inside the same wrapper — today's line appeared
 twice and moved daily. Sorting masked the order but not the duplicate; the wrapper had to change.
 
+### Case 7b — the same text, decoded differently
+
+**Signature:** a diff that changes only invisible or replacement characters — `4���pm` becoming
+`4 pm`, or an umlaut turning into mojibake and back. The page did not change; the decoding did.
+
+**Cause seen here:** 9gg.de writes a narrow no-break space (U+202F, `e2 80 af`) between the hour and
+`pm`, and sends **no charset in the HTTP header** — only in a `<meta>` tag. Whether that byte survives
+depends on what reads it, and a changedetection restart was enough to flip the result. Measured on
+`zum-biereck.9gg.de`: the old snapshot held three U+FFFD, the next one a plain space, same page.
+
+**What not to do:** treat it as an hours change, or widen the filter. **What helps:** compare against
+the previous snapshot before reading anything into a diff — this shape is recognisable in a second.
+A `/�/` line in `global_ignore_text` would silence it globally, but every global-settings edit
+re-baselines all watches, which is out of proportion to four affected pages.
+
 ### Case 8 — server swaps content between concurrent requests
 **Signature:** two watches on the same host false-diff forever, each showing the other's page.
 gruemel.de (IIS) returns the *same* page to two simultaneous requests for different URLs. Reproduced
