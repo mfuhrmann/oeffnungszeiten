@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "Kontakt: Biergarten Stadtblickantonius QuartierAn St. Kathrin 436041 Fulda Reservierung über antonius Café:Tel. 0661 - 10 97 424Mail: antonius-cafe@antonius.de Öffnungszeiten: Do. - So. 15.00 bis 21.00 Uhr Bei schlechtem Wetter können die Öffnungszeiten abweichen. DE-ÖKO-Kontrollnummer:DE-ÖKO-006",
+ "filter": "xpath:(//strong[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*/parent::*",
+ "name": "Biergarten Stadtblick",
+ "note": "Der website-Tag zeigte auf antonius-fulda.de, wo nur der Veranstaltungskalender steht; der Biergarten hat eine eigene Unterseite. Der Block traegt den Hinweis, dass die Zeiten bei schlechtem Wetter abweichen - das gehoert zur Oeffnungszeit.",
+ "osm_id": "node/13893748716",
+ "schema": 1,
+ "tags": [
+  "fulda-biergarten"
+ ],
+ "url": "https://www.antonius.de/gastronomie-einkaufen/biergarten-stadtblick.html"
+}

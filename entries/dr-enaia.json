@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "Standort Fulda FACHZENTRUM FÜR KIEFERORTHOPÄDIE DR. ENAIAMittelstraße 10, 36037 Fulda Wir sind für sie da Mo – Do 8 – 12 Uhr und 13 – 18 Uhr Fr 8 – 14 Uhr So erreichen Sie uns Online-Terminvereinbarung – einfach und schnell Tel.: 0661 – 95 27 99 77Fax: 0661 – 95 27 99 66 E-Mail: info@dr-enaia.de Wir freuen uns auf Ihren Besuch! Stellenangebote Wenn Sie mehr über freie Stellen erfahren möchten, bes",
+ "fetch_backend": "html_webdriver",
+ "filter": "xpath://div[contains(concat(\" \",normalize-space(@class),\" \"),\" et_pb_column \")][contains(.,\"Mittelstraße 10\")][not(.//div[contains(concat(\" \",normalize-space(@class),\" \"),\" et_pb_column \")][contains(.,\"Mittelstraße 10\")])]",
+ "name": "Dr. Enaia",
+ "note": "Die Startseite fuehrt Fulda und Bad Hersfeld nebeneinander mit gleich aussehenden Bloecken; der Filter waehlt die Spalte ueber die Fuldaer Adresse, nicht ueber die Reihenfolge.",
+ "osm_id": "node/12963820591",
+ "schema": 1,
+ "tags": [
+  "fulda-dentist"
+ ],
+ "url": "https://www.dr-enaia.de/"
+}

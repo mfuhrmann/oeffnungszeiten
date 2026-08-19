@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-19",
+ "captured_sample": "Fulda Adresse Autohaus Fulda Krah & Enders GmbH Frankfurter Straße 127 36043 Fulda Zur Standortseite Route planen Kontakt telephone_lt_48 0661 94790 telephone_lt_48 0661 947966 printer_lt_48 0661 9479-55 mail_lt_48 info@bmw-krah-enders-fulda.de Service-Termin vereinbaren Team ansehen Offene Stellen Öffnungszeiten Verkauf Montag - Freitag 08:00 - 18:00 Uhr Samstag 09:00 - 13:00 Uhr Sonntag Geschlos",
+ "filter": "xpath:(//div[contains(concat(\" \",normalize-space(@class),\" \"),\" local-business \")][contains(.,\"Frankfurter Straße 127\")])[1]",
+ "name": "Autohaus Krah & Enders",
+ "note": "Die Seite traegt alle 16 Standorte der Kette im DOM; der Filter waehlt Fulda ueber die Adresse und nimmt die erste von drei gleichen Kopien. Der Block fuehrt Verkauf, Service sowie Teile und Zubehoer - drei Fahrplaene, hier zurzeit identisch.",
+ "osm_id": "way/445847369",
+ "schema": 1,
+ "tags": [
+  "fulda-car"
+ ],
+ "url": "https://www.autohaus-krah-enders.de/autohaus-fulda"
+}
