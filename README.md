@@ -65,8 +65,30 @@ docker-compose.yml  optional local trial; not needed to contribute
 | `matrix_relay_seed.py` | mint the Matrix session the notification relay runs on |
 | `no_watch.py` | the absence list: what is deliberately not watched, and what is due for another look |
 | `coverage.py` | the denominator: every OSM object that could have hours, and which of them are covered |
+| `audit_report.py` | the monthly report: what the audit found, posted into the notification room |
 
 Each has `--help`. Nothing writes to changedetection without `--apply`.
+
+`hours_lang.py` and `osm_cd_common.py` are libraries, not commands: hours detection that survives
+German pages, and the Overpass query plus the changedetection API client.
+
+### Writing back to OSM
+
+Watching a page answers *what changed*; the map still has to be edited. That path lives here too,
+and deliberately so, because it is the half that can write to somebody else's data:
+
+| | |
+|---|---|
+| `zeiten_export.py` | compare a page's hours against the map, and hold back everything that is not proven |
+| `zeiten_durchsehen.py` | sort what is left by the question a human has to answer |
+| `zeiten_bestaetigen.py` | page and map agree to the character: stamp `check_date:opening_hours`, change nothing else |
+| `zeiten_hand.py` | apply a human's decision from `zeiten-entscheidung.csv`, with the same checks |
+| `zeiten_osm.py` | read `opening_hours` out of a page's raw text |
+| `pruefe_syntax.py` | check an `opening_hours` value before it is ever uploaded |
+| `josm_export.py` | write the accepted changes as a JOSM file, to be reviewed and uploaded by hand |
+
+`opening_hours` is never invented from a page: agreement produces a `check_date`, disagreement
+produces a question for a person. Nothing here uploads by itself.
 
 ### What is *not* watched
 

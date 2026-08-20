@@ -58,7 +58,7 @@ changedetection's own browser cannot find (Vergölst). Note the reason in the en
    visible text is right and the block is unmaintained
 4. **Chain / store locator** → per-branch deep link (case 5), or a keyed row when every branch
    lives on one page (case 12)
-5. **Discovery landed on the wrong page** → repoint + `manual_url: true`
+5. **Discovery landed on the wrong page** → repoint the entry's `url` at the page that has the hours
 6. Then layer noise controls as needed: `sort_text_alphabetically`, `trigger_text`,
    `global_ignore_text`
 7. Nothing works → **absence** (empty `watch_url`), record kept, retried each harvest
@@ -97,8 +97,8 @@ only `candidates[0]` reported "no hours" for a page covered in them.
 **Signature:** an "Öffnungszeiten" heading with the times in or next to it, present in the raw
 HTML (no JS needed).
 **Filter:** `xpath:(//h3[contains(normalize-space(.),"Öffnungszeiten")])/parent::*`
-**Automated by** `scripts/hours_filter.py` Phase A (`propose_from_html`, `hours_filter.py:76`). The
-heuristic it encodes, worth knowing because you will apply it by hand too:
+**Automated by** the wizard's Strategy 2 (`filter_wizard.py:149`). The heuristic it encodes,
+worth knowing because you will apply it by hand too:
 
 > for each hours keyword × each of `h1…h6, strong, b, p, span, div, li, td`
 > → consider the heading's **parent**, then the heading itself
@@ -123,9 +123,9 @@ Prefer this over Case 2 when it exists — it is shorter and reads better in the
 **Caveats:**
 - CD's browser renders some SPAs in **English** (Davis), so German-keyword XPaths silently match
   nothing. Anchor on class, not text.
-- `hours_filter.py --render` (Phase B) is the *same* finder with JS rendered first, so it fails on
-  exactly the markup Phase A fails on: **3 hits out of 188 candidates (1.6 %)**, one of which
-  auto-reverted. Do not run it expecting to clear a whole-page backlog.
+- Rendering in bulk clears no backlog. The heading-anchored finder with JS rendered first fails
+  on exactly the markup it fails on without JS: **3 hits out of 188 candidates (1.6 %)**, one of
+  which auto-reverted. Render the page you are working on, not a queue.
 
 ### Case 5 — chain / store locator
 **Signature:** many businesses share one corporate URL; the page is a locator, not a branch page.
@@ -142,8 +142,8 @@ and `sort_text_alphabetically`, rotation-proof), Pappert `/dealer/<slug>/`, meli
 **Signature:** watch URL is plausible but the hours belong to someone else, or there are none.
 `discover_subpage()` scores the first `Kontakt`-ish href, which on many sites is a **site-wide
 footer link** present on every page.
-**Fix:** repoint `watch_url` in the datastore and set `manual_url: true` so harvest stops
-re-discovering it.
+**Fix:** repoint the entry's `url` at the page that carries the hours. The entry is the source,
+so nothing re-discovers over it.
 **Seen:** gruemel ×2 → accessibility statement (and, sharing a URL, they shared one **watch**);
 `fulda.de/kontakt` → **Bürgerbüro** hours for both Vonderau Museum records; `re-gruppe.de/service/
 kontakt` → the **operator's office** hours (Mo–Fr 9–16) for two swimming pools; `hotel-esperanto.de/
@@ -266,12 +266,12 @@ curl -s -H "x-api-key: $KEY" "$CD/api/v1/watch/<uuid>/history/<ts>" | head -c 20
 
 ### Not a case — absence
 No hours published anywhere, anti-bot 403 in all modes (lieferando/DataDome class), dead domain:
-leave `watch_url` empty. cd_sync skips it, no watch, no flag. **Do not set `manual_url`** unless the
-domain is actively hostile (hijacked, e.g. baeckereistorch.de) — without it, harvest retries
-discovery every run and the record auto-revives when the site comes back. Add a `note` saying why,
-and word it for `unmonitorable_report.py`'s bucketing regex
-(`BLOCK_RE = anti-bot|403|DataDome|lieferando`) — a note reading "…, *not* anti-bot" lands in the
-anti-bot bucket.
+write the object into [`no-watch.json`](./no-watch.json) instead, with the reason, the date and a
+`recheck` (`scripts/no_watch.py`). An object belongs to `entries/` or to that list, never to both,
+and CI fails if it appears twice. The reason decides whether it is ever looked at again: a property
+of the **business** (publishes nothing, appointment only) is answered by a later harvest, a property
+of the **site** (403, dead domain) by a later fetch. Both are cheaper than re-examining the same
+shop from scratch every pass, which is what an unrecorded absence costs.
 
 ---
 
@@ -398,28 +398,21 @@ differ per day / are not the `Monday,…,Sunday 09:00-17:00` boilerplate.
 ### Step 3 — render it if plain fetch is empty
 
 ```bash
-WS=$(docker exec changedetection printenv PLAYWRIGHT_DRIVER_URL)   # ws://playwright-chrome:3000
+docker run --rm -p 3000:3000 dgtlmoon/sockpuppetbrowser        # a throwaway browser
+python3 scripts/filter_wizard.py <url> --render                # found on the default port
 ```
 
-`hours_filter.py --render` does this in bulk (`render_in_container`, `hours_filter.py:120`): copies a
-Playwright snippet into the container, opens each URL with `locale="de-DE"`, waits 3.5 s after
-`domcontentloaded`, dumps `page.content()`.
+`cdp_render.py` drives that browser over raw CDP from here: it opens the URL with
+`locale="de-DE"`, waits after `domcontentloaded` and dumps the DOM. Nothing runs inside
+changedetection, and the cluster's browser stays free for the watches it serves.
 
 Note the locale — CD's own browser does **not** always honour it (Davis renders English), so verify
 against the *rendered* DOM, not your assumption.
 
 ### Step 4 — build the selector
 
-Run the batch finder against the datastore first; it may already solve it:
-
-```bash
-python3 scripts/hours_filter.py --datastore <area>.json --dry-run     # find + print, changes nothing
-python3 scripts/hours_filter.py --datastore <area>.json               # plain only, applies
-python3 scripts/hours_filter.py --datastore <area>.json --render      # + JS SPAs
-```
-
-It only ever *adds* a filter (and switches backend for rendered ones), rechecks, verifies, and
-reverts anything that would blind the watch. It never mutates the datastore.
+Let the wizard propose first; it runs all five strategies over the page and prints what each one
+would capture, so the judgement stays with you and nothing is written until `--apply`.
 
 By hand, anchor on **text or an authored class**, never on:
 - **GUID-ish class names** — `.text-46bf3150-186a-…`, `.heading-module-3e50…`,
@@ -447,14 +440,14 @@ curl -s -H "x-api-key: $KEY" "http://localhost:5000/api/v1/watch/<uuid>?recheck=
 Or in Python via the shared helper — `C.CDIO(base, key).update(uuid, include_filters=[...])`,
 `.get(uuid)`, `.recheck(uuid)`, `.delete(uuid)` (`scripts/osm_cd_common.py:227`).
 
-### Step 6 — verify (see §4). Then update the datastore only if you changed `watch_url`
-(add `manual_url: true`). Filters live in CD only — never write them back.
+### Step 6 — verify (see §4). Then write the filter into the entry in `entries/`, which is the
+source: a fix made only in the UI is reverted by the next hourly sync.
 
 ---
 
 ## 4. What counts as proof
 
-`hours_filter.py`'s automatic check is *"does the filtered snapshot still contain a time?"*. That
+Every automatic check reduces to *"does the filtered snapshot still contain a time?"*. That
 catches **blinding** and nothing else. It has passed, in production:
 - a practice **news box** (job ad + "Wir machen Urlaub" + "keine Neupatienten" — all contain times)
 - a **marketing paragraph**
@@ -493,14 +486,14 @@ Ranked by measured value, so nobody re-runs the weak ones expecting more:
 | `watch_audit.py` | found **77 blind watches out of 360**; ~2 s for a full pass | run after every batch |
 | `filter_wizard.py` | covers all five strategies, incl. pages with no hours keyword | first thing to try on one page |
 | JSON-LD sweep | **9 clean filters / 185 pages** (15 carried markup), 0 reverted | now inside the wizard |
-| `hours_filter.py` Phase A | ~11–14 per harvest tier | good, run after every harvest |
-| `hours_filter.py --render` Phase B | **3 / 188 candidates (1.6 %)**, 1 auto-reverted | not a backlog fix |
+| heading-anchored finder (wizard Strategy 2) | ~11–14 per harvest tier | good, run after every harvest |
+| the same finder on rendered pages, in bulk | **3 / 188 candidates (1.6 %)**, 1 auto-reverted | not a backlog fix |
 | Playwright rescue of blind watches | **1 / 77** (RED Sports) | do it, but expect ~nothing |
 
-Sequence after any harvest: `hours_filter.py --dry-run` → apply → `watch_audit.py` →
-`filter_wizard.py` on each RED/AMBER → recheck-all → triage diffs → `unmonitorable_report.py`.
+Sequence after any batch: `watch_audit.py` → `filter_wizard.py` on each RED/AMBER → recheck →
+triage the diffs → record what cannot be watched in `no-watch.json` (`no_watch.py`).
 
-**Why the wizard finds things `hours_filter.py` cannot.** Phase A only anchors on an
+**Why the day-anchored strategy finds what the heading-anchored one cannot.** Strategy 2 anchors on an
 "Öffnungszeiten"-style heading. Many pages publish hours with no such heading and no useful
 class — Reinholz Kaffeerösterei prints `Kaffeeladen im Steinweg: Mo-Sa: 10 - 18 Uhr` in a bare
 `<p>` in the footer. The wizard's *day-anchored text* strategy finds the innermost element that looks
