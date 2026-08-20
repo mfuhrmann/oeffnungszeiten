@@ -6,7 +6,7 @@ OpenStreetMap. Watches are not configured in the UI: each one is a file in `entr
 pull request adds, changes or removes one.
 
 ```
-apps/changedetection/        # HelmRelease + base-values ConfigMap + namespace
+apps/changedetection/        # HelmRelease + its two values ConfigMaps + namespace
 charts/changedetection/      # Chart: changedetection, headless browser, PVC, Service, sync CronJob
 ```
 
@@ -47,14 +47,17 @@ MAS homeserver. See [notifications.md](./notifications.md).
 interval. An initContainer merges it into the datastore before the app starts, because
 changedetection reads that file only at startup and overwrites it from memory afterwards.
 
-The chart receives the same values through the base-values ConfigMap, so there are two copies.
-CI compares them on every change; regenerate with
+The chart receives the same values as a second ConfigMap, which the kustomization builds from
+the generated file, so the settings exist once and are copied nowhere:
 
 ```bash
 python3 scripts/apply_global_settings.py --emit-values
 ```
 
-and copy the `globalSettings` block across.
+writes `apps/changedetection/global-settings.values.yaml`, and that file *is* the ConfigMap. CI
+fails if it no longer matches its source. Editing the settings is therefore two steps: change the
+JSON, regenerate, commit both. Expect one noisy pass afterwards, because any settings change moves
+`filter_config_hash` and every affected watch re-baselines exactly once.
 
 ## Secrets
 

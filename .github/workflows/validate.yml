@@ -27,29 +27,37 @@ jobs:
       - run: python3 scripts/validate_entries.py
 
   settings-in-sync:
-    # deploy/global-settings.json is the source; the chart receives the same values through the
-    # base-values ConfigMap. Two copies drift silently, and a lost noise-suppression pattern shows
-    # up as false alerts weeks later, so compare them on every change.
+    # deploy/global-settings.json is the source. apps/changedetection/global-settings.values.yaml
+    # is generated from it and becomes a ConfigMap through the kustomization, so there is no copy
+    # to keep in sync any more — only the generated file, which must match its source. A lost
+    # noise-suppression pattern shows up as false alerts weeks later, so check it on every change.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install --quiet pyyaml
-      - name: base-values match deploy/global-settings.json
+      - name: generated values match deploy/global-settings.json
         run: |
+          python3 scripts/apply_global_settings.py --emit-values
+          git diff --exit-code -- apps/changedetection/global-settings.values.yaml || {
+            echo "The generated values are stale. Regenerate and commit:"
+            echo "  python3 scripts/apply_global_settings.py --emit-values"
+            exit 1
+          }
+      - name: the ConfigMap the cluster gets carries exactly those settings
+        run: |
+          pip install --quiet pyyaml
+          kubectl kustomize apps/changedetection > /tmp/built.yaml
           python3 - <<'PY'
           import json, sys, yaml
           src = json.load(open("deploy/global-settings.json"))
-          cm = [d for d in yaml.safe_load_all(open("apps/changedetection/changedetection.yaml"))
-                if d and d["kind"] == "ConfigMap"][0]
+          cm = [d for d in yaml.safe_load_all(open("/tmp/built.yaml"))
+                if d and d["kind"] == "ConfigMap"
+                and d["metadata"]["name"] == "changedetection-global-settings-values"][0]
           got = yaml.safe_load(cm["data"]["values.yaml"])["globalSettings"]
           if got != src:
-              print("base-values ConfigMap and deploy/global-settings.json disagree.")
-              print("Regenerate: python3 scripts/apply_global_settings.py --emit-values")
-              print("then copy the globalSettings block into apps/changedetection/changedetection.yaml")
-              sys.exit(1)
+              sys.exit("the built ConfigMap and deploy/global-settings.json disagree")
           print(f"in sync — {len(src['application']['global_ignore_text'])} ignore patterns")
           PY
 
@@ -71,16 +79,23 @@ jobs:
         run: |
           helm plugin install https://github.com/helm-unittest/helm-unittest --verify=false
           helm unittest charts/changedetection
-      - name: renders with the real base values
+      - name: renders with the real values the cluster gets
+        # Both ConfigMaps, in the order the HelmRelease merges them, and built the way Flux
+        # builds them — otherwise this renders a combination that never exists in the cluster.
         run: |
+          pip install --quiet pyyaml
+          kubectl kustomize apps/changedetection > /tmp/built.yaml
           python3 - <<'PY'
           import yaml
-          cm = [d for d in yaml.safe_load_all(open("apps/changedetection/changedetection.yaml"))
-                if d and d["kind"] == "ConfigMap"][0]
-          open("/tmp/base-values.yaml", "w").write(cm["data"]["values.yaml"])
+          docs = [d for d in yaml.safe_load_all(open("/tmp/built.yaml")) if d]
+          for name, out in [("changedetection-base-values", "/tmp/base-values.yaml"),
+                            ("changedetection-global-settings-values", "/tmp/settings.yaml")]:
+              cm = [d for d in docs
+                    if d["kind"] == "ConfigMap" and d["metadata"]["name"] == name][0]
+              open(out, "w").write(cm["data"]["values.yaml"])
           PY
           helm template changedetection ./charts/changedetection \
-            --namespace changedetection -f /tmp/base-values.yaml > /dev/null
+            --namespace changedetection -f /tmp/base-values.yaml -f /tmp/settings.yaml > /dev/null
 
   manifests:
     runs-on: ubuntu-latest

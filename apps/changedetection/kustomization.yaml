@@ -4,3 +4,19 @@ namespace: changedetection
 resources:
   - namespace.yaml
   - changedetection.yaml
+
+# The managed global settings, straight from the file the repository generates. Before this they
+# were pasted into the base-values ConfigMap by hand, with a CI job to catch the copy going
+# stale; here the file itself is the ConfigMap, so there is nothing to keep in sync.
+configMapGenerator:
+  - name: changedetection-global-settings-values
+    files:
+      - values.yaml=global-settings.values.yaml
+
+generatorOptions:
+  # Flux's valuesFrom names the ConfigMap, so the name must stay put; a content hash suffix
+  # would point the HelmRelease at a ConfigMap that no longer exists on the next change.
+  disableNameSuffixHash: true
+  # Makes Flux re-run the HelmRelease when the settings change, the same way the base values do.
+  labels:
+    reconcile.fluxcd.io/watch: Enabled
