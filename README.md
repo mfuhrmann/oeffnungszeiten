@@ -48,7 +48,6 @@ deploy/             managed global settings: noise-suppression patterns, recheck
 charts/             Helm chart for changedetection and its browser
 apps/               Flux HelmRelease and the values for this cluster
 clusters/           Flux entry point — what the cluster reconciles
-docker-compose.yml  optional local trial; not needed to contribute
 ```
 
 ## The scripts

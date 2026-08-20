@@ -23,25 +23,8 @@ sources:
       image: "dgtlmoon/sockpuppetbrowser"
       tag: "latest"
 
+# The chart is the only place an image is pinned, so these two targets are the whole surface.
 targets:
-  compose-changedetection:
-    name: "compose: changedetection image"
-    kind: file
-    sourceid: changedetection
-    spec:
-      file: "docker-compose.yml"
-      matchpattern: 'ghcr.io/dgtlmoon/changedetection.io:.*'
-      replacepattern: 'ghcr.io/dgtlmoon/changedetection.io:{{ source "changedetection" }}'
-
-  compose-browser:
-    name: "compose: browser image"
-    kind: file
-    sourceid: sockpuppetbrowser
-    spec:
-      file: "docker-compose.yml"
-      matchpattern: 'dgtlmoon/sockpuppetbrowser:latest@sha256:[a-f0-9]+'
-      replacepattern: 'dgtlmoon/sockpuppetbrowser:latest@{{ source "sockpuppetbrowser" }}'
-
   chart-changedetection-tag:
     name: "chart: image.tag"
     kind: yaml

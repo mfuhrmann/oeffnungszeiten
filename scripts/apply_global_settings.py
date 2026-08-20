@@ -4,9 +4,9 @@ apply_global_settings.py — merge the managed global settings into a changedete
 
 changedetection has **no settings API**, reads `/datastore/changedetection.json` only at startup,
 and overwrites it from memory on its next commit — so editing it while the app runs is invisible
-and then lost. The only moment an edit survives is *before the app starts*. This runs there: as an
-initContainer on Kubernetes, and as a one-shot init service in docker-compose. (Watches are not
-affected: since 0.55.8 each is its own `<uuid>/watch.json`, saved immediately and atomically.)
+and then lost. The only moment an edit survives is *before the app starts*. This runs there, as the
+initContainer of the changedetection Deployment. (Watches are not affected: since 0.55.8 each is
+its own `<uuid>/watch.json`, saved immediately and atomically.)
 
 Merges only the keys in deploy/global-settings.json, leaving watches, tags and the API token
 untouched. Idempotent — a second run reports "already current" and rewrites nothing.

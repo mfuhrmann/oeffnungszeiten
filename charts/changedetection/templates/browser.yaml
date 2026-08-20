@@ -33,7 +33,7 @@ spec:
             - name: MAX_CONCURRENT_CHROME_PROCESSES
               value: "{{ .Values.browser.maxConcurrentChromeProcesses }}"
           securityContext:
-            # Chrome's sandbox needs it; the compose file grants the same via cap_add SYS_ADMIN.
+            # Chrome's sandbox needs it.
             capabilities:
               add: ["SYS_ADMIN"]
           # sockpuppetbrowser speaks WebSocket only and answers HTTP 426 on every path, so an

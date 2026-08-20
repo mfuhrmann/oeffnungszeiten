@@ -10,6 +10,11 @@ apps/changedetection/        # HelmRelease + its two values ConfigMaps + namespa
 charts/changedetection/      # Chart: changedetection, headless browser, PVC, Service, sync CronJob
 ```
 
+There is one way to run this, and it is the chart: `helm install` it into any cluster, a k3s on a
+laptop included. One path means one image pin and one set of manifests to reason about, which is
+worth more than the convenience of a second, hand-maintained one. To contribute an entry you need
+no instance at all, only the wizard and, for a page that needs JavaScript, one browser container.
+
 The datastore is one JSON file rewritten in place plus thousands of small snapshot files, so it
 needs block or local storage rather than a network share. No backup: snapshot history is
 disposable — a re-created watch re-establishes its baseline without alerting. What must survive is
