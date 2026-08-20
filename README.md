@@ -90,6 +90,11 @@ and deliberately so, because it is the half that can write to somebody else's da
 `opening_hours` is never invented from a page: agreement produces a `check_date`, disagreement
 produces a question for a person. Nothing here uploads by itself.
 
+These seven read their working CSVs from the **current directory**, not from the repository, so
+they are run from the research folder that holds `zeiten_abgleich.csv`, `funde.csv` and
+`zusatzdaten.csv`. That folder is deliberately not part of this repository; the scripts are,
+because they are the part that can write to somebody else's data.
+
 ### What is *not* watched
 
 `entries/` answers "what do we watch". On its own that number means little — 502 of how many? The
