@@ -513,12 +513,9 @@ then lost. Prefer `scripts/apply_global_settings.py` (it is what the initContain
 edits, and either way stop the app:
 
 ```bash
-kubectl -n changedetection scale deploy/changedetection --replicas=0    # k8s
-#   … edit the PVC, then scale back to 1
-docker compose stop changedetection                                     # compose
-docker run --rm -v changedetection_changedetection-data:/datastore python:3.12-alpine …   # edit here
-docker compose start changedetection
-# then verify the value actually persisted
+kubectl -n changedetection scale deploy/changedetection --replicas=0
+#   … edit the PVC, then scale back to 1, and verify the value actually persisted
+kubectl -n changedetection scale deploy/changedetection --replicas=1
 ```
 
 **Expect exactly one noisy pass after any global-settings edit.** Changing globals changes
