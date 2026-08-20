@@ -44,7 +44,7 @@ entries/            one file per watch — the source of truth
   .lock.json        slug → watch uuid, per changedetection instance
 no-watch.json       objects deliberately not watched, with the reason and when to look again
 scripts/            wizard, sync, audit, renderer, OSM export  (stdlib only, except lxml)
-deploy/             managed global settings — noise-suppression patterns, recheck interval
+deploy/             managed global settings: noise-suppression patterns, recheck interval
 charts/             Helm chart for changedetection and its browser
 apps/               Flux HelmRelease and the values for this cluster
 clusters/           Flux entry point — what the cluster reconciles

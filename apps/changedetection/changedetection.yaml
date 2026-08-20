@@ -28,6 +28,12 @@ spec:
     - kind: ConfigMap
       name: changedetection-base-values
       valuesKey: values.yaml
+    # Generated from deploy/global-settings.json, wrapped into a ConfigMap by the kustomization
+    # so the settings exist exactly once in this repository. Merged after the base values, and
+    # it carries only the globalSettings key, so the two never overlap.
+    - kind: ConfigMap
+      name: changedetection-global-settings-values
+      valuesKey: values.yaml
     - kind: Secret
       name: changedetection-override-values
       valuesKey: values-overrides.yaml
@@ -113,70 +119,3 @@ data:
     # copy the file into. Seeding: docs/notifications.md.
     matrixRelay:
       enabled: true
-
-    # GENERATED — copied from deploy/global-settings.values.yaml in the watch repository,
-    # which is generated in turn from deploy/global-settings.json:
-    #   python3 scripts/apply_global_settings.py --emit-values
-    # The source stays in the watch repository: whether a pattern is too wide can only be
-    # tested next to the entry files and the snapshots, which watch_audit.py does.
-    # Regenerate and copy on change — an initContainer merges it before the app starts.
-    globalSettings:
-      {
-        "application": {
-          "empty_pages_are_a_change": false,
-          "filter_failure_notification_threshold_attempts": 6,
-          "global_ignore_text": [
-            "/(?i)bitte (addieren|rechnen|lösen|subtrahieren)/",
-            "/(?i)was ist die summe/",
-            "/(?i)summe aus \\d+ und \\d+/",
-            "/(?i)wie ?viel ist \\d+ ?[+\\-] ?\\d+/",
-            "/(?i)we.?re open/",
-            "/(?i)closes? at \\d/",
-            "/(?i)opens? at \\d/",
-            "/(?i)öffnet (um|bald|gleich|in|wieder)/",
-            "/(?i)schließt (um|bald|gleich|in)/",
-            "/(?i)derzeit geschlossen/",
-            "/(?i)geschlossen . öffnet/",
-            "/(?i)geöffnet . schließt/",
-            "/(?i)jetzt (geöffnet|geschlossen)/",
-            "/(?i)^\\s*ge(ö|oe)ffnet\\s*$/",
-            "/(?i)öffnet (heute|morgen|jetzt)/",
-            "/(?i)^\\s*heute\\s*:?\\s*\\d{1,2}[:.]\\d{2}/",
-            "/(?i)^\\s*vor \\d+ (tag|tagen|woche|wochen|monat|monate|monaten|jahr|jahren)\\s*$/",
-            "/^\\s*\\d+\\s*[+\\-]\\s*\\d+\\s*=\\s*$/",
-            "/(?i)\\d+ Bewertungen/",
-            "/(?i)spam.?schutz die zahl \\d+/",
-            "/(?i)\\d+ ?[+\\-] ?\\d+ ?= ?\\?/",
-            "/(?i)client-?ip ?:/",
-            "/(?i)wir (öffnen|schließen) (heute|morgen|wieder)/",
-            "/(?i)wir haben (aktuell|derzeit|momentan) (geschlossen|geöffnet)/",
-            "/(?i)^\\s*öffnungszeiten\\s+(geschlossen|öffnet|geöffnet)/"
-          ],
-          "global_subtractive_selectors": [],
-          "ignore_whitespace": true,
-          "notification_body": "{{watch_url}}\n{{diff}}\nZu tun: Zeiten in OSM pruefen und check_date:opening_hours setzen. Zeigt der Diff keine Zeiten, sondern eine Uhr oder ein Banner, ist der Filter dran: https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/notifications.md#was-eine-nachricht-verlangt",
-          "notification_format": "text",
-          "notification_title": "Öffnungszeiten geändert: {{watch_title}}",
-          "notification_urls": [
-            "json://changedetection-matrix-relay:8099/notify"
-          ],
-          "render_anchor_tag_content": false,
-          "strip_ignored_lines": false
-        },
-        "requests": {
-          "default_ua": {
-            "html_requests": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-            "html_webdriver": null
-          },
-          "jitter_seconds": 0,
-          "time_between_check": {
-            "days": 3,
-            "hours": 0,
-            "minutes": 0,
-            "seconds": 0,
-            "weeks": 0
-          },
-          "timeout": 45,
-          "workers": 2
-        }
-      }

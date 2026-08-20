@@ -13,6 +13,9 @@ untouched. Idempotent — a second run reports "already current" and rewrites no
 
   python3 scripts/apply_global_settings.py --datastore /datastore/changedetection.json
   python3 scripts/apply_global_settings.py --emit-values     # regenerate the Helm values
+
+The emitted file is the ConfigMap the kustomization builds, so a regenerate is the whole change:
+nothing is copied anywhere by hand.
 """
 import argparse
 import json
@@ -50,14 +53,14 @@ def main():
     ap.add_argument("--settings", default=os.path.join(here, "deploy/global-settings.json"))
     ap.add_argument("--datastore", default="/datastore/changedetection.json")
     ap.add_argument("--emit-values", action="store_true",
-                    help="regenerate deploy/global-settings.values.yaml for Helm")
+                    help="regenerate apps/changedetection/global-settings.values.yaml for Helm")
     args = ap.parse_args()
 
     with open(args.settings) as fh:
         managed = json.load(fh)
 
     if args.emit_values:
-        out = os.path.join(here, "deploy/global-settings.values.yaml")
+        out = os.path.join(here, "apps/changedetection/global-settings.values.yaml")
         with open(out, "w") as fh:
             fh.write("# GENERATED from deploy/global-settings.json — do not edit by hand.\n"
                      "# Regenerate: python3 scripts/apply_global_settings.py --emit-values\n")
