@@ -13,12 +13,9 @@ reliable alert when its opening hours change.
 
 About 14 % of the pages in this project publish their hours only after JavaScript runs. The
 wizard renders those through the browser above — `scripts/cdp_render.py` speaks CDP to it
-directly, so **changedetection itself is not needed for rendering**. A browser elsewhere (say a
-`kubectl port-forward svc/changedetection-browser 3000:3000` on another port) is named with
-`--browser-ws`. If you already have a running instance and no published browser port, the older
-route still works:
-`--runtime docker --container changedetection` (or `--runtime kubectl --namespace … --container
-deploy/changedetection`), which renders inside the app container.
+directly, so **changedetection itself is not needed for rendering**. A browser elsewhere is named
+with `--browser-ws`. Use a throwaway one: a shared instance serves every `html_webdriver` watch
+while you render against it.
 
 ```bash
 pip install lxml

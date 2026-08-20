@@ -18,5 +18,11 @@ export/
 CLAUDE.md
 *.original.md
 
+# kubectl legt hier seinen Cache an, wenn KUBECONFIG relativ gesetzt wird
+.kube/
+
+# Bundles aus dem Umschreiben der Historie, lokal aufbewahrt
+.git-history-backup/
+
 # lokal aufbewahrt, nicht Teil des Repos: die OSM-Ernte zum Bestücken einer neuen Stadt
 legacy/

@@ -69,44 +69,29 @@ def fetch_plain(url):
         return r.read(5_000_000).decode(enc, 'replace')
 
 
-def fetch_rendered(url, container, runtime="docker", namespace=None, browser_ws=None):
-    """Render the page through sockpuppetbrowser.
+def fetch_rendered(url, browser_ws=None):
+    """Render the page through sockpuppetbrowser, talking CDP to it directly.
 
-    Two routes. **Direct** (`--browser-ws`) speaks CDP to the browser from here, so a plain
-    `docker run -p 3000:3000 dgtlmoon/sockpuppetbrowser` is the whole requirement — no
-    changedetection, no exec rights, and it works in CI. **Via the app container** is the older
-    route, kept because it needs no published browser port: it copies a Playwright snippet into
-    changedetection and runs it there, reaching the browser over the cluster/compose network.
+    `--browser-ws` names the browser; without it a browser on the default port is used, since
+    that case needs no flag. Either way nothing is executed inside changedetection: a plain
+    `docker run -p 3000:3000 dgtlmoon/sockpuppetbrowser` is the whole requirement, and CI can
+    do the same. Say which browser was taken: a silent choice of renderer is how you end up
+    debugging a filter against HTML you did not think you were looking at.
     """
     import cdp_render
 
     if browser_ws:
         return cdp_render.render(url, ws_url=browser_ws)
-    # Nobody should have to pass a flag for the obvious case. A browser on the default port is
-    # unambiguous enough to use, but say which one we took — a silent choice of renderer is how
-    # you end up debugging a filter against HTML you did not think you were looking at.
     product = cdp_render.probe(cdp_render.DEFAULT_WS, timeout=3)
-    if product:
-        print(f"rendering via {cdp_render.DEFAULT_WS} ({product})")
-        return cdp_render.render(url, ws_url=cdp_render.DEFAULT_WS)
-
-    import hours_filter as HF
-    rt = HF.Runtime(runtime, container, namespace)
-    ws = rt.env('PLAYWRIGHT_DRIVER_URL', 'ws://playwright-chrome:3000')
-    try:
-        out = HF.render_in_container(container, ws, {'page': url}, runtime=rt)
-    except Exception as e:
+    if not product:
         raise RuntimeError(
-            f"render via {runtime} exec failed ({str(e)[:100]}).\n"
-            "  Either start a browser and pass it directly:\n"
+            "no browser to render with. Start one and it is found without a flag:\n"
             "    docker run --rm -p 3000:3000 dgtlmoon/sockpuppetbrowser\n"
-            "    … --browser-ws ws://localhost:3000\n"
-            "  or point --runtime/--container/--namespace at a running changedetection."
-        ) from None
-    if 'page' not in out:
-        raise RuntimeError("render produced nothing — is the browser reachable from the "
-                           "container? Try --browser-ws ws://localhost:3000 instead.")
-    return out['page']
+            "  or name another with --browser-ws ws://host:3000. Use a throwaway browser, not "
+            "the cluster's: that one serves every html_webdriver watch while you render."
+        )
+    print(f"rendering via {cdp_render.DEFAULT_WS} ({product})")
+    return cdp_render.render(url, ws_url=cdp_render.DEFAULT_WS)
 
 
 # --------------------------------------------------------------------------- #
@@ -584,7 +569,8 @@ def main():
     ap.add_argument("url", nargs="?", help="page URL (omit if --uuid given)")
     ap.add_argument("--uuid", help="changedetection watch to read the URL from / apply to")
     ap.add_argument("--lang", default="de", help="page language for keywords (de, en)")
-    ap.add_argument("--render", action="store_true", help="render via the container browser first")
+    ap.add_argument("--render", action="store_true",
+                    help="render through a browser first (see --browser-ws)")
     ap.add_argument("--no-render", action="store_true",
                     help="never fall back to the browser, even if the plain fetch finds nothing")
     ap.add_argument("--best", action="store_true", help="take rank 1 without prompting")
@@ -607,15 +593,11 @@ def main():
     ap.add_argument("--api-key", default=None)
     ap.add_argument("--container", default="changedetection",
                     help="container name (docker) or pod/deployment (kubectl)")
-    ap.add_argument("--runtime", choices=["docker", "kubectl"], default="docker",
-                    help="how to reach changedetection for JS rendering")
-    ap.add_argument("--namespace", help="kubectl namespace")
     ap.add_argument("--browser-ws", default=os.environ.get("BROWSER_WS"),
                     metavar="WS_URL",
-                    help="render by talking CDP to this browser directly, e.g. "
-                         "ws://localhost:3000 after `docker run --rm -p 3000:3000 "
-                         "dgtlmoon/sockpuppetbrowser`. Without it, rendering goes through "
-                         "`exec` into a running changedetection (see --runtime/--container).")
+                    help="render by talking CDP to this browser, e.g. ws://localhost:3000 after "
+                         "`docker run --rm -p 3000:3000 dgtlmoon/sockpuppetbrowser`. Without it "
+                         "a browser on that default port is used if one answers.")
     args = ap.parse_args()
 
     api = None
@@ -641,8 +623,7 @@ def main():
     rendered = args.render
     if rendered:
         try:
-            html = fetch_rendered(url, args.container, args.runtime, args.namespace,
-                                  args.browser_ws)
+            html = fetch_rendered(url, args.browser_ws)
         except Exception as e:
             # "no browser" is a setup problem with a known fix, not a bug — print the fix, not
             # a traceback.
@@ -663,8 +644,7 @@ def main():
     if (not real or weak) and not rendered and not args.no_render:
         print("nothing usable in the plain HTML — retrying with the browser …")
         try:
-            html = fetch_rendered(url, args.container, args.runtime,
-                                  args.namespace, args.browser_ws)
+            html = fetch_rendered(url, args.browser_ws)
             rendered = True
             print(f"fetched: {len(html)} bytes (rendered)")
             ranked = collect(html, args.lang)
