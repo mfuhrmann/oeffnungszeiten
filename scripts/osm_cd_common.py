@@ -1,9 +1,9 @@
 """
-Shared helpers for the OSM -> changedetection.io workflow.
+Shared helpers for the OSM -> changedetection.io workflow: the Overpass query, the
+changedetection API client (`CDIO`), URL normalisation and the browser-like user agent.
 
-Two scripts use this module:
-  osm_harvest.py  — Overpass query -> datastore JSON (source of truth, keyed by OSM id)
-  cd_sync.py      — datastore -> changedetection watches (idempotent reconcile)
+Imported by filter_wizard, watch_audit, entries_sync, audit_report, cd_export and coverage,
+which is why it holds no state of its own and stays stdlib.
 """
 import concurrent.futures as cf
 import json
