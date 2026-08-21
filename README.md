@@ -13,7 +13,7 @@ Every watch is rechecked every three days.
 ```bash
 pip install lxml
 python3 scripts/filter_wizard.py https://example.de/kontakt \
-    --emit entries --name "Example GmbH" --tags fulda-restaurants
+    --emit entries --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
 ```
 
 The wizard reads the page and prints candidates as **the text each filter would capture** — you

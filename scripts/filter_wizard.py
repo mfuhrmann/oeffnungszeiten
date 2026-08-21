@@ -694,7 +694,9 @@ def main():
                           args.tags)
         print(f"wrote entry file: {path}")
         if not args.tags:
-            print("note: no --tags given — the watch will have no category grouping")
+            print("note: no --tags given - the watch will have no category grouping")
+        if not args.osm_id:
+            print("note: no --osm-id given - the alert will carry no link into OpenStreetMap")
         print("Next: commit it, then  python3 scripts/entries_sync.py --apply")
 
     if not args.apply:
