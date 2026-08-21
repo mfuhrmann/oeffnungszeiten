@@ -15,8 +15,8 @@ and every send fails with
 401 {"errcode":"M_UNKNOWN_TOKEN","error":"Token is not active"}
 ```
 
-Pasting a fresh token buys weeks, not a fix. Other public homeservers are no escape — MAS is
-spreading — and a webhook bridge puts a third party between the watch and the room.
+Pasting a fresh token buys weeks, not a fix. Other public homeservers are no escape, MAS is
+spreading, and a webhook bridge puts a third party between the watch and the room.
 
 `charts/changedetection/files/matrix_relay.py` owns the session instead: it keeps the refresh
 token, mints access tokens on demand, retries once on a mid-send `401`, and resolves the room alias
@@ -37,13 +37,13 @@ The URL carries no credential, which is why it lives in `deploy/global-settings.
 secret in a watch config. A watch that should stay quiet gets `notification_muted`; a watch that
 needs its own wording overrides `notification_title` / `notification_body`.
 
-`notification_format` is stored lower-case (`text`, `markdown`, `html`, `htmlcolor`) — the
+`notification_format` is stored lower-case (`text`, `markdown`, `html`, `htmlcolor`): the
 capitalised label from the UI is not what the datastore holds.
 
 ## Seeding the session
 
 The relay is deployed but silent until it has a session. Unseeded it answers `503` and picks the
-state file up on the next request, so seeding needs no restart — and there is a running pod to copy
+state file up on the next request, so seeding needs no restart, and there is a running pod to copy
 into, which a crash-looping relay would not give.
 
 1. Check that [status.matrix.org](https://status.matrix.org) is green. `M_UNKNOWN` on a login is
@@ -56,7 +56,20 @@ into, which a crash-looping relay would not give.
    python3 scripts/matrix_relay_seed.py --out ~/matrix_relay.json
    ```
 
-   The seeder logs in with `refresh_token: true` and refuses to write a state file without one —
+   Three things it does not ask for, because they are defaults in the script. Each has a flag,
+   so nothing here is fixed:
+
+   | | Default | Flag |
+   |---|---|---|
+   | Homeserver | `https://matrix-client.matrix.org` | `--homeserver` |
+   | Room | `#osm-fulda-openinghours:matrix.org` | `--room` |
+   | Bot account | `fulda-timelord-bot` | `--user` |
+
+   The room is stored as its alias and resolved to a room id on the relay's first send, which is
+   then written back into the state file. Pointing the relay at a different room therefore means
+   seeding again, not just editing the alias.
+
+   The seeder logs in with `refresh_token: true` and refuses to write a state file without one:
    that flag is the whole difference to a hand-rolled `/login` call, which yields a token that
    works today and dies later with nothing to renew it from. It prints `device_id`, `user_id` and
    `expires_in_ms`.
@@ -82,7 +95,7 @@ into, which a crash-looping relay would not give.
 
    Test **through the running relay**, not with a second process. `matrix_relay.py --test` in a
    `kubectl exec` would open its own session on the same state file, and the refresh token it
-   spends is single use — the server would keep the dead one and fail silently at the next
+   spends is single use: the server would keep the dead one and fail silently at the next
    change. `POST /notify` is the same path a notification takes, so a message in the room means
    delivery works end to end. `/health` reports `{"ok": true, "room_id": …}`.
 
@@ -93,7 +106,7 @@ into, which a crash-looping relay would not give.
    python3 charts/changedetection/files/matrix_relay.py --state ~/matrix_relay.json --test "hi"
    ```
 
-4. Delete the local copy — the tokens in it are live until the session is logged out.
+4. Delete the local copy: the tokens in it are live until the session is logged out.
 
 **Arm delivery only once the relay answers `{"ok": true}`.** changedetection does not queue or
 retry a notification: while `notification_urls` points at a relay without a session, every POST
@@ -107,7 +120,7 @@ even though the alias resolves.
 
 Three kinds of message arrive in the room, and only the first one is usually about opening hours.
 
-**1. `Öffnungszeiten geändert: <name>`** — the watched block changed. Read the diff first, because
+**1. `Öffnungszeiten geändert: <name>`**: the watched block changed. Read the diff first, because
 it decides which of two jobs this is:
 
 - the diff shows different **hours** → update OSM, and set `check_date:opening_hours=YYYY-MM-DD`
@@ -116,15 +129,15 @@ it decides which of two jobs this is:
 - the diff shows a clock, a counter, a rotating teaser, a cookie line → the hours did not move,
   the filter did. Fix the filter (`filter_wizard.py --uuid <uuid>`), commit the entry, do not mute
   the watch.
-- the diff shows a temporary notice — Betriebsurlaub, renovation, "ab Montag neue Zeiten" — leave
+- the diff shows a temporary notice (Betriebsurlaub, renovation, "ab Montag neue Zeiten"), leave
   `opening_hours` alone. The regular hours are still the regular hours, and the notice is gone in
   two weeks.
 
-**2. `CSS/xPath filter was not present in the page`** — changedetection's own message, sent after
+**2. `CSS/xPath filter was not present in the page`**: changedetection's own message, sent after
 six consecutive misses, so roughly 18 days at a 3-day cadence. Nothing to do in OSM: the site was
 rebuilt and the anchor is gone. Re-run the wizard and commit the new filter.
 
-**3. `N Watches brauchen Aufmerksamkeit`** — the weekly `audit_report.py`. These are the watches
+**3. `N Watches brauchen Aufmerksamkeit`**: the weekly `audit_report.py`. These are the watches
 that will never tell you anything themselves, and each finding carries its own first move:
 
 | finding | what it means | first move |
@@ -133,7 +146,7 @@ that will never tell you anything themselves, and each finding carries its own f
 | `fetch error: 404` | page is gone | find the successor page, otherwise drop the watch |
 | `fetch error: 5xx` | the site is broken today | wait one cycle before touching anything |
 | `no opening hours on this page at all` | blind watch | look for `/kontakt`, `/oeffnungszeiten`, a branch page; drop it if the business publishes none |
-| `no weekday named` / `only N weekday(s)` | filter caught part of the block | the rest sits in a sibling — anchor on the common ancestor |
+| `no weekday named` / `only N weekday(s)` | filter caught part of the block | the rest sits in a sibling: anchor on the common ancestor |
 | `every day shows the same 09:00-17:00` | theme default, not this business | find the visible hours instead |
 | `the same hours are captured N×` | the anchor is too high | pick the narrower element |
 | `discarded by the global ignore pattern` | `global_ignore_text` swallows real lines | narrow the pattern in `deploy/global-settings.json` |
@@ -145,25 +158,45 @@ that will never tell you anything themselves, and each finding carries its own f
 
 **Every fetch error is looked at twice.** One blink of the shared browser writes
 `connect_over_cdp` into every `html_webdriver` watch that was in flight, and a 429 is gone by the
-next fetch — while a 403 stands for weeks. A single audit cannot tell those apart, so the report
+next fetch, while a 403 stands for weeks. A single audit cannot tell those apart, so the report
 rechecks each fetch error and reports only what survives. A recheck that does not come back in
 time is reported as found: a line too many beats a silent failure. Each finding carries its
 `uuid`, because the moves above end in `--uuid` and the message is where you start.
 
 **A quiet room is not proof.** Three states send nothing at all: a fetch error only sets
 `last_error`, an empty filter result is swallowed, and an over-wide `global_ignore_text` stops the
-checksum from moving. That is precisely what the weekly report is for — if it says
+checksum from moving. That is precisely what the weekly report is for: if it says
 "nothing to report", it has actually looked.
+
+## Running this for another city
+
+The structure is language-neutral; the text a mapper reads is not. Four places carry German, and
+they are the whole list:
+
+| | Where | What it says |
+|---|---|---|
+| `DEFAULT_LINK_LABEL` | `charts/changedetection/files/matrix_relay.py` | `Webseite`, the label on the header link when a body line names none |
+| `notification_title`, `notification_body` | `deploy/global-settings.json` | the subject of every change alert, and the `Zu tun:` line under the diff |
+| `desired()` | `scripts/entries_sync.py` | the per-watch body, `Webseite:` and `OpenStreetMap:` |
+| `compose()` | `scripts/audit_report.py` | the weekly report: title, `Zu tun:` lines, `Webseite:`, `uuid:` |
+
+The relay's own parsing is not language-bound: `LINK_LINE` accepts any label up to 30 characters,
+so a translated one keeps producing a header link. The `(added)` / `(removed)` / `(changed)`
+markers it strips come from changedetection itself and are English wherever it runs. `hours_lang.py` is the other half of this and is
+already bilingual; a new language goes in there and both the wizard and the audit gain it.
 
 ## Operating it
 
 - **The liveness probe is TCP, not `/health`.** Health means the Matrix session works, and a
-  homeserver incident is not something a restart fixes — probing it would take the only relay pod
+  homeserver incident is not something a restart fixes: probing it would take the only relay pod
   out of service for the duration of somebody else's outage.
 - **One replica, `Recreate`.** Two relays refreshing in parallel spend each other's single-use
   refresh token.
-- **Only changedetection may reach port 8099.** Anything that can post there can write into a room
-  shared with other mappers, so unlike the UI the NetworkPolicy does not open it to the namespace.
+- **Port 8099 is named senders only.** Anything that can post there can write into a room shared
+  with other mappers, so unlike the UI the NetworkPolicy does not open it to the namespace: it
+  lists changedetection, the audit report, and the sync while it may prune. A sender the policy
+  does not name is not refused, it is dropped on the last hop, so the symptom is a timeout in the
+  sender's log and silence in the room.
 - **Moving the instance:** copy the state PVC and nothing needs re-authenticating.
 - **Noise is a filter problem, not a delivery problem.** A watch that alerts on a clock or a
-  cookie banner is a filter to fix — `watch_audit.py` finds them — not a reason to mute delivery.
+  cookie banner is a filter to fix (`watch_audit.py` finds them), not a reason to mute delivery.
