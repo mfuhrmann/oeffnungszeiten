@@ -2,24 +2,18 @@
 
 ## Why watch opening hours
 
-Opening hours are the detail in OpenStreetMap that goes stale fastest. A shop moves its closing day, a
-practice changes its consultation times, a café opens later in winter — and OSM still says what
-somebody surveyed three years ago. Unlike a wrong house number, nobody notices until they are standing
-in front of a locked door.
-
-It cannot be checked cartographically: there is no aerial image and no address register for opening
-hours. They exist on the door and on the business's own website, and the website is the only source
-you may query from a distance.
+Opening hours are the detail in OpenStreetMap that goes stale fastest, and usually nobody notices
+until they are standing in front of a locked door. There are only two places to get them: the sign
+on that door, and the operator's own website, if there is one.
 
 ## What this project does
 
-It watches the page where a business publishes its hours and reports when the text there changes. That
-report is a **hint for a mapper**, not an automatic edit: the website can be wrong, the change may be a
+It watches the website where a business publishes its hours and reports when the text there
+changes. That report is a **hint for a mapper**, not an automatic edit: the website can be wrong, the change may be a
 holiday notice, and a sign on the door beats the website in case of doubt.
 
 The boundary is deliberate. Nothing is imported; people are pointed at something they would otherwise
-not see. An import would be a different exercise under different rules — see
-[the OSM import guidelines](https://wiki.openstreetmap.org/wiki/Import/Guidelines).
+miss.
 
 ## Where it works and where it does not
 
@@ -71,15 +65,20 @@ every change a legible diff.
 }
 ```
 
-`captured_sample` is what makes review possible: a reviewer reads the hours in the diff and can tell
-whether the filter grabbed the hours block, a news box or a marketing paragraph — the judgement call
-that keeps recurring ([FILTERS.md](./FILTERS.md) §4). It is documentation, not state; sync ignores it.
+`captured_sample` is the text the filter actually caught when the entry was written. CI never
+fetches a page, so this line is all a reviewer has: an XPath says nothing about whether it caught
+opening hours, a news box or the phone hotline — the captured text says it at a glance. It is
+evidence from the day of submission, not a live value: the page moves on, the line stays, and
+nothing rechecks it. What each watch captures *today* is what `watch_audit.py` reads.
+
 `osm_id` is optional and purely a reference, so a notification can carry an "edit this in OSM" link.
 
-**Slug → watch uuid is derived, not stored.** An entry with no known uuid is matched to an existing
-watch by URL, and by name against title where one URL carries two businesses — a restaurant and its
-beer garden, a museum mapped twice, two outlets of one hotel. `entries/.lock.json` caches the result
-and is **not committed**: it can only ever match one instance, and the reconcile runs from a
+**The slug is the filename**, `robes-bike-house.json` → `robes-bike-house`. An entry carries no id
+of its own: the file name is the identity in git, and the uuid belongs to changedetection, which
+mints one per watch. The mapping between them is derived, not stored — an entry with no known uuid
+is matched to an existing watch by URL, and by name against title where one URL carries two
+businesses: a restaurant and its beer garden, a museum mapped twice, two outlets of one hotel.
+`entries/.lock.json` caches the result and is **not committed**: it can only ever match one instance, and the reconcile runs from a
 throwaway checkout in the cluster. Verified against a live instance with 277 watches — an empty cache
 and a cache full of invented uuids both adopt all 277 and create none.
 
@@ -88,13 +87,15 @@ and a cache full of invented uuids both adopt all 277 and create none.
 | Action | PR |
 |---|---|
 | add a watch | add a file |
-| remove a watch | `git rm` the file |
+| remove a watch | `git rm` the file, and say so — the watch is taken away by hand |
 | fix a filter | edit the file |
 
 ## Git is authoritative
 
-`entries_sync.py` **enforces** the entry files: create what is missing, update what differs, delete
-watches whose file is gone. One authority is worth more than the convenience of editing in the UI.
+`entries_sync.py` **enforces** the entry files: create what is missing, update what differs. One
+authority is worth more than the convenience of editing in the UI. Deletion is the exception, and
+deliberately so: it needs the cached mapping or the `--prune` flag, and the hourly job has neither,
+so a removed file leaves its watch standing until someone takes it away on purpose.
 
 Consequence: **a filter tweaked in the UI is reverted on the next sync.** To keep a UI experiment, run
 `cd_export.py --split entries` and open a PR. That script is a round-trip helper, not a backup.
