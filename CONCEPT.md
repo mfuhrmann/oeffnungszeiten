@@ -99,10 +99,11 @@ files through: it creates a watch that is missing and corrects one that differs.
 
 Two things follow.
 
-**Edit in the UI and you lose it.** Change a filter in changedetection and it works until the next
-sync, then the file wins. To keep such an experiment, pull it back into a file with
-`cd_export.py --split entries` and open a pull request. That script is a round-trip helper, not a
-backup.
+**A fix made in the UI does not last.** Repairing a filter in changedetection is often the quickest
+way to get it right, because you see immediately what it captures. It holds until the next sync, and
+then the entry file wins. So when the filter finally works, write it into the file: read the watch
+back out with `cd_export.py --split entries`, or copy the selector across by hand, and open a pull
+request. Otherwise the work is gone at the next full hour.
 
 **Deleting is the exception.** The sync never removes a watch on its own. It can only tell that a
 watch is unclaimed, and saying "no file claims this" is not the same as "this must go": a renamed
