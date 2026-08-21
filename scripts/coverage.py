@@ -142,10 +142,14 @@ def main():
         if e.get("osm_id"):
             watched[e["osm_id"]] = e
             namen[e["osm_id"]] = e.get("name", "")
+    # The block list is keyed by page now, and its osm_id is an optional cross-reference: one
+    # page can carry several objects, so collect every id a record names.
     absent = {}
     if os.path.exists(args.absences):
         for r in json.load(open(args.absences, encoding="utf-8"))["records"]:
-            absent[r["osm_id"]] = r
+            for oid in [r.get("osm_id")] + list(r.get("osm_ids_weitere") or []):
+                if oid:
+                    absent[oid] = r
 
     roh = overpass(args.area_rel, args.overpass_url)
     objekte = []

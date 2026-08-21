@@ -42,7 +42,7 @@ occur in practice, and what counts as proof that a filter is right:
 ```
 entries/            one file per watch — the source of truth
   .lock.json        slug → watch uuid, per changedetection instance
-no-watch.json       objects deliberately not watched, with the reason and when to look again
+no-watch.json       the block list: pages looked at and not worth watching, with the reason
 scripts/            wizard, sync, audit, renderer, OSM export  (stdlib only, except lxml)
 deploy/             managed global settings: noise-suppression patterns, recheck interval
 charts/             Helm chart for changedetection and its browser
@@ -62,7 +62,7 @@ clusters/           Flux entry point — what the cluster reconciles
 | `cd_export.py` | turn a UI experiment back into entry files |
 | `apply_global_settings.py` | merge `deploy/global-settings.json` into an instance |
 | `matrix_relay_seed.py` | mint the Matrix session the notification relay runs on |
-| `no_watch.py` | the absence list: what is deliberately not watched, and what is due for another look |
+| `no_watch.py` | the block list: which pages are deliberately not watched, and what is due for another look |
 | `coverage.py` | the denominator: every OSM object that could have hours, and which of them are covered |
 | `audit_report.py` | the monthly report: what the audit found, posted into the notification room |
 
@@ -96,10 +96,16 @@ because they are the part that can write to somebody else's data.
 
 ### What is *not* watched
 
-`entries/` answers "what do we watch". On its own that number means little — 502 of how many? The
-counterpart is [`no-watch.json`](./no-watch.json): every object that deliberately has no watch,
-with the reason, the date it was established, and when to look again. An object belongs in exactly
-one of the two lists, and CI fails if it appears in both.
+`entries/` answers "which pages do we watch". Its counterpart is
+[`no-watch.json`](./no-watch.json): the pages that were looked at and found to have nothing worth
+watching, with the reason, the date it was established, and when to look again. A page belongs in
+exactly one of the two lists, and CI fails if it appears in both.
+
+Both lists are keyed by the **page**, not by the map object. One address can carry several
+businesses — a branch list, a practice with two doctors, a shared building — and whether OSM knows
+them is a different question from whether the page publishes hours. Keying by object hid that: the
+same page could be recorded as "publishes nothing" for one object while a watch on it was
+capturing hours for another, which is exactly what the first run of the page-keyed check found.
 
 Two kinds of reason, and `recheck` carries the difference:
 
