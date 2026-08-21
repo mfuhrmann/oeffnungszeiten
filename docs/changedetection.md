@@ -17,11 +17,11 @@ no instance at all, only the wizard and, for a page that needs JavaScript, one b
 
 The datastore is one JSON file rewritten in place plus thousands of small snapshot files, so it
 needs block or local storage rather than a network share. No backup: snapshot history is
-disposable — a re-created watch re-establishes its baseline without alerting. What must survive is
+disposable: a re-created watch re-establishes its baseline without alerting. What must survive is
 in git, plus the API token.
 
 **No Ingress, on purpose.** changedetection has a single shared password and no user model, and an
-authenticated user can point a watch at any URL — an exposed instance is an SSRF pivot into the
+authenticated user can point a watch at any URL, and an exposed instance is an SSRF pivot into the
 cluster.
 
 ```bash
@@ -37,13 +37,13 @@ It clones the watch repository and reconciles changedetection against the entry 
 rather than being pushed, because nothing is exposed inbound and CI therefore cannot reach the app.
 
 Its checkout is thrown away after every run, so the slug-to-uuid mapping cannot be a file in it:
-`entries_sync.py` derives the mapping instead — URL first, name against title where one URL carries
-two businesses — which is what makes an hourly job safe. A stale or missing `entries/.lock.json`
+`entries_sync.py` derives the mapping instead (URL first, name against title where one URL carries
+two businesses), which is what makes an hourly job safe. A stale or missing `entries/.lock.json`
 is adopted, not duplicated.
 
 **Deletion has a limit, and it announces itself.** With `sync.prune`, a watch that no entry file
 claims is removed, so `git rm` in a pull request really removes it. The job refuses when more than
-`sync.maxPrune` watches are unclaimed, and when no entries loaded at all — an empty checkout is a
+`sync.maxPrune` watches are unclaimed, and when no entries loaded at all: an empty checkout is a
 breakage, not an instruction to empty the instance. Both the deletions and the refusals are posted
 into the Matrix room, because a Job log is kept for three runs and read by nobody.
 
@@ -67,8 +67,22 @@ python3 scripts/apply_global_settings.py --emit-values
 
 writes `apps/changedetection/global-settings.values.yaml`, and that file *is* the ConfigMap. CI
 fails if it no longer matches its source. Editing the settings is therefore two steps: change the
-JSON, regenerate, commit both. Expect one noisy pass afterwards, because any settings change moves
-`filter_config_hash` and every affected watch re-baselines exactly once.
+JSON, regenerate, commit both.
+
+Expect exactly one noisy pass afterwards. A settings change moves `filter_config_hash`, which
+deliberately bypasses the skip-check (`processors/text_json_diff/processor.py:436`), so every
+affected watch re-baselines once. That first pass is not a regression.
+
+**Editing the datastore by hand: stop the app first.** Watches themselves need no care: since 0.55.8
+each one is its own `/datastore/<uuid>/watch.json`, written immediately and atomically, so a UI save
+survives even a hard kill. `changedetection.json` is the exception, and an edit made while the app
+runs is invisible to it and then overwritten from memory.
+
+```bash
+kubectl -n changedetection scale deploy/changedetection --replicas=0
+#   edit the PVC, scale back to 1, then verify the value actually persisted
+kubectl -n changedetection scale deploy/changedetection --replicas=1
+```
 
 ## Secrets
 

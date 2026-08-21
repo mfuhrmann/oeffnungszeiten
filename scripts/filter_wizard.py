@@ -42,7 +42,7 @@ import osm_cd_common as C
 HEAD_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'b', 'p', 'span', 'div', 'li', 'td', 'th']
 MAX_CAPTURE = 4000          # a filter capturing more than this is not a filter
 SAFE_CLASS = re.compile(r'^[A-Za-z][\w-]{2,40}$')
-# Page-builder / generated names: they change on the next site edit (FILTERS.md §3 Step 4).
+# Page-builder / generated names: they change on the next site edit (FILTERS.md §3 Step 2).
 # Not just hex — Beaver Builder emits base36 ids like "fl-icon-text-cjg0i7ku1qhr", so also
 # flag any long token mixing letters and digits with no separator.
 BRITTLE = re.compile(
