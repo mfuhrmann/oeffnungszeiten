@@ -13,7 +13,7 @@ Every watch is rechecked every three days.
 ```bash
 pip install lxml
 python3 scripts/filter_wizard.py https://example.de/kontakt \
-    --emit entries --name "Example GmbH" --tags fulda-restaurants
+    --emit entries --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
 ```
 
 The wizard reads the page and prints candidates as **the text each filter would capture** — you
@@ -107,7 +107,7 @@ twice.
 
 ## Licence
 
-AGPL-3.0-or-later, see [LICENSE](./LICENSE). Opening hours read from business websites are facts,
+GPL-3.0-or-later, see [LICENSE](./LICENSE). Opening hours read from business websites are facts,
 not creative works; when you carry them into OSM, record the source and the date
 (`source:opening_hours`, `check_date:opening_hours`) and never copy from a map service whose licence
 forbids it.

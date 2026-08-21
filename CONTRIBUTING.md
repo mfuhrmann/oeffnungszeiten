@@ -1,94 +1,112 @@
 # Contributing
 
-This repository watches business websites for **opening-hours changes**. One file per watch
-lives in [`entries/`](./entries); adding one is a pull request.
+This repository watches business websites for **opening-hours changes**. One file per watch lives
+in [`entries/`](./entries); adding, changing or removing one is a pull request. You need no running
+service, no API key and no knowledge of XPath.
 
-You do not need the running service, an API key, or any knowledge of XPath.
+**Structure and documentation are English, evidence about a Fulda business is German.** Code and docs
+read for another city; a `note` quotes what the page says ("Termine nur nach Vereinbarung"), and
+translating a quote weakens it as evidence. The Matrix messages are German too: they are read by
+whoever maps Fulda.
 
 ---
 
+## 1. Find the page that carries the hours
 
-## Which language
+Usually the homepage, `/kontakt` or `/oeffnungszeiten`. For a chain it is almost always the branch's
+own page, not the corporate site. Check that the hours belong to *this* business: a site-wide footer
+link often leads to a landlord's office hours or an accessibility statement.
 
-**Structure and documentation are English. Evidence about one Fulda business is German.**
+A page that publishes hours nowhere is not worth a watch: it stays silent forever and looks
+perfectly healthy ([FILTERS.md](./FILTERS.md) §0 has the measurement). Such a page goes into
+`no-watch.json`, see below.
 
-Field names, reason values, code, comments, README, FILTERS.md — English, so that someone setting
-this up for another city can read it. The `note` on an entry or on an absence is German: it quotes
-what the page actually says ("Liefer zeiten", "Termine nur nach Vereinbarung", "Praxisurlaub"), and
-translating a quote weakens it as evidence. The Matrix messages are German too — they are read by
-whoever maps Fulda.
+## 2. Get the OSM id
 
-## Add a business
+Search the business on [openstreetmap.org](https://www.openstreetmap.org), open the object, and take
+the id out of the URL: `node/1579272617`, sometimes `way/…` or `relation/…`.
 
-**1. Find the page that actually carries the hours.** Usually the homepage, `/kontakt` or
-`/oeffnungszeiten`. For a chain it is almost always the branch's own page, not the corporate
-site. Check the hours belong to *this* business — a site-wide footer link often leads to a
-landlord's office hours or an accessibility statement.
+An alert is supposed to end in an OSM edit, so the message carries a link to the object, built from
+`osm_id`. Without one the alert still arrives, with the page URL and the diff but no link, and
+whoever reads it has to find the business in the map by hand: most of the work the alert exists to
+save. Nearly every entry here has an id. Leave it out only when the business is genuinely not in OSM
+yet, and say so in the pull request. Nothing in the code follows the id; this repository never
+queries OSM itself.
 
-**2. Let the wizard propose the entry:**
+## 3. Let the wizard write the entry
 
 ```bash
 pip install lxml
 python3 scripts/filter_wizard.py https://example.de/kontakt --emit entries \
-    --name "Example GmbH" --tags fulda-restaurants
+    --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
 ```
 
-`--tags` groups the watch by category: pick the tag its neighbours use, e.g.
-`fulda-restaurants`, `fulda-bakery`, `fulda-doctors`. Repeat the flag or comma-separate for
-several. The wizard says so if you forget. Notifications do not come from the tag: an entry with
-an `osm_id` gets a message body carrying the OSM link, everything else falls through to the
-global one.
+`--tags` groups the watch by category: pick the tag its neighbours already use. Repeat the flag or
+comma-separate for several. The wizard says so if you leave `--tags` or `--osm-id` off.
 
-It prints candidates as **the text each one would capture**. Pick by reading the hours — you
-know what your business's opening times look like; you do not need to judge a selector. Heed
-the `!` warnings, especially `only N weekday(s)` (half the week is elsewhere) and
-`brittle selector` (it will break at the next site edit).
+```bash
+grep -ho '"fulda-[a-z-]*"' entries/*.json | sort | uniq -c | sort -rn | head
+```
 
-**If the page needs JavaScript** — the wizard says so — start a browser and point the wizard at
-it. One container, and no changedetection involved:
+It prints candidates as **the text each one would capture**. Pick by reading the hours: you know
+what your business's opening times look like, and you do not need to judge a selector. Heed the `!`
+warnings, especially `only N weekday(s)` (half the week is elsewhere) and `brittle selector` (it
+will break at the next site edit).
+
+**If the plain HTML holds nothing usable**, the wizard retries through a browser by itself and
+says so. It finds one on `localhost:3000` without a flag, so starting one is the whole setup; no
+changedetection involved:
 
 ```bash
 docker run --rm -p 3000:3000 dgtlmoon/sockpuppetbrowser
-python3 scripts/filter_wizard.py https://example.de/kontakt --emit entries \
-    --name "Example GmbH" --tags fulda-restaurants
 ```
 
-A browser on `localhost:3000` is found by itself — the wizard prints which one it used.
-`--browser-ws ws://host:port` is only needed for a browser somewhere else.
+`--browser-ws ws://host:port` names a browser somewhere else. What was rendered ends up in the
+entry as `fetch_backend: html_webdriver`. Without Docker the wizard prints that command and stays
+with the plain fetch; you can still open the pull request, say in the description that the page
+needs rendering, and a maintainer will finish it.
 
-The wizard then writes `fetch_backend: html_webdriver` into the entry by itself. Without Docker
-you can still open the pull request — say in the description that the page needs rendering and a
-maintainer will finish it.
+If nothing is found even rendered, the wizard says so and stops.
 
-**3. Commit the file and open a pull request.**
+## 4. Check the entry
 
 ```bash
+python3 scripts/validate_entries.py                                          # structure, as CI runs it
+python3 scripts/validate_entries.py --live --only entries/example-gmbh.json  # and against the page
+```
+
+The first call is what CI will run: **structure only**, and on purpose, because it needs no network
+and so never fails for a reason you cannot fix. Run it over all entries as CI does. `--only` is for
+a quick look at one file and sees less: a duplicate slug and a page listed in both `entries/` and
+`no-watch.json` only show up in the full sweep.
+
+The second call fetches the page, and it is worth the minute before anything leaves your machine.
+It fails an entry whose filter captures no time at all, which is the watch that could never fire.
+Add `--browser-ws ws://localhost:3000` for a page that needs JavaScript; without one such entries
+are only warned about. Only `xpath:` filters are evaluated live; CSS and JSON-LD ones are not.
+
+Whether the filter really captures the hours is judged by a human, from the `captured_sample` in
+your diff. That is why it has to be there and has to show actual opening hours.
+
+## 5. Open the pull request
+
+```bash
+gh repo fork --remote            # only without write access, and only once
+git checkout -b add-example-gmbh
 git add entries/example-gmbh.json
 git commit -m "add Example GmbH"
+git push origin add-example-gmbh
+gh pr create --fill
 ```
 
-CI checks the **structure** of every entry — that is all, and on purpose: it needs no network, so
-it never fails for a reason you cannot fix.
+Never commit onto `main`. Without the `gh` CLI, fork on github.com, push the branch to your fork
+and open the pull request there. Once it is merged, the hourly sync creates the watch.
 
-Whether the filter really captures the hours is judged from the `captured_sample` in your diff. That
-is why it has to be there, and why it has to show the actual opening hours. If you can, check it
-against the live page before opening the pull request:
+---
 
-```bash
-python3 scripts/validate_entries.py --live --only entries/example-gmbh.json
-```
+## The entry file
 
-Add `--browser-ws ws://localhost:3000` for a page that needs JavaScript. Note that CSS and JSON-LD
-filters are not evaluated even then — only `xpath:` ones are.
-
-### Writing an entry by hand
-
-Only needed when the wizard cannot help. With `--emit` it writes the whole file itself: `schema`,
-`name`, `url`, `lang` and `added` from your flags and the date, `filter` and `captured_sample` from
-the candidate you picked, `tags` and `osm_id` if you passed them. Two it decides on its own:
-`fetch_backend: html_webdriver` when the page had to be rendered, and `sort_text_alphabetically`
-when the same block appears more than once on the page. The filename comes from the name and the
-URL, so two branches of one chain do not collide.
+The wizard writes all of it. Written by hand it looks like this:
 
 ```json
 {
@@ -97,6 +115,8 @@ URL, so two branches of one chain do not collide.
   "url": "https://example.de/kontakt",
   "filter": "xpath://div[contains(@class,\"opening-hours\")]",
   "captured_sample": "Mo–Fr 09:00–18:00 · Sa 09:00–13:00",
+  "osm_id": "node/1579272617",
+  "tags": ["fulda-restaurants"],
   "lang": "de",
   "added": "2026-08-05"
 }
@@ -106,47 +126,60 @@ URL, so two branches of one chain do not collide.
 |---|---|
 | `schema`, `name`, `url` | required |
 | `filter` | CSS, `xpath:…` or `json:…`. Omit only if the whole page is genuinely the target |
-| `captured_sample` | **please include it** — it is how a reviewer judges the entry without fetching anything |
-| `fetch_backend` | `html_webdriver` if the hours need JavaScript — the wizard sets this itself |
-| `sort_text_alphabetically` | `true` if the block re-orders daily — the wizard sets this itself |
-| `lang` | `de` (default) or `en` — affects weekday detection |
-| `osm_id` | optional, e.g. `node/1579272617`; used to link alerts back to OpenStreetMap |
-| `tags` | category names, never tag uuids — a uuid means nothing in another instance |
+| `captured_sample` | required: it is how a reviewer judges the entry without fetching anything |
+| `osm_id` | `node/…`, `way/…` or `relation/…`. Not enforced by CI, but see step 2 |
+| `tags` | category names, never tag uuids: a uuid means nothing in another instance |
+| `lang` | `de` (default) or `en`, affects weekday detection |
+| `fetch_backend` | `html_webdriver` if the hours need JavaScript, set by the wizard |
+| `sort_text_alphabetically` | `true` if the block re-orders daily, set by the wizard |
+| `note` | German, free text: what the page shows and what was checked. Knowledge, not decoration |
+| `added` | the date the entry was written, set by the wizard |
 
-## Change or remove a business
+The filename comes from the name and the URL, so two branches of one chain do not collide.
 
-- **Change** — edit the file. The next sync writes it through.
-- **Remove** — `git rm` the file. The watch is gone within the hour. Removing many at once is the
-  one thing to announce in the pull request: the sync refuses to delete more than a handful in one
-  run, because a checkout that arrives empty looks exactly like a request to delete everything.
+## Change or remove a watch
+
+- **Change**: edit the file. The next sync writes it through.
+- **Remove**: `git rm` the file. The watch is gone within the hour. Removing many at once is the one
+  thing to announce in the pull request: the sync refuses to delete more than a handful in one run,
+  because a checkout that arrives empty looks exactly like a request to delete everything.
+
+## A page with no hours: `no-watch.json`
+
+The counterpart of `entries/`. A page that was looked at and has nothing to watch is recorded there
+with the reason, so nobody spends an evening on it again. That is a contribution like any other, and
+CI is stricter about it than about an entry: `reason` has to be one of the listed causes, `note` has
+to say what the page *does* show and how that was checked (German, at least 30 characters), and
+`recheck` is a date, `on-relocation` or `never`. The record shape and the reasons are in
+[CONCEPT.md](./CONCEPT.md); `python3 scripts/no_watch.py` prints what the list holds. A page belongs
+in exactly one of the two lists, and CI enforces that.
 
 ## What gets rejected
 
 CI fails a pull request for:
 
 - invalid JSON, a missing `url`/`name`, an unsupported `schema`
+- a `url` that is not `http(s)` or has no host
 - a duplicate slug (the filename is the identity)
 - an **absolute XPath** such as `/html/body/div[2]/div/main/…`
-- a missing `captured_sample` — nothing in the diff would show what the filter captures
+- a missing `captured_sample`: nothing in the diff would show what the filter captures
+- a `fetch_backend` other than `system`, `html_requests` or `html_webdriver`
+- the same page in `entries/` and in `no-watch.json`, or a `no-watch.json` record missing a field
 
-Warnings do not block a merge, but expect a reviewer to ask about them. What makes a selector
-brittle, and what to anchor on instead: [FILTERS.md](./FILTERS.md).
+A reviewer will send back, without CI failing:
 
-## Please do not
+- a filter anchored on a generated class (`elementor-element-224ed87`)
+- several entries pointing at one store locator. Split them into per-branch pages instead
+- a page that publishes no hours (step 1), and the wizard's `!` warnings if they were ignored
 
-- add a business whose site publishes **no hours anywhere**. Such a watch is silent forever and
-  looks perfectly healthy; [FILTERS.md](./FILTERS.md) §0 has the measurement. If the wizard finds
-  nothing even with `--render`, that is the answer.
-- anchor a filter on a generated class (`elementor-element-224ed87`).
-- point several entries at a store locator. Split them into per-branch pages instead.
+What makes a selector brittle, and what to anchor on instead: [FILTERS.md](./FILTERS.md).
 
 ## Background
 
-- [FILTERS.md](./FILTERS.md) — the full method: the page shapes that keep coming back, the four
-  criteria that prove a filter is right, and the traps that cost real debugging time
-- [CONCEPT.md](./CONCEPT.md) — why entries are the source of truth
-- [docs/changedetection.md](./docs/changedetection.md) — how the service is deployed
-
+- [FILTERS.md](./FILTERS.md): the page shapes that keep coming back, the four criteria that prove a
+  filter is right, and the traps that cost real debugging time
+- [CONCEPT.md](./CONCEPT.md): why entries are the source of truth, and what `no-watch.json` records
+- [docs/changedetection.md](./docs/changedetection.md): how the service is deployed
 
 ## Licence of contributions
 
