@@ -19,11 +19,10 @@ Criterion 5 is the one nothing else can see. `ignore_text` is applied to the che
 the snapshot keeps the ignored lines and a diff of two snapshots still shows them changing —
 a pattern widened too far therefore silences a watch while leaving every visible sign intact.
 
-Read-only: it never writes to changedetection or the datastore.
+Read-only: it never writes to changedetection.
 
 Examples:
   python3 scripts/watch_audit.py                              # every watch, worst first
-  python3 scripts/watch_audit.py --datastore <area>.json  # use datastore names
   python3 scripts/watch_audit.py --uuid 8f2a1c3d…             # one watch
   python3 scripts/watch_audit.py --html audit.html            # report to open in a browser
   python3 scripts/watch_audit.py --only red                   # just the broken ones
@@ -301,7 +300,6 @@ code{background:#eee;padding:.1rem .3rem;border-radius:3px;font-size:.85em}
 def main():
     ap = argparse.ArgumentParser(description="Audit what each watch actually captures")
     ap.add_argument("--uuid", action="append", help="audit only this watch (repeatable)")
-    ap.add_argument("--datastore", help="optional, only used for nicer names")
     ap.add_argument("--lang", default="de")
     ap.add_argument("--only", choices=[RED, AMBER, GREEN], help="show only this verdict")
     ap.add_argument("--html", help="write an HTML report to this path")
@@ -321,10 +319,6 @@ def main():
 
     api = C.CDIO(args.base_url, C.resolve_api_key(args.api_key, args.container))
     names = {}
-    if args.datastore:
-        store = C.load_datastore(args.datastore)
-        names = {r["cd_uuid"]: r.get("name", "") for r in store["records"].values()
-                 if r.get("cd_uuid")}
     uuids = args.uuid or list((api.list() or {}).keys())
     if not uuids:
         sys.exit("no watches found")

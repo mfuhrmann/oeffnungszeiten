@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 scripts/validate_entries.py
+      # The prune guard decides whether an hourly job may delete watches. Small enough to hold in
+      # the docstring, important enough that CI runs the examples.
+      - run: python3 -m doctest scripts/entries_sync.py
 
   settings-in-sync:
     # deploy/global-settings.json is the source. apps/changedetection/global-settings.values.yaml

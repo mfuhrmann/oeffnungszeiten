@@ -33,10 +33,11 @@ python3 scripts/filter_wizard.py https://example.de/kontakt --emit entries \
     --name "Example GmbH" --tags fulda-restaurants
 ```
 
-`--tags` is what groups the watch by category (and decides which sibling its notification
-setup is copied from) — pick the tag its neighbours use, e.g. `fulda-restaurants`,
-`fulda-bakery`, `fulda-doctors`. Repeat the flag or comma-separate for several. The wizard
-says so if you forget.
+`--tags` groups the watch by category: pick the tag its neighbours use, e.g.
+`fulda-restaurants`, `fulda-bakery`, `fulda-doctors`. Repeat the flag or comma-separate for
+several. The wizard says so if you forget. Notifications do not come from the tag: an entry with
+an `osm_id` gets a message body carrying the OSM link, everything else falls through to the
+global one.
 
 It prints candidates as **the text each one would capture**. Pick by reading the hours — you
 know what your business's opening times look like; you do not need to judge a selector. Heed
@@ -82,6 +83,13 @@ filters are not evaluated even then — only `xpath:` ones are.
 
 ### Writing an entry by hand
 
+Only needed when the wizard cannot help. With `--emit` it writes the whole file itself: `schema`,
+`name`, `url`, `lang` and `added` from your flags and the date, `filter` and `captured_sample` from
+the candidate you picked, `tags` and `osm_id` if you passed them. Two it decides on its own:
+`fetch_backend: html_webdriver` when the page had to be rendered, and `sort_text_alphabetically`
+when the same block appears more than once on the page. The filename comes from the name and the
+URL, so two branches of one chain do not collide.
+
 ```json
 {
   "schema": 1,
@@ -99,16 +107,18 @@ filters are not evaluated even then — only `xpath:` ones are.
 | `schema`, `name`, `url` | required |
 | `filter` | CSS, `xpath:…` or `json:…`. Omit only if the whole page is genuinely the target |
 | `captured_sample` | **please include it** — it is how a reviewer judges the entry without fetching anything |
-| `fetch_backend` | `html_webdriver` if the hours need JavaScript |
-| `sort_text_alphabetically` | `true` if the block re-orders daily |
+| `fetch_backend` | `html_webdriver` if the hours need JavaScript — the wizard sets this itself |
+| `sort_text_alphabetically` | `true` if the block re-orders daily — the wizard sets this itself |
 | `lang` | `de` (default) or `en` — affects weekday detection |
 | `osm_id` | optional, e.g. `node/1579272617`; used to link alerts back to OpenStreetMap |
 | `tags` | category names, never tag uuids — a uuid means nothing in another instance |
 
 ## Change or remove a business
 
-- **Change** — edit the file.
-- **Remove** — `git rm` the file. The watch is deleted on the next sync.
+- **Change** — edit the file. The next sync writes it through.
+- **Remove** — `git rm` the file. The watch is gone within the hour. Removing many at once is the
+  one thing to announce in the pull request: the sync refuses to delete more than a handful in one
+  run, because a checkout that arrives empty looks exactly like a request to delete everything.
 
 ## What gets rejected
 
@@ -116,28 +126,26 @@ CI fails a pull request for:
 
 - invalid JSON, a missing `url`/`name`, an unsupported `schema`
 - a duplicate slug (the filename is the identity)
-- an **absolute XPath** such as `/html/body/div[2]/div/main/…` — it works today and silently
-  breaks the moment the site adds a `<div>`. Anchor on text, a stable class, or an id
+- an **absolute XPath** such as `/html/body/div[2]/div/main/…`
 - a missing `captured_sample` — nothing in the diff would show what the filter captures
 
-Warnings do not block a merge, but expect a reviewer to ask about them.
+Warnings do not block a merge, but expect a reviewer to ask about them. What makes a selector
+brittle, and what to anchor on instead: [FILTERS.md](./FILTERS.md).
 
 ## Please do not
 
-- add a business whose site publishes **no hours anywhere**. A watch on such a page is silent
-  forever while looking perfectly healthy — 77 watches were in exactly that state here before
-  anyone checked. If the wizard finds nothing even with `--render`, that is the answer.
-- anchor a filter on a generated class (`elementor-element-224ed87`, `fl-icon-text-cjg0i7ku…`).
-  They change whenever the page is edited.
+- add a business whose site publishes **no hours anywhere**. Such a watch is silent forever and
+  looks perfectly healthy; [FILTERS.md](./FILTERS.md) §0 has the measurement. If the wizard finds
+  nothing even with `--render`, that is the answer.
+- anchor a filter on a generated class (`elementor-element-224ed87`).
 - point several entries at a store locator. Split them into per-branch pages instead.
 
 ## Background
 
-- [ADD-A-WATCH.md](./ADD-A-WATCH.md) — the standalone howto, no repository needed
-- [FILTERS.md](./FILTERS.md) — the full method: twelve page shapes, the four criteria that
-  prove a filter is right, and the traps that cost real debugging time
-- [CONCEPT.md](./CONCEPT.md) — why entries are the source of truth and how the
-  service is deployed
+- [FILTERS.md](./FILTERS.md) — the full method: the page shapes that keep coming back, the four
+  criteria that prove a filter is right, and the traps that cost real debugging time
+- [CONCEPT.md](./CONCEPT.md) — why entries are the source of truth
+- [docs/changedetection.md](./docs/changedetection.md) — how the service is deployed
 
 
 ## Licence of contributions

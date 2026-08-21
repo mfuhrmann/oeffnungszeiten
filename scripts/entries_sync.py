@@ -2,9 +2,15 @@
 """
 entries_sync.py — reconcile changedetection against entries/*.json (CONCEPT.md).
 
-The entry files are the source of truth. Add a file -> new watch. Delete a file -> the watch
-is deleted. Edit a file -> the watch is updated. That single mechanism replaces gone-detection,
-the delete queue, adoption pools and absence records.
+The entry files are the source of truth. Add a file -> new watch. Edit a file -> the watch is
+updated. Delete a file -> the watch is deleted, but only with `--prune`: deletions are otherwise
+derived from entries/.lock.json, and a CronJob throws its checkout away every run, so in the
+cluster nothing would ever be removed.
+
+`--prune` carries two safeties, because "no file claims this watch" and "the checkout is broken"
+look identical from here. It refuses when no entries loaded at all, and it refuses when more
+unclaimed watches turn up than `--max-prune` allows. Either way `--notify` says so in Matrix,
+where somebody reads it: a Job log survives three runs.
 
 Git is authoritative: a filter tweaked in the UI is reverted on the next sync. Run
 `cd_export.py --split entries` to turn a UI experiment into a commit instead.
@@ -32,6 +38,7 @@ import glob
 import json
 import os
 import sys
+import urllib.request
 
 import osm_cd_common as C
 
@@ -131,6 +138,48 @@ def differs(want, live):
     return out
 
 
+def prune_urteil(anzahl_entries, anzahl_orphans, max_prune):
+    """Should these unclaimed watches be deleted? -> (ok, reason).
+
+    "No file claims this watch" and "the checkout is broken" look identical from here, so the
+    count decides: a merged pull request removes a handful, an accident orphans everything.
+
+    >>> prune_urteil(551, 2, 5)[0]          # a pull request removed two files
+    True
+    >>> prune_urteil(548, 5, 5)[0]          # exactly at the limit
+    True
+    >>> prune_urteil(547, 6, 5)[0]          # one over: refuse, and say so
+    False
+    >>> prune_urteil(0, 553, 5)[0]          # empty checkout: never
+    False
+    >>> prune_urteil(553, 0, 5)[0]          # nothing to do
+    True
+    """
+    if anzahl_orphans == 0:
+        return True, ""
+    if anzahl_entries == 0:
+        return False, ("no entries were loaded at all. An empty entries/ is a broken checkout, "
+                       "not a request to delete every watch.")
+    if anzahl_orphans > max_prune:
+        return False, (f"{anzahl_orphans} unclaimed watches exceed the limit of {max_prune}. "
+                       f"Nothing was deleted; raise --max-prune if this is really intended.")
+    return True, ""
+
+
+def melden(url, title, body):
+    """Say it where somebody reads it. Never fail the run over a failed notification."""
+    if not url:
+        return
+    try:
+        payload = json.dumps({"title": title, "message": body}).encode()
+        req = urllib.request.Request(url, data=payload,
+                                     headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            print(f"notified: HTTP {r.status}")
+    except Exception as e:
+        print(f"notify failed ({type(e).__name__}) — continuing", file=sys.stderr)
+
+
 def main():
     ap = argparse.ArgumentParser(description="Reconcile changedetection against entries/")
     ap.add_argument("--entries", default="entries")
@@ -141,6 +190,13 @@ def main():
     ap.add_argument("--apply", action="store_true")
     ap.add_argument("--prune", action="store_true",
                     help="delete watches that no entry claims (needs --apply)")
+    ap.add_argument("--max-prune", type=int, default=5, metavar="N",
+                    help="refuse to prune when more than N watches are unclaimed (default 5). "
+                         "A pull request removes a handful; a broken checkout orphans "
+                         "everything, and the two are told apart by the count alone.")
+    ap.add_argument("--notify", metavar="URL", default=os.environ.get("RELAY_URL"),
+                    help="post what was pruned, or why it was refused, to the relay. A Job log "
+                         "is kept for three runs and read by nobody.")
     ap.add_argument("--base-url",
                     default=os.environ.get("CD_BASE_URL", "http://localhost:5000"),
                     help="changedetection API root; defaults to $CD_BASE_URL, so the same call "
@@ -267,10 +323,19 @@ def main():
         api.delete(uuid)          # ALWAYS targeted by uuid, never by tag
         lock.pop(slug, None)
         print(f"deleted {slug}")
-    if args.prune:
-        for u in orphans:
-            api.delete(u)
-            print(f"pruned unclaimed {u[:8]}")
+    if args.prune and orphans:
+        namen = [live[u].get("title") or live[u].get("url", "")[:60] for u in orphans]
+        ok, grund = prune_urteil(len(entries), len(orphans), args.max_prune)
+        if not ok:
+            print(f"REFUSED to prune: {grund}", file=sys.stderr)
+            melden(args.notify, "Sync hat nicht aufgeraeumt",
+                   grund + "\n" + "\n".join(namen[:20]))
+        else:
+            for u in orphans:
+                api.delete(u)
+                print(f"pruned unclaimed {u[:8]}")
+            melden(args.notify, f"{len(orphans)} Watch(es) entfernt",
+                   "Kein Eintrag beansprucht sie mehr:\n" + "\n".join(namen))
 
     with open(lock_path, "w") as fh:
         json.dump(lock, fh, indent=1, sort_keys=True)

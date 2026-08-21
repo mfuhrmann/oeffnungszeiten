@@ -16,7 +16,7 @@ therefore stays quiet on its own. Nothing is sent when there is nothing to repor
 Every fetch error gets a second look before it is reported: the watch is rechecked and audited
 again, and only what survives that costs a line. One blink of the shared cluster browser writes
 `connect_over_cdp` into every `html_webdriver` watch that was in flight — 8 of 12 findings in one
-monthly run — and those are gone by the next fetch, while a 403 that has stood for three weeks is
+weekly run — and those are gone by the next fetch, while a 403 that has stood for three weeks is
 not. A single audit cannot tell the two apart, and a reader who opens the report days later has
 no way to either.
 
@@ -67,13 +67,13 @@ def confirmed(rows, base_url, api_key, budget=RECHECK_BUDGET):
     A fetch error is exactly what this report exists for: nothing else tells anyone about it.
     But not every one of them is standing. The shared cluster browser dropping its connection
     takes out whatever was in flight, so one blink writes `connect_over_cdp` into every
-    `html_webdriver` watch at once — measured: 8 of 12 findings in one monthly run — and a 429
+    `html_webdriver` watch at once — measured: 8 of 12 findings in one run — and a 429
     is gone by the next fetch as well. A single audit cannot tell those from a 403 that has
     stood for three weeks, and the reader, who sees the report days later, cannot either.
 
     So the suspects are rechecked and audited again, and only what survives is reported. A watch
     whose recheck does not come back inside the budget keeps its original row: a line too many
-    beats a silent failure. Costs nothing at this size — a monthly run finds a dozen at most.
+    beats a silent failure. Costs nothing at this size — a run finds a dozen at most.
     """
     suspects = [r for r in rows
                 if r.get("verdict") == "red" and r.get("uuid")

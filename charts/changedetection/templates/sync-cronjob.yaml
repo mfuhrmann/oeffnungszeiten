@@ -37,8 +37,15 @@ spec:
                   # The lock in the checkout is a cache and is thrown away with the pod. Entries
                   # whose lock entry is missing get adopted by URL, so this updates the existing
                   # watches instead of creating duplicates on every run.
-                  python3 scripts/entries_sync.py --base-url "$CD_BASE_URL" {{ if .Values.sync.apply }}--apply{{ end }}
+                  python3 scripts/entries_sync.py --base-url "$CD_BASE_URL" {{ if .Values.sync.apply }}--apply{{ end }}{{ if .Values.sync.prune }} --prune --max-prune {{ .Values.sync.maxPrune }}{{ end }}
               env:
+{{- if and .Values.sync.prune .Values.matrixRelay.enabled }}
+                # Where a deletion is announced. A Job log is kept for three runs and read by
+                # nobody, and a watch that vanished without a word is the kind of surprise this
+                # project can do without.
+                - name: RELAY_URL
+                  value: "http://{{ include "changedetection.name" . }}-matrix-relay:8099/notify"
+{{- end }}
                 - name: CD_BASE_URL
                   value: "http://{{ include "changedetection.name" . }}:{{ .Values.service.port }}"
                 - name: CHANGEDETECTION_API_KEY

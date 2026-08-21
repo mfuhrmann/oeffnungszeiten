@@ -2,24 +2,18 @@
 
 ## Why watch opening hours
 
-Opening hours are the detail in OpenStreetMap that goes stale fastest. A shop moves its closing day, a
-practice changes its consultation times, a café opens later in winter — and OSM still says what
-somebody surveyed three years ago. Unlike a wrong house number, nobody notices until they are standing
-in front of a locked door.
-
-It cannot be checked cartographically: there is no aerial image and no address register for opening
-hours. They exist on the door and on the business's own website, and the website is the only source
-you may query from a distance.
+Opening hours are the detail in OpenStreetMap that goes stale fastest, and usually nobody notices
+until they are standing in front of a locked door. There are only two places to get them: the sign
+on that door, and the operator's own website, if there is one.
 
 ## What this project does
 
-It watches the page where a business publishes its hours and reports when the text there changes. That
-report is a **hint for a mapper**, not an automatic edit: the website can be wrong, the change may be a
+It watches the website where a business publishes its hours and reports when the text there
+changes. That report is a **hint for a mapper**, not an automatic edit: the website can be wrong, the change may be a
 holiday notice, and a sign on the door beats the website in case of doubt.
 
 The boundary is deliberate. Nothing is imported; people are pointed at something they would otherwise
-not see. An import would be a different exercise under different rules — see
-[the OSM import guidelines](https://wiki.openstreetmap.org/wiki/Import/Guidelines).
+miss.
 
 ## Where it works and where it does not
 
@@ -71,50 +65,116 @@ every change a legible diff.
 }
 ```
 
-`captured_sample` is what makes review possible: a reviewer reads the hours in the diff and can tell
-whether the filter grabbed the hours block, a news box or a marketing paragraph — the judgement call
-that keeps recurring ([FILTERS.md](./FILTERS.md) §4). It is documentation, not state; sync ignores it.
+`captured_sample` is the text the filter actually caught when the entry was written. CI never
+fetches a page, so this line is all a reviewer has: an XPath says nothing about whether it caught
+opening hours, a news box or the phone hotline — the captured text says it at a glance. It is
+evidence from the day of submission, not a live value: the page moves on, the line stays, and
+nothing rechecks it. What each watch captures *today* is what `watch_audit.py` reads.
+
 `osm_id` is optional and purely a reference, so a notification can carry an "edit this in OSM" link.
 
-**Slug → watch uuid is derived, not stored.** An entry with no known uuid is matched to an existing
-watch by URL, and by name against title where one URL carries two businesses — a restaurant and its
-beer garden, a museum mapped twice, two outlets of one hotel. `entries/.lock.json` caches the result
-and is **not committed**: it can only ever match one instance, and the reconcile runs from a
-throwaway checkout in the cluster. Verified against a live instance with 277 watches — an empty cache
-and a cache full of invented uuids both adopt all 277 and create none.
+**The slug is the filename.** `robes-bike-house.json` is the slug `robes-bike-house`. That name is
+the identity in git; an entry file carries no id of its own. changedetection gives every watch a
+uuid instead, and nothing stores which uuid belongs to which slug.
+
+The sync works it out each run: it matches by URL, and where one URL carries two businesses (a
+restaurant and its beer garden, two outlets of one hotel) by name against the watch title.
+`entries/.lock.json` remembers the answer but is **not committed**: it fits only one instance, and
+the cluster syncs from a throwaway checkout. Measured twice against the live instance: with no
+cache at all, every watch was adopted and none created. A *stale* cache is the dangerous one,
+because it claims a mapping that has moved on.
+
+## What is deliberately not watched
+
+`entries/` says which pages are watched. [`no-watch.json`](./no-watch.json) says which pages were
+looked at and found to have nothing worth watching. A page belongs in exactly one of the two, and
+CI fails if it appears in both.
+
+Both are keyed by the **page**, not by the map object. One address can carry several businesses: a
+branch list, a practice with two doctors, a shared building. Whether OSM knows them is a different
+question from whether the page publishes hours, and keying by object hid that. The first run of the
+page-keyed check found a page recorded as "publishes nothing" for one object while a watch on it
+was capturing hours for another.
+
+The reason names the cause, not the symptom, and `recheck` follows from it:
+
+- **A property of the business** (states no hours, appointment only, only a social profile, only a
+  delivery microsite, site gone) gets a date. The question at that date is not "can we fetch it
+  now" but *has this business got its own page yet*. A delivery microsite publishes delivery
+  windows that flip when the shop goes offline; a social profile hides hours behind a login wall.
+  Neither improves by fetching from somewhere else.
+- **A property of this instance** (`anti-bot`, `datacenter-block`) gets `on-relocation`. Time
+  changes nothing there. What changes it is the instance moving to a residential connection, or the
+  pinned user agent being bumped. Measured on one host: 200 from a home line, 403 from the VPS,
+  same user agent, same second.
+
+Every record carries a note saying what the page *does* show and how that was checked; CI rejects
+one without it. What does **not** belong in this list is work nobody has done yet: a filter that
+needs a browser, a chain page whose branch link has not been found, a `website` tag pointing at the
+wrong company. That is backlog, and filing it under "unmonitorable" is how it disappears.
+
+```json
+{ "url": "https://www.facebook.com/…",
+  "name": "Kopfarbeit",
+  "reason": "social-only",
+  "established": "2026-08-01",
+  "recheck": "2027-02-01",
+  "note": "Einziger Auftritt ist eine Facebook-Seite: Login-Wand davor, dahinter rotierende
+           Follower-Zahlen und kein stabiler Anker fuer die Zeiten.",
+  "osm_id": "node/12842624670" }
+```
 
 ## The pull request is the API
 
 | Action | PR |
 |---|---|
 | add a watch | add a file |
-| remove a watch | `git rm` the file |
+| remove a watch | `git rm` the file, and say so — the watch is taken away by hand |
 | fix a filter | edit the file |
 
 ## Git is authoritative
 
-`entries_sync.py` **enforces** the entry files: create what is missing, update what differs, delete
-watches whose file is gone. One authority is worth more than the convenience of editing in the UI.
+The entry files decide, not the app. Every hour `entries_sync.py` compares the two and writes the
+files through: it creates a watch that is missing and corrects one that differs.
 
-Consequence: **a filter tweaked in the UI is reverted on the next sync.** To keep a UI experiment, run
-`cd_export.py --split entries` and open a PR. That script is a round-trip helper, not a backup.
+Two things follow.
+
+**A fix made in the UI does not last.** Repairing a filter in changedetection is often the quickest
+way to get it right, because you see immediately what it captures. It holds until the next sync, and
+then the entry file wins. So when the filter finally works, write it into the file: read the watch
+back out with `cd_export.py --split entries`, or copy the selector across by hand, and open a pull
+request. Otherwise the work is gone at the next full hour.
+
+**Deleting is guarded.** Remove a file and the sync removes the watch. It cannot be that simple
+on its own, though: "no file claims this watch" and "the checkout arrived empty" look exactly the
+same from the cluster, and the second must never delete anything. So the job counts. A handful of
+unclaimed watches is a merged pull request and gets deleted; more than that, or no entries loaded
+at all, and it deletes nothing and says so in the Matrix room. The limit is a chart value.
 
 ## Topology
 
 ```
-  contributor                  this repository                    cluster
-  filter_wizard.py ──PR──▶  entries/   ◀────────pull──────────  sync CronJob
-                            charts/ apps/ clusters/  ──▶ Flux ──▶ changedetection + browser
+  a contributor            this repository                 the server
+  filter_wizard.py ─PR─▶  entries/          ◀── reads ──   sync job, once an hour
+                          charts/ apps/     ◀── reads ──   Flux, on every commit
+                                                           changedetection + a browser
 ```
 
-The cluster **pulls**. Nothing is exposed inbound, so CI cannot reach the app and the reconcile has to
-run from inside. There is no Ingress either: changedetection has one shared password and no user
-model, and an authenticated user can point a watch at any URL — an exposed instance is an SSRF pivot.
-Access is `kubectl port-forward`.
+Two programs on the server read this repository, and nothing here reaches into the server.
 
-Deployment — chart, HelmRelease, cluster wiring — lives in `charts/`, `apps/` and `clusters/`, and is
-documented in [docs/changedetection.md](./docs/changedetection.md). Those paths reconcile into a live
-cluster on merge, so they are covered by CODEOWNERS.
+**Flux** keeps the server's setup equal to `charts/`, `apps/` and `clusters/`. Merge a change there
+and the running software is adjusted a few minutes later. Those directories therefore describe a
+live machine, not a plan, which is why they are covered by CODEOWNERS.
+[docs/changedetection.md](./docs/changedetection.md) explains what they contain.
+
+**The sync job** does the same for the watches: once an hour it clones this repository and makes
+changedetection match `entries/`.
+
+Both **pull**, and that is the point: the server has no address the outside world can call, so
+nothing in this repository and no build in CI can reach it. changedetection has no public URL
+either, for reasons of its own that
+[docs/changedetection.md](./docs/changedetection.md) sets out. Looking at its interface means
+forwarding a port from your own machine, which needs access to the server first.
 
 ## No backup of the volume
 
@@ -130,12 +190,15 @@ patterns and the recheck interval.
   fetches user-supplied URLs server-side.
 - **No multi-tenant changedetection.** One shared password, no user model. Contributors never get
   access; the repository is the interface.
-- **No discovery.** Coverage is human work. Nothing queries Overpass to find new businesses, so a shop
-  that opens is only watched once somebody adds a file.
+- **No discovery.** Nothing here queries Overpass, and nothing writes to the map. A shop that opens
+  is watched once somebody adds a file. Finding candidates in OSM, proving which page belongs to
+  which shop and carrying values back into the map is a separate project: a wrong watch is noise,
+  a wrong tag is somebody else's data, and the two deserve different rules.
 
 ## Another city
 
 Nothing here is tied to Fulda. An entry is a URL, a filter and a language; weekday and time-format
-detection lives in `scripts/hours_lang.py` and takes new languages. Seeding many businesses at once is
-a separate exercise — query an OSM category in an area, keep the objects carrying a `website` tag, and
-find the page on each site that holds the hours.
+detection lives in `scripts/hours_lang.py` and takes new languages. Seeding many businesses at once
+is the separate exercise named above: query an OSM category in an area, keep the objects carrying a
+`website` tag, and find the page on each site that holds the hours. What arrives here is the
+result — a URL worth watching.

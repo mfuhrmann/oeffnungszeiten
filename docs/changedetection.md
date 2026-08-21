@@ -41,6 +41,12 @@ Its checkout is thrown away after every run, so the slug-to-uuid mapping cannot 
 two businesses — which is what makes an hourly job safe. A stale or missing `entries/.lock.json`
 is adopted, not duplicated.
 
+**Deletion has a limit, and it announces itself.** With `sync.prune`, a watch that no entry file
+claims is removed, so `git rm` in a pull request really removes it. The job refuses when more than
+`sync.maxPrune` watches are unclaimed, and when no entries loaded at all — an empty checkout is a
+breakage, not an instruction to empty the instance. Both the deletions and the refusals are posted
+into the Matrix room, because a Job log is kept for three runs and read by nobody.
+
 ## Notifications
 
 A relay next to changedetection owns the Matrix session, because Apprise cannot hold one against a
