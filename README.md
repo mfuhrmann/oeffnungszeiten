@@ -17,8 +17,8 @@ python3 scripts/filter_wizard.py https://example.de/kontakt \
 ```
 
 The wizard reads the page and prints candidates as **the text each filter would capture** — you
-pick by reading German opening hours, not by judging an XPath. It writes the entry file; you commit
-it and open a pull request.
+pick by reading German opening hours, not by judging an XPath. `--emit` writes the finished entry
+file; you commit it and open a pull request.
 
 Everything else about that path, including pages that only show their hours after JavaScript:
 **[CONTRIBUTING.md](./CONTRIBUTING.md)**.

@@ -82,6 +82,13 @@ filters are not evaluated even then — only `xpath:` ones are.
 
 ### Writing an entry by hand
 
+Only needed when the wizard cannot help. With `--emit` it writes the whole file itself: `schema`,
+`name`, `url`, `lang` and `added` from your flags and the date, `filter` and `captured_sample` from
+the candidate you picked, `tags` and `osm_id` if you passed them. Two it decides on its own:
+`fetch_backend: html_webdriver` when the page had to be rendered, and `sort_text_alphabetically`
+when the same block appears more than once on the page. The filename comes from the name and the
+URL, so two branches of one chain do not collide.
+
 ```json
 {
   "schema": 1,
@@ -99,8 +106,8 @@ filters are not evaluated even then — only `xpath:` ones are.
 | `schema`, `name`, `url` | required |
 | `filter` | CSS, `xpath:…` or `json:…`. Omit only if the whole page is genuinely the target |
 | `captured_sample` | **please include it** — it is how a reviewer judges the entry without fetching anything |
-| `fetch_backend` | `html_webdriver` if the hours need JavaScript |
-| `sort_text_alphabetically` | `true` if the block re-orders daily |
+| `fetch_backend` | `html_webdriver` if the hours need JavaScript — the wizard sets this itself |
+| `sort_text_alphabetically` | `true` if the block re-orders daily — the wizard sets this itself |
 | `lang` | `de` (default) or `en` — affects weekday detection |
 | `osm_id` | optional, e.g. `node/1579272617`; used to link alerts back to OpenStreetMap |
 | `tags` | category names, never tag uuids — a uuid means nothing in another instance |
