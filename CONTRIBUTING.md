@@ -118,24 +118,22 @@ CI fails a pull request for:
 
 - invalid JSON, a missing `url`/`name`, an unsupported `schema`
 - a duplicate slug (the filename is the identity)
-- an **absolute XPath** such as `/html/body/div[2]/div/main/…` — it works today and silently
-  breaks the moment the site adds a `<div>`. Anchor on text, a stable class, or an id
+- an **absolute XPath** such as `/html/body/div[2]/div/main/…`
 - a missing `captured_sample` — nothing in the diff would show what the filter captures
 
-Warnings do not block a merge, but expect a reviewer to ask about them.
+Warnings do not block a merge, but expect a reviewer to ask about them. What makes a selector
+brittle, and what to anchor on instead: [FILTERS.md](./FILTERS.md).
 
 ## Please do not
 
-- add a business whose site publishes **no hours anywhere**. A watch on such a page is silent
-  forever while looking perfectly healthy — 77 watches were in exactly that state here before
-  anyone checked. If the wizard finds nothing even with `--render`, that is the answer.
-- anchor a filter on a generated class (`elementor-element-224ed87`, `fl-icon-text-cjg0i7ku…`).
-  They change whenever the page is edited.
+- add a business whose site publishes **no hours anywhere**. Such a watch is silent forever and
+  looks perfectly healthy; [FILTERS.md](./FILTERS.md) §0 has the measurement. If the wizard finds
+  nothing even with `--render`, that is the answer.
+- anchor a filter on a generated class (`elementor-element-224ed87`).
 - point several entries at a store locator. Split them into per-branch pages instead.
 
 ## Background
 
-- [ADD-A-WATCH.md](./ADD-A-WATCH.md) — the standalone howto, no repository needed
 - [FILTERS.md](./FILTERS.md) — the full method: twelve page shapes, the four criteria that
   prove a filter is right, and the traps that cost real debugging time
 - [CONCEPT.md](./CONCEPT.md) — why entries are the source of truth and how the

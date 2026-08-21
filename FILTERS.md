@@ -5,11 +5,8 @@ what it captures is (a) the opening-hours block, (b) all of it, and (c) nothing 
 is the accumulated method for getting there: the decision ladder, the thirteen page shapes we keep
 hitting, the investigation procedure, and what actually counts as proof that a filter is right.
 
-**Just want to watch one page you already know?** Start with
-[ADD-A-WATCH.md](./ADD-A-WATCH.md) — a short standalone howto that needs nothing but the page
-itself. This document is the reference behind it.
-
-Companion docs: [README.md](./README.md), [CONCEPT.md](./CONCEPT.md).
+Adding a watch to this repository: [CONTRIBUTING.md](./CONTRIBUTING.md). Why it is built this
+way: [CONCEPT.md](./CONCEPT.md).
 
 ---
 

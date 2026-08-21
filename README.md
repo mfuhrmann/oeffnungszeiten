@@ -18,13 +18,10 @@ python3 scripts/filter_wizard.py https://example.de/kontakt \
 
 The wizard reads the page and prints candidates as **the text each filter would capture** — you
 pick by reading German opening hours, not by judging an XPath. It writes the entry file; you commit
-it and open a pull request. Full walkthrough: **[CONTRIBUTING.md](./CONTRIBUTING.md)**.
+it and open a pull request.
 
-For a page whose hours only appear after JavaScript, start one container and the wizard finds it:
-
-```bash
-docker run --rm -p 3000:3000 dgtlmoon/sockpuppetbrowser
-```
+Everything else about that path, including pages that only show their hours after JavaScript:
+**[CONTRIBUTING.md](./CONTRIBUTING.md)**.
 
 ## Why a filter is needed at all
 
@@ -99,14 +96,13 @@ URL and watches it.
 | | |
 |---|---|
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | add, change or remove a watch |
-| [ADD-A-WATCH.md](./ADD-A-WATCH.md) | the same for your own changedetection instance, without this repo |
 | [FILTERS.md](./FILTERS.md) | how to find an hours block, and how to know the filter is right |
 | [CONCEPT.md](./CONCEPT.md) | why this exists, and why watches are files in git |
 | [docs/changedetection.md](./docs/changedetection.md) | how it is deployed, and the three decisions behind it |
 | [docs/notifications.md](./docs/notifications.md) | how a change reaches the Matrix room, and how to seed the session |
 | [entries/README.md](./entries/README.md) | what an entry contains, and under which licence |
 
-Seven documents, and each answers one question. This page is the map; nothing here is explained
+Six documents, and each answers one question. This page is the map; nothing here is explained
 twice.
 
 ## Licence
