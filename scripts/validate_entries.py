@@ -195,8 +195,18 @@ RECHECK = re.compile(r'^(20\d\d-\d\d-\d\d|on-relocation|never)$')
 OSM_ID = re.compile(r'^(node|way|relation)/\d+$')
 
 
+def norm_url(u):
+    """Compare URLs the way a human would: ignore a trailing slash and case."""
+    return (u or "").rstrip("/").lower()
+
+
 def check_absences(path, watched):
-    """Structure of no-watch.json, and that nothing is in both lists."""
+    """Structure of no-watch.json, and that no page is in both lists.
+
+    Keyed by the page, not by the OSM object: this list says "we looked at this address and
+    there is nothing to watch there". One page can carry several businesses, and whether the
+    map knows them is a different question from whether the page publishes hours.
+    """
     errs = []
     try:
         with open(path) as fh:
@@ -205,13 +215,16 @@ def check_absences(path, watched):
         return []
     except Exception as exc:
         return [f"{path}: not valid JSON — {exc}"]
-    if doc.get("schema") != 1:
-        errs.append(f"{path}: unsupported schema {doc.get('schema')!r}")
+    if doc.get("schema") != 2:
+        errs.append(f"{path}: unsupported schema {doc.get('schema')!r} (expected 2)")
     gesehen = set()
     for r in doc.get("records", []):
-        wer = r.get("name") or r.get("osm_id") or "?"
-        if not OSM_ID.match(r.get("osm_id") or ""):
-            errs.append(f"{path}: {wer}: osm_id {r.get('osm_id')!r} is not type/id")
+        wer = r.get("name") or r.get("url") or "?"
+        url = r.get("url") or ""
+        if not url.startswith(("http://", "https://")):
+            errs.append(f"{path}: {wer}: url {url!r} must start with http:// or https://")
+        if r.get("osm_id") and not OSM_ID.match(r["osm_id"]):
+            errs.append(f"{path}: {wer}: osm_id {r['osm_id']!r} is not type/id")
         if r.get("reason") not in REASONS:
             errs.append(f"{path}: {wer}: reason {r.get('reason')!r} not one of {sorted(REASONS)}")
         if not re.match(r'^20\d\d-\d\d-\d\d$', r.get("established") or ""):
@@ -225,12 +238,12 @@ def check_absences(path, watched):
                         f"was checked")
         if not RECHECK.match(r.get("recheck") or ""):
             errs.append(f"{path}: {wer}: recheck must be a date, on-relocation or never")
-        if r.get("osm_id") in gesehen:
-            errs.append(f"{path}: {wer}: osm_id listed twice")
-        gesehen.add(r.get("osm_id"))
-        if r.get("osm_id") in watched:
-            errs.append(f"{path}: {wer}: has a watch in entries/ — an object belongs in one "
-                        f"list or the other")
+        if norm_url(url) in gesehen:
+            errs.append(f"{path}: {wer}: url listed twice")
+        gesehen.add(norm_url(url))
+        if norm_url(url) in watched:
+            errs.append(f"{path}: {wer}: this page has a watch in entries/ — a page belongs "
+                        f"in one list or the other")
     return errs
 
 
@@ -291,7 +304,7 @@ def main():
         failed += 1 if errs else 0
         warned += 1 if warns and not errs else 0
 
-    watched = {e.get("osm_id") for e in geladen if e.get("osm_id")}
+    watched = {norm_url(e.get("url")) for e in geladen if e.get("url")}
     abwesend = check_absences(args.absences, watched)
     for m in abwesend:
         print(f"FAIL {m}")

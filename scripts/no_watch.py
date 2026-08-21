@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-no_watch.py — what is deliberately not watched, and what of it is due for another look.
+no_watch.py — the block list: pages that are deliberately not watched, and when to look again.
 
-`entries/` says what is watched. `no-watch.json` says what is not, and why — an object belongs
-in exactly one of them. Without the second list the open set never shrinks: every pass
-re-examines the same shop that has published no hours since 2026, and the question "how much is
-left" has no answer.
+`entries/` says which pages are watched. `no-watch.json` says which pages were looked at and
+found to have nothing worth watching, and why. A page belongs in exactly one of them. Without
+the second list every pass re-examines the same shop that has published no hours since 2026.
+
+Keyed by the page, not by the map object: one page can carry several businesses, and whether
+OSM knows them is a different question from whether the page publishes hours.
 
 The reasons fall into two kinds, and `wieder_pruefen` carries the difference:
 
@@ -41,7 +43,7 @@ def laden(pfad):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="the absence list")
+    ap = argparse.ArgumentParser(description="the block list")
     ap.add_argument("--datei", default="no-watch.json")
     ap.add_argument("--faellig", action="store_true", help="only what is due")
     ap.add_argument("--am", default=datetime.date.today().isoformat(), metavar="YYYY-MM-DD")
@@ -62,14 +64,14 @@ def main():
         faellig = sum(1 for r in recs if (r.get("recheck") or "").startswith("20")
                       and r["recheck"] <= args.am)
         ereignis = sum(1 for r in recs if r.get("recheck") == "on-relocation")
-        print(f"\n{len(recs)} objects · {faellig} due on {args.am} · "
+        print(f"\n{len(recs)} pages · {faellig} due on {args.am} · "
               f"{ereignis} waiting on a change of address")
         return
 
     for r in sorted(treffer, key=lambda x: (x.get("recheck", ""), x.get("name", ""))):
         print(f"{r.get('recheck',''):<20} {r.get('reason',''):<18} "
-              f"{(r.get('name') or '?')[:30]:<30} {r.get('source','')[:44]}")
-    print(f"\n{len(treffer)} objects")
+              f"{(r.get('name') or '?')[:30]:<30} {r.get('url','')[:44]}")
+    print(f"\n{len(treffer)} pages")
 
 
 if __name__ == "__main__":
