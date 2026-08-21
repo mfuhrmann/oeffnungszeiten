@@ -114,19 +114,28 @@ at all, and it deletes nothing and says so in the Matrix room. The limit is a ch
 ## Topology
 
 ```
-  contributor                  this repository                    cluster
-  filter_wizard.py ──PR──▶  entries/   ◀────────pull──────────  sync CronJob
-                            charts/ apps/ clusters/  ──▶ Flux ──▶ changedetection + browser
+  a contributor            this repository                 the server
+  filter_wizard.py ─PR─▶  entries/          ◀── reads ──   sync job, once an hour
+                          charts/ apps/     ◀── reads ──   Flux, on every commit
+                                                           changedetection + a browser
 ```
 
-The cluster **pulls**. Nothing is exposed inbound, so CI cannot reach the app and the reconcile has to
-run from inside. There is no Ingress either: changedetection has one shared password and no user
-model, and an authenticated user can point a watch at any URL — an exposed instance is an SSRF pivot.
-Access is `kubectl port-forward`.
+Two programs on the server read this repository, and nothing here reaches into the server.
 
-Deployment — chart, HelmRelease, cluster wiring — lives in `charts/`, `apps/` and `clusters/`, and is
-documented in [docs/changedetection.md](./docs/changedetection.md). Those paths reconcile into a live
-cluster on merge, so they are covered by CODEOWNERS.
+**Flux** keeps the server's setup equal to `charts/`, `apps/` and `clusters/`. Merge a change there
+and the running software is adjusted a few minutes later. Those directories therefore describe a
+live machine, not a plan, which is why they are covered by CODEOWNERS.
+[docs/changedetection.md](./docs/changedetection.md) explains what they contain.
+
+**The sync job** does the same for the watches: once an hour it clones this repository and makes
+changedetection match `entries/`.
+
+Both **pull**. That is the point: the server has no address the outside world can call, so nothing
+in this repository, and no build in CI, can touch it. It also means changedetection has no public
+URL at all. It has one shared password and no user accounts, and anyone logged in can point a watch
+at any address, including addresses that only exist inside the server. A public instance would be a
+way in. To look at the interface you forward a port from your own machine
+(`kubectl port-forward`), which needs access to the server in the first place.
 
 ## No backup of the volume
 

@@ -20,7 +20,7 @@ tests:
     set:
       sync:
         enabled: true
-        repo: https://codeberg.org/osm-fulda/oeffnungszeiten.git
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
     asserts:
       - hasDocuments:
           count: 1
@@ -32,7 +32,7 @@ tests:
     set:
       sync:
         enabled: true
-        repo: https://codeberg.org/osm-fulda/oeffnungszeiten.git
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
         apply: true
     asserts:
       - matchRegex:
@@ -43,7 +43,7 @@ tests:
     set:
       sync:
         enabled: true
-        repo: https://codeberg.org/osm-fulda/oeffnungszeiten.git
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
     asserts:
       - equal:
           path: spec.concurrencyPolicy
