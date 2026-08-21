@@ -61,24 +61,33 @@ A browser on `localhost:3000` is found by itself and the wizard prints which one
 `fetch_backend: html_webdriver` into the entry. Without Docker you can still open the pull request:
 say in the description that the page needs rendering, and a maintainer will finish it.
 
-## 4. Open the pull request
+## 4. Check the entry
 
 ```bash
+python3 scripts/validate_entries.py --only entries/example-gmbh.json           # structure, as CI does
+python3 scripts/validate_entries.py --live --only entries/example-gmbh.json    # and against the page
+```
+
+The first call is what CI will run: **structure only**, and on purpose, because it needs no network
+and so never fails for a reason you cannot fix. The second one fetches the page and is worth the
+minute before anything leaves your machine. Add `--browser-ws ws://localhost:3000` for a page that
+needs JavaScript. Only `xpath:` filters are evaluated live; CSS and JSON-LD ones are not.
+
+Whether the filter really captures the hours is judged by a human, from the `captured_sample` in
+your diff. That is why it has to be there and has to show actual opening hours.
+
+## 5. Open the pull request
+
+```bash
+git checkout -b add-example-gmbh
 git add entries/example-gmbh.json
 git commit -m "add Example GmbH"
+git push origin add-example-gmbh
+gh pr create --fill
 ```
 
-CI checks the **structure** of every entry and nothing else, on purpose: it needs no network, so it
-never fails for a reason you cannot fix. Whether the filter really captures the hours is judged from
-the `captured_sample` in your diff, which is why it has to be there and has to show actual opening
-hours. Check it against the live page first if you can:
-
-```bash
-python3 scripts/validate_entries.py --live --only entries/example-gmbh.json
-```
-
-Add `--browser-ws ws://localhost:3000` for a page that needs JavaScript. Only `xpath:` filters are
-evaluated live; CSS and JSON-LD ones are not.
+Never commit onto `main`. Without the `gh` CLI, push the branch and open the pull request on
+github.com.
 
 ---
 
