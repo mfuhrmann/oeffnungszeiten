@@ -80,8 +80,9 @@ uuid instead, and nothing stores which uuid belongs to which slug.
 The sync works it out each run: it matches by URL, and where one URL carries two businesses (a
 restaurant and its beer garden, two outlets of one hotel) by name against the watch title.
 `entries/.lock.json` remembers the answer but is **not committed**: it fits only one instance, and
-the cluster syncs from a throwaway checkout. Measured against a live instance of 277 watches: with
-an empty cache, and with a cache full of invented uuids, all 277 were adopted and none created.
+the cluster syncs from a throwaway checkout. Measured twice against the live instance, most
+recently at 553 watches: with no cache at all, every watch was adopted and none created. A *stale*
+cache is the dangerous one, because it claims a mapping that has moved on.
 
 ## The pull request is the API
 
