@@ -118,8 +118,8 @@ def write_entries(watches, store_by_uuid, outdir, samples, tag_names=None):
     seen, written = {}, 0
     for uuid, w in watches.items():
         rec = store_by_uuid.get(uuid, {})
-        # Prefer the WATCH title: it is the more specific one. The datastore says "Pappert"
-        # for all seven branches, while the watch says "Pappert (haimbacher str)".
+        # The watch title is the specific one: "Pappert (haimbacher str)" rather than the
+        # brand name every branch shares.
         name = w.get("title") or rec.get("name") or ""
         if not name:
             from urllib.parse import urlparse
@@ -180,7 +180,6 @@ def main():
     ap.add_argument("--out", default="export/changedetection.json")
     ap.add_argument("--split", metavar="DIR",
                     help="also write one entry file per watch (CONCEPT.md model)")
-    ap.add_argument("--datastore", help="datastore, only used to enrich entries with osm_id/name")
     ap.add_argument("--with-secrets", action="store_true",
                     help="include notification_urls — LOCAL backups only, they contain tokens")
     ap.add_argument("--no-globals", action="store_true")
@@ -237,10 +236,6 @@ def main():
 
     if args.split:
         store_by_uuid, samples = {}, {}
-        if args.datastore:
-            store = C.load_datastore(args.datastore)
-            store_by_uuid = {r["cd_uuid"]: r for r in store["records"].values()
-                             if r.get("cd_uuid")}
         # captured_sample is what makes an entry reviewable in a diff without fetching
         for u in watches:
             try:
