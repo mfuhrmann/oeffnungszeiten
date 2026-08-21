@@ -73,14 +73,15 @@ nothing rechecks it. What each watch captures *today* is what `watch_audit.py` r
 
 `osm_id` is optional and purely a reference, so a notification can carry an "edit this in OSM" link.
 
-**The slug is the filename**, `robes-bike-house.json` → `robes-bike-house`. An entry carries no id
-of its own: the file name is the identity in git, and the uuid belongs to changedetection, which
-mints one per watch. The mapping between them is derived, not stored — an entry with no known uuid
-is matched to an existing watch by URL, and by name against title where one URL carries two
-businesses: a restaurant and its beer garden, a museum mapped twice, two outlets of one hotel.
-`entries/.lock.json` caches the result and is **not committed**: it can only ever match one instance, and the reconcile runs from a
-throwaway checkout in the cluster. Verified against a live instance with 277 watches — an empty cache
-and a cache full of invented uuids both adopt all 277 and create none.
+**The slug is the filename.** `robes-bike-house.json` is the slug `robes-bike-house`. That name is
+the identity in git; an entry file carries no id of its own. changedetection gives every watch a
+uuid instead, and nothing stores which uuid belongs to which slug.
+
+The sync works it out each run: it matches by URL, and where one URL carries two businesses (a
+restaurant and its beer garden, two outlets of one hotel) by name against the watch title.
+`entries/.lock.json` remembers the answer but is **not committed**: it fits only one instance, and
+the cluster syncs from a throwaway checkout. Measured against a live instance of 277 watches: with
+an empty cache, and with a cache full of invented uuids, all 277 were adopted and none created.
 
 ## The pull request is the API
 
