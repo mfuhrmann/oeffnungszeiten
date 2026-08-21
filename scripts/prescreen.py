@@ -2,8 +2,7 @@
 """
 prescreen.py — decide which open objects are worth a filter, before anyone looks at one.
 
-`coverage.py --csv` lists what is open. Running the wizard over that list wastes most of the
-effort: a batch of five fast-food places produced five absences and no watch, because four of
+A candidate list lists what is open. Running the wizard over it wastes most of the effort: a batch of five fast-food places produced five absences and no watch, because four of
 the domains are microsites that Lieferando runs and states so in their own body text. That is
 machine-readable, and so are a dead domain and a page without a single clock value.
 
@@ -30,8 +29,11 @@ It also draws **across** categories instead of down a sorted list: sorting by ca
 straight into one industry's platform, and the sample says more about that industry than about
 the city.
 
-    python3 scripts/prescreen.py --csv offen.csv --anzahl 10
-    python3 scripts/prescreen.py --csv offen.csv --anzahl 10 --kategorie shop
+    python3 scripts/prescreen.py --csv kandidaten.csv --anzahl 10
+    python3 scripts/prescreen.py --csv kandidaten.csv --anzahl 10 --kategorie shop
+
+The CSV needs four columns: `osm_id`, `name`, `kategorie`, `website`. Where the list comes from is
+not this project's business — a query against OSM, a spreadsheet, a hand-written line.
 """
 import argparse
 import collections
@@ -66,8 +68,8 @@ def gesperrte_hosts(no_watch="no-watch.json", liste="blocked-hosts.txt"):
     raus = set()
     try:
         for r in json.load(open(no_watch, encoding="utf-8"))["records"]:
-            if r.get("reason") in ("datacenter-block", "anti-bot") and r.get("source"):
-                wirt = urllib.parse.urlsplit(r["source"]).netloc.lower()
+            if r.get("reason") in ("datacenter-block", "anti-bot") and r.get("url"):
+                wirt = urllib.parse.urlsplit(r["url"]).netloc.lower()
                 if wirt.startswith("www."):
                     wirt = wirt[4:]
                 if wirt:
@@ -143,7 +145,8 @@ def pruefe(url):
 
 def main():
     ap = argparse.ArgumentParser(description="which open objects are worth a filter")
-    ap.add_argument("--csv", required=True, help="output of coverage.py --csv")
+    ap.add_argument("--csv", required=True,
+                    help="candidates: osm_id, name, kategorie, website")
     ap.add_argument("--anzahl", type=int, default=10)
     ap.add_argument("--kategorie", help="only categories starting with this")
     ap.add_argument("--ueberspringen", nargs="*", default=[], metavar="NAME")

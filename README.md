@@ -87,9 +87,9 @@ no-times and worth-it. Only the last group needs a person.
 python3 scripts/prescreen.py --csv kandidaten.csv --anzahl 10
 ```
 
-Where the candidates come from is outside this repository: finding objects in OpenStreetMap and
-writing tags back into the map is a different job with a different failure cost. This one takes a
-URL and watches it.
+The CSV needs four columns: `osm_id`, `name`, `kategorie`, `website`. Where that list comes from is
+outside this repository, and deliberately so: finding objects in OpenStreetMap and writing tags back
+into the map is a different job with a different failure cost. This one takes a URL and watches it.
 
 ## Documentation
 
