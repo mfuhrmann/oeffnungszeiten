@@ -16,6 +16,14 @@ spec:
     spec:
       backoffLimit: 1
       template:
+        metadata:
+          # Its own name label, not changedetection's: a bare pod carrying the app labels would
+          # match the Deployment's ReplicaSet selector and be adopted, then deleted. Without any
+          # label the pod is invisible to the relay's NetworkPolicy instead, and the prune
+          # message it posts is dropped on the last hop.
+          labels:
+            app.kubernetes.io/name: {{ include "changedetection.name" . }}-sync
+            app.kubernetes.io/instance: {{ .Release.Name }}
         spec:
           restartPolicy: Never
           containers:

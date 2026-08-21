@@ -126,3 +126,40 @@ tests:
       - equal:
           path: spec.ingress[0].from[1].podSelector.matchLabels['app.kubernetes.io/name']
           value: changedetection-audit-report
+
+  - it: opens the relay port for the sync when it may prune
+    # The prune refusal is the guard on deletions and has to reach the room, not a Job log.
+    set:
+      matrixRelay:
+        enabled: true
+      auditReport:
+        enabled: true
+      sync:
+        enabled: true
+        prune: true
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+    documentIndex: 4
+    asserts:
+      - isKind:
+          of: NetworkPolicy
+      - equal:
+          path: spec.ingress[0].from[2].podSelector.matchLabels['app.kubernetes.io/name']
+          value: changedetection-sync
+
+  - it: leaves the door shut for a sync that never deletes
+    set:
+      matrixRelay:
+        enabled: true
+      auditReport:
+        enabled: true
+      sync:
+        enabled: true
+        prune: false
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+    documentIndex: 4
+    asserts:
+      - isKind:
+          of: NetworkPolicy
+      - lengthEqual:
+          path: spec.ingress[0].from
+          count: 2
