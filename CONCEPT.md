@@ -130,12 +130,11 @@ live machine, not a plan, which is why they are covered by CODEOWNERS.
 **The sync job** does the same for the watches: once an hour it clones this repository and makes
 changedetection match `entries/`.
 
-Both **pull**. That is the point: the server has no address the outside world can call, so nothing
-in this repository, and no build in CI, can touch it. It also means changedetection has no public
-URL at all. It has one shared password and no user accounts, and anyone logged in can point a watch
-at any address, including addresses that only exist inside the server. A public instance would be a
-way in. To look at the interface you forward a port from your own machine
-(`kubectl port-forward`), which needs access to the server in the first place.
+Both **pull**, and that is the point: the server has no address the outside world can call, so
+nothing in this repository and no build in CI can reach it. changedetection has no public URL
+either, for reasons of its own that
+[docs/changedetection.md](./docs/changedetection.md) sets out. Looking at its interface means
+forwarding a port from your own machine, which needs access to the server first.
 
 ## No backup of the volume
 
