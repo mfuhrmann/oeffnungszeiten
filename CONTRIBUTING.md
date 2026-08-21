@@ -33,10 +33,11 @@ python3 scripts/filter_wizard.py https://example.de/kontakt --emit entries \
     --name "Example GmbH" --tags fulda-restaurants
 ```
 
-`--tags` is what groups the watch by category (and decides which sibling its notification
-setup is copied from) — pick the tag its neighbours use, e.g. `fulda-restaurants`,
-`fulda-bakery`, `fulda-doctors`. Repeat the flag or comma-separate for several. The wizard
-says so if you forget.
+`--tags` groups the watch by category: pick the tag its neighbours use, e.g.
+`fulda-restaurants`, `fulda-bakery`, `fulda-doctors`. Repeat the flag or comma-separate for
+several. The wizard says so if you forget. Notifications do not come from the tag: an entry with
+an `osm_id` gets a message body carrying the OSM link, everything else falls through to the
+global one.
 
 It prints candidates as **the text each one would capture**. Pick by reading the hours — you
 know what your business's opening times look like; you do not need to judge a selector. Heed
@@ -141,10 +142,10 @@ brittle, and what to anchor on instead: [FILTERS.md](./FILTERS.md).
 
 ## Background
 
-- [FILTERS.md](./FILTERS.md) — the full method: twelve page shapes, the four criteria that
-  prove a filter is right, and the traps that cost real debugging time
-- [CONCEPT.md](./CONCEPT.md) — why entries are the source of truth and how the
-  service is deployed
+- [FILTERS.md](./FILTERS.md) — the full method: the page shapes that keep coming back, the four
+  criteria that prove a filter is right, and the traps that cost real debugging time
+- [CONCEPT.md](./CONCEPT.md) — why entries are the source of truth
+- [docs/changedetection.md](./docs/changedetection.md) — how the service is deployed
 
 
 ## Licence of contributions

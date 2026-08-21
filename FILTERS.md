@@ -2,8 +2,8 @@
 
 changedetection triggers on **any** text change on the page it fetches. A watch is only useful if
 what it captures is (a) the opening-hours block, (b) all of it, and (c) nothing else. This document
-is the accumulated method for getting there: the decision ladder, the thirteen page shapes we keep
-hitting, the investigation procedure, and what actually counts as proof that a filter is right.
+is the accumulated method for getting there: the decision ladder, the page shapes that keep
+coming back, the investigation procedure, and what actually counts as proof that a filter is right.
 
 Adding a watch to this repository: [CONTRIBUTING.md](./CONTRIBUTING.md). Why it is built this
 way: [CONCEPT.md](./CONCEPT.md).
@@ -62,7 +62,7 @@ changedetection's own browser cannot find (Vergölst). Note the reason in the en
 
 ---
 
-## 2. The thirteen cases
+## 2. The cases
 
 ### Case 1 — JSON-LD structured data (fallback, see the ladder)
 **Signature:** `<script type="application/ld+json">` containing `openingHours` or
