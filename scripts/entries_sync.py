@@ -2,9 +2,11 @@
 """
 entries_sync.py — reconcile changedetection against entries/*.json (CONCEPT.md).
 
-The entry files are the source of truth. Add a file -> new watch. Delete a file -> the watch
-is deleted. Edit a file -> the watch is updated. That single mechanism replaces gone-detection,
-the delete queue, adoption pools and absence records.
+The entry files are the source of truth. Add a file -> new watch. Edit a file -> the watch is
+updated. Delete a file -> the watch is deleted **only where a lock survives**: deletions are
+derived from entries/.lock.json, and a CronJob throws its checkout away every run, so in the
+cluster a removed entry leaves an unclaimed watch behind. `--prune` deletes those, and the
+CronJob does not pass it today. The plan output names them either way.
 
 Git is authoritative: a filter tweaked in the UI is reverted on the next sync. Run
 `cd_export.py --split entries` to turn a UI experiment into a commit instead.

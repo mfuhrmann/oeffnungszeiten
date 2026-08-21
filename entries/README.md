@@ -5,9 +5,9 @@ are not covered by it** — a code licence cannot license a database.
 
 ## Licence: ODbL 1.0
 
-276 of the 280 entries here were derived from **OpenStreetMap** — the business names, their
-`website` tags and the `osm_id` references all came from Overpass queries against OSM. That
-makes this a derivative database, so it is published under the
+Nearly every entry here was derived from **OpenStreetMap**: the business names, their `website`
+tags and the `osm_id` references came from Overpass queries against OSM. That makes this a
+derivative database, so it is published under the
 [Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/), the same terms
 as the source.
 
