@@ -84,6 +84,46 @@ the cluster syncs from a throwaway checkout. Measured twice against the live ins
 cache at all, every watch was adopted and none created. A *stale* cache is the dangerous one,
 because it claims a mapping that has moved on.
 
+## What is deliberately not watched
+
+`entries/` says which pages are watched. [`no-watch.json`](./no-watch.json) says which pages were
+looked at and found to have nothing worth watching. A page belongs in exactly one of the two, and
+CI fails if it appears in both.
+
+Both are keyed by the **page**, not by the map object. One address can carry several businesses: a
+branch list, a practice with two doctors, a shared building. Whether OSM knows them is a different
+question from whether the page publishes hours, and keying by object hid that. The first run of the
+page-keyed check found a page recorded as "publishes nothing" for one object while a watch on it
+was capturing hours for another.
+
+The reason names the cause, not the symptom, and `recheck` follows from it:
+
+- **A property of the business** (states no hours, appointment only, only a social profile, only a
+  delivery microsite, site gone) gets a date. The question at that date is not "can we fetch it
+  now" but *has this business got its own page yet*. A delivery microsite publishes delivery
+  windows that flip when the shop goes offline; a social profile hides hours behind a login wall.
+  Neither improves by fetching from somewhere else.
+- **A property of this instance** (`anti-bot`, `datacenter-block`) gets `on-relocation`. Time
+  changes nothing there. What changes it is the instance moving to a residential connection, or the
+  pinned user agent being bumped. Measured on one host: 200 from a home line, 403 from the VPS,
+  same user agent, same second.
+
+Every record carries a note saying what the page *does* show and how that was checked; CI rejects
+one without it. What does **not** belong in this list is work nobody has done yet: a filter that
+needs a browser, a chain page whose branch link has not been found, a `website` tag pointing at the
+wrong company. That is backlog, and filing it under "unmonitorable" is how it disappears.
+
+```json
+{ "url": "https://www.facebook.com/…",
+  "name": "Kopfarbeit",
+  "reason": "social-only",
+  "established": "2026-08-01",
+  "recheck": "2027-02-01",
+  "note": "Einziger Auftritt ist eine Facebook-Seite: Login-Wand davor, dahinter rotierende
+           Follower-Zahlen und kein stabiler Anker fuer die Zeiten.",
+  "osm_id": "node/12842624670" }
+```
+
 ## The pull request is the API
 
 | Action | PR |

@@ -28,14 +28,10 @@ docker run --rm -p 3000:3000 dgtlmoon/sockpuppetbrowser
 
 ## Why a filter is needed at all
 
-changedetection is a **text-diff tool, not a smart crawler**. It snapshots the visible text of one
-URL and alerts when *anything* changes — it has no concept of an opening hour. Two failure modes
-follow: watch the whole page and every banner, captcha or "open now" widget alerts; watch the wrong
-page and nothing ever alerts, which looks exactly like a healthy watch.
-
-Both are solved by pointing each watch at the hours block. How to find one, the page shapes that
-occur in practice, and what counts as proof that a filter is right:
-**[FILTERS.md](./FILTERS.md)**.
+changedetection alerts on *any* text change. Unfiltered, a watch fires on a rotating teaser, a
+cookie banner or a visitor counter, and the one alert that matters drowns in them. So every entry
+carries a selector that narrows the page down to its opening-hours block. Finding one, and telling
+a good one from a plausible one, is the craft of this project: **[FILTERS.md](./FILTERS.md)**.
 
 ## Layout
 
@@ -73,38 +69,10 @@ German pages, and the changedetection API client.
 
 ### What is *not* watched
 
-`entries/` answers "which pages do we watch". Its counterpart is
-[`no-watch.json`](./no-watch.json): the pages that were looked at and found to have nothing worth
-watching, with the reason, the date it was established, and when to look again. A page belongs in
-exactly one of the two lists, and CI fails if it appears in both.
-
-Both lists are keyed by the **page**, not by the map object. One address can carry several
-businesses — a branch list, a practice with two doctors, a shared building — and whether OSM knows
-them is a different question from whether the page publishes hours. Keying by object hid that: the
-same page could be recorded as "publishes nothing" for one object while a watch on it was
-capturing hours for another, which is exactly what the first run of the page-keyed check found.
-
-Two kinds of reason, and `recheck` carries the difference:
-
-- a property of the **business** — the page states no hours, appointment only, only a social
-  profile, only a delivery microsite, site gone — gets a date. The question at that date is not
-  "can we fetch it now" but *has this business got its own page yet*. That distinction matters
-  for the platform cases: a Lieferando microsite publishes **delivery** windows that flip when
-  the shop toggles offline, and a social profile hides its hours behind a login wall among
-  rotating follower counts. Neither becomes usable by fetching from somewhere else.
-- a property of **this instance** — `anti-bot`, `datacenter-block` — gets `on-relocation`.
-  Time changes nothing there: the block is the same tomorrow. What changes it is the instance
-  moving to a residential address, or the pinned user agent being bumped. Measured on one host:
-  200 from a home connection, 403 from the VPS, same user agent, same second.
-
-Every reason names the **cause**, not the symptom, and the note has to say what the page *does*
-show and how that was checked — CI rejects a record without one. "No hours published" was the old
-wording, and it swept three different things into one bucket: a page that really states nothing,
-a chain whose branch link nobody found, and our own discovery landing on a site-wide footer link.
-
-What does **not** belong in this list is work nobody has done yet — a filter that needs a browser,
-a chain page whose branch link has not been found, a `website` tag pointing at the wrong company.
-That is backlog, and putting it under a heading like "unmonitorable" is how it disappears.
+[`no-watch.json`](./no-watch.json) is the counterpart of `entries/`: pages that were looked at and
+found to have nothing worth watching, each with a reason and a date to look again. Both lists are
+keyed by the page, and CI fails if a page appears in both. Why the reasons are shaped the way they
+are: [CONCEPT.md](./CONCEPT.md).
 
 ```bash
 python3 scripts/no_watch.py                    # summary per reason
@@ -112,35 +80,19 @@ python3 scripts/no_watch.py --faellig          # due for another look today
 python3 scripts/no_watch.py --standortwechsel  # what a move would put back in play
 ```
 
-One record, in full:
-
-```json
-{ "osm_id": "node/12842624670",
-  "name": "Kopfarbeit",
-  "reason": "social-only",
-  "established": "2026-08-01",
-  "source": "https://www.facebook.com/…",
-  "recheck": "2027-02-01",
-  "note": "Einziger Auftritt ist eine Facebook-Seite: Login-Wand davor, dahinter rotierende
-           Follower-Zahlen und kein stabiler Anker fuer die Zeiten." }
-```
-
 ### Which pages become watches
 
-A watch is worth having only if its page publishes hours at all. `prescreen.py` answers that
-before anyone builds a filter: it fetches each candidate once and sorts it into blocked (a host
-this instance cannot reach), platform (a delivery microsite, whose times are DELIVERY windows),
-unreachable, throttled, no-times, and worth-it. Only the last group needs a person; the first
-three are already the note that belongs in the block list.
+A watch is only worth having if its page publishes hours at all. `prescreen.py` answers that before
+anyone builds a filter, sorting candidates into blocked, delivery platform, unreachable, throttled,
+no-times and worth-it. Only the last group needs a person.
 
 ```bash
 python3 scripts/prescreen.py --csv kandidaten.csv --anzahl 10
 ```
 
-Where the candidates come from is deliberately outside this repository. Finding objects in
-OpenStreetMap, proving which page belongs to which shop and writing tags back into the map is a
-different job with a different failure cost — a wrong watch is noise, a wrong tag is somebody
-else's data. It lives in its own project; this one takes a URL and watches it.
+Where the candidates come from is outside this repository: finding objects in OpenStreetMap and
+writing tags back into the map is a different job with a different failure cost. This one takes a
+URL and watches it.
 
 ## Documentation
 
@@ -152,6 +104,10 @@ else's data. It lives in its own project; this one takes a URL and watches it.
 | [CONCEPT.md](./CONCEPT.md) | why this exists, and why watches are files in git |
 | [docs/changedetection.md](./docs/changedetection.md) | how it is deployed, and the three decisions behind it |
 | [docs/notifications.md](./docs/notifications.md) | how a change reaches the Matrix room, and how to seed the session |
+| [entries/README.md](./entries/README.md) | what an entry contains, and under which licence |
+
+Seven documents, and each answers one question. This page is the map; nothing here is explained
+twice.
 
 ## Licence
 
