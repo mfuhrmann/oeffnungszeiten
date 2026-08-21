@@ -107,7 +107,7 @@ twice.
 
 ## Licence
 
-AGPL-3.0-or-later, see [LICENSE](./LICENSE). Opening hours read from business websites are facts,
+GPL-3.0-or-later, see [LICENSE](./LICENSE). Opening hours read from business websites are facts,
 not creative works; when you carry them into OSM, record the source and the date
 (`source:opening_hours`, `check_date:opening_hours`) and never copy from a map service whose licence
 forbids it.
