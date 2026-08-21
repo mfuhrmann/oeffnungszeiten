@@ -104,6 +104,15 @@ sync:
   image: python:3.12-alpine
   # -- apply=false runs the plan only, which is the safe way to introduce the CronJob
   apply: false
+  # -- Delete watches that no entry file claims, so that removing a file in a pull request
+  # actually removes the watch. Off by default: it hands an hourly job the power to delete, and
+  # a tag-based delete once wiped every watch in this project.
+  prune: false
+  # -- Guard for the above. The job refuses to delete when more than this many watches are
+  # unclaimed, and says so in Matrix instead. A pull request removes a handful; a checkout that
+  # arrived empty or in the wrong directory orphans everything, and the count is what tells the
+  # two apart.
+  maxPrune: 5
 
 auditReport:
   # -- Off by default like sync, and for the same reason: without a real `sync.repo` the

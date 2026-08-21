@@ -108,9 +108,9 @@ filters are not evaluated even then — only `xpath:` ones are.
 ## Change or remove a business
 
 - **Change** — edit the file. The next sync writes it through.
-- **Remove** — `git rm` the file. That removes it from the source; the watch itself stays until
-  someone runs the sync with `--prune`, because the hourly CronJob deliberately does not delete.
-  Say in the pull request that the watch should go, so it is not forgotten.
+- **Remove** — `git rm` the file. The watch is gone within the hour. Removing many at once is the
+  one thing to announce in the pull request: the sync refuses to delete more than a handful in one
+  run, because a checkout that arrives empty looks exactly like a request to delete everything.
 
 ## What gets rejected
 

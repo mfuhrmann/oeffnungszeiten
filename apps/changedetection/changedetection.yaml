@@ -105,6 +105,11 @@ data:
       apply: true
       repo: https://github.com/mfuhrmann/oeffnungszeiten.git
       ref: main
+      # Removing a file in a pull request removes the watch, which is what the docs have always
+      # promised. The guard is what makes that safe: the job refuses when more than maxPrune
+      # watches are unclaimed, or when no entries loaded at all, and says so in Matrix.
+      prune: true
+      maxPrune: 5
 
     # The three silent failure states — a fetch error, an empty filter result, an ignore pattern
     # that ate the hours — notify nobody on their own, so a broken watch is indistinguishable

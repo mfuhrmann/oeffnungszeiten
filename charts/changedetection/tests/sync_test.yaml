@@ -48,3 +48,60 @@ tests:
       - equal:
           path: spec.concurrencyPolicy
           value: Forbid
+
+  # Deletion is the one operation that cannot be taken back from a CronJob, so it stays off
+  # unless asked for, and it never runs without its guard.
+  - it: does not prune unless told to
+    set:
+      sync:
+        enabled: true
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+        apply: true
+    asserts:
+      - notMatchRegex:
+          path: spec.jobTemplate.spec.template.spec.containers[0].args[0]
+          pattern: "--prune"
+
+  - it: prunes with a limit, never bare
+    set:
+      sync:
+        enabled: true
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+        apply: true
+        prune: true
+    asserts:
+      - matchRegex:
+          path: spec.jobTemplate.spec.template.spec.containers[0].args[0]
+          pattern: "--prune --max-prune 5"
+
+  - it: tells the relay where to post a deletion
+    set:
+      sync:
+        enabled: true
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+        apply: true
+        prune: true
+      matrixRelay:
+        enabled: true
+    asserts:
+      - contains:
+          path: spec.jobTemplate.spec.template.spec.containers[0].env
+          content:
+            name: RELAY_URL
+            value: "http://changedetection-matrix-relay:8099/notify"
+
+  - it: says nothing to a relay that is switched off
+    set:
+      sync:
+        enabled: true
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+        apply: true
+        prune: true
+      matrixRelay:
+        enabled: false
+    asserts:
+      - notContains:
+          path: spec.jobTemplate.spec.template.spec.containers[0].env
+          content:
+            name: RELAY_URL
+            value: "http://changedetection-matrix-relay:8099/notify"

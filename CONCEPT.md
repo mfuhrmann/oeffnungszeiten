@@ -105,10 +105,11 @@ then the entry file wins. So when the filter finally works, write it into the fi
 back out with `cd_export.py --split entries`, or copy the selector across by hand, and open a pull
 request. Otherwise the work is gone at the next full hour.
 
-**Deleting is the exception.** The sync never removes a watch on its own. It can only tell that a
-watch is unclaimed, and saying "no file claims this" is not the same as "this must go": a renamed
-file or a half-finished checkout would look identical. So a removed entry leaves its watch running
-until a person takes it away.
+**Deleting is guarded.** Remove a file and the sync removes the watch. It cannot be that simple
+on its own, though: "no file claims this watch" and "the checkout arrived empty" look exactly the
+same from the cluster, and the second must never delete anything. So the job counts. A handful of
+unclaimed watches is a merged pull request and gets deleted; more than that, or no entries loaded
+at all, and it deletes nothing and says so in the Matrix room. The limit is a chart value.
 
 ## Topology
 
