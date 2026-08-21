@@ -137,13 +137,3 @@ def resolve_api_key(api_key=None, container="changedetection"):
         pass
     sys.exit("ERROR: no API key. Pass --api-key, set CHANGEDETECTION_API_KEY, "
              "or ensure the container is reachable via docker exec.")
-
-
-# --------------------------------------------------------------------------- #
-# Datastore
-# --------------------------------------------------------------------------- #
-def load_datastore(path):
-    if os.path.exists(path):
-        with open(path) as fh:
-            return json.load(fh)
-    return {"area": None, "records": {}}

@@ -6,8 +6,8 @@ is the accumulated method for getting there: the decision ladder, the thirteen p
 hitting, the investigation procedure, and what actually counts as proof that a filter is right.
 
 **Just want to watch one page you already know?** Start with
-[ADD-A-WATCH.md](./ADD-A-WATCH.md) — a short standalone howto that needs no OSM and no
-datastore. This document is the reference behind it.
+[ADD-A-WATCH.md](./ADD-A-WATCH.md) — a short standalone howto that needs nothing but the page
+itself. This document is the reference behind it.
 
 Companion docs: [README.md](./README.md), [CONCEPT.md](./CONCEPT.md).
 
@@ -279,8 +279,8 @@ shop from scratch every pass, which is what an unrecorded absence costs.
 
 ### The fast path: two tools that do this for you
 
-Most of §3 is only needed when the tools come up short. Try them first — neither needs
-browser devtools, and neither requires the OSM datastore.
+Most of §3 is only needed when the tools come up short. Try them first — neither needs browser
+devtools, and neither needs anything beyond the page and a changedetection instance.
 
 **`filter_wizard.py` — choose a filter by reading text, not selectors.** It runs every
 strategy in §2 and prints the *text each candidate would capture* as a numbered menu, with
@@ -305,7 +305,6 @@ snapshot and judges it against the four criteria in §4, in plain language.
 
 ```bash
 python3 scripts/watch_audit.py                                # every watch, worst first
-python3 scripts/watch_audit.py --datastore <area>.json    # nicer names
 python3 scripts/watch_audit.py --only red                     # just the broken ones
 python3 scripts/watch_audit.py --html audit.html              # report for a browser
 ```
