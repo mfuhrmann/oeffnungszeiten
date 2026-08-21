@@ -94,13 +94,20 @@ because it claims a mapping that has moved on.
 
 ## Git is authoritative
 
-`entries_sync.py` **enforces** the entry files: create what is missing, update what differs. One
-authority is worth more than the convenience of editing in the UI. Deletion is the exception, and
-deliberately so: it needs the cached mapping or the `--prune` flag, and the hourly job has neither,
-so a removed file leaves its watch standing until someone takes it away on purpose.
+The entry files decide, not the app. Every hour `entries_sync.py` compares the two and writes the
+files through: it creates a watch that is missing and corrects one that differs.
 
-Consequence: **a filter tweaked in the UI is reverted on the next sync.** To keep a UI experiment, run
-`cd_export.py --split entries` and open a PR. That script is a round-trip helper, not a backup.
+Two things follow.
+
+**Edit in the UI and you lose it.** Change a filter in changedetection and it works until the next
+sync, then the file wins. To keep such an experiment, pull it back into a file with
+`cd_export.py --split entries` and open a pull request. That script is a round-trip helper, not a
+backup.
+
+**Deleting is the exception.** The sync never removes a watch on its own. It can only tell that a
+watch is unclaimed, and saying "no file claims this" is not the same as "this must go": a renamed
+file or a half-finished checkout would look identical. So a removed entry leaves its watch running
+until a person takes it away.
 
 ## Topology
 
