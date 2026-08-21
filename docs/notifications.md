@@ -124,7 +124,7 @@ it decides which of two jobs this is:
 six consecutive misses, so roughly 18 days at a 3-day cadence. Nothing to do in OSM: the site was
 rebuilt and the anchor is gone. Re-run the wizard and commit the new filter.
 
-**3. `N Watches brauchen Aufmerksamkeit`** — the monthly `audit_report.py`. These are the watches
+**3. `N Watches brauchen Aufmerksamkeit`** — the weekly `audit_report.py`. These are the watches
 that will never tell you anything themselves, and each finding carries its own first move:
 
 | finding | what it means | first move |
@@ -152,7 +152,7 @@ time is reported as found: a line too many beats a silent failure. Each finding 
 
 **A quiet room is not proof.** Three states send nothing at all: a fetch error only sets
 `last_error`, an empty filter result is swallowed, and an over-wide `global_ignore_text` stops the
-checksum from moving. That is precisely what the monthly report is for — if it says
+checksum from moving. That is precisely what the weekly report is for — if it says
 "nothing to report", it has actually looked.
 
 ## Operating it

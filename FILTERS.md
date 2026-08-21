@@ -61,7 +61,7 @@ changedetection's own browser cannot find (Vergölst). Note the reason in the en
 5. **Discovery landed on the wrong page** → repoint the entry's `url` at the page that has the hours
 6. Then layer noise controls as needed: `sort_text_alphabetically`, `trigger_text`,
    `global_ignore_text`
-7. Nothing works → **absence** (empty `watch_url`), record kept, retried each harvest
+7. Nothing works → **block list**: the page is recorded in `no-watch.json` with a reason and a date to look again
 
 ---
 
@@ -107,7 +107,7 @@ worth knowing because you will apply it by hand too:
 > → among survivors, **prefer the shortest**
 
 That is: *the smallest element under the hours heading that still contains a time.* Typical yield
-11–14 filters per harvest tier.
+11–14 filters per batch of candidates.
 
 ### Case 3 — stable class or id container
 **Signature:** the page ships a purpose-built hours element with a human-authored (not generated)
@@ -140,8 +140,8 @@ and `sort_text_alphabetically`, rotation-proof), Pappert `/dealer/<slug>/`, meli
 
 ### Case 6 — discovery landed on the wrong page
 **Signature:** watch URL is plausible but the hours belong to someone else, or there are none.
-`discover_subpage()` scores the first `Kontakt`-ish href, which on many sites is a **site-wide
-footer link** present on every page.
+Automatic subpage discovery scored the first `Kontakt`-ish href, which on many sites is a
+**site-wide footer link** present on every page. That is why the entry names its page itself.
 **Fix:** repoint the entry's `url` at the page that carries the hours. The entry is the source,
 so nothing re-discovers over it.
 **Seen:** gruemel ×2 → accessibility statement (and, sharing a URL, they shared one **watch**);
@@ -269,7 +269,7 @@ No hours published anywhere, anti-bot 403 in all modes (lieferando/DataDome clas
 write the object into [`no-watch.json`](./no-watch.json) instead, with the reason, the date and a
 `recheck` (`scripts/no_watch.py`). An object belongs to `entries/` or to that list, never to both,
 and CI fails if it appears twice. The reason decides whether it is ever looked at again: a property
-of the **business** (publishes nothing, appointment only) is answered by a later harvest, a property
+of the **business** (publishes nothing, appointment only) is answered by looking again later, a property
 of the **site** (403, dead domain) by a later fetch. Both are cheaper than re-examining the same
 shop from scratch every pass, which is what an unrecorded absence costs.
 
@@ -486,7 +486,7 @@ Ranked by measured value, so nobody re-runs the weak ones expecting more:
 | `watch_audit.py` | found **77 blind watches out of 360**; ~2 s for a full pass | run after every batch |
 | `filter_wizard.py` | covers all five strategies, incl. pages with no hours keyword | first thing to try on one page |
 | JSON-LD sweep | **9 clean filters / 185 pages** (15 carried markup), 0 reverted | now inside the wizard |
-| heading-anchored finder (wizard Strategy 2) | ~11–14 per harvest tier | good, run after every harvest |
+| heading-anchored finder (wizard Strategy 2) | ~11–14 per batch | good, run on every batch |
 | the same finder on rendered pages, in bulk | **3 / 188 candidates (1.6 %)**, 1 auto-reverted | not a backlog fix |
 | Playwright rescue of blind watches | **1 / 77** (RED Sports) | do it, but expect ~nothing |
 

@@ -130,12 +130,15 @@ patterns and the recheck interval.
   fetches user-supplied URLs server-side.
 - **No multi-tenant changedetection.** One shared password, no user model. Contributors never get
   access; the repository is the interface.
-- **No discovery.** Coverage is human work. Nothing queries Overpass to find new businesses, so a shop
-  that opens is only watched once somebody adds a file.
+- **No discovery.** Nothing here queries Overpass, and nothing writes to the map. A shop that opens
+  is watched once somebody adds a file. Finding candidates in OSM, proving which page belongs to
+  which shop and carrying values back into the map is a separate project: a wrong watch is noise,
+  a wrong tag is somebody else's data, and the two deserve different rules.
 
 ## Another city
 
 Nothing here is tied to Fulda. An entry is a URL, a filter and a language; weekday and time-format
-detection lives in `scripts/hours_lang.py` and takes new languages. Seeding many businesses at once is
-a separate exercise — query an OSM category in an area, keep the objects carrying a `website` tag, and
-find the page on each site that holds the hours.
+detection lives in `scripts/hours_lang.py` and takes new languages. Seeding many businesses at once
+is the separate exercise named above: query an OSM category in an area, keep the objects carrying a
+`website` tag, and find the page on each site that holds the hours. What arrives here is the
+result — a URL worth watching.

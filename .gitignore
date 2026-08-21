@@ -23,6 +23,3 @@ CLAUDE.md
 
 # Bundles aus dem Umschreiben der Historie, lokal aufbewahrt
 .git-history-backup/
-
-# lokal aufbewahrt, nicht Teil des Repos: die OSM-Ernte zum Bestücken einer neuen Stadt
-legacy/
