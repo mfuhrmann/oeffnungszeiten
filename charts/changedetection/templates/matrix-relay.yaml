@@ -132,6 +132,15 @@ spec:
               app.kubernetes.io/name: {{ include "changedetection.name" . }}-audit-report
               app.kubernetes.io/instance: {{ .Release.Name }}
         {{- end }}
+        {{- if and .Values.sync.enabled .Values.sync.prune }}
+        # And the sync, which announces what it pruned and refuses loudly when the count looks
+        # like a broken checkout. That refusal is the whole guard, so it must not end in a Job
+        # log that three runs later is gone.
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ include "changedetection.name" . }}-sync
+              app.kubernetes.io/instance: {{ .Release.Name }}
+        {{- end }}
       ports:
         - port: 8099
           protocol: TCP

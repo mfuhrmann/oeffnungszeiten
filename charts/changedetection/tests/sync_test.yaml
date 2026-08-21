@@ -105,3 +105,16 @@ tests:
           content:
             name: RELAY_URL
             value: "http://changedetection-matrix-relay:8099/notify"
+
+  - it: carries a label of its own, so the relay policy can name it
+    # Without a label the pod is invisible to the relay's NetworkPolicy and its prune message is
+    # dropped on the last hop. The app's own name would be worse: the Deployment's ReplicaSet
+    # selector would adopt the pod and then delete it.
+    set:
+      sync:
+        enabled: true
+        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+    asserts:
+      - equal:
+          path: spec.jobTemplate.spec.template.metadata.labels['app.kubernetes.io/name']
+          value: changedetection-sync
