@@ -1,10 +1,10 @@
 {
  "added": "2026-07-26",
  "captured_sample": "Robert-Kircher-Strasse Kanalstraße 54 36037 Fulda T 0661 901 3920 Anfahrt * * Mo. - Fri. 06:00 - 18:00 Uhr Sa. 06:00 - 17:00 Uhr So. 07:00 - 17:00 Uhr",
- "fetch_backend": "html_webdriver",
+ "fetch_backend": "system",
  "filter": "xpath://div[contains(.,\"Kanalstraße 54\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Kanalstraße 54\") and contains(.,\"Uhr\")])]",
  "name": "Bäckerei Happ (Kanalstraße)",
- "note": "hours only on /fachgeschaefte/ under the city selector (JS); per-branch filter by street address",
+ "note": "hours only on /fachgeschaefte/ under the city selector (JS); per-branch filter by street address Plain-Fetch reicht: die Filialkarte samt Zeiten steht im ausgelieferten HTML, und vier Happ-Watches auf derselben Seite laufen fehlerfrei ohne Browser. Gerendert wurde hier nur, weil die Seite beim Anlegen als JS-Seite eingeschaetzt wurde.",
  "osm_id": "node/2411409601",
  "schema": 1,
  "tags": [
