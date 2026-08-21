@@ -192,8 +192,11 @@ already bilingual; a new language goes in there and both the wizard and the audi
   out of service for the duration of somebody else's outage.
 - **One replica, `Recreate`.** Two relays refreshing in parallel spend each other's single-use
   refresh token.
-- **Only changedetection may reach port 8099.** Anything that can post there can write into a room
-  shared with other mappers, so unlike the UI the NetworkPolicy does not open it to the namespace.
+- **Port 8099 is named senders only.** Anything that can post there can write into a room shared
+  with other mappers, so unlike the UI the NetworkPolicy does not open it to the namespace: it
+  lists changedetection, the audit report, and the sync while it may prune. A sender the policy
+  does not name is not refused, it is dropped on the last hop, so the symptom is a timeout in the
+  sender's log and silence in the room.
 - **Moving the instance:** copy the state PVC and nothing needs re-authenticating.
 - **Noise is a filter problem, not a delivery problem.** A watch that alerts on a clock or a
   cookie banner is a filter to fix (`watch_audit.py` finds them), not a reason to mute delivery.
