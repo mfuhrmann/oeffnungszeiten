@@ -4,6 +4,7 @@
  "fetch_backend": "system",
  "filter": "xpath://p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")][not(.//p[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"montag\")])]",
  "name": "Goldschmiede Kozaris",
+ "note": "Es gibt zwei OSM-Knoten fuer Kozaris; die Panoramax-Bilder von Mai 2026 zeigen zwei Standorte. Der Watch haengt bewusst an node/12862862620, dem Standort Mittelstrasse 12, den die Webseite nennt. Der andere Knoten wird in OSM zur Ueberpruefung markiert.",
  "osm_id": "node/12862862620",
  "schema": 1,
  "tags": [
