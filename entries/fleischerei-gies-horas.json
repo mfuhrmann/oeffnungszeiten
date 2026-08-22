@@ -5,6 +5,7 @@
  "lang": "de",
  "name": "Fleischerei Gies (Horas)",
  "note": "Eigene Filialseite unter /filialen/<ort>/, wie Neuenberg. Der Anker haengt hier an der h2, weil die Vorlage dieser Seite den Zeitenblock anders schachtelt; die Adresse faengt der Filter mit, das ist gewollt und macht die Filiale im Diff erkennbar.",
+ "osm_id": "node/12589861223",
  "schema": 1,
  "tags": [
   "fulda-butcher"

@@ -4,7 +4,8 @@
  "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
  "lang": "de",
  "name": "Fleischerei Gies (Klinikum)",
- "note": "Eigene Filialseite unter /filialen/<ort>/, wie Neuenberg. Anker an der h2 wie bei Horas.",
+ "note": "Eigene Filialseite unter /filialen/<ort>/, wie Neuenberg. Anker an der h2 wie bei Horas. Das OSM-Objekt traegt eine falsche Adresse; die Filialseite der Kette nennt die Dr.-Dietz-Strasse. Korrektur gehoert nach OSM, nicht in diese Datei.",
+ "osm_id": "node/11132221905",
  "schema": 1,
  "tags": [
   "fulda-butcher"
