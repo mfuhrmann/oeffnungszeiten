@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-22",
+ "captured_sample": "Adresse: Schlitzer Straße 76 36039 Fulda Tel.: 06 61 / 95 25 74 24 Öffnungszeiten: Mo.- Fr.: 07.00 – 18.00 Uhr Sa.: 07.00 – 13.00 Uhr So.: geschlossen",
+ "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "lang": "de",
+ "name": "Fleischerei Gies (Horas)",
+ "note": "Eigene Filialseite unter /filialen/<ort>/, wie Neuenberg. Der Anker haengt hier an der h2, weil die Vorlage dieser Seite den Zeitenblock anders schachtelt; die Adresse faengt der Filter mit, das ist gewollt und macht die Filiale im Diff erkennbar.",
+ "osm_id": "node/12589861223",
+ "schema": 1,
+ "tags": [
+  "fulda-butcher"
+ ],
+ "url": "https://fleischerei-gies.de/filialen/fulda-horas/"
+}
