@@ -275,15 +275,6 @@
    "osm_id": "node/13392928514"
   },
   {
-   "url": "https://re-gruppe.de/gruppe/bistro-52/",
-   "name": "Bistro 52",
-   "reason": "datacenter-block",
-   "established": "2026-08-18",
-   "recheck": "on-relocation",
-   "note": "re-gruppe.de antwortet dem VPS mit 403 (212.218.67.130).",
-   "osm_id": "node/13302038742"
-  },
-  {
    "url": "https://www.euronics.de/xxl-fulda-efm",
    "name": "Euronics",
    "reason": "datacenter-block",
@@ -293,21 +284,12 @@
    "osm_id": "node/5324660182"
   },
   {
-   "url": "https://re-gruppe.de/baeder/freibad-rosenau/",
-   "name": "Freibad Rosenau (Rosenbad)",
-   "reason": "datacenter-block",
-   "established": "2026-08-18",
-   "recheck": "on-relocation",
-   "note": "re-gruppe.de antwortet dem VPS mit 403 (212.218.67.130).",
-   "osm_id": "way/23462098"
-  },
-  {
    "url": "https://re-fd.de/nahverkehr",
    "name": "Kundencenter Busbahnhof Stadtschloss",
-   "reason": "datacenter-block",
-   "established": "2026-08-18",
-   "recheck": "on-relocation",
-   "note": "re-fd.de liegt auf 212.218.67.130 und antwortet dem VPS mit 403; von hier nennt die Seite unter /nahverkehr taeglich 8:00 bis 22:00. Dieselbe Adresse sperrt re-gruppe.de.",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-22",
+   "recheck": "2027-02-22",
+   "note": "Die Seite nennt keine Zeiten mehr, nur Fahrplaene und Meldungen; das Kundencenter Busbahnhof steht dort nur noch als Telefonnummer unter Kundenservice. Der Host antwortet dem VPS wieder mit 200 (22.08.2026), also kein Rechenzentrumsblock mehr.",
    "osm_id": "way/206908087"
   },
   {
@@ -320,31 +302,13 @@
    "osm_id": "node/1328294767"
   },
   {
-   "url": "https://re-gruppe.de/service/kundenservice/",
-   "name": "RhönEnergie",
-   "reason": "datacenter-block",
-   "established": "2026-08-18",
-   "recheck": "on-relocation",
-   "note": "Der Host antwortet dem VPS mit 403; von hier ist die Seite erreichbar.",
-   "osm_id": "way/607295307"
-  },
-  {
    "url": "https://re-fd.de/sportbad-ziehers",
    "name": "Sportbad Ziehers",
-   "reason": "datacenter-block",
-   "established": "2026-08-18",
-   "recheck": "on-relocation",
-   "note": "re-fd.de antwortet dem VPS mit 403; dieselbe Adresse sperrt re-gruppe.de.",
+   "reason": "no-hours-on-page",
+   "established": "2026-08-22",
+   "recheck": "2026-09-08",
+   "note": "Der Block #oeffnungszeiten traegt seit dem 09.05.2026 die Sommerpause statt Zeiten: das Bad oeffnet laut Seite am 7. September wieder. Der Host ist vom VPS aus wieder erreichbar (200 aus dem Pod, 22.08.2026), also kein Rechenzentrumsblock mehr. Nach der Wiedereroeffnung als Watch anlegen, Filter wie bei Stadtbad Esperanto.",
    "osm_id": "way/25560330"
-  },
-  {
-   "url": "https://re-gruppe.de/baeder/stadtbad-esperanto/",
-   "name": "Stadtbad Esperanto",
-   "reason": "datacenter-block",
-   "established": "2026-08-18",
-   "recheck": "on-relocation",
-   "note": "Der Host antwortet dem VPS mit 403; von hier ist die Seite erreichbar.",
-   "osm_id": "way/138350858"
   },
   {
    "url": "https://www.von-poll.com/de/immobilienmakler/fulda",

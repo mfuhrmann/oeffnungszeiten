@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-22",
+ "captured_sample": "ÖffnungszeitenMontag Montag 07:00 – 22:00 Uhr 07:00 – 22:00 Uhr Dienstag Dienstag 07:00 – 22:00 Uhr 07:00 – 22:00 Uhr Mittwoch Mittwoch 07:00 – 22:00 Uhr 07:00 – 22:00 Uhr Donnerstag Donnerstag 07:00 ",
+ "filter": "xpath://*[@id=\"oeffnungszeiten\"]",
+ "lang": "de",
+ "name": "Stadtbad Esperanto",
+ "osm_id": "way/138350858",
+ "schema": 1,
+ "tags": [
+  "fulda-swimming"
+ ],
+ "url": "https://re-gruppe.de/baeder/stadtbad-esperanto/"
+}

@@ -1,0 +1,14 @@
+{
+ "added": "2026-08-22",
+ "captured_sample": "Kundenzentrum FuldaLöherstraße 52 | 36037 Fulda 0661 12-100Öffnungszeiten Mo-Fr 9:00 bis 16:00 Uhr Bitte vereinbare für einen Vor-Ort-Besuch einen Termin über unsere Buchungssoftware. Termin buchen Ta",
+ "filter": "xpath://div[contains(.,\"Löherstraße 52\") and contains(.,\"Uhr\")][not(.//div[contains(.,\"Löherstraße 52\") and contains(.,\"Uhr\")])]",
+ "lang": "de",
+ "name": "RhönEnergie Kundenzentrum Fulda",
+ "note": "Drei Servicestellen auf einer Seite (Fulda, Alsfeld, Schlüchtern); der Filter ist auf die Fuldaer Adresse Löherstraße 52 geschluesselt.",
+ "osm_id": "way/607295307",
+ "schema": 1,
+ "tags": [
+  "fulda-office"
+ ],
+ "url": "https://re-gruppe.de/service/kundenservice/"
+}
