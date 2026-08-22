@@ -171,15 +171,15 @@ def prune_meldung(namen, geloescht, grund=""):
     """-> (title, body) for the relay. `namen` is a list of (title, url).
 
     The room reads German, and the relay turns leading "Label: <url>" lines into header links, so
-    every watch named here is one click away. Deleting is the normal end of a pull request that
-    removed an entry file, and the message says so: whoever reads it has to tell "expected" from
-    "something ate my entries" without opening a Job log.
+    every watch named here is one click away. A deletion needs no explanation: it happens only
+    when an entry file left main, and whoever removed it knows why. A refusal is the opposite,
+    it asks somebody to act, so it carries the reason and what to do about it.
 
     >>> t, b = prune_meldung([("Studio by Laura", "https://bylaura.de/")], True)
     >>> t
     'Watch entfernt: Studio by Laura'
     >>> b.splitlines()[0]
-    'Studio by Laura: https://bylaura.de/'
+    'Webseite: https://bylaura.de/'
     >>> prune_meldung([("A", "u1"), ("B", "u2")], True)[0]
     '2 Watches entfernt'
     >>> t, b = prune_meldung([("A", "u1")], False, "6 Watches sind zu viele.")
@@ -188,7 +188,8 @@ def prune_meldung(namen, geloescht, grund=""):
     >>> b.splitlines()[-1]
     'Nichts wurde gelöscht.'
     """
-    liste = [f"{n}: {u}" for n, u in namen[:20]]
+    liste = ([f"Webseite: {namen[0][1]}"] if len(namen) == 1
+             else [f"{n}: {u}" for n, u in namen[:20]])
     if len(namen) > 20:
         liste.append(f"… und {len(namen) - 20} weitere")
     if not geloescht:
@@ -196,15 +197,7 @@ def prune_meldung(namen, geloescht, grund=""):
                 "\n".join(liste + ["", grund, "Nichts wurde gelöscht."]))
     title = (f"Watch entfernt: {namen[0][0]}" if len(namen) == 1
              else f"{len(namen)} Watches entfernt")
-    schluss = ("Kein Eintrag in entries/ beansprucht ihn noch, deshalb ist er gelöscht."
-               if len(namen) == 1 else
-               "Kein Eintrag in entries/ beansprucht sie noch, deshalb sind sie gelöscht.")
-    return (title, "\n".join(liste + [
-        "",
-        schluss,
-        "So endet ein Pull Request, der eine Eintragsdatei entfernt. Kam kein solcher, "
-        "die Datei wiederherstellen: der nächste Lauf legt den Watch neu an.",
-    ]))
+    return (title, "\n".join(liste))
 
 
 def melden(url, title, body):
