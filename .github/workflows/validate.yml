@@ -74,10 +74,13 @@ jobs:
         with:
           version: v4.2.2
       - run: helm lint ./charts/changedetection
-      - name: relay source compiles
+      - name: relay source compiles and formats a message
         # files/matrix_relay.py ships as ConfigMap data, so nothing else would notice a syntax
-        # error until the relay crash-loops in the cluster.
-        run: python3 -m py_compile charts/changedetection/files/matrix_relay.py
+        # error until the relay crash-loops in the cluster. format_message carries doctests for
+        # the shapes that reach the room, the line cap among them.
+        run: |
+          python3 -m py_compile charts/changedetection/files/matrix_relay.py
+          python3 -m doctest charts/changedetection/files/matrix_relay.py
       - name: unit tests
         run: |
           helm plugin install https://github.com/helm-unittest/helm-unittest --verify=false

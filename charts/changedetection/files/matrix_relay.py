@@ -45,9 +45,15 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 log = logging.getLogger("matrix-relay")
 STATE_PATH = os.environ.get("MATRIX_RELAY_STATE", "/config/matrix_relay.json")
 # matrix.org rejects an event over 64 KiB outright, so an unusually large diff would not arrive
-# at all — the one case where knowing that something changed matters most. Truncate well below
+# at all, the one case where knowing that something changed matters most. Truncate well below
 # the limit: the message is a pointer to the watch, not the record of the change.
 MAX_BODY = 8000
+# A line cap on top of the byte cap, because 8000 bytes is still a wall of text in a room, and
+# because MAX_BODY drops the HTML body (truncated markup would be unbalanced), so the longest
+# message would be the one that loses its links. Measured over 39 sends: median 1 diff line,
+# p90 12, max 24. The worst case on record is a practice holiday notice at 47. 40 leaves every
+# real message intact and still bounds what one broken filter can do.
+MAX_LINES = 40
 # Header lines of the notification body: "Webseite: <url>", "OpenStreetMap: <url>", or a bare
 # URL (the global body, used by the few entries without an osm_id) which is labelled Webseite.
 LINK_LINE = re.compile(r"^(?:([^:]{1,30}):\s*)?(https?://\S+)\s*$")
@@ -60,15 +66,28 @@ COLOR = {"added": "#2e7d32", "removed": "#c62828", "changed": "#ef6c00"}
 
 
 def format_message(title, message):
-    """Render one notification as (plain_text, html).
+    r"""Render one notification as (plain_text, html).
 
     The body changedetection sends is the watch's notification_body: "Webseite: <url>", an
     "OpenStreetMap: <url>" line where the entry has an osm_id, then {{diff}}. Leading link
     lines become the header; the rest is the diff.
 
-    Nothing is dropped except blank lines and the page's own indentation — how long a real
-    diff gets is still being measured (see the line counts in the send log). The only size
-    limit is MAX_BODY in send(), which exists because matrix.org rejects oversized events.
+    Blank lines and the page's own indentation are dropped, the rest is kept up to MAX_LINES.
+    Measured over 39 sends: median 1 diff line, p90 12, max 24, so the cap never touches a real
+    message. MAX_BODY in send() is the second, coarser limit, because matrix.org rejects an
+    oversized event outright.
+
+    >>> plain, html = format_message("T", "Webseite: https://example.de/\n(added) Mo 9-17")
+    >>> plain.splitlines()
+    ['T', 'Webseite: https://example.de/', '', '+ Mo 9-17']
+    >>> lang = "\n".join(f"(added) Zeile {i}" for i in range(50))
+    >>> plain, html = format_message("T", lang)
+    >>> plain.splitlines()[-1]
+    '[…] 10 weitere Zeilen, vollständige Änderung im UI'
+    >>> len(plain.splitlines())
+    43
+    >>> html.count("<br/>") == plain.count(chr(10)) - 1
+    True
     """
     lines = message.splitlines()
     head = []
@@ -88,8 +107,15 @@ def format_message(title, message):
             continue
         kept.append((m.group(1) if m else None, text))
 
+    rest = 0
+    if len(kept) > MAX_LINES:
+        rest = len(kept) - MAX_LINES
+        kept = kept[:MAX_LINES]
+
     text_parts = ([title] if title else []) + [f"{label}: {url}" for label, url in head] + [""]
     text_parts += [f"{SIGIL.get(kind, ' ')} {t}" for kind, t in kept]
+    if rest:
+        text_parts.append(f"[…] {rest} weitere Zeilen, vollständige Änderung im UI")
 
     def esc(s):
         return html_mod.escape(s, quote=False)
@@ -107,6 +133,8 @@ def format_message(title, message):
         if kind in COLOR:
             body = f'<font color="{COLOR[kind]}">{body}</font>'
         html_parts.append(body)
+    if rest:
+        html_parts.append(esc(f"[…] {rest} weitere Zeilen, vollständige Änderung im UI"))
 
     return "\n".join(text_parts), "<br/>".join(html_parts)
 
@@ -133,7 +161,7 @@ class MatrixSession:
         relay that exited on an unseeded volume would leave nothing to copy into. Unseeded, it
         serves 503 and picks the file up on the next request without a restart.
 
-        Re-reading on a changed mtime covers the other direction — a re-seed, or anything else
+        Re-reading on a changed mtime covers the other direction, a re-seed, or anything else
         that wrote a fresh single-use refresh token while this process held the spent one. In
         memory it would look fine until the next refresh, and fail with no visible cause.
         """
@@ -160,7 +188,7 @@ class MatrixSession:
 
         fsync before the rename: the newest single-use refresh token is the only way back into
         the session, and a token that reached the page cache but not the disk is gone on a node
-        crash. Failures are logged rather than raised — the token is already valid in memory, so
+        crash. Failures are logged rather than raised, the token is already valid in memory, so
         a request that would otherwise have succeeded should not fail on top of it.
         """
         d = os.path.dirname(self.path) or "."
@@ -200,7 +228,7 @@ class MatrixSession:
 
         `stale` is the access token whose rejection triggered this. Under the lock the token may
         already have been replaced by whoever got there first, and spending a second refresh
-        token for the same expiry is what the single-use rule punishes — so hand back what that
+        token for the same expiry is what the single-use rule punishes, so hand back what that
         thread minted instead of asking again.
         """
         with self.lock:
@@ -247,7 +275,7 @@ class MatrixSession:
         if len(text) > MAX_BODY:
             text = text[:MAX_BODY] + "\n[…] gekürzt, vollständige Änderung im UI"
         # Truncating markup would emit unbalanced tags, so an oversized formatted_body is
-        # dropped instead — the plain body still carries the change.
+        # dropped instead, the plain body still carries the change.
         if html and len(html) > MAX_BODY:
             html = None
         content = {"msgtype": "m.text", "body": text}
@@ -256,7 +284,7 @@ class MatrixSession:
         room = urllib.parse.quote(self.room_id(), safe="")
         # One transaction ID for both attempts: it is the homeserver's idempotency key, so a
         # retry after a rejected token must not read as a second message. It has to be unique
-        # across concurrent sends for the same reason — a clock-derived ID collides between two
+        # across concurrent sends for the same reason, a clock-derived ID collides between two
         # threads in the same millisecond, and the homeserver then answers the second send with
         # the first one's event_id, silently dropping a notification.
         txn = "cd-" + uuid.uuid4().hex
