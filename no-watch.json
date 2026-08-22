@@ -2179,9 +2179,9 @@
    "url": "https://www.dm.de/store/d2gb/fulda/am-emaillierwerk-1",
    "name": "dm",
    "reason": "no-hours-on-page",
-   "established": "2026-08-18",
-   "recheck": "2027-02-18",
-   "note": "Weder die Startseite noch /kontakt, /impressum, /oeffnungszeiten, /ueber-uns, /filialen oder /standorte nennen einen Wochentag mit Uhrzeit; am 18.08.2026 geprueft.",
+   "established": "2026-08-22",
+   "recheck": "2026-08-29",
+   "note": "Der Markt ist vorübergehend geschlossen: die gerenderte Seite sagt \"eröffnet wieder am Freitag, 28.08.\" und zeigt sechsmal Geschlossen plus Freitag 08:30 - 20:00 Uhr. Ein Watch darauf koennte bis dahin nur den Countdown melden. Nach der Wiedereroeffnung anlegen wie die anderen beiden dm-Maerkte, mit html_webdriver.",
    "osm_id": "node/1465073366"
   },
   {
