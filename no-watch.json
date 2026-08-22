@@ -313,10 +313,10 @@
   {
    "url": "https://www.von-poll.com/de/immobilienmakler/fulda",
    "name": "Von Poll Immobilien",
-   "reason": "datacenter-block",
-   "established": "2026-08-18",
-   "recheck": "on-relocation",
-   "note": "Antwortet 403 auf browseraehnliche UAs von ueberall, 200 nur auf den schlichten Bot-UA — den bekommt der VPS nicht durch. Ein Eintrag kann keinen eigenen Header tragen.",
+   "reason": "anti-bot",
+   "established": "2026-08-22",
+   "recheck": "2027-02-22",
+   "note": "Die Seite antwortet mit 403, und zwar auch von einer Heimleitung: gemessen am 22.08.2026 mit Chrome/131 als User-Agent, hier 403 und aus dem changedetection-Pod 403. Das ist keine Rechenzentrumssperre, sondern eine Botabwehr, die ein Standortwechsel nicht loesen wuerde.",
    "osm_id": "node/11812148620"
   },
   {
