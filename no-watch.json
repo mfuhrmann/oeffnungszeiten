@@ -2621,6 +2621,15 @@
    "recheck": "2027-02-22",
    "note": "Die Seite ist seit dem Relaunch eine reine Stellenanzeige (\"YOUR HAIR. YOUR PLACE.\", Bewerbungsknoepfe). Plain und gerendert geprueft, kein Zeitblock; das Impressum nennt nur Lauterbach. Der Fuldaer Salon Peterstor 6 kommt auf der Seite nicht mehr vor. Vorher standen dort Di. - Fr. 09:00 - 21:00 Uhr, Sa. geschlossen.",
    "osm_id": "way/207009130"
+  },
+  {
+   "url": "https://academy-fahrschule-hacker.de/ueber-uns/unsere-standorte/fulda",
+   "name": "Academy Fahrschule Hacker",
+   "reason": "anti-bot",
+   "established": "2026-08-24",
+   "recheck": "on-relocation",
+   "note": "Vercel Attack Challenge Mode: 429 mit 'Vercel Security Checkpoint' statt Inhalt, Header 'x-vercel-mitigated: challenge', kein Retry-After. Gleiches Ergebnis aus dem Cluster und von einer Heimleitung, also kein Ratenlimit. Der Watch lief vom 19. bis 24.08.2026 und hat bei drei Pruefungen nie einen Snapshot erfasst. Zeiten zum Zeitpunkt der Entfernung, aus JSON-LD und sichtbarer Tabelle: Mo-Do 10-18, Fr 10-16.",
+   "osm_id": "way/207224345"
   }
  ]
 }
