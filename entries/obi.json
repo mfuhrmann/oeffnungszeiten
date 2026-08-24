@@ -1,11 +1,12 @@
 {
  "added": "2026-08-17",
- "captured_sample": "Wochentag Stunden Montag08:00 - 20:00Dienstag08:00 - 20:00Mittwoch08:00 - 20:00Donnerstag08:00 - 20:00Freitag08:00 - 20:00Samstag08:00 - 20:00SonntagGeschlossen",
+ "captured_sample": "Dienstag      08:00 - 20:00 Donnerstag    08:00 - 20:00 Freitag       08:00 - 20:00 Mittwoch      08:00 - 20:00 Montag        08:00 - 20:00 Samstag       08:00 - 20:00 Sonntag       Geschlossen Wochentag   Stunden",
  "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
  "name": "OBI",
- "note": "Sichtbare Tabelle statt JSON-LD, weil sie den Sonntag ausdruecklich nennt.",
+ "note": "Sichtbare Tabelle statt JSON-LD, weil sie den Sonntag ausdruecklich nennt. Die Tabelle beginnt beim heutigen Tag, deshalb sortiert.",
  "osm_id": "node/1406092124",
  "schema": 1,
+ "sort_text_alphabetically": true,
  "tags": [
   "fulda-doityourself"
  ],

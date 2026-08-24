@@ -1,11 +1,12 @@
 {
  "added": "2026-08-17",
- "captured_sample": "Montag 12:00 - 21:00 (12:00 - 20:30) Dienstag 12:00 - 21:00 (12:00 - 20:30) Mittwoch 12:00 - 21:00 (12:00 - 20:30) Donnerstag 12:00 - 21:00 (12:00 - 20:30) Freitag 12:00 - 22:30 (12:00 - 21:30) Samstag 12:00 - 22:30 (12:00 - 21:30) Sonntag 12:00 - 21:00 (12:00 - 20:30)",
+ "captured_sample": "Dienstag    12:00 - 21:00 (12:00 - 20:30) Donnerstag  12:00 - 21:00 (12:00 - 20:30) Freitag     12:00 - 22:30 (12:00 - 21:30) Mittwoch    12:00 - 21:00 (12:00 - 20:30) Montag      12:00 - 21:00 (12:00 - 20:30) Samstag     12:00 - 22:30 (12:00 - 21:30) Sonntag     12:00 - 21:00 (12:00 - 20:30)",
  "filter": "xpath://*[@id=\"opening_table\"]",
  "name": "Hans im Glück",
- "note": "Die Seite nennt Kuechenzeiten; der Klammerwert ist das rollende Bestellfenster.",
+ "note": "Die Seite nennt Kuechenzeiten; der Klammerwert ist das rollende Bestellfenster. Die Tabelle beginnt beim heutigen Tag, deshalb sortiert.",
  "osm_id": "node/11934416762",
  "schema": 1,
+ "sort_text_alphabetically": true,
  "tags": [
   "fulda-restaurants"
  ],
