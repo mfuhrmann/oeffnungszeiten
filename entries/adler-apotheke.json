@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-26",
+ "captured_sample": "Montag08:30-13:00 Uhr15:00-18:00 UhrDienstag08:30-13:00 Uhr15:00-18:00 UhrMittwoch08:30-13:00 Uhr15:00-18:00 UhrDonnerstag08:30-13:00 Uhr15:00-18:00 UhrFreitag08:30-13:00 Uhr15:00-18:00 UhrSamstag08:3",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" b-working-hours__shortcodes \")]",
+ "lang": "de",
+ "name": "Adler-Apotheke",
+ "osm_id": "node/271797039",
+ "schema": 1,
+ "tags": [
+  "fulda-pharmacy"
+ ],
+ "url": "https://adler-apotheke-petersberg.de"
+}
