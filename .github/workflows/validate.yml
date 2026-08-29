@@ -28,6 +28,9 @@ jobs:
       # The prune guard decides whether an hourly job may delete watches. Small enough to hold in
       # the docstring, important enough that CI runs the examples.
       - run: python3 -m doctest scripts/entries_sync.py
+      # wizard_bot reads what a stranger typed into an issue form. Its parsing and validation
+      # half is stdlib and needs no network, exactly so it can be checked in this job.
+      - run: PYTHONPATH=scripts python3 -m doctest scripts/wizard_bot.py
 
   settings-in-sync:
     # deploy/global-settings.json is the source. apps/changedetection/global-settings.values.yaml

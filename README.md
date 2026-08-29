@@ -48,6 +48,7 @@ clusters/           Flux entry point — what the cluster reconciles
 | | |
 |---|---|
 | `filter_wizard.py` | propose a filter for a page, pick it by reading the captured text |
+| `wizard_bot.py` | the same wizard driven from a GitHub issue, so a contributor needs no fork |
 | `entries_sync.py` | reconcile a changedetection instance against `entries/` |
 | `validate_entries.py` | what CI runs on every pull request — structure, and the filter against the live page |
 | `watch_audit.py` | what each watch actually captured: RED / AMBER / green with reasons |

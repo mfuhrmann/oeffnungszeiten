@@ -185,9 +185,12 @@ patterns and the recheck interval.
 
 ## Boundaries
 
-- **No submission web form.** The pull request flow needs no service, no moderation tooling and no
-  attack surface. Such a form would need OSM OAuth2 for identity and SSRF protection, because it
-  fetches user-supplied URLs server-side.
+- **No submission web form of our own.** A form with its own login and its own server would need
+  OSM OAuth2 for identity and SSRF protection, because it fetches user-supplied URLs server-side.
+  Both objections are answered by borrowing GitHub instead: an issue form carries the URL, the
+  identity is the GitHub account a pull request needs anyway, and the fetch runs in a throwaway
+  runner that holds no token and can reach nothing of ours (`.github/workflows/wizard.yml`).
+  What stays out is a service we operate and moderate.
 - **No multi-tenant changedetection.** One shared password, no user model. Contributors never get
   access; the repository is the interface.
 - **No discovery.** Nothing here queries Overpass, and nothing writes to the map. A shop that opens
