@@ -51,6 +51,7 @@ clusters/           Flux entry point — what the cluster reconciles
 | `entries_sync.py` | reconcile a changedetection instance against `entries/` |
 | `validate_entries.py` | what CI runs on every pull request — structure, and the filter against the live page |
 | `watch_audit.py` | what each watch actually captured: RED / AMBER / green with reasons |
+| `rotation_check.py` | did the hours change, or did the page reorder itself? triages an alarm from the stored snapshots |
 | `cdp_render.py` | render a page through a headless browser, no changedetection needed |
 | `cd_export.py` | turn a UI experiment back into entry files |
 | `apply_global_settings.py` | merge `deploy/global-settings.json` into an instance |
