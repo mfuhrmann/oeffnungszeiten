@@ -29,6 +29,7 @@ MAS refresh tokens are SINGLE USE: every refresh returns a new one, so the state
 file is rewritten atomically after each refresh. Keep it on a persistent volume.
 """
 import argparse
+import collections
 import html as html_mod
 import json
 import logging
@@ -64,6 +65,41 @@ DIFF_MARKER = re.compile(r"^\((added|removed|changed)\)\s?")
 SIGIL = {"added": "+", "removed": "−", "changed": "~"}
 COLOR = {"added": "#2e7d32", "removed": "#c62828", "changed": "#ef6c00"}
 
+# A page whose hours table starts at TODAY sends every removed line straight back as an added
+# one. That diff reads like changed hours and is not one, and the answer is always the same, so
+# the message carries it instead of leaving the reader to work it out. The check needs nothing
+# but the diff: a day name is part of its line, so two businesses swapping their times still
+# differ line by line and never look like a reordering.
+REORDER_DOC = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
+               "notifications.md#umsortiert")
+
+
+def reorder_note(kept):
+    """The two lines that explain a reordering, or [] when the diff is a real change.
+
+    True only when every removed line comes back as an added one, unchanged and in the same
+    number. Anything else — a changed line, a line the diff did not mark, one more removal than
+    addition — is a real change and gets no note.
+
+    >>> reorder_note([("removed", "Mo 9-17"), ("added", "Mo 9-17")])[0].startswith("⟳ Nur")
+    True
+    >>> reorder_note([("removed", "Mo 9-17"), ("added", "Mo 9-18")])
+    []
+    >>> reorder_note([("removed", "Mo 9-17"), ("added", "Mo 9-17"), (None, "Küche bis 20:30")])
+    []
+    >>> reorder_note([])
+    []
+    """
+    gone = collections.Counter(t for kind, t in kept if kind == "removed")
+    came = collections.Counter(t for kind, t in kept if kind == "added")
+    if not gone or gone != came or len(kept) != sum(gone.values()) + sum(came.values()):
+        return []
+    n = sum(gone.values())
+    return [f"⟳ Nur umsortiert — dieselben {n} Zeilen in anderer Reihenfolge, "
+            f"die Zeiten sind unverändert.",
+            f"  Die Seite beginnt ihre Tabelle beim heutigen Tag. Zu tun: "
+            f"sort_text_alphabetically im Entry setzen, {REORDER_DOC}"]
+
 
 def format_message(title, message):
     r"""Render one notification as (plain_text, html).
@@ -77,9 +113,21 @@ def format_message(title, message):
     message. MAX_BODY in send() is the second, coarser limit, because matrix.org rejects an
     oversized event outright.
 
+    A diff that only reordered itself is labelled as such (see REORDER_DOC), because the six
+    identical-looking lines it produces are the one message nobody can read.
+
     >>> plain, html = format_message("T", "Webseite: https://example.de/\n(added) Mo 9-17")
     >>> plain.splitlines()
     ['T', 'Webseite: https://example.de/', '', '+ Mo 9-17']
+    >>> rot = "(removed) Mo 9-17\n(removed) Di 9-17\n(added) Di 9-17\n(added) Mo 9-17"
+    >>> plain, html = format_message("T", rot)
+    >>> plain.splitlines()[2]
+    '⟳ Nur umsortiert — dieselben 2 Zeilen in anderer Reihenfolge, die Zeiten sind unverändert.'
+    >>> "sort_text_alphabetically" in plain.splitlines()[3]
+    True
+    >>> plain, html = format_message("T", "(removed) Mo 9-17\n(added) Mo 9-18")
+    >>> "umsortiert" in plain
+    False
     >>> lang = "\n".join(f"(added) Zeile {i}" for i in range(50))
     >>> plain, html = format_message("T", lang)
     >>> plain.splitlines()[-1]
@@ -107,12 +155,14 @@ def format_message(title, message):
             continue
         kept.append((m.group(1) if m else None, text))
 
+    note = reorder_note(kept)
     rest = 0
     if len(kept) > MAX_LINES:
         rest = len(kept) - MAX_LINES
         kept = kept[:MAX_LINES]
 
-    text_parts = ([title] if title else []) + [f"{label}: {url}" for label, url in head] + [""]
+    text_parts = ([title] if title else []) + [f"{label}: {url}" for label, url in head]
+    text_parts += ([""] + note if note else []) + [""]
     text_parts += [f"{SIGIL.get(kind, ' ')} {t}" for kind, t in kept]
     if rest:
         text_parts.append(f"[…] {rest} weitere Zeilen, vollständige Änderung im UI")
@@ -126,6 +176,15 @@ def format_message(title, message):
     for label, url in head:
         href = html_mod.escape(url, quote=True)
         html_parts.append(f'{esc(label)}: <a href="{href}">{esc(url)}</a>')
+    if note:
+        html_parts.append("")
+        for line in note:
+            if line.startswith("⟳"):
+                html_parts.append(f"<b>{esc(line)}</b>")
+            else:   # the doc link is the point of the second line, so make it clickable
+                html_parts.append(esc(line).replace(
+                    REORDER_DOC, f'<a href="{REORDER_DOC}">{REORDER_DOC}</a>'))
+        html_parts.append("")
     for kind, t in kept:
         body = esc(t)
         if kind == "removed":

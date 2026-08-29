@@ -19,6 +19,7 @@ the source the hourly sync reconciles from. A UI edit would be gone at the next 
 Examples:
   python3 scripts/rotation_check.py                    # sweep every watch, only findings
   python3 scripts/rotation_check.py --uuid 2af7778f…   # one watch, with its checksum table
+  python3 scripts/rotation_check.py --url https://…    # the same, addressed as the alarm does
   python3 scripts/rotation_check.py --fix              # set the flag in entries/ for ROTATION
   python3 scripts/rotation_check.py --all              # list the quiet ones too
 """
@@ -145,6 +146,9 @@ def main():
         description="Tell a daily reordering apart from a real change, from the stored "
                     "snapshots alone")
     ap.add_argument("--uuid", action="append", help="check only this watch (repeatable)")
+    ap.add_argument("--url", action="append", metavar="URL",
+                    help="check the watch on this page — what a notification names, so its "
+                         "Webseite line can be pasted straight in (repeatable)")
     ap.add_argument("--last", type=int, default=4, metavar="N",
                     help="how many snapshots per watch to compare (default: %(default)s)")
     ap.add_argument("--all", action="store_true",
@@ -165,7 +169,15 @@ def main():
 
     api = C.CDIO(args.base_url, C.resolve_api_key(args.api_key, args.container))
     entries = E.load_entries(args.entries)
-    uuids = args.uuid or list((api.list() or {}).keys())
+    listed = api.list() or {}
+    if args.url:
+        wanted = {E.norm_url(u) for u in args.url}
+        uuids = [u for u, w in listed.items() if E.norm_url(w.get("url")) in wanted]
+        if not uuids:
+            sys.exit(f"no watch on {', '.join(args.url)}")
+        uuids += [u for u in (args.uuid or []) if u not in uuids]
+    else:
+        uuids = args.uuid or list(listed.keys())
     if not uuids:
         sys.exit("no watches found")
     print(f"comparing the last {args.last} snapshots of {len(uuids)} "
@@ -192,7 +204,7 @@ def main():
 
     # A CHANGE is what a working watch does, so it is not a finding on its own; it is
     # printed when a run is aimed at one watch, which is the triage-an-alarm case.
-    shown = found if (args.all or args.uuid) else [
+    shown = found if (args.all or args.uuid or args.url) else [
         r for r in found if r["verdict"] in (ROTATION, DUPLICATE, SETTLED)]
     if args.json:
         print(json.dumps(shown, ensure_ascii=False, indent=2))
@@ -207,7 +219,7 @@ def main():
                       f"sorted {row['sorted'][:8]}"
                       f"{'  (already sorted)' if row['self_sorted'] else ''}"
                       f"{'  (repeated line)' if row['dupes'] else ''}")
-            if r["verdict"] == CHANGE and (args.uuid or args.all):
+            if r["verdict"] == CHANGE and (args.uuid or args.url or args.all):
                 for line in r["gone"]:
                     print(f"          - {line.strip()[:100]}")
                 for line in r["came"]:
