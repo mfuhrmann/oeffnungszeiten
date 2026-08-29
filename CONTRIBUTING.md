@@ -16,12 +16,17 @@ whoever maps Fulda.
 **Without a fork**: open a [Watch vorschlagen](../../issues/new?template=watch-vorschlagen.yml)
 issue with the page, the business name and its OSM id. A maintainer labels it `wizard`, a bot
 fetches the page and comments with the filter candidates and the text each one captures. Answer
-`/pick 2` and it writes the entry, opens the pull request and links it back. Nothing to install,
-nothing to run; the reading — which block really holds *this* business's hours — is still yours,
-because no tool can do it.
+`/pick 2` and it writes the entry file, pushes the branch and comments a one-click link that opens
+the pull request with title and body filled in. Nothing to install, nothing to run; the reading —
+which block really holds *this* business's hours — is still yours, because no tool can do it.
+
+That last click is yours on purpose. GitHub does not let Actions open pull requests unless a
+repository setting says so, and a pull request opened by a person runs CI while one opened with
+`GITHUB_TOKEN` starts no workflow at all.
 
 The bot fetches without a browser. A page whose hours appear only after JavaScript says so and
-stays a manual case, as does a page that is already watched.
+stays a manual case, as does a page that is already watched: it names the file that already
+covers it.
 
 **With the repository**, the path below: it gives you the wizard's full output, the browser
 fallback and everything else on your own machine. Both roads end in the same pull request and the
