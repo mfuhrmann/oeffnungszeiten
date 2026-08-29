@@ -60,7 +60,7 @@ every change a legible diff.
   "tags": ["fulda-bicycle"],
   "lang": "de",
   "captured_sample": "Dienstag – Freitag10:00 Uhr bis 18:00 UhrSamstag10:00 Uhr bis 14:00 Uhr",
-  "osm_id": "node/1579272617",
+  "osm_id": "node/123456789",
   "added": "2026-08-04"
 }
 ```

@@ -30,7 +30,7 @@ Einträge auf einmal:
 ```bash
 pip install lxml
 python3 scripts/filter_wizard.py https://example.de/kontakt \
-    --emit entries --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
+    --emit entries --name "Example GmbH" --osm-id node/123456789 --tags fulda-restaurants
 ```
 
 `--emit` schreibt die fertige Entry-Datei, du committest sie und öffnest einen Pull Request.

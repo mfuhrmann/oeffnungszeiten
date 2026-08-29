@@ -28,6 +28,8 @@ import sys
 from urllib.parse import urlparse
 
 REQUIRED = ["schema", "name", "url"]
+# The id every example in README, CONTRIBUTING, CONCEPT and the issue form shows.
+EXAMPLE_OSM_ID = "node/123456789"
 KNOWN = {"schema", "name", "url", "filter", "fetch_backend", "sort_text_alphabetically",
          "trigger_text", "subtractive_selectors", "extract_text",
          "text_should_not_be_present", "webdriver_delay", "tag", "lang", "osm_id",
@@ -50,6 +52,14 @@ STABLE_DATA_ATTR = re.compile(r'@data-[a-z-]+\s*=')
 def check_structure(path, e, slugs):
     errs, warns = [], []
     slug = os.path.splitext(os.path.basename(path))[0]
+
+    # The documentation needs an osm_id to show, and whatever it shows gets copied. Every id
+    # that looks plausible IS plausible — OSM ids carry no reserved range — so a copied one
+    # produces an entry that passes every other check and links the alert to a stranger's
+    # object. The docs therefore all show one id, and that id is refused here.
+    if e.get("osm_id") == EXAMPLE_OSM_ID:
+        errs.append(f"osm_id {EXAMPLE_OSM_ID} is the placeholder from the documentation — "
+                    f"look the business up on openstreetmap.org and take its own id")
 
     for f in REQUIRED:
         if f not in e:

@@ -51,7 +51,7 @@ dabei kerngesund aus ([FILTERS.md](./FILTERS.md) §0 hat die Messung dazu). So e
 ## 2. Die OSM-Id holen
 
 Den Betrieb auf [openstreetmap.org](https://www.openstreetmap.org) suchen, das Objekt öffnen und die
-Id aus der Adresse nehmen: `node/1579272617`, manchmal `way/…` oder `relation/…`.
+Id aus der Adresse nehmen: `node/123456789`, manchmal `way/…` oder `relation/…`.
 
 Ein Alarm soll in einer OSM-Änderung enden, deshalb trägt die Nachricht einen Link auf das Objekt,
 gebaut aus `osm_id`. Ohne sie kommt der Alarm trotzdem an, mit Seiten-URL und Diff, aber ohne Link,
@@ -65,7 +65,7 @@ Repository fragt OSM selbst nie etwas.
 ```bash
 pip install lxml
 python3 scripts/filter_wizard.py https://example.de/kontakt --emit entries \
-    --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
+    --name "Example GmbH" --osm-id node/123456789 --tags fulda-restaurants
 ```
 
 `--tags` gruppiert den Watch, und der Tag besteht aus zwei Teilen: **dem Gebiet** und **dem
@@ -156,7 +156,7 @@ Der Wizard schreibt sie vollständig. Von Hand sähe sie so aus:
   "url": "https://example.de/kontakt",
   "filter": "xpath://div[contains(@class,\"opening-hours\")]",
   "captured_sample": "Mo–Fr 09:00–18:00 · Sa 09:00–13:00",
-  "osm_id": "node/1579272617",
+  "osm_id": "node/123456789",
   "tags": ["fulda-restaurants"],
   "lang": "de",
   "added": "2026-08-05"

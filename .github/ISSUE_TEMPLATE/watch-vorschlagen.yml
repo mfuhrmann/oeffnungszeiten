@@ -36,7 +36,7 @@ body:
         Auf openstreetmap.org suchen, Objekt öffnen, die Id aus der Adresse nehmen.
         Ohne sie kommt der Alarm ohne Link zum Objekt an, und wer ihn liest, sucht den
         Betrieb von Hand in der Karte.
-      placeholder: node/1579272617
+      placeholder: node/123456789
     validations:
       required: false
   - type: input
