@@ -155,6 +155,21 @@ trigger** (`#elementor-action%3A…`).
 `.location-detail-opentime.highlight` "today" widget inside the same wrapper, today's line appeared
 twice and moved daily. Sorting masked the order but not the duplicate; the wrapper had to change.
 
+**Proof, before changing anything:** fetching the page proves nothing, because the rotation
+depends on the time of day it is fetched. The stored snapshots do prove it. Per snapshot, hold the
+checksum of the raw text against the checksum of its lines sorted:
+
+| | |
+|---|---|
+| raw differs, sorted identical | rotation — `sort_text_alphabetically` |
+| raw and sorted both differ | a real change — read it |
+
+`scripts/rotation_check.py` is that comparison over every watch, and `--uuid <uuid>` runs it on
+the one that just fired and prints the lines that actually differ. It fetches no page. After
+switching sorting on, expect **exactly one** more alarm per watch: the first sorted snapshot runs
+against the last unsorted one. The tool names that state `SETTLED` so it is not mistaken for a
+filter that failed.
+
 ### Case 7b: the same text, decoded differently
 
 **Signature:** a diff that changes only invisible or replacement characters, `4���pm` becoming

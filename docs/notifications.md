@@ -132,6 +132,9 @@ it decides which of two jobs this is:
 - the diff shows a temporary notice (Betriebsurlaub, renovation, "ab Montag neue Zeiten"), leave
   `opening_hours` alone. The regular hours are still the regular hours, and the notice is gone in
   two weeks.
+- the message carries a `⟳ Nur umsortiert` line → nothing changed at all, see
+  [Umsortiert](#umsortiert). The relay says so itself, so this is the one case that needs no
+  reading of the diff.
 
 **2. `CSS/xPath filter was not present in the page`**: changedetection's own message, sent after
 six consecutive misses, so roughly 18 days at a 3-day cadence. Nothing to do in OSM: the site was
@@ -168,14 +171,52 @@ time is reported as found: a line too many beats a silent failure. Each finding 
 checksum from moving. That is precisely what the weekly report is for: if it says
 "nothing to report", it has actually looked.
 
+## Umsortiert
+
+A page whose opening-hours table starts at **today** rewrites itself daily. Its diff shows every
+line twice — once removed, once added — with identical times, which reads exactly like changed
+hours:
+
+```
+− Sonntag  12:00 - 21:00
+− Montag   12:00 - 21:00
++ Montag   12:00 - 21:00
++ Sonntag  12:00 - 21:00
+```
+
+The relay recognises that shape and labels it, because the answer is always the same one and
+nobody should have to work it out from six identical-looking lines. It never suppresses the
+message: a watch that says nothing is a watch nobody checks.
+
+**Switching sorting on produces one of these too**, and the diff cannot tell the two apart: the
+first sorted snapshot runs against the last unsorted one, which is a reordering like any other.
+That is why the note names both readings. If the entry already carries the flag, the message is
+that one alarm and there is nothing to do; `rotation_check.py` confirms it as `SETTLED`.
+
+**What to do**, once:
+
+1. `python3 scripts/rotation_check.py --url <the Webseite line from the message>` — it compares
+   the stored snapshots and says `ROTATION` when the sorted text is identical across all of them.
+   Fetching the page proves nothing here, because the rotation depends on the time of day.
+2. Set `"sort_text_alphabetically": true` in the entry, or let `rotation_check.py --fix` write it.
+   The entry is the source; a change made in the UI is undone by the next sync.
+3. Commit it. Expect **exactly one** more alarm for that watch: the first sorted snapshot runs
+   against the last unsorted one. `rotation_check.py` calls that state `SETTLED`, so a later
+   reader can tell it apart from a filter that failed.
+
+Sorting hides re-ordering, **not duplication**. If the alarm returns after that, the same line is
+in the capture twice — a "today" widget inside the same wrapper — and the filter has to get
+narrower ([FILTERS.md](../FILTERS.md) case 7).
+
 ## Running this for another city
 
-The structure is language-neutral; the text a mapper reads is not. Four places carry German, and
+The structure is language-neutral; the text a mapper reads is not. Five places carry German, and
 they are the whole list:
 
 | | Where | What it says |
 |---|---|---|
 | `DEFAULT_LINK_LABEL` | `charts/changedetection/files/matrix_relay.py` | `Webseite`, the label on the header link when a body line names none |
+| `reorder_note()` | `charts/changedetection/files/matrix_relay.py` | the `⟳ Nur umsortiert` verdict and what to do about it |
 | `notification_title`, `notification_body` | `deploy/global-settings.json` | the subject of every change alert, and the `Zu tun:` line under the diff |
 | `desired()` | `scripts/entries_sync.py` | the per-watch body, `Webseite:` and `OpenStreetMap:` |
 | `compose()` | `scripts/audit_report.py` | the weekly report: title, `Zu tun:` lines, `Webseite:`, `uuid:` |
