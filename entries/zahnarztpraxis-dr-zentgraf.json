@@ -1,10 +1,10 @@
 {
  "added": "2026-08-03",
- "captured_sample": "[ \"Monday,Tuesday,Wednesday,Thursday 08:00-12:30\", \"Friday 08:00-13:00\", \"Monday,Tuesday,Wednesday,Thursday 14:00-18:00\" ]",
+ "captured_sample": "[ \"Mo,Tu,We,Th 08:00-12:30\", \"Fr 08:00-13:00\", \"Mo,Tu,We,Th 14:00-18:00\" ]",
  "fetch_backend": "system",
  "filter": "json:$..openingHours",
  "name": "Zahnarztpraxis Dr. Zentgraf",
- "note": "2026-08-14: JSON-LD bleibt. Weder /kontakt noch /zahnarzt/standorte noch /zahnarztpraxis nennen Sprechzeiten - die einzigen Uhrzeiten sind die Auswahlfelder des Terminformulars.",
+ "note": "2026-08-14: JSON-LD bleibt. Weder /kontakt noch /zahnarzt/standorte noch /zahnarztpraxis nennen Sprechzeiten - die einzigen Uhrzeiten sind die Auswahlfelder des Terminformulars. 2026-08-29: Das Plugin schreibt die Tagesnamen jetzt abgekuerzt (Monday -> Mo), die Zeiten sind unveraendert.",
  "osm_id": "node/2322929061",
  "schema": 1,
  "tags": [
