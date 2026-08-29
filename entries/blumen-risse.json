@@ -1,0 +1,13 @@
+{
+ "added": "2026-08-29",
+ "captured_sample": "Montag - Freitag 09:00 - 19:00 Uhr Samstag 09:00 - 18:00 Uhr Sonn- und Feiertags geschlossen",
+ "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"freitag\")])]",
+ "lang": "de",
+ "name": "Blumen Risse",
+ "osm_id": "way/130865286",
+ "schema": 1,
+ "tags": [
+  "fulda-shop"
+ ],
+ "url": "https://www.blumen-risse.de/standorte/blumenmaerkte/5210-petersberg-alte-ziegelei"
+}
