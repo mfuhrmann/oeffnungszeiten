@@ -18,9 +18,10 @@ Beleg.
 **Ohne Fork:** ein Issue über die Vorlage
 [Watch vorschlagen](../../issues/new?template=watch-vorschlagen.yml) mit der Seite, dem Namen des
 Betriebs und seiner OSM-Id. Ein Maintainer setzt das Label `wizard`, dann holt ein Bot die Seite und
-kommentiert die Filterkandidaten samt dem Text, den jeder einfangen würde. Antworte mit `/pick 2`,
-und er schreibt die Entry-Datei, schiebt den Branch und kommentiert einen Link, der den Pull Request
-mit ausgefülltem Titel und Text öffnet. Nichts zu installieren, nichts auszuführen. Das Lesen bleibt
+kommentiert die Filterkandidaten samt dem Text, den jeder einfangen würde. Die Kandidaten sind
+durchnummeriert; antworte mit `/pick` und der Nummer des Blocks, der die Zeiten trägt, etwa
+`/pick 1`. Dann schreibt er die Entry-Datei, schiebt den Branch und kommentiert einen Link, der den
+Pull Request mit ausgefülltem Titel und Text öffnet. Nichts zu installieren, nichts auszuführen. Das Lesen bleibt
 bei dir: welcher Block wirklich die Zeiten *dieses* Betriebs trägt, kann kein Werkzeug entscheiden.
 
 Der letzte Klick ist Absicht. GitHub lässt Actions ohne eine eigene Repo-Einstellung keine Pull

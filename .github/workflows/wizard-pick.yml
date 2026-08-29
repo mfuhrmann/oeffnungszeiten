@@ -1,4 +1,4 @@
-# "/pick 2" under a wizard issue -> branch, entry file, pull request.
+# "/pick N" under a wizard issue -> branch, entry file, pull request.
 #
 # Same split as wizard.yml: the job that fetches the page holds no write token, and hands its
 # result to the job that pushes. The gate is the `wizard` label on the issue, so only a thread a

@@ -14,8 +14,9 @@ Jeder Watch wird alle drei Tage geprüft.
 **Der kurze Weg, ohne Installation und ohne Fork:** ein Issue über die Vorlage
 [Watch vorschlagen](../../issues/new?template=watch-vorschlagen.yml) mit der Seite, dem Namen des
 Betriebs und seiner OSM-Id. Ein Maintainer setzt das Label `wizard`, dann holt ein Bot die Seite und
-kommentiert die Filterkandidaten, jeden davon als **den Text, den er einfangen würde**. Antworte mit
-`/pick 2`, und er schreibt die Entry-Datei, schiebt den Branch und gibt einen Link zurück, der den
+kommentiert die Filterkandidaten, jeden davon als **den Text, den er einfangen würde**. Diese sind
+durchnummeriert; antworte mit `/pick` und der Nummer des Blocks, der die Zeiten trägt, etwa
+`/pick 1`. Dann schreibt er die Entry-Datei, schiebt den Branch und gibt einen Link zurück, der den
 Pull Request mit einem Klick öffnet.
 
 Das eine, was der Bot nicht abnimmt, ist das Lesen: welcher dieser Blöcke die Zeiten *dieses*
