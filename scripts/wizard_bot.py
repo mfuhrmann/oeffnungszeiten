@@ -23,6 +23,7 @@ Examples:
   python3 scripts/wizard_bot.py emit --body-file body.md --pick 2 --out out
 """
 import argparse
+import collections
 import ipaddress
 import json
 import os
@@ -169,6 +170,40 @@ def check_fields(f):
     return {"url": check_url(f.get("url")), **check_meta(f)}
 
 
+def known_tags(entries="entries"):
+    """{tag: how many watches carry it}. The vocabulary is the file tree, not a list to maintain."""
+    seen = collections.Counter()
+    for name in sorted(os.listdir(entries)) if os.path.isdir(entries) else []:
+        if not name.endswith(".json") or name.startswith("."):
+            continue
+        try:
+            e = json.load(open(os.path.join(entries, name)))
+        except Exception:
+            continue
+        seen.update(e.get("tags") or [])
+    return seen
+
+
+def tag_note(tags, entries="entries"):
+    """A warning for a category tag nothing else uses, or [].
+
+    Not a refusal: a genuinely new category is normal, a slipped one is not, and only a person
+    can tell them apart. But an unnoticed one-off splits the grouping in two, and the list has
+    58 tags with a single watch to show for it — including `fulda-shop`, which is the OSM *key*
+    and therefore fits every shop in town.
+    """
+    seen = known_tags(entries)
+    unknown = [t for t in tags if t not in seen]
+    if not unknown:
+        return []
+    common = ", ".join(f"`{t}` ({n})" for t, n in seen.most_common(8))
+    return [f"⚠ Den Tag {', '.join('`' + t + '`' for t in unknown)} trägt bisher kein Watch. "
+            f"Gemeint ist `fulda-` plus der OSM-Wert der Kategorie, also `shop=florist` → "
+            f"`fulda-florist`, nicht der Schlüssel (`fulda-shop` passt auf jeden Laden). "
+            f"Gebräuchlich sind: {common}. Eine neue Kategorie ist in Ordnung, sag es dann "
+            f"kurz im Pull Request."]
+
+
 def already_watched(url, entries="entries"):
     """The entry that already watches this page, if there is one.
 
@@ -232,11 +267,12 @@ def candidate_block(i, cand, lang):
     return "\n".join(lines)
 
 
-def candidates_comment(f, ranked, html_len):
+def candidates_comment(f, ranked, html_len, notes=()):
     shown = ranked[:MAX_CANDIDATES]
     parts = [
         f"Abgerufen: {f['url']} ({html_len} Bytes, einfacher Abruf, kein Browser).",
         "",
+        *([*notes, ""] if notes else []),
         "**Nicht der Selektor entscheidet, sondern der Text.** Lies die Blöcke und sag, welcher "
         "genau die Öffnungszeiten dieses Betriebs enthält — nicht die Zeiten eines "
         "Terminformulars, nicht die einer Nachbarfiliale, nicht eine Uhr, die jede Minute "
@@ -255,7 +291,7 @@ def candidates_comment(f, ranked, html_len):
     return "\n".join(parts)
 
 
-def pr_body(f, cand, path, issue):
+def pr_body(f, cand, path, issue, notes=()):
     import filter_wizard as W
     return "\n".join([
         f"Watch für **{f['name']}**, vorgeschlagen in #{issue}.",
@@ -274,6 +310,7 @@ def pr_body(f, cand, path, issue):
         f"Datei: `{path}`. Die Prüfung in CI holt die Seite noch einmal und hält den Filter "
         f"dagegen; was hier steht, ist der Stand des Abrufs von eben.",
         "",
+        *([*notes, ""] if notes else []),
         f"Closes #{issue}",
     ])
 
@@ -352,7 +389,8 @@ def main():
                 f"Änderung an der bestehenden Datei, kein neuer Watch.")
         html, ranked = fetch(f["url"], f["lang"])
         if args.command == "candidates":
-            write(args.out, "comment.md", candidates_comment(f, ranked, len(html)))
+            write(args.out, "comment.md", candidates_comment(
+                f, ranked, len(html), tag_note(f["tags"], args.entries)))
             write(args.out, "candidates.json", json.dumps(ranked, ensure_ascii=False, indent=1))
             return 0
 
@@ -365,7 +403,8 @@ def main():
         path = W.emit_entry(os.path.join(args.out, "entry"), f["name"], f["url"], cand,
                             False, f["lang"], f["osm_id"], f["tags"])
         slug = os.path.basename(path)[:-len(".json")]
-        write(args.out, "pr-body.md", pr_body(f, cand, f"entries/{slug}.json", args.issue))
+        write(args.out, "pr-body.md", pr_body(f, cand, f"entries/{slug}.json", args.issue,
+                                              tag_note(f["tags"], args.entries)))
         write(args.out, "meta.json", json.dumps(
             {"slug": slug, "name": f["name"], "url": f["url"], "pick": pick,
              "branch": f"watch/{slug}", "entry": path,

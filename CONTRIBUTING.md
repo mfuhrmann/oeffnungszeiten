@@ -68,12 +68,19 @@ python3 scripts/filter_wizard.py https://example.de/kontakt --emit entries \
     --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
 ```
 
-`--tags` gruppiert den Watch nach Kategorie: nimm den Tag, den seine Nachbarn schon tragen. Für
-mehrere die Option wiederholen oder mit Komma trennen. Der Wizard sagt Bescheid, wenn `--tags` oder
-`--osm-id` fehlen.
+`--tags` gruppiert den Watch nach Kategorie. Der Tag ist `fulda-` und der **OSM-Wert** der
+Kategorie, also der Wert, den das Objekt aus Schritt 2 ohnehin trägt: `shop=bakery` wird zu
+`fulda-bakery`, `amenity=doctors` zu `fulda-doctors`, `shop=florist` zu `fulda-florist`. Den
+Schlüssel statt des Werts zu nehmen ergibt einen Tag, der auf alles passt und deshalb nichts
+gruppiert (`fulda-shop`). Für mehrere Tags die Option wiederholen oder mit Komma trennen. Der
+Wizard sagt Bescheid, wenn `--tags` oder `--osm-id` fehlen.
+
+Der Tag ist kein OSM-Tag und wird nirgends dorthin zurückgeschrieben. Er gruppiert im UI, und
+`entries_sync.py` schreibt daran die Benachrichtigungs-Einstellungen von einem Geschwister-Watch
+ab. Was schon in Gebrauch ist:
 
 ```bash
-grep -ho '"fulda-[a-z-]*"' entries/*.json | sort | uniq -c | sort -rn | head
+grep -ho '"fulda-[a-z_-]*"' entries/*.json | sort | uniq -c | sort -rn | head
 ```
 
 Er zeigt die Kandidaten als **den Text, den jeder einfangen würde**. Ausgewählt wird am Lesen: du
@@ -158,7 +165,7 @@ Der Wizard schreibt sie vollständig. Von Hand sähe sie so aus:
 | `filter` | CSS, `xpath:…` oder `json:…`. Nur weglassen, wenn wirklich die ganze Seite gemeint ist |
 | `captured_sample` | Pflicht: daran beurteilt ein Prüfender den Eintrag, ohne selbst etwas abzurufen |
 | `osm_id` | `node/…`, `way/…` oder `relation/…`. CI erzwingt es nicht, siehe aber Schritt 2 |
-| `tags` | Tag-Namen, nie Tag-uuids: eine uuid bedeutet in einer anderen Instanz nichts |
+| `tags` | `fulda-` plus OSM-Wert, Namen statt uuids: eine uuid bedeutet in einer anderen Instanz nichts |
 | `lang` | `de` (Vorgabe) oder `en`, steuert die Wochentagserkennung |
 | `fetch_backend` | `html_webdriver`, wenn die Zeiten JavaScript brauchen, setzt der Wizard |
 | `sort_text_alphabetically` | `true`, wenn der Block täglich umsortiert, setzt der Wizard |

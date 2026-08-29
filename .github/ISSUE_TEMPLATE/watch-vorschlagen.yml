@@ -43,7 +43,13 @@ body:
     id: tag
     attributes:
       label: Kategorie-Tag
-      description: Gruppiert den Watch, etwa fulda-bakery, fulda-restaurants, fulda-doctors.
+      description: |
+        `fulda-` und der OSM-Wert der Kategorie, den das Objekt oben schon trägt:
+        `shop=bakery` wird zu `fulda-bakery`, `amenity=doctors` zu `fulda-doctors`,
+        `shop=florist` zu `fulda-florist`.
+
+        Nimm den Wert, nicht den Schlüssel: `fulda-shop` gruppiert nichts, weil es auf jeden
+        Laden passt. Im Zweifel leer lassen, das trägt ein Maintainer nach.
       placeholder: fulda-bakery
     validations:
       required: false
