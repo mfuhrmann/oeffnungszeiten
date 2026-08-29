@@ -1,62 +1,65 @@
-# Contributing
+# Mitmachen
 
-This repository watches business websites for **opening-hours changes**. One file per watch lives
-in [`entries/`](./entries); adding, changing or removing one is a pull request. You need no running
-service, no API key and no knowledge of XPath.
+Dieses Repository beobachtet Websites von Betrieben auf **geänderte Öffnungszeiten**. Eine Datei je
+Watch liegt in [`entries/`](./entries); hinzufügen, ändern oder entfernen ist ein Pull Request. Du
+brauchst keinen laufenden Dienst, keinen API-Schlüssel und keine XPath-Kenntnisse.
 
-**Structure and documentation are English, evidence about a Fulda business is German.** Code and docs
-read for another city; a `note` quotes what the page says ("Termine nur nach Vereinbarung"), and
-translating a quote weakens it as evidence. The Matrix messages are German too: they are read by
-whoever maps Fulda.
-
----
-
-## Two ways in
-
-**Without a fork**: open a [Watch vorschlagen](../../issues/new?template=watch-vorschlagen.yml)
-issue with the page, the business name and its OSM id. A maintainer labels it `wizard`, a bot
-fetches the page and comments with the filter candidates and the text each one captures. Answer
-`/pick 2` and it writes the entry file, pushes the branch and comments a one-click link that opens
-the pull request with title and body filled in. Nothing to install, nothing to run; the reading —
-which block really holds *this* business's hours — is still yours, because no tool can do it.
-
-That last click is yours on purpose. GitHub does not let Actions open pull requests unless a
-repository setting says so, and a pull request opened by a person runs CI while one opened with
-`GITHUB_TOKEN` starts no workflow at all.
-
-The bot fetches without a browser. A page whose hours appear only after JavaScript says so and
-stays a manual case, as does a page that is already watched: it names the file that already
-covers it.
-
-**With the repository**, the path below: it gives you the wizard's full output, the browser
-fallback and everything else on your own machine. Both roads end in the same pull request and the
-same review.
+**Sprache:** Diese Seite, die README, das Issue-Formular und die Nachrichten des Bots sind deutsch,
+weil sie liest, wer in Fulda mitmacht. Handwerk und Begründung liegen auf Englisch, damit eine
+andere Stadt das hier nachbauen kann: [FILTERS.md](./FILTERS.md), [CONCEPT.md](./CONCEPT.md) und
+`docs/`. Code, Docstrings und Commit-Messages sind englisch. Ein `note` zitiert, was auf der Seite
+steht ("Termine nur nach Vereinbarung"), und bleibt deutsch: ein übersetztes Zitat taugt weniger als
+Beleg.
 
 ---
 
-## 1. Find the page that carries the hours
+## Zwei Wege hinein
 
-Usually the homepage, `/kontakt` or `/oeffnungszeiten`. For a chain it is almost always the branch's
-own page, not the corporate site. Check that the hours belong to *this* business: a site-wide footer
-link often leads to a landlord's office hours or an accessibility statement.
+**Ohne Fork:** ein Issue über die Vorlage
+[Watch vorschlagen](../../issues/new?template=watch-vorschlagen.yml) mit der Seite, dem Namen des
+Betriebs und seiner OSM-Id. Ein Maintainer setzt das Label `wizard`, dann holt ein Bot die Seite und
+kommentiert die Filterkandidaten samt dem Text, den jeder einfangen würde. Antworte mit `/pick 2`,
+und er schreibt die Entry-Datei, schiebt den Branch und kommentiert einen Link, der den Pull Request
+mit ausgefülltem Titel und Text öffnet. Nichts zu installieren, nichts auszuführen. Das Lesen bleibt
+bei dir: welcher Block wirklich die Zeiten *dieses* Betriebs trägt, kann kein Werkzeug entscheiden.
 
-A page that publishes hours nowhere is not worth a watch: it stays silent forever and looks
-perfectly healthy ([FILTERS.md](./FILTERS.md) §0 has the measurement). Such a page goes into
-`no-watch.json`, see below.
+Der letzte Klick ist Absicht. GitHub lässt Actions ohne eine eigene Repo-Einstellung keine Pull
+Requests anlegen, und ein von einem Menschen geöffneter Pull Request löst CI aus, während einer aus
+`GITHUB_TOKEN` überhaupt keinen Workflow startet.
 
-## 2. Get the OSM id
+Der Bot holt die Seite ohne Browser. Eine Seite, deren Zeiten erst nach JavaScript erscheinen, sagt
+er ab, sie bleibt ein Fall für den langen Weg. Dasselbe gilt für eine Seite, die schon beobachtet
+wird: er nennt dann die Datei, die sie abdeckt.
 
-Search the business on [openstreetmap.org](https://www.openstreetmap.org), open the object, and take
-the id out of the URL: `node/1579272617`, sometimes `way/…` or `relation/…`.
+**Mit dem Repository**, der Weg unten: er gibt dir die volle Ausgabe des Wizards, den
+Browser-Rückfall und alles Weitere auf dem eigenen Rechner. Beide Wege enden im selben Pull Request
+und in derselben Prüfung.
 
-An alert is supposed to end in an OSM edit, so the message carries a link to the object, built from
-`osm_id`. Without one the alert still arrives, with the page URL and the diff but no link, and
-whoever reads it has to find the business in the map by hand: most of the work the alert exists to
-save. Nearly every entry here has an id. Leave it out only when the business is genuinely not in OSM
-yet, and say so in the pull request. Nothing in the code follows the id; this repository never
-queries OSM itself.
+---
 
-## 3. Let the wizard write the entry
+## 1. Die Seite finden, die die Zeiten trägt
+
+Meist die Startseite, `/kontakt` oder `/oeffnungszeiten`. Bei einer Kette fast immer die Seite der
+Filiale, nicht die des Konzerns. Prüfe, dass die Zeiten zu *diesem* Betrieb gehören: ein Link im
+Fußbereich führt oft zu den Bürozeiten des Vermieters oder zu einer Barrierefreiheitserklärung.
+
+Eine Seite, die nirgends Zeiten nennt, ist kein Watch wert: sie bleibt für immer still und sieht
+dabei kerngesund aus ([FILTERS.md](./FILTERS.md) §0 hat die Messung dazu). So eine Seite gehört in
+`no-watch.json`, siehe unten.
+
+## 2. Die OSM-Id holen
+
+Den Betrieb auf [openstreetmap.org](https://www.openstreetmap.org) suchen, das Objekt öffnen und die
+Id aus der Adresse nehmen: `node/1579272617`, manchmal `way/…` oder `relation/…`.
+
+Ein Alarm soll in einer OSM-Änderung enden, deshalb trägt die Nachricht einen Link auf das Objekt,
+gebaut aus `osm_id`. Ohne sie kommt der Alarm trotzdem an, mit Seiten-URL und Diff, aber ohne Link,
+und wer ihn liest, sucht den Betrieb von Hand in der Karte: also genau die Arbeit, die der Alarm
+sparen soll. Fast jeder Eintrag hier hat eine Id. Lass sie nur weg, wenn der Betrieb wirklich noch
+nicht in OSM steht, und schreib das in den Pull Request. Der Code folgt der Id nirgends, dieses
+Repository fragt OSM selbst nie etwas.
+
+## 3. Den Wizard den Eintrag schreiben lassen
 
 ```bash
 pip install lxml
@@ -64,57 +67,60 @@ python3 scripts/filter_wizard.py https://example.de/kontakt --emit entries \
     --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
 ```
 
-`--tags` groups the watch by category: pick the tag its neighbours already use. Repeat the flag or
-comma-separate for several. The wizard says so if you leave `--tags` or `--osm-id` off.
+`--tags` gruppiert den Watch nach Kategorie: nimm den Tag, den seine Nachbarn schon tragen. Für
+mehrere die Option wiederholen oder mit Komma trennen. Der Wizard sagt Bescheid, wenn `--tags` oder
+`--osm-id` fehlen.
 
 ```bash
 grep -ho '"fulda-[a-z-]*"' entries/*.json | sort | uniq -c | sort -rn | head
 ```
 
-It prints candidates as **the text each one would capture**. Pick by reading the hours: you know
-what your business's opening times look like, and you do not need to judge a selector. Heed the `!`
-warnings, especially `only N weekday(s)` (half the week is elsewhere) and `brittle selector` (it
-will break at the next site edit).
+Er zeigt die Kandidaten als **den Text, den jeder einfangen würde**. Ausgewählt wird am Lesen: du
+weißt, wie die Öffnungszeiten deines Betriebs aussehen, und musst keinen Selektor beurteilen. Nimm
+die `!`-Warnungen ernst, besonders `only N weekday(s)` (die halbe Woche steht woanders) und
+`brittle selector` (bricht beim nächsten Umbau der Seite).
 
-**If the plain HTML holds nothing usable**, the wizard retries through a browser by itself and
-says so. It finds one on `localhost:3000` without a flag, so starting one is the whole setup; no
-changedetection involved:
+**Steht im einfachen HTML nichts Brauchbares**, versucht es der Wizard von selbst mit einem Browser
+und sagt das auch. Er findet einen auf `localhost:3000` ohne jede Option, einen zu starten ist also
+die ganze Einrichtung; changedetection ist daran nicht beteiligt:
 
 ```bash
 docker run --rm -p 3000:3000 dgtlmoon/sockpuppetbrowser
 ```
 
-`--browser-ws ws://host:port` names a browser somewhere else. What was rendered ends up in the
-entry as `fetch_backend: html_webdriver`. Without Docker the wizard prints that command and stays
-with the plain fetch; you can still open the pull request, say in the description that the page
-needs rendering, and a maintainer will finish it.
+`--browser-ws ws://host:port` nennt einen Browser woanders. Was gerendert wurde, landet im Eintrag
+als `fetch_backend: html_webdriver`. Ohne Docker druckt der Wizard diesen Befehl und bleibt beim
+einfachen Abruf; du kannst den Pull Request trotzdem öffnen, in der Beschreibung sagen, dass die
+Seite gerendert werden muss, und ein Maintainer macht es fertig.
 
-If nothing is found even rendered, the wizard says so and stops.
+Findet sich auch gerendert nichts, sagt der Wizard das und hört auf.
 
-## 4. Check the entry
+## 4. Den Eintrag prüfen
 
 ```bash
-python3 scripts/validate_entries.py                                          # structure, as CI runs it
-python3 scripts/validate_entries.py --live --only entries/example-gmbh.json  # and against the page
+python3 scripts/validate_entries.py                                          # Struktur, wie CI es fährt
+python3 scripts/validate_entries.py --live --only entries/example-gmbh.json  # und gegen die Seite
 ```
 
-The first call is what CI will run: **structure only**, and on purpose, because it needs no network
-and so never fails for a reason you cannot fix. Run it over all entries as CI does. `--only` is for
-a quick look at one file and sees less: a duplicate slug and a page listed in both `entries/` and
-`no-watch.json` only show up in the full sweep.
+Der erste Aufruf ist der, den CI fährt: **nur Struktur**, und das mit Absicht, denn so braucht er
+kein Netz und scheitert nie an etwas, das du nicht ändern kannst. Lass ihn über alle Einträge
+laufen, so wie CI es tut. `--only` ist der schnelle Blick auf eine Datei und sieht weniger: ein
+doppelter Slug und eine Seite, die in `entries/` und in `no-watch.json` steht, fallen erst im
+vollen Durchlauf auf.
 
-The second call fetches the page, and it is worth the minute before anything leaves your machine.
-It fails an entry whose filter captures no time at all, which is the watch that could never fire.
-Add `--browser-ws ws://localhost:3000` for a page that needs JavaScript; without one such entries
-are only warned about. Only `xpath:` filters are evaluated live; CSS and JSON-LD ones are not.
+Der zweite Aufruf holt die Seite, und die Minute lohnt sich, bevor etwas deinen Rechner verlässt. Er
+lässt einen Eintrag durchfallen, dessen Filter überhaupt keine Zeit einfängt: also den Watch, der
+niemals auslösen könnte. Für eine Seite, die JavaScript braucht, `--browser-ws ws://localhost:3000`
+dazunehmen; ohne einen Browser gibt es dafür nur eine Warnung. Live geprüft werden nur
+`xpath:`-Filter, CSS und JSON-LD nicht.
 
-Whether the filter really captures the hours is judged by a human, from the `captured_sample` in
-your diff. That is why it has to be there and has to show actual opening hours.
+Ob der Filter wirklich die Zeiten fängt, beurteilt ein Mensch, am `captured_sample` in deinem Diff.
+Deshalb muss es da sein, und deshalb müssen darin echte Öffnungszeiten stehen.
 
-## 5. Open the pull request
+## 5. Den Pull Request öffnen
 
 ```bash
-gh repo fork --remote            # only without write access, and only once
+gh repo fork --remote            # nur ohne Schreibrecht, und nur einmal
 git checkout -b add-example-gmbh
 git add entries/example-gmbh.json
 git commit -m "add Example GmbH"
@@ -122,14 +128,14 @@ git push origin add-example-gmbh
 gh pr create --fill
 ```
 
-Never commit onto `main`. Without the `gh` CLI, fork on github.com, push the branch to your fork
-and open the pull request there. Once it is merged, the hourly sync creates the watch.
+Niemals direkt auf `main` committen. Ohne die `gh`-CLI auf github.com forken, den Branch in den Fork
+schieben und den Pull Request dort öffnen. Nach dem Merge legt der stündliche Sync den Watch an.
 
 ---
 
-## The entry file
+## Die Entry-Datei
 
-The wizard writes all of it. Written by hand it looks like this:
+Der Wizard schreibt sie vollständig. Von Hand sähe sie so aus:
 
 ```json
 {
@@ -145,68 +151,71 @@ The wizard writes all of it. Written by hand it looks like this:
 }
 ```
 
-| Field | |
+| Feld | |
 |---|---|
-| `schema`, `name`, `url` | required |
-| `filter` | CSS, `xpath:…` or `json:…`. Omit only if the whole page is genuinely the target |
-| `captured_sample` | required: it is how a reviewer judges the entry without fetching anything |
-| `osm_id` | `node/…`, `way/…` or `relation/…`. Not enforced by CI, but see step 2 |
-| `tags` | category names, never tag uuids: a uuid means nothing in another instance |
-| `lang` | `de` (default) or `en`, affects weekday detection |
-| `fetch_backend` | `html_webdriver` if the hours need JavaScript, set by the wizard |
-| `sort_text_alphabetically` | `true` if the block re-orders daily, set by the wizard |
-| `note` | German, free text: what the page shows and what was checked. Knowledge, not decoration |
-| `added` | the date the entry was written, set by the wizard |
+| `schema`, `name`, `url` | Pflicht |
+| `filter` | CSS, `xpath:…` oder `json:…`. Nur weglassen, wenn wirklich die ganze Seite gemeint ist |
+| `captured_sample` | Pflicht: daran beurteilt ein Prüfender den Eintrag, ohne selbst etwas abzurufen |
+| `osm_id` | `node/…`, `way/…` oder `relation/…`. CI erzwingt es nicht, siehe aber Schritt 2 |
+| `tags` | Tag-Namen, nie Tag-uuids: eine uuid bedeutet in einer anderen Instanz nichts |
+| `lang` | `de` (Vorgabe) oder `en`, steuert die Wochentagserkennung |
+| `fetch_backend` | `html_webdriver`, wenn die Zeiten JavaScript brauchen, setzt der Wizard |
+| `sort_text_alphabetically` | `true`, wenn der Block täglich umsortiert, setzt der Wizard |
+| `note` | deutsch, freier Text: was die Seite zeigt und was geprüft wurde. Wissen, keine Zierde |
+| `added` | das Datum, an dem der Eintrag entstand, setzt der Wizard |
 
-The filename comes from the name and the URL, so two branches of one chain do not collide.
+Der Dateiname entsteht aus Name und URL, damit zwei Filialen einer Kette nicht kollidieren.
 
-## Change or remove a watch
+## Einen Watch ändern oder entfernen
 
-- **Change**: edit the file. The next sync writes it through.
-- **Remove**: `git rm` the file. The watch is gone within the hour. Removing many at once is the one
-  thing to announce in the pull request: the sync refuses to delete more than a handful in one run,
-  because a checkout that arrives empty looks exactly like a request to delete everything.
+- **Ändern**: die Datei bearbeiten. Der nächste Sync schreibt sie durch.
+- **Entfernen**: die Datei mit `git rm` löschen. Der Watch ist binnen einer Stunde weg. Viele auf
+  einmal zu entfernen ist das eine, was in den Pull Request gehört: der Sync weigert sich, mehr als
+  eine Handvoll in einem Lauf zu löschen, weil ein leer angekommener Checkout genauso aussieht wie
+  die Bitte, alles zu löschen.
 
-## A page with no hours: `no-watch.json`
+## Eine Seite ohne Zeiten: `no-watch.json`
 
-The counterpart of `entries/`. A page that was looked at and has nothing to watch is recorded there
-with the reason, so nobody spends an evening on it again. That is a contribution like any other, and
-CI is stricter about it than about an entry: `reason` has to be one of the listed causes, `note` has
-to say what the page *does* show and how that was checked (German, at least 30 characters), and
-`recheck` is a date, `on-relocation` or `never`. The record shape and the reasons are in
-[CONCEPT.md](./CONCEPT.md); `python3 scripts/no_watch.py` prints what the list holds. A page belongs
-in exactly one of the two lists, and CI enforces that.
+Das Gegenstück zu `entries/`. Eine angesehene Seite, an der es nichts zu beobachten gibt, wird dort
+mit Begründung festgehalten, damit niemand ein zweites Mal einen Abend darauf verwendet. Das ist ein
+Beitrag wie jeder andere, und CI ist dabei strenger als bei einem Eintrag: `reason` muss einer der
+gelisteten Gründe sein, `note` muss sagen, was die Seite *stattdessen* zeigt und wie das geprüft
+wurde (deutsch, mindestens 30 Zeichen), und `recheck` ist ein Datum, `on-relocation` oder `never`.
+Aufbau und Gründe stehen in [CONCEPT.md](./CONCEPT.md); `python3 scripts/no_watch.py` zeigt, was die
+Liste enthält. Eine Seite gehört in genau eine der beiden Listen, CI achtet darauf.
 
-## What gets rejected
+## Was zurückkommt
 
-CI fails a pull request for:
+CI lässt einen Pull Request durchfallen bei:
 
-- invalid JSON, a missing `url`/`name`, an unsupported `schema`
-- a `url` that is not `http(s)` or has no host
-- a duplicate slug (the filename is the identity)
-- an **absolute XPath** such as `/html/body/div[2]/div/main/…`
-- a missing `captured_sample`: nothing in the diff would show what the filter captures
-- a `fetch_backend` other than `system`, `html_requests` or `html_webdriver`
-- the same page in `entries/` and in `no-watch.json`, or a `no-watch.json` record missing a field
+- kaputtem JSON, fehlendem `url`/`name`, nicht unterstütztem `schema`
+- einer `url`, die nicht `http(s)` ist oder keinen Host hat
+- einem doppelten Slug (der Dateiname ist die Identität)
+- einem **absoluten XPath** wie `/html/body/div[2]/div/main/…`
+- fehlendem `captured_sample`: im Diff wäre nicht zu sehen, was der Filter fängt
+- einem `fetch_backend` außer `system`, `html_requests` oder `html_webdriver`
+- derselben Seite in `entries/` und in `no-watch.json`, oder einem Eintrag in `no-watch.json`, dem
+  ein Feld fehlt
 
-A reviewer will send back, without CI failing:
+Ein Prüfender schickt zurück, ohne dass CI fehlschlägt:
 
-- a filter anchored on a generated class (`elementor-element-224ed87`)
-- several entries pointing at one store locator. Split them into per-branch pages instead
-- a page that publishes no hours (step 1), and the wizard's `!` warnings if they were ignored
+- einen Filter, der an einer generierten Klasse hängt (`elementor-element-224ed87`)
+- mehrere Einträge, die auf einen Filialfinder zeigen. Stattdessen auf die einzelnen Filialseiten
+  aufteilen
+- eine Seite, die keine Zeiten nennt (Schritt 1), und übergangene `!`-Warnungen des Wizards
 
-What makes a selector brittle, and what to anchor on instead: [FILTERS.md](./FILTERS.md).
+Was einen Selektor brüchig macht und woran man stattdessen verankert: [FILTERS.md](./FILTERS.md).
 
-## Background
+## Hintergrund
 
-- [FILTERS.md](./FILTERS.md): the page shapes that keep coming back, the four criteria that prove a
-  filter is right, and the traps that cost real debugging time
-- [CONCEPT.md](./CONCEPT.md): why entries are the source of truth, and what `no-watch.json` records
-- [docs/changedetection.md](./docs/changedetection.md): how the service is deployed
+- [FILTERS.md](./FILTERS.md): die Seitenformen, die immer wiederkommen, die vier Kriterien, die
+  einen Filter belegen, und die Fallen, die echte Zeit gekostet haben (englisch)
+- [CONCEPT.md](./CONCEPT.md): warum die Einträge die Quelle sind und was `no-watch.json` festhält
+  (englisch)
+- [docs/changedetection.md](./docs/changedetection.md): wie der Dienst ausgerollt ist (englisch)
 
-## Licence of contributions
+## Lizenz der Beiträge
 
-By opening a pull request you agree that your **code** is contributed under
-[GPL-3.0](./LICENSE) and your **entry data** under
-[ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/), matching OpenStreetMap, from which
-most of this dataset derives.
+Mit einem Pull Request stimmst du zu, dass dein **Code** unter [GPL-3.0](./LICENSE) und deine
+**Eintragsdaten** unter [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/) beigetragen
+werden, passend zu OpenStreetMap, woher der größte Teil dieses Datenbestands stammt.
