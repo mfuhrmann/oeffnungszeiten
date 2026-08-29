@@ -83,6 +83,8 @@ jobs:
         if: steps.refused.outputs.stop != 'yes'
         env:
           GH_TOKEN: ${{ secrets.WIZARD_PR_TOKEN || github.token }}
+          REPO: ${{ github.repository }}
+          ISSUE: ${{ github.event.issue.number }}
         run: |
           BRANCH=$(python3 -c "import json;print(json.load(open('out/meta.json'))['branch'])")
           TITLE=$(python3 -c "import json;print(json.load(open('out/meta.json'))['title'])")
@@ -94,10 +96,18 @@ jobs:
           git commit -m "$TITLE"
           git push --force origin "HEAD:$BRANCH"
           URL=$(gh pr list --head "$BRANCH" --state open --json url -q '.[0].url')
+          # "GitHub Actions is not permitted to create or approve pull requests" is a repository
+          # setting, off by default. Rather than depend on it, fall back to a link that opens the
+          # form filled in — which a person then submits, and their pull request runs CI.
           if [ -z "$URL" ]; then
             URL=$(gh pr create --base main --head "$BRANCH" --title "$TITLE" \
-                    --body-file out/pr-body.md)
+                    --body-file out/pr-body.md) || URL=""
           fi
-          gh issue comment "${{ github.event.issue.number }}" \
-            --repo "${{ github.repository }}" \
-            --body "Pull Request steht: $URL. Lies dort noch einmal, was der Filter fängt — was hier im Issue steht, war der Abruf von vorhin."
+          if [ -n "$URL" ]; then
+            gh issue comment "$ISSUE" --repo "$REPO" \
+              --body "Pull Request steht: $URL. Lies dort noch einmal, was der Filter fängt — was hier im Issue steht, war der Abruf von vorhin."
+          else
+            python3 scripts/wizard_bot.py compare --repo "$REPO" --branch "$BRANCH" \
+              --title "$TITLE" --body-file out/pr-body.md --out out
+            gh issue comment "$ISSUE" --repo "$REPO" --body-file out/compare.md
+          fi

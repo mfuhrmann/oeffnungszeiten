@@ -278,6 +278,21 @@ def pr_body(f, cand, path, issue):
     ])
 
 
+def compare_url(repo, branch, title, body, base="main"):
+    """A link that opens GitHub's pull-request form with everything filled in.
+
+    The fallback for the day Actions is not allowed to open the pull request itself — that is a
+    repository setting, off by default. One click by a human replaces it, and it buys something
+    the automatic path does not have: a pull request opened by a person runs CI, while one
+    opened with GITHUB_TOKEN starts no further workflow.
+
+    >>> compare_url("o/r", "watch/x", "watch: X & Y", "b")
+    'https://github.com/o/r/compare/main...watch/x?quick_pull=1&title=watch%3A+X+%26+Y&body=b'
+    """
+    q = urllib.parse.urlencode({"quick_pull": 1, "title": title, "body": body[:4000]})
+    return f"https://github.com/{repo}/compare/{base}...{branch}?{q}"
+
+
 def write(out, name, text):
     os.makedirs(out, exist_ok=True)
     path = os.path.join(out, name)
@@ -288,8 +303,12 @@ def write(out, name, text):
 
 def main():
     ap = argparse.ArgumentParser(description="Run the filter wizard from a GitHub issue")
-    ap.add_argument("command", choices=["parse", "candidates", "emit"])
-    ap.add_argument("--body-file", required=True, help="file holding the issue body")
+    ap.add_argument("command", choices=["parse", "candidates", "emit", "compare"])
+    ap.add_argument("--body-file", required=True,
+                    help="file holding the issue body, or the pull-request body for `compare`")
+    ap.add_argument("--repo", help="owner/name, for `compare`")
+    ap.add_argument("--branch", help="branch the entry sits on, for `compare`")
+    ap.add_argument("--title", help="pull-request title, for `compare`")
     ap.add_argument("--comment-file", help="file holding the /pick comment (emit)")
     ap.add_argument("--pick", type=int, help="rank to take (emit, overrides --comment-file)")
     ap.add_argument("--issue", type=int, default=0, help="issue number, for the PR body")
@@ -299,6 +318,18 @@ def main():
     args = ap.parse_args()
 
     body = open(args.body_file, encoding="utf-8", errors="replace").read()
+    if args.command == "compare":
+        url = compare_url(args.repo, args.branch, args.title, body)
+        write(args.out, "compare.md",
+              f"Der Branch steht: [`{args.branch}`](https://github.com/{args.repo}/tree/"
+              f"{args.branch}). Den Pull Request musst du selbst öffnen, ein Klick:\n\n"
+              f"**[Pull Request anlegen]({url})**\n\n"
+              f"Titel und Text sind vorausgefüllt. Actions darf hier keine Pull Requests "
+              f"anlegen — das ist eine Repo-Einstellung (Settings → Actions → General → "
+              f"Workflow permissions). Der Klick hat einen eigenen Vorteil: ein von einem "
+              f"Menschen geöffneter Pull Request löst CI aus, ein von `GITHUB_TOKEN` "
+              f"geöffneter nicht.")
+        return 0
     try:
         f = check_fields(parse_body(body))
         if args.command == "parse":
