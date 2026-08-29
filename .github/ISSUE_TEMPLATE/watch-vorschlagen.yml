@@ -1,0 +1,66 @@
+name: Watch vorschlagen
+description: Eine Seite melden, deren Öffnungszeiten beobachtet werden sollen. Ohne Fork, ohne Python.
+title: "Watch: "
+labels: ["watch-vorschlag"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Trag die Seite ein, den Rest übernimmt ein Bot: er holt die Seite, schlägt Filter vor
+        und öffnet nach deiner Auswahl den Pull Request.
+
+        Eine Seite, die ihre Zeiten nirgends nennt, taugt nicht als Watch — sie bleibt für
+        immer still und sieht dabei gesund aus. Such lieber `/kontakt`, `/oeffnungszeiten`
+        oder bei einer Kette die Seite dieser Filiale.
+  - type: input
+    id: url
+    attributes:
+      label: Seite mit den Öffnungszeiten
+      description: Die Unterseite, auf der die Zeiten wirklich stehen, nicht zwingend die Startseite.
+      placeholder: https://example.de/kontakt
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Name des Betriebs
+      description: So, wie ihn jemand in Fulda nennen würde.
+      placeholder: Bäckerei Beispiel
+    validations:
+      required: true
+  - type: input
+    id: osm
+    attributes:
+      label: OSM-Objekt
+      description: |
+        Auf openstreetmap.org suchen, Objekt öffnen, die Id aus der Adresse nehmen.
+        Ohne sie kommt der Alarm ohne Link zum Objekt an, und wer ihn liest, sucht den
+        Betrieb von Hand in der Karte.
+      placeholder: node/1579272617
+    validations:
+      required: false
+  - type: input
+    id: tag
+    attributes:
+      label: Kategorie-Tag
+      description: Gruppiert den Watch, etwa fulda-bakery, fulda-restaurants, fulda-doctors.
+      placeholder: fulda-bakery
+    validations:
+      required: false
+  - type: dropdown
+    id: lang
+    attributes:
+      label: Sprache der Seite
+      options: ["de", "en"]
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: kontext
+    attributes:
+      label: Sonst noch etwas
+      description: |
+        Was ein Prüfender wissen sollte: zwei Betriebe auf einer Seite, Zeiten nur im
+        Kleingedruckten, Filiale mit abweichenden Zeiten. Der Bot liest dieses Feld nicht.
+    validations:
+      required: false

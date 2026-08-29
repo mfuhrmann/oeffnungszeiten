@@ -11,6 +11,24 @@ whoever maps Fulda.
 
 ---
 
+## Two ways in
+
+**Without a fork**: open a [Watch vorschlagen](../../issues/new?template=watch-vorschlagen.yml)
+issue with the page, the business name and its OSM id. A maintainer labels it `wizard`, a bot
+fetches the page and comments with the filter candidates and the text each one captures. Answer
+`/pick 2` and it writes the entry, opens the pull request and links it back. Nothing to install,
+nothing to run; the reading — which block really holds *this* business's hours — is still yours,
+because no tool can do it.
+
+The bot fetches without a browser. A page whose hours appear only after JavaScript says so and
+stays a manual case, as does a page that is already watched.
+
+**With the repository**, the path below: it gives you the wizard's full output, the browser
+fallback and everything else on your own machine. Both roads end in the same pull request and the
+same review.
+
+---
+
 ## 1. Find the page that carries the hours
 
 Usually the homepage, `/kontakt` or `/oeffnungszeiten`. For a chain it is almost always the branch's

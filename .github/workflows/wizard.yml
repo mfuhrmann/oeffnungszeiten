@@ -1,0 +1,62 @@
+# The wizard, run from an issue, so a contributor needs no fork and no local Python.
+#
+# Two jobs on purpose. The first one fetches a URL a stranger wrote into an issue; it therefore
+# gets `contents: read` and nothing else — no way to comment, push, or touch anything of ours.
+# What it produces crosses into the second job as an artifact, and only that job holds a token
+# that can write. The issue text never reaches a shell: it goes through the environment into a
+# file, so quotes and backticks in a business name stay text.
+name: wizard
+
+on:
+  issues:
+    types: [labeled]
+
+permissions: {}
+
+jobs:
+  candidates:
+    # The label is the gate. Anyone may open an issue, and an issue that fetched a URL on its own
+    # would be a free proxy for whoever asks; a maintainer applying `wizard` costs one click and
+    # still leaves the contributor nothing to install.
+    if: github.event.label.name == 'wizard'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet lxml
+      - name: the issue body, as a file
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: printf '%s' "$BODY" > body.md
+      - name: ask the wizard
+        id: wizard
+        continue-on-error: true          # a refusal is an answer and still has a comment to post
+        run: |
+          PYTHONPATH=scripts python3 scripts/wizard_bot.py candidates \
+            --body-file body.md --out out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wizard-candidates
+          path: out
+          retention-days: 7
+
+  comment:
+    needs: candidates
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: wizard-candidates
+          path: out
+      - name: post the candidates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" \
+            --repo "${{ github.repository }}" --body-file out/comment.md
