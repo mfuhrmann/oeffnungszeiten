@@ -30,7 +30,10 @@ Requests anlegen, und ein von einem Menschen geöffneter Pull Request löst CI a
 
 Der Bot holt die Seite ohne Browser. Eine Seite, deren Zeiten erst nach JavaScript erscheinen, sagt
 er ab, sie bleibt ein Fall für den langen Weg. Dasselbe gilt für eine Seite, die schon beobachtet
-wird: er nennt dann die Datei, die sie abdeckt.
+wird: er nennt dann die Datei, die sie abdeckt. Dabei zählt nicht die Zeichenkette, sondern die
+Seite — `www.`, `http` gegen `https`, ein Schrägstrich am Ende, ein `?utm_...` und der `#anker`
+sind dieselbe Seite. Trägt dein Vorschlag eine `osm_id`, die ein Eintrag schon hat, sagt er auch
+das: derselbe Betrieb über eine andere Seite.
 
 Er kennt auch die Sperrliste. Steht die Seite in `no-watch.json`, sagt er ab und zeigt Grund,
 Datum und die damalige Notiz, statt einen Vorschlag zu bauen, den CI ohnehin zurückweist. War der
