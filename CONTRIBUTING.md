@@ -68,12 +68,16 @@ python3 scripts/filter_wizard.py https://example.de/kontakt --emit entries \
     --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
 ```
 
-`--tags` gruppiert den Watch nach Kategorie. Der Tag ist `fulda-` und der **OSM-Wert** der
-Kategorie, also der Wert, den das Objekt aus Schritt 2 ohnehin trägt: `shop=bakery` wird zu
-`fulda-bakery`, `amenity=doctors` zu `fulda-doctors`, `shop=florist` zu `fulda-florist`. Den
-Schlüssel statt des Werts zu nehmen ergibt einen Tag, der auf alles passt und deshalb nichts
-gruppiert (`fulda-shop`). Für mehrere Tags die Option wiederholen oder mit Komma trennen. Der
-Wizard sagt Bescheid, wenn `--tags` oder `--osm-id` fehlen.
+`--tags` gruppiert den Watch, und der Tag besteht aus zwei Teilen: **dem Gebiet** und **dem
+OSM-Wert** der Kategorie, also dem Wert, den das Objekt aus Schritt 2 ohnehin trägt. Hier ist das
+Gebiet `fulda`, und damit wird `shop=bakery` zu `fulda-bakery`, `amenity=doctors` zu
+`fulda-doctors`, `shop=florist` zu `fulda-florist`.
+
+Beide Teile tragen: der Wert unterscheidet Bäcker von Ärzten, das Gebiet unterscheidet Fulda von
+einem zweiten Landkreis, der später dazukommen kann. Deshalb steht es auch dann davor, wenn es
+noch nur eines gibt. Den Schlüssel statt des Werts zu nehmen ergibt einen Tag, der auf alles
+passt und deshalb nichts gruppiert (`fulda-shop`). Für mehrere Tags die Option wiederholen oder
+mit Komma trennen. Der Wizard sagt Bescheid, wenn `--tags` oder `--osm-id` fehlen.
 
 Der Tag ist kein OSM-Tag und wird nirgends dorthin zurückgeschrieben. Er gruppiert im UI, und
 `entries_sync.py` schreibt daran die Benachrichtigungs-Einstellungen von einem Geschwister-Watch
