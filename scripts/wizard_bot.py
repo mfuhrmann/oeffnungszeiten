@@ -184,24 +184,48 @@ def known_tags(entries="entries"):
     return seen
 
 
+def area_prefix(seen):
+    """The area every tag starts with, read off the existing ones.
+
+    Not a constant: the prefix is what separates one district's watches from another's, so a
+    second Landkreis in the same instance brings its own. Deriving it means the bot says
+    `fulda-` here and the right thing elsewhere, with nothing to keep in sync.
+
+    >>> import collections
+    >>> area_prefix(collections.Counter({"fulda-bakery": 22, "fulda-cafe": 15}))
+    'fulda'
+    >>> area_prefix(collections.Counter()) is None
+    True
+    """
+    parts = collections.Counter(t.split("-")[0] for t in seen.elements() if "-" in t)
+    return parts.most_common(1)[0][0] if parts else None
+
+
 def tag_note(tags, entries="entries"):
     """A warning for a category tag nothing else uses, or [].
 
     Not a refusal: a genuinely new category is normal, a slipped one is not, and only a person
     can tell them apart. But an unnoticed one-off splits the grouping in two, and the list has
-    58 tags with a single watch to show for it — including `fulda-shop`, which is the OSM *key*
-    and therefore fits every shop in town.
+    56 tags with a single watch to show for it — including one that was the OSM *key*, and
+    therefore fitted every shop in town.
     """
     seen = known_tags(entries)
     unknown = [t for t in tags if t not in seen]
     if not unknown:
         return []
+    area = area_prefix(seen)
     common = ", ".join(f"`{t}` ({n})" for t, n in seen.most_common(8))
-    return [f"⚠ Den Tag {', '.join('`' + t + '`' for t in unknown)} trägt bisher kein Watch. "
-            f"Gemeint ist `fulda-` plus der OSM-Wert der Kategorie, also `shop=florist` → "
-            f"`fulda-florist`, nicht der Schlüssel (`fulda-shop` passt auf jeden Laden). "
-            f"Gebräuchlich sind: {common}. Eine neue Kategorie ist in Ordnung, sag es dann "
-            f"kurz im Pull Request."]
+    rule = (f"Gemeint ist das Gebiet und der OSM-Wert der Kategorie, hier also `{area}-` und "
+            f"der Wert: `shop=florist` wird zu `{area}-florist`. Nimm den Wert, nicht den "
+            f"Schlüssel, denn `{area}-shop` passt auf jeden Laden."
+            if area else
+            "Gemeint ist das Gebiet und der OSM-Wert der Kategorie, etwa `fulda-florist` für "
+            "`shop=florist` in Fulda.")
+    lead = ("Diesen Tag trägt bisher kein Watch" if len(unknown) == 1
+            else "Diese Tags trägt bisher kein Watch")
+    return [f"⚠ {lead}: {', '.join('`' + t + '`' for t in unknown)}. "
+            f"{rule} Gebräuchlich sind: {common}. Eine neue Kategorie oder ein neues Gebiet "
+            f"ist in Ordnung, sag es dann kurz im Pull Request."]
 
 
 def already_watched(url, entries="entries"):

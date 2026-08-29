@@ -206,7 +206,9 @@ patterns and the recheck interval.
 
 ## Another city
 
-Nothing here is tied to Fulda. An entry is a URL, a filter and a language; weekday and time-format
+Nothing here is tied to Fulda. An entry is a URL, a filter and a language, and its category tag
+carries the area in front of the OSM value (`fulda-bakery`), so a second district can live in the
+same instance without its watches mixing into the first one's groups; weekday and time-format
 detection lives in `scripts/hours_lang.py` and takes new languages. The texts a contributor reads
 are German, because the people who add watches here read German opening hours anyway: README,
 CONTRIBUTING, the issue form, the bot's comments, the Matrix messages. This file, FILTERS.md and
