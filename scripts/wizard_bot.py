@@ -30,6 +30,7 @@ import os
 import re
 import socket
 import sys
+import time
 import urllib.parse
 
 import hours_lang as L
@@ -51,6 +52,10 @@ NO_RESPONSE = "_no response_"
 OSM_ID = re.compile(r"^(node|way|relation)/[1-9][0-9]*$")
 TAG = re.compile(r"^[a-z0-9][a-z0-9_-]{1,39}$")
 PICK = re.compile(r"^\s*/pick\s+([0-9]{1,2})\s*$", re.M)
+# Parameters that identify a campaign, not a page. Everything else stays in the key: a query
+# string is load-bearing here — `?branch=500735` is Würth's Fulda branch, `?store=221186` is a
+# brillen.de shop, and dropping those would make seven pages look like their own front page.
+TRACKING = re.compile(r"^(utm_\w+|gclid|fbclid|msclkid|igshid|mc_[ce]id|_ga)$")
 MAX_CANDIDATES = 6
 MAX_TEXT = 600
 
@@ -228,16 +233,75 @@ def tag_note(tags, entries="entries"):
             f"ist in Ordnung, sag es dann kurz im Pull Request."]
 
 
-def already_watched(url, entries="entries"):
-    """The entry that already watches this page, if there is one.
+def blocked(url, path="no-watch.json"):
+    """The no-watch record for this page, if there is one, plus whether it is due again.
 
-    Cheaper to say so before fetching than to let a reviewer find the duplicate in the diff —
-    and a second watch on one URL is a real failure mode here: two businesses sharing a page
-    once shared a single watch, and each new file makes that harder to see.
+    The block list is the other half of `entries/`: a page somebody already looked at and found
+    nothing worth watching on, with the reason and a date to look again. Proposing it a second
+    time is the exact thing that list exists to prevent — and CI would refuse the pull request
+    anyway, because a page may sit in only one of the two lists. Better to say so before the
+    branch exists, with the reason and the date rather than a rule number.
+    """
+    try:
+        records = json.load(open(path)).get("records", [])
+    except Exception:
+        return None, False
+    want = page_key(url)
+    for r in records:
+        if page_key(r.get("url") or "") == want:
+            due = bool(re.match(r"^20\d\d-\d\d-\d\d$", r.get("recheck") or "")) \
+                and r["recheck"] <= time.strftime("%Y-%m-%d")
+            return r, due
+    return None, False
+
+
+def drop_block(url, path="no-watch.json"):
+    """The block list without this page, as text. Used when a due record is being replaced."""
+    doc = json.load(open(path))
+    want = page_key(url)
+    doc["records"] = [r for r in doc["records"] if page_key(r.get("url") or "") != want]
+    return json.dumps(doc, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
+
+
+def page_key(url):
+    """What makes two links the same page, for the duplicate check.
+
+    A person pastes what the address bar shows, and that carries differences the site does not
+    have: `www.`, `http` against `https`, a trailing slash, a campaign parameter, the `#anchor`
+    the browser jumped to. Comparing raw strings therefore misses duplicates a reader would call
+    obvious. Case is folded too: a path differing only in case is a duplicate far more often
+    than it is a second page.
+
+    >>> page_key("https://www.x.de/Kontakt/") == page_key("http://x.de/kontakt")
+    True
+    >>> page_key("https://x.de/k?utm_source=nl&store=7") == page_key("https://x.de/k?store=7")
+    True
+    >>> page_key("https://x.de/#oeffnungszeiten") == page_key("https://x.de/")
+    True
+    >>> page_key("https://x.de/a") == page_key("https://x.de/b")
+    False
+    """
+    s = urllib.parse.urlsplit(C.normalize_url(url))
+    host = (s.hostname or "").lower()
+    host = host[4:] if host.startswith("www.") else host
+    query = "&".join(sorted(
+        f"{k}={v}" for k, v in urllib.parse.parse_qsl(s.query, keep_blank_values=True)
+        if not TRACKING.match(k.lower())))
+    return host + s.path.rstrip("/").lower() + (f"?{query}" if query else "")
+
+
+def already_watched(url, osm_id=None, entries="entries"):
+    """(filename, "page"|"osm") of the entry that already covers this, or (None, None).
+
+    Two keys, because a duplicate arrives in two shapes. The page catches the same link pasted
+    again; the OSM object catches the same business proposed through another of its pages,
+    which no URL comparison can see. A second watch on one page is a real failure mode here:
+    two businesses sharing a page once shared a single watch, and each new file makes that
+    harder to notice.
     """
     if not os.path.isdir(entries):
-        return None
-    want = C.normalize_url(url).rstrip("/").lower()
+        return None, None
+    want = page_key(url)
     for name in sorted(os.listdir(entries)):
         if not name.endswith(".json") or name.startswith("."):
             continue
@@ -245,9 +309,11 @@ def already_watched(url, entries="entries"):
             e = json.load(open(os.path.join(entries, name)))
         except Exception:
             continue
-        if (e.get("url") or "").rstrip("/").lower() == want:
-            return name
-    return None
+        if page_key(e.get("url") or "") == want:
+            return name, "page"
+        if osm_id and e.get("osm_id") == osm_id:
+            return name, "osm"
+    return None, None
 
 
 def fetch(url, lang):
@@ -376,6 +442,8 @@ def main():
     ap.add_argument("--out", default="out", help="directory for the generated files")
     ap.add_argument("--entries", default="entries",
                     help="checked for a watch on the same page (default: %(default)s)")
+    ap.add_argument("--absences", default="no-watch.json",
+                    help="the block list, checked for this page too (default: %(default)s)")
     args = ap.parse_args()
 
     body = open(args.body_file, encoding="utf-8", errors="replace").read()
@@ -404,17 +472,39 @@ def main():
                 raise Refused("Ich lese in dem Kommentar kein `/pick N`.")
             pick = int(m.group(1))
 
-        dup = already_watched(f["url"], args.entries)
-        if dup:
+        record, due = blocked(f["url"], args.absences)
+        if record and not due:
+            when = {"never": "nie wieder", "on-relocation": "erst bei einem Standortwechsel"}.get(
+                record.get("recheck"), f"wieder anzusehen ab {record.get('recheck')}")
+            raise Refused(
+                f"Diese Seite steht auf der Sperrliste, seit {record.get('established')}, "
+                f"Grund `{record.get('reason')}`, {when}:\n\n"
+                f"> {record.get('note')}\n\n"
+                f"Hat sich das geändert, sag es hier im Issue. Dann nimmt ein Maintainer den "
+                f"Eintrag aus `no-watch.json` heraus und setzt das Label neu.")
+        dup, warum = already_watched(f["url"], f["osm_id"], args.entries)
+        if dup and warum == "page":
             raise Refused(
                 f"Diese Seite wird schon beobachtet: `entries/{dup}`.\n\n"
                 f"Teilen sich zwei Betriebe die Seite, braucht der zweite einen eigenen "
                 f"Schlüssel im Filter, meist seine Adresse (FILTERS.md Fall 12) — das ist eine "
                 f"Änderung an der bestehenden Datei, kein neuer Watch.")
+        if dup:
+            raise Refused(
+                f"Dieses OSM-Objekt wird schon beobachtet, über eine andere Seite: "
+                f"`entries/{dup}`.\n\n"
+                f"Ist die hier vorgeschlagene Seite die bessere, sag das im Issue: dann ändert "
+                f"ein Maintainer die `url` in der vorhandenen Datei, statt einen zweiten Watch "
+                f"auf denselben Betrieb zu legen.")
+        notes = tag_note(f["tags"], args.entries)
+        if due:
+            notes = [f"ℹ Diese Seite stand seit {record.get('established')} auf der Sperrliste "
+                     f"(`{record.get('reason')}`), war aber ab {record.get('recheck')} wieder "
+                     f"anzusehen. Der Eintrag kommt beim Bauen aus `no-watch.json` heraus, im "
+                     f"selben Pull Request. Was damals dort stand: {record.get('note')}"] + notes
         html, ranked = fetch(f["url"], f["lang"])
         if args.command == "candidates":
-            write(args.out, "comment.md", candidates_comment(
-                f, ranked, len(html), tag_note(f["tags"], args.entries)))
+            write(args.out, "comment.md", candidates_comment(f, ranked, len(html), notes))
             write(args.out, "candidates.json", json.dumps(ranked, ensure_ascii=False, indent=1))
             return 0
 
@@ -427,11 +517,14 @@ def main():
         path = W.emit_entry(os.path.join(args.out, "entry"), f["name"], f["url"], cand,
                             False, f["lang"], f["osm_id"], f["tags"])
         slug = os.path.basename(path)[:-len(".json")]
-        write(args.out, "pr-body.md", pr_body(f, cand, f"entries/{slug}.json", args.issue,
-                                              tag_note(f["tags"], args.entries)))
+        if due:
+            # A page may sit in exactly one of the two lists, so the record has to go in the
+            # same commit — otherwise CI refuses the pull request the bot just built.
+            write(args.out, "no-watch.json", drop_block(f["url"], args.absences))
+        write(args.out, "pr-body.md", pr_body(f, cand, f"entries/{slug}.json", args.issue, notes))
         write(args.out, "meta.json", json.dumps(
             {"slug": slug, "name": f["name"], "url": f["url"], "pick": pick,
-             "branch": f"watch/{slug}", "entry": path,
+             "branch": f"watch/{slug}", "entry": path, "drops_block": bool(due),
              "title": f"watch: {f['name']}"}, ensure_ascii=False, indent=1))
         return 0
     except Refused as e:
