@@ -207,7 +207,11 @@ patterns and the recheck interval.
 ## Another city
 
 Nothing here is tied to Fulda. An entry is a URL, a filter and a language; weekday and time-format
-detection lives in `scripts/hours_lang.py` and takes new languages. Seeding many businesses at once
+detection lives in `scripts/hours_lang.py` and takes new languages. The texts a contributor reads
+are German, because the people who add watches here read German opening hours anyway: README,
+CONTRIBUTING, the issue form, the bot's comments, the Matrix messages. This file, FILTERS.md and
+`docs/` stay English, because they are what another city reads before rebuilding it. Translating
+the first group is part of taking this elsewhere; the second group is not. Seeding many businesses at once
 is the separate exercise named above: query an OSM category in an area, keep the objects carrying a
 `website` tag, and find the page on each site that holds the hours. What arrives here is the
 result — a URL worth watching.

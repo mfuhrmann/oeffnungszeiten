@@ -1,28 +1,30 @@
 # Öffnungszeiten
 
-Which websites of businesses in Fulda get checked for **changed opening hours**, so a mapper hears
-about it and can update OpenStreetMap. One file per watch, changed through pull requests.
+Welche Websites von Betrieben in Fulda auf **geänderte Öffnungszeiten** geprüft werden, damit ein
+Mapper davon erfährt und OpenStreetMap nachziehen kann. Eine Datei je Watch, geändert wird über
+Pull Requests.
 
-The watching itself is done by a [changedetection.io](https://changedetection.io) instance, deployed
-from this repository by Flux — see [docs/changedetection.md](./docs/changedetection.md).
+Das Beobachten selbst erledigt eine [changedetection.io](https://changedetection.io)-Instanz, die
+Flux aus diesem Repository ausrollt, siehe [docs/changedetection.md](./docs/changedetection.md).
 
-Every watch is rechecked every three days.
+Jeder Watch wird alle drei Tage geprüft.
 
-## Add a watch
+## Einen Watch hinzufügen
 
-**The short way, nothing to install and no fork:** open a
-[Watch vorschlagen](../../issues/new?template=watch-vorschlagen.yml) issue with the page, the
-business name and its OSM id. A maintainer labels it `wizard`, and a bot fetches the page and
-comments with the filter candidates — each one as **the text it would capture**. Answer `/pick 2`
-and it writes the entry file, pushes the branch and hands back a one-click link for the pull
-request.
+**Der kurze Weg, ohne Installation und ohne Fork:** ein Issue über die Vorlage
+[Watch vorschlagen](../../issues/new?template=watch-vorschlagen.yml) mit der Seite, dem Namen des
+Betriebs und seiner OSM-Id. Ein Maintainer setzt das Label `wizard`, dann holt ein Bot die Seite und
+kommentiert die Filterkandidaten, jeden davon als **den Text, den er einfangen würde**. Antworte mit
+`/pick 2`, und er schreibt die Entry-Datei, schiebt den Branch und gibt einen Link zurück, der den
+Pull Request mit einem Klick öffnet.
 
-The one thing the bot cannot do for you is the reading: which of those blocks holds *this*
-business's hours, and not a booking form, a neighbouring branch or a clock. That is the whole
-judgement, and it stays with a person.
+Das eine, was der Bot nicht abnimmt, ist das Lesen: welcher dieser Blöcke die Zeiten *dieses*
+Betriebs trägt und nicht die eines Terminformulars, einer Nachbarfiliale oder einer mitlaufenden
+Uhr. Das ist die eigentliche Entscheidung, und sie bleibt beim Menschen.
 
-**The long way, on your own machine**, when you want the wizard's full output, the browser
-fallback for pages that render their hours in JavaScript, or you are adding several at once:
+**Der lange Weg, auf dem eigenen Rechner**, wenn du die volle Ausgabe des Wizards willst, den
+Browser-Rückfall für Seiten, die ihre Zeiten erst per JavaScript zeigen, oder gleich mehrere
+Einträge auf einmal:
 
 ```bash
 pip install lxml
@@ -30,99 +32,106 @@ python3 scripts/filter_wizard.py https://example.de/kontakt \
     --emit entries --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
 ```
 
-`--emit` writes the finished entry file; you commit it and open a pull request.
+`--emit` schreibt die fertige Entry-Datei, du committest sie und öffnest einen Pull Request.
 
-Both roads end in the same pull request and the same review. Changing or removing a watch is an
-edit to its file, and a page not worth watching belongs in `no-watch.json` with a reason. All of
-it: **[CONTRIBUTING.md](./CONTRIBUTING.md)**.
+Beide Wege enden im selben Pull Request und in derselben Prüfung. Einen Watch zu ändern oder zu
+entfernen ist eine Änderung an seiner Datei, und eine Seite, die kein Watch verdient, gehört mit
+Begründung in `no-watch.json`. Alles dazu: **[CONTRIBUTING.md](./CONTRIBUTING.md)**.
 
-## Why a filter is needed at all
+## Wozu überhaupt ein Filter
 
-changedetection alerts on *any* text change. Unfiltered, a watch fires on a rotating teaser, a
-cookie banner or a visitor counter, and the one alert that matters drowns in them. So every entry
-carries a selector that narrows the page down to its opening-hours block. Finding one, and telling
-a good one from a plausible one, is the craft of this project: **[FILTERS.md](./FILTERS.md)**.
+changedetection schlägt bei *jeder* Textänderung an. Ungefiltert meldet sich ein Watch bei einem
+rotierenden Teaser, einem Cookie-Banner oder einem Besucherzähler, und der eine Alarm, auf den es
+ankommt, geht darin unter. Deshalb trägt jeder Eintrag einen Selektor, der die Seite auf ihren
+Öffnungszeiten-Block eingrenzt. Einen zu finden, und einen guten von einem plausiblen zu
+unterscheiden, ist das Handwerk dieses Projekts: **[FILTERS.md](./FILTERS.md)**.
 
-## Layout
+## Aufbau
 
 ```
-entries/            one file per watch — the source of truth
-  .lock.json        slug → watch uuid, per changedetection instance
-no-watch.json       the block list: pages looked at and not worth watching, with the reason
-scripts/            wizard, prescreen, sync, audit, renderer  (stdlib only, except lxml)
-deploy/             managed global settings: noise-suppression patterns, recheck interval
-charts/             Helm chart for changedetection and its browser
-apps/               Flux HelmRelease and the values for this cluster
-clusters/           Flux entry point — what the cluster reconciles
+entries/            eine Datei je Watch, die Quelle der Wahrheit
+  .lock.json        slug -> Watch-uuid, je changedetection-Instanz
+no-watch.json       die Sperrliste: angesehene Seiten, die kein Watch wert sind, mit Begründung
+scripts/            Wizard, Prescreen, Sync, Audit, Renderer  (stdlib, außer lxml)
+deploy/             gepflegte globale Einstellungen: Rauschfilter, Prüfintervall
+charts/             Helm-Chart für changedetection und seinen Browser
+apps/               Flux-HelmRelease und die Werte für dieses Cluster
+clusters/           Flux-Einstiegspunkt, was das Cluster abgleicht
 ```
 
-## The scripts
+## Die Skripte
 
 | | |
 |---|---|
-| `filter_wizard.py` | propose a filter for a page, pick it by reading the captured text |
-| `wizard_bot.py` | the same wizard driven from a GitHub issue, so a contributor needs no fork |
-| `entries_sync.py` | reconcile a changedetection instance against `entries/` |
-| `validate_entries.py` | what CI runs on every pull request — structure, and the filter against the live page |
-| `watch_audit.py` | what each watch actually captured: RED / AMBER / green with reasons |
-| `rotation_check.py` | did the hours change, or did the page reorder itself? triages an alarm from the stored snapshots |
-| `cdp_render.py` | render a page through a headless browser, no changedetection needed |
-| `cd_export.py` | turn a UI experiment back into entry files |
-| `apply_global_settings.py` | merge `deploy/global-settings.json` into an instance |
-| `matrix_relay_seed.py` | mint the Matrix session the notification relay runs on |
-| `no_watch.py` | the block list: which pages are deliberately not watched, and what is due for another look |
-| `prescreen.py` | does this page publish hours at all — the question before a filter is worth building |
-| `audit_report.py` | the weekly report: what the audit found, posted into the notification room |
+| `filter_wizard.py` | schlägt Filter für eine Seite vor, ausgewählt wird am eingefangenen Text |
+| `wizard_bot.py` | derselbe Wizard, aus einem GitHub-Issue gefahren, damit niemand forken muss |
+| `entries_sync.py` | gleicht eine changedetection-Instanz gegen `entries/` ab |
+| `validate_entries.py` | was CI bei jedem Pull Request prüft: Struktur, und der Filter gegen die Seite |
+| `watch_audit.py` | was jeder Watch wirklich eingefangen hat: RED / AMBER / green mit Begründung |
+| `rotation_check.py` | haben sich die Zeiten geändert oder nur die Reihenfolge? deutet einen Alarm aus den Snapshots |
+| `cdp_render.py` | rendert eine Seite durch einen Headless-Browser, ohne changedetection |
+| `cd_export.py` | macht aus einem Versuch in der UI wieder Entry-Dateien |
+| `apply_global_settings.py` | schreibt `deploy/global-settings.json` in eine Instanz |
+| `matrix_relay_seed.py` | erzeugt die Matrix-Sitzung, auf der das Notification-Relay läuft |
+| `no_watch.py` | die Sperrliste: welche Seiten bewusst nicht beobachtet werden und was ansteht |
+| `prescreen.py` | nennt diese Seite überhaupt Zeiten, die Frage vor jedem Filter |
+| `audit_report.py` | der Wochenbericht: was das Audit fand, gepostet ins Benachrichtigungszimmer |
 
-Each has `--help`. Nothing writes to changedetection without `--apply`.
+Jedes kennt `--help`. Keines schreibt ohne `--apply` nach changedetection.
 
-`hours_lang.py` and `osm_cd_common.py` are libraries, not commands: hours detection that survives
-German pages, and the changedetection API client.
+`hours_lang.py` und `osm_cd_common.py` sind Bibliotheken, keine Befehle: Zeitenerkennung, die auf
+deutschen Seiten trägt, und der changedetection-API-Client.
 
-### What is *not* watched
+### Was *nicht* beobachtet wird
 
-[`no-watch.json`](./no-watch.json) is the counterpart of `entries/`: pages that were looked at and
-found to have nothing worth watching, each with a reason and a date to look again. Both lists are
-keyed by the page, and CI fails if a page appears in both. Why the reasons are shaped the way they
-are: [CONCEPT.md](./CONCEPT.md).
+[`no-watch.json`](./no-watch.json) ist das Gegenstück zu `entries/`: Seiten, die angesehen wurden
+und nichts Beobachtbares hergeben, jede mit Begründung und einem Datum, wann man wieder hinsieht.
+Beide Listen sind über die Seite geführt, und CI schlägt fehl, wenn eine Seite in beiden steht.
+Warum die Begründungen so geschnitten sind: [CONCEPT.md](./CONCEPT.md).
 
 ```bash
-python3 scripts/no_watch.py                    # summary per reason
-python3 scripts/no_watch.py --faellig          # due for another look today
-python3 scripts/no_watch.py --standortwechsel  # what a move would put back in play
+python3 scripts/no_watch.py                    # Zusammenfassung je Grund
+python3 scripts/no_watch.py --faellig          # heute wieder anzusehen
+python3 scripts/no_watch.py --standortwechsel  # was ein Umzug wieder ins Spiel bringt
 ```
 
-### Which pages become watches
+### Welche Seiten Watches werden
 
-A watch is only worth having if its page publishes hours at all. `prescreen.py` answers that before
-anyone builds a filter, sorting candidates into blocked, delivery platform, unreachable, throttled,
-no-times and worth-it. Only the last group needs a person.
+Ein Watch lohnt nur, wenn seine Seite überhaupt Zeiten nennt. `prescreen.py` beantwortet das, bevor
+jemand einen Filter baut, und sortiert Kandidaten in geblockt, Lieferplattform, nicht erreichbar,
+gedrosselt, ohne Zeiten und lohnend. Nur die letzte Gruppe braucht einen Menschen.
 
 ```bash
 python3 scripts/prescreen.py --csv kandidaten.csv --anzahl 10
 ```
 
-The CSV needs four columns: `osm_id`, `name`, `kategorie`, `website`. Where that list comes from is
-outside this repository, and deliberately so: finding objects in OpenStreetMap and writing tags back
-into the map is a different job with a different failure cost. This one takes a URL and watches it.
+Die CSV braucht vier Spalten: `osm_id`, `name`, `kategorie`, `website`. Woher diese Liste kommt,
+liegt außerhalb dieses Repositories, und das mit Absicht: Objekte in OpenStreetMap zu finden und
+Tags in die Karte zurückzuschreiben ist eine andere Aufgabe mit anderen Folgen im Fehlerfall. Hier
+wird eine URL genommen und beobachtet.
 
-## Documentation
+## Dokumentation
 
 | | |
 |---|---|
-| [CONTRIBUTING.md](./CONTRIBUTING.md) | add, change or remove a watch |
-| [FILTERS.md](./FILTERS.md) | how to find an hours block, and how to know the filter is right |
-| [CONCEPT.md](./CONCEPT.md) | why this exists, and why watches are files in git |
-| [docs/changedetection.md](./docs/changedetection.md) | how it is deployed, and the three decisions behind it |
-| [docs/notifications.md](./docs/notifications.md) | how a change reaches the Matrix room, and how to seed the session |
-| [entries/README.md](./entries/README.md) | what an entry contains, and under which licence |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | einen Watch hinzufügen, ändern oder entfernen |
+| [FILTERS.md](./FILTERS.md) | wie man einen Zeitenblock findet und weiß, dass der Filter stimmt (englisch) |
+| [CONCEPT.md](./CONCEPT.md) | warum es das gibt und warum Watches Dateien in git sind (englisch) |
+| [docs/changedetection.md](./docs/changedetection.md) | wie es ausgerollt ist und die drei Entscheidungen dahinter (englisch) |
+| [docs/notifications.md](./docs/notifications.md) | wie eine Änderung ins Matrix-Zimmer kommt und wie die Sitzung entsteht (englisch) |
+| [entries/README.md](./entries/README.md) | was ein Eintrag enthält und unter welcher Lizenz |
 
-Six documents, and each answers one question. This page is the map; nothing here is explained
-twice.
+Sechs Dokumente, jedes beantwortet eine Frage. Diese Seite ist die Karte, nichts wird hier zweimal
+erklärt.
 
-## Licence
+**Sprache:** Was zum Mitmachen nötig ist, steht auf Deutsch, denn wer beiträgt, liest ohnehin
+deutsche Öffnungszeiten: diese Seite, CONTRIBUTING.md, das Issue-Formular, die Nachrichten des Bots
+und die in Matrix. Handwerk und Begründung stehen auf Englisch, weil sie eine andere Stadt lesen
+soll, die das hier nachbaut: FILTERS.md, CONCEPT.md, `docs/`. Code, Docstrings und Commit-Messages
+sind englisch.
 
-GPL-3.0-or-later, see [LICENSE](./LICENSE). Opening hours read from business websites are facts,
-not creative works; when you carry them into OSM, record the source and the date
-(`source:opening_hours`, `check_date:opening_hours`) and never copy from a map service whose licence
-forbids it.
+## Lizenz
+
+GPL-3.0-or-later, siehe [LICENSE](./LICENSE). Öffnungszeiten von Betriebswebsites sind Tatsachen,
+keine Werke. Wer sie nach OSM überträgt, hält Quelle und Datum fest (`source:opening_hours`,
+`check_date:opening_hours`) und kopiert nie aus einem Kartendienst, dessen Lizenz das verbietet.

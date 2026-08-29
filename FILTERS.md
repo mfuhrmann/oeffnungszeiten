@@ -5,7 +5,8 @@ what it captures is (a) the opening-hours block, (b) all of it, and (c) nothing 
 is the accumulated method for getting there: the decision ladder, the page shapes that keep
 coming back, the investigation procedure, and what actually counts as proof that a filter is right.
 
-Adding a watch to this repository: [CONTRIBUTING.md](./CONTRIBUTING.md). Why it is built this
+Adding a watch to this repository: [CONTRIBUTING.md](./CONTRIBUTING.md), in German, as is
+everything a contributor reads. Why it is built this
 way: [CONCEPT.md](./CONCEPT.md).
 
 ---
