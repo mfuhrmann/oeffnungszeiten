@@ -188,6 +188,11 @@ The relay recognises that shape and labels it, because the answer is always the 
 nobody should have to work it out from six identical-looking lines. It never suppresses the
 message: a watch that says nothing is a watch nobody checks.
 
+**Switching sorting on produces one of these too**, and the diff cannot tell the two apart: the
+first sorted snapshot runs against the last unsorted one, which is a reordering like any other.
+That is why the note names both readings. If the entry already carries the flag, the message is
+that one alarm and there is nothing to do; `rotation_check.py` confirms it as `SETTLED`.
+
 **What to do**, once:
 
 1. `python3 scripts/rotation_check.py --url <the Webseite line from the message>` — it compares

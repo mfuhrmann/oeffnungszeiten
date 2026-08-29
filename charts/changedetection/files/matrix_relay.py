@@ -95,10 +95,13 @@ def reorder_note(kept):
     if not gone or gone != came or len(kept) != sum(gone.values()) + sum(came.values()):
         return []
     n = sum(gone.values())
+    # Switching sorting on produces one such diff too — the first sorted snapshot against the
+    # last unsorted one — and from the diff alone that is indistinguishable from a page still
+    # rotating. So the line names both readings instead of guessing at one.
     return [f"⟳ Nur umsortiert — dieselben {n} Zeilen in anderer Reihenfolge, "
             f"die Zeiten sind unverändert.",
-            f"  Die Seite beginnt ihre Tabelle beim heutigen Tag. Zu tun: "
-            f"sort_text_alphabetically im Entry setzen, {REORDER_DOC}"]
+            f"  Zu tun: sort_text_alphabetically im Entry setzen. Steht es schon dort, war das "
+            f"der einmalige Alarm nach dem Umstellen. {REORDER_DOC}"]
 
 
 def format_message(title, message):
