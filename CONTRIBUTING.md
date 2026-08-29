@@ -32,6 +32,11 @@ Der Bot holt die Seite ohne Browser. Eine Seite, deren Zeiten erst nach JavaScri
 er ab, sie bleibt ein Fall für den langen Weg. Dasselbe gilt für eine Seite, die schon beobachtet
 wird: er nennt dann die Datei, die sie abdeckt.
 
+Er kennt auch die Sperrliste. Steht die Seite in `no-watch.json`, sagt er ab und zeigt Grund,
+Datum und die damalige Notiz, statt einen Vorschlag zu bauen, den CI ohnehin zurückweist. War der
+Eintrag zum Wiederansehen fällig, baut er den Watch und nimmt den Sperrlisten-Eintrag im selben
+Pull Request heraus: eine Seite gehört in genau eine der beiden Listen.
+
 **Mit dem Repository**, der Weg unten: er gibt dir die volle Ausgabe des Wizards, den
 Browser-Rückfall und alles Weitere auf dem eigenen Rechner. Beide Wege enden im selben Pull Request
 und in derselben Prüfung.

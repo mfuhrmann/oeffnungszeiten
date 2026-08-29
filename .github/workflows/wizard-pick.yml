@@ -43,6 +43,11 @@ jobs:
         run: |
           if [ -f out/meta.json ]; then
             cp out/entry/*.json entries/
+            # A page whose block-list record was due gets that record removed in the same
+            # commit; a page may sit in only one of the two lists, and this check enforces it.
+            # Written as an if, not `[ -f … ] && cp`: under `bash -e` a false test would end
+            # the step, so the ordinary case would fail.
+            if [ -f out/no-watch.json ]; then cp out/no-watch.json no-watch.json; fi
             python3 scripts/validate_entries.py
           fi
       - uses: actions/upload-artifact@v4
@@ -92,7 +97,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
           cp out/entry/*.json entries/
-          git add entries/
+          if [ -f out/no-watch.json ]; then cp out/no-watch.json no-watch.json; fi
+          git add entries/ no-watch.json
           git commit -m "$TITLE"
           git push --force origin "HEAD:$BRANCH"
           URL=$(gh pr list --head "$BRANCH" --state open --json url -q '.[0].url')

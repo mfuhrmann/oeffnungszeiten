@@ -30,6 +30,7 @@ import os
 import re
 import socket
 import sys
+import time
 import urllib.parse
 
 import hours_lang as L
@@ -228,6 +229,37 @@ def tag_note(tags, entries="entries"):
             f"ist in Ordnung, sag es dann kurz im Pull Request."]
 
 
+def blocked(url, path="no-watch.json"):
+    """The no-watch record for this page, if there is one, plus whether it is due again.
+
+    The block list is the other half of `entries/`: a page somebody already looked at and found
+    nothing worth watching on, with the reason and a date to look again. Proposing it a second
+    time is the exact thing that list exists to prevent — and CI would refuse the pull request
+    anyway, because a page may sit in only one of the two lists. Better to say so before the
+    branch exists, with the reason and the date rather than a rule number.
+    """
+    try:
+        records = json.load(open(path)).get("records", [])
+    except Exception:
+        return None, False
+    want = C.normalize_url(url).rstrip("/").lower()
+    for r in records:
+        if (r.get("url") or "").rstrip("/").lower() == want:
+            due = bool(re.match(r"^20\d\d-\d\d-\d\d$", r.get("recheck") or "")) \
+                and r["recheck"] <= time.strftime("%Y-%m-%d")
+            return r, due
+    return None, False
+
+
+def drop_block(url, path="no-watch.json"):
+    """The block list without this page, as text. Used when a due record is being replaced."""
+    doc = json.load(open(path))
+    want = C.normalize_url(url).rstrip("/").lower()
+    doc["records"] = [r for r in doc["records"]
+                      if (r.get("url") or "").rstrip("/").lower() != want]
+    return json.dumps(doc, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
+
+
 def already_watched(url, entries="entries"):
     """The entry that already watches this page, if there is one.
 
@@ -376,6 +408,8 @@ def main():
     ap.add_argument("--out", default="out", help="directory for the generated files")
     ap.add_argument("--entries", default="entries",
                     help="checked for a watch on the same page (default: %(default)s)")
+    ap.add_argument("--absences", default="no-watch.json",
+                    help="the block list, checked for this page too (default: %(default)s)")
     args = ap.parse_args()
 
     body = open(args.body_file, encoding="utf-8", errors="replace").read()
@@ -404,6 +438,16 @@ def main():
                 raise Refused("Ich lese in dem Kommentar kein `/pick N`.")
             pick = int(m.group(1))
 
+        record, due = blocked(f["url"], args.absences)
+        if record and not due:
+            when = {"never": "nie wieder", "on-relocation": "erst bei einem Standortwechsel"}.get(
+                record.get("recheck"), f"wieder anzusehen ab {record.get('recheck')}")
+            raise Refused(
+                f"Diese Seite steht auf der Sperrliste, seit {record.get('established')}, "
+                f"Grund `{record.get('reason')}`, {when}:\n\n"
+                f"> {record.get('note')}\n\n"
+                f"Hat sich das geändert, sag es hier im Issue. Dann nimmt ein Maintainer den "
+                f"Eintrag aus `no-watch.json` heraus und setzt das Label neu.")
         dup = already_watched(f["url"], args.entries)
         if dup:
             raise Refused(
@@ -411,10 +455,15 @@ def main():
                 f"Teilen sich zwei Betriebe die Seite, braucht der zweite einen eigenen "
                 f"Schlüssel im Filter, meist seine Adresse (FILTERS.md Fall 12) — das ist eine "
                 f"Änderung an der bestehenden Datei, kein neuer Watch.")
+        notes = tag_note(f["tags"], args.entries)
+        if due:
+            notes = [f"ℹ Diese Seite stand seit {record.get('established')} auf der Sperrliste "
+                     f"(`{record.get('reason')}`), war aber ab {record.get('recheck')} wieder "
+                     f"anzusehen. Der Eintrag kommt beim Bauen aus `no-watch.json` heraus, im "
+                     f"selben Pull Request. Was damals dort stand: {record.get('note')}"] + notes
         html, ranked = fetch(f["url"], f["lang"])
         if args.command == "candidates":
-            write(args.out, "comment.md", candidates_comment(
-                f, ranked, len(html), tag_note(f["tags"], args.entries)))
+            write(args.out, "comment.md", candidates_comment(f, ranked, len(html), notes))
             write(args.out, "candidates.json", json.dumps(ranked, ensure_ascii=False, indent=1))
             return 0
 
@@ -427,11 +476,14 @@ def main():
         path = W.emit_entry(os.path.join(args.out, "entry"), f["name"], f["url"], cand,
                             False, f["lang"], f["osm_id"], f["tags"])
         slug = os.path.basename(path)[:-len(".json")]
-        write(args.out, "pr-body.md", pr_body(f, cand, f"entries/{slug}.json", args.issue,
-                                              tag_note(f["tags"], args.entries)))
+        if due:
+            # A page may sit in exactly one of the two lists, so the record has to go in the
+            # same commit — otherwise CI refuses the pull request the bot just built.
+            write(args.out, "no-watch.json", drop_block(f["url"], args.absences))
+        write(args.out, "pr-body.md", pr_body(f, cand, f"entries/{slug}.json", args.issue, notes))
         write(args.out, "meta.json", json.dumps(
             {"slug": slug, "name": f["name"], "url": f["url"], "pick": pick,
-             "branch": f"watch/{slug}", "entry": path,
+             "branch": f"watch/{slug}", "entry": path, "drops_block": bool(due),
              "title": f"watch: {f['name']}"}, ensure_ascii=False, indent=1))
         return 0
     except Refused as e:
