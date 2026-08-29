@@ -3,7 +3,8 @@
  "captured_sample": "Dienstag – Freitag 10:00 Uhr bis 18:00 Uhr Samstag 10:00 Uhr bis 14:00 Uhr",
  "fetch_backend": "system",
  "filter": "xpath://div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")][not(.//div[contains(translate(.,\"MONTAGDIESWCHRFPÄÖÜB\",\"montagdieswchrfpäöüb\"),\"dienstag\")])]",
- "name": "your-bike-house.de",
+ "name": "Harley-Davidson Fulda",
+ "note": "2026-08-29: Von der Filialuebersicht /stores/ auf die Seite dieses Standorts umgestellt. Der Haendler hat nur einen Store, deshalb fing der Filter auf der Uebersicht dieselben Zeiten; kaeme ein zweiter dazu, traefe er zwei Bloecke. Die Zeiten stehen auf beiden Seiten im selben Block, Di-Fr und Sa.",
  "schema": 1,
- "url": "https://your-bike-house.de/stores/"
+ "url": "https://your-bike-house.de/stores/harley-davidson-fulda-der-store/"
 }
