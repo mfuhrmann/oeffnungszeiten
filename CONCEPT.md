@@ -132,6 +132,11 @@ wrong company. That is backlog, and filing it under "unmonitorable" is how it di
 | remove a watch | `git rm` the file, and say so — the watch is taken away by hand |
 | fix a filter | edit the file |
 
+Adding one has a second route to the same file: an issue form and a bot in Actions do the fetching
+and write the entry ([CONTRIBUTING.md](./CONTRIBUTING.md)). What arrives is a pull request like any
+other, which is the point of routing it that way — one shape of change, one review, no second
+interface to keep honest.
+
 ## Git is authoritative
 
 The entry files decide, not the app. Every hour `entries_sync.py` compares the two and writes the
@@ -155,7 +160,8 @@ at all, and it deletes nothing and says so in the Matrix room. The limit is a ch
 
 ```
   a contributor            this repository                 the server
-  filter_wizard.py ─PR─▶  entries/          ◀── reads ──   sync job, once an hour
+  issue form ─bot─┐
+  filter_wizard.py┴─PR─▶  entries/          ◀── reads ──   sync job, once an hour
                           charts/ apps/     ◀── reads ──   Flux, on every commit
                                                            changedetection + a browser
 ```

@@ -8,7 +8,21 @@ from this repository by Flux — see [docs/changedetection.md](./docs/changedete
 
 Every watch is rechecked every three days.
 
-## Add or change a watch
+## Add a watch
+
+**The short way, nothing to install and no fork:** open a
+[Watch vorschlagen](../../issues/new?template=watch-vorschlagen.yml) issue with the page, the
+business name and its OSM id. A maintainer labels it `wizard`, and a bot fetches the page and
+comments with the filter candidates — each one as **the text it would capture**. Answer `/pick 2`
+and it writes the entry file, pushes the branch and hands back a one-click link for the pull
+request.
+
+The one thing the bot cannot do for you is the reading: which of those blocks holds *this*
+business's hours, and not a booking form, a neighbouring branch or a clock. That is the whole
+judgement, and it stays with a person.
+
+**The long way, on your own machine**, when you want the wizard's full output, the browser
+fallback for pages that render their hours in JavaScript, or you are adding several at once:
 
 ```bash
 pip install lxml
@@ -16,12 +30,11 @@ python3 scripts/filter_wizard.py https://example.de/kontakt \
     --emit entries --name "Example GmbH" --osm-id node/1579272617 --tags fulda-restaurants
 ```
 
-The wizard reads the page and prints candidates as **the text each filter would capture** — you
-pick by reading German opening hours, not by judging an XPath. `--emit` writes the finished entry
-file; you commit it and open a pull request.
+`--emit` writes the finished entry file; you commit it and open a pull request.
 
-Everything else about that path, including pages that only show their hours after JavaScript:
-**[CONTRIBUTING.md](./CONTRIBUTING.md)**.
+Both roads end in the same pull request and the same review. Changing or removing a watch is an
+edit to its file, and a page not worth watching belongs in `no-watch.json` with a reason. All of
+it: **[CONTRIBUTING.md](./CONTRIBUTING.md)**.
 
 ## Why a filter is needed at all
 
