@@ -15,7 +15,8 @@ jobs:
   emit:
     if: >
       github.event.issue.pull_request == null &&
-      contains(github.event.issue.labels.*.name, 'wizard') &&
+      (contains(github.event.issue.labels.*.name, 'wizard') ||
+       contains(github.event.issue.labels.*.name, 'filter-fix')) &&
       startsWith(github.event.comment.body, '/pick')
     runs-on: ubuntu-latest
     permissions:
@@ -35,8 +36,10 @@ jobs:
           printf '%s' "$PICK" > pick.md
       - name: build the entry
         continue-on-error: true          # a refusal is an answer and still has a comment to post
+        env:
+          FIX: ${{ contains(github.event.issue.labels.*.name, 'filter-fix') && '--fix' || '' }}
         run: |
-          PYTHONPATH=scripts python3 scripts/wizard_bot.py emit \
+          PYTHONPATH=scripts python3 scripts/wizard_bot.py emit $FIX \
             --body-file body.md --comment-file pick.md \
             --issue "${{ github.event.issue.number }}" --out out
       - name: the entry has to survive the same check as any other

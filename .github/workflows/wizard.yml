@@ -16,9 +16,10 @@ permissions: {}
 jobs:
   candidates:
     # The label is the gate. Anyone may open an issue, and an issue that fetched a URL on its own
-    # would be a free proxy for whoever asks; a maintainer applying `wizard` costs one click and
-    # still leaves the contributor nothing to install.
-    if: github.event.label.name == 'wizard'
+    # would be a free proxy for whoever asks; a maintainer applying `wizard` (new page) or
+    # `filter-fix` (page already watched) costs one click and still leaves the contributor
+    # nothing to install.
+    if: github.event.label.name == 'wizard' || github.event.label.name == 'filter-fix'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -35,8 +36,12 @@ jobs:
       - name: ask the wizard
         id: wizard
         continue-on-error: true          # a refusal is an answer and still has a comment to post
+        # `filter-fix` points the same machinery at an entry that already exists: the comment
+        # then leads with what the current filter grabs, so the two texts can be compared.
+        env:
+          FIX: ${{ github.event.label.name == 'filter-fix' && '--fix' || '' }}
         run: |
-          PYTHONPATH=scripts python3 scripts/wizard_bot.py candidates \
+          PYTHONPATH=scripts python3 scripts/wizard_bot.py candidates $FIX \
             --body-file body.md --out out
       - uses: actions/upload-artifact@v4
         with:

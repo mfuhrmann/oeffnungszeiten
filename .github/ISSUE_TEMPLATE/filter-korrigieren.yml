@@ -1,0 +1,38 @@
+name: Filter korrigieren
+description: Ein beobachteter Watch meldet etwas, das keine geänderte Öffnungszeit ist.
+title: "Filter: "
+labels: ["filter-problem"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Für eine Seite, die **schon** beobachtet wird. Neue Seiten melden statt dessen über
+        **Watch vorschlagen**.
+
+        Ein Bot holt die Seite und zeigt dir, was der eingetragene Filter heute fängt, daneben
+        die Alternativen. Du wählst den Text, der die Öffnungszeiten enthält, den Rest macht er.
+  - type: input
+    id: url
+    attributes:
+      label: Seite aus der Alarmnachricht
+      description: Die Zeile `Webseite:` aus der Nachricht.
+      placeholder: https://example.de/kontakt
+    validations:
+      required: true
+  - type: textarea
+    id: diff
+    attributes:
+      label: Was die Nachricht zeigte
+      description: >
+        Der Diff aus der Nachricht, so wie er ankam. Daran ist zu erkennen, ob ein Teil des
+        Textes mit dem Wochentag wandert.
+      placeholder: |
+        - : 9:30 - 19:00
+        + : Geschlossen
+      render: text
+  - type: markdown
+    attributes:
+      value: |
+        Stehen im Diff **dieselben Zeiten** nur in anderer Reihenfolge, ist es keine Filterfrage,
+        sondern Sortierung. Schreib das dazu; das prüft ein Maintainer gegen die gespeicherten
+        Snapshots, ein enger gezogener Filter würde es schlimmer machen.

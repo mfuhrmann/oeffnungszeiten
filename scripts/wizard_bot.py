@@ -24,6 +24,7 @@ Examples:
 """
 import argparse
 import collections
+import datetime
 import ipaddress
 import json
 import os
@@ -47,6 +48,9 @@ FIELDS = {
     "OSM-Objekt": "osm_id",
     "Kategorie-Tag": "tags",
     "Sprache der Seite": "lang",
+    # the correction form: everything else about the entry is already on disk
+    "Seite aus der Alarmnachricht": "url",
+    "Was die Nachricht zeigte": "diff",
 }
 NO_RESPONSE = "_no response_"
 OSM_ID = re.compile(r"^(node|way|relation)/[1-9][0-9]*$")
@@ -83,6 +87,26 @@ def parse_body(body):
             out.setdefault(key, []).append(head)
     fields = {k: " ".join(v).strip() for k, v in out.items()}
     return {k: (None if not v or v.lower() == NO_RESPONSE else v) for k, v in fields.items()}
+
+
+def raw_section(body, heading):
+    r"""One issue-form section with its line breaks kept.
+
+    `parse_body` folds a section into one line, which is right for a name and wrong for a diff:
+    the two halves of `- alt` / `+ neu` are only readable underneath each other.
+
+    >>> raw_section("### D\n\n- a\n+ b\n\n### E\n\nx\n", "D")
+    '- a\n+ b'
+    """
+    out, hit = [], False
+    for line in body.splitlines():
+        if line.strip().startswith("###"):
+            hit = line.lstrip("#").strip() == heading
+            continue
+        if hit:
+            out.append(line.rstrip())
+    text = "\n".join(out).strip()
+    return "" if text.lower() == NO_RESPONSE else text
 
 
 def check_url(raw):
@@ -381,6 +405,97 @@ def candidates_comment(f, ranked, html_len, notes=()):
     return "\n".join(parts)
 
 
+def fix_comment(entry, path, current, diff, ranked, lang, html_len, url):
+    """The correction comment: what the filter grabs now, what was reported, then the menu.
+
+    The comparison is the whole point. A wandering "today" block is invisible in a single
+    capture and obvious the moment the current text sits above a candidate without it.
+    """
+    now = ("nicht ausgewertet (`json:`- und CSS-Filter kann ich hier nicht anwenden)"
+           if current is None else fence(current) if current else
+           "**nichts** — der Filter trifft auf dieser Seite nicht mehr zu")
+    parts = [
+        f"Abgerufen: {url} ({html_len} Bytes, einfacher Abruf, kein Browser).",
+        f"Beobachtet wird die Seite als `{path}`.",
+        "",
+        f"**Was der Filter heute erfasst** (`{entry.get('filter') or 'kein Filter'}`):",
+        "",
+        now,
+        "",
+    ]
+    if diff:
+        parts += ["**Was in der Nachricht stand:**", "", fence(diff), ""]
+    parts += [
+        "**So liest du die Liste:**",
+        "",
+        "- Unterscheidet sich ein Kandidat vom Text oben nur durch etwas am Anfang oder Ende, "
+        "das zum heutigen Wochentag passt, ist das die Ursache — nimm ihn.",
+        "- Zeigen alle Kandidaten denselben Inhalt und wechselt nur die Reihenfolge, ist es "
+        "keine Filterfrage, sondern Sortierung. Schreib das ins Issue statt einen Kandidaten "
+        "zu wählen; ein Maintainer prüft es mit `rotation_check.py` gegen die gespeicherten "
+        "Snapshots. Ein enger gezogener Filter würde es hier schlimmer machen.",
+        "",
+    ]
+    for i, c in enumerate(ranked[:MAX_CANDIDATES], 1):
+        block = candidate_block(i, c, lang)
+        if c["filter"] and c["filter"] == entry.get("filter"):
+            block += "\n- ℹ das ist der Filter, der jetzt schon eingetragen ist"
+        parts.append(block + "\n")
+    parts += [
+        "",
+        "---",
+        "",
+        "Antworte mit `/pick N`, dann schreibe ich den neuen Filter in die vorhandene Datei. "
+        "`name`, `osm_id`, `tags` und `added` bleiben, `captured_sample` und `note` ziehe ich nach.",
+    ]
+    return "\n".join(parts)
+
+
+def fix_entry(outdir, path, entry, cand, issue):
+    """Write the corrected entry: the filter and the two fields that document it."""
+    out = dict(entry)
+    out["filter"] = cand["filter"]
+    out["captured_sample"] = " ".join(cand["text"].split())[:200]
+    stamp = datetime.date.today().isoformat()
+    was = (out.get("note") or "").strip()
+    add = (f"{stamp}: Filter auf {cand['strategy']} geaendert, der vorherige erfasste "
+           f"seitenabhaengigen Text mit (Issue #{issue}).")
+    out["note"] = f"{was} {add}".strip()
+    os.makedirs(outdir, exist_ok=True)
+    dest = os.path.join(outdir, os.path.basename(path))
+    with open(dest, "w") as fh:
+        json.dump(out, fh, ensure_ascii=False, indent=1, sort_keys=True)
+        fh.write("\n")
+    return dest
+
+
+def fix_pr_body(entry, path, cand, current, issue):
+    import filter_wizard as W
+    return "\n".join([
+        f"Filter für **{entry.get('name')}** korrigiert, gemeldet in #{issue}.",
+        "",
+        f"- Seite: {entry.get('url')}",
+        f"- Bisher: `{entry.get('filter')}`",
+        f"- Neu: `{cand['filter'] or 'kein Filter (ganze Seite)'}`",
+        "",
+        "Das fing der bisherige Filter beim Abruf:",
+        "",
+        fence(current or "(nicht ausgewertet)"),
+        "",
+        "Das fängt der neue:",
+        "",
+        fence(cand["text"]),
+        "",
+        *[f"- ! {x}" for x in cand.get("flags", [])],
+        f"- → {W.verdict(cand)}",
+        "",
+        f"Datei: `{path}`. Nach dem Merge zieht die Sync den Filter nach; danach folgt **ein** "
+        f"Alarm, weil der erste Snapshot mit dem neuen Filter gegen den alten läuft.",
+        "",
+        f"Closes #{issue}",
+    ])
+
+
 def pr_body(f, cand, path, issue, notes=()):
     import filter_wizard as W
     return "\n".join([
@@ -440,6 +555,8 @@ def main():
     ap.add_argument("--pick", type=int, help="rank to take (emit, overrides --comment-file)")
     ap.add_argument("--issue", type=int, default=0, help="issue number, for the PR body")
     ap.add_argument("--out", default="out", help="directory for the generated files")
+    ap.add_argument("--fix", action="store_true",
+                    help="correct the filter of an existing entry instead of creating one")
     ap.add_argument("--entries", default="entries",
                     help="checked for a watch on the same page (default: %(default)s)")
     ap.add_argument("--absences", default="no-watch.json",
@@ -460,7 +577,14 @@ def main():
               f"geöffneter nicht.")
         return 0
     try:
-        f = check_fields(parse_body(body))
+        raw = parse_body(body)
+        if args.fix:
+            # Name, OSM id and tags are already on disk; asking for them again would invite a
+            # second, contradicting answer. Only the page and the reported diff come from here.
+            f = {"url": check_url(raw.get("url")), "lang": "de",
+                 "diff": raw_section(body, "Was die Nachricht zeigte")}
+        else:
+            f = check_fields(raw)
         if args.command == "parse":
             print(json.dumps(f, ensure_ascii=False, indent=1))
             return 0
@@ -471,6 +595,40 @@ def main():
             if not m:
                 raise Refused("Ich lese in dem Kommentar kein `/pick N`.")
             pick = int(m.group(1))
+
+        if args.fix:
+            dup, _ = already_watched(f["url"], None, args.entries)
+            if not dup:
+                raise Refused(
+                    "Diese Seite steht nicht in `entries/`, es gibt also keinen Filter zu "
+                    "korrigieren. Für eine neue Seite ist das Formular **Watch vorschlagen** "
+                    "das richtige.")
+            path = os.path.join(args.entries, dup)
+            entry = json.load(open(path, encoding="utf-8"))
+            lang = entry.get("lang") or f["lang"]
+            html, ranked = fetch(f["url"], lang)
+            import filter_wizard as W
+            current = W.capture(html, entry.get("filter"))
+            if args.command == "candidates":
+                write(args.out, "comment.md",
+                      fix_comment(entry, f"entries/{dup}", current, f.get("diff"), ranked,
+                                  lang, len(html), f["url"]))
+                write(args.out, "candidates.json", json.dumps(ranked, ensure_ascii=False,
+                                                              indent=1))
+                return 0
+            if not 1 <= pick <= len(ranked):
+                raise Refused(f"`{pick}` gibt es nicht, die Seite hatte {len(ranked)} "
+                              f"Kandidaten. Setz das Label neu und such aus der neuen Liste.")
+            cand = ranked[pick - 1]
+            slug = dup[:-len(".json")]
+            dest = fix_entry(os.path.join(args.out, "entry"), path, entry, cand, args.issue)
+            write(args.out, "pr-body.md",
+                  fix_pr_body(entry, f"entries/{dup}", cand, current, args.issue))
+            write(args.out, "meta.json", json.dumps(
+                {"slug": slug, "name": entry.get("name"), "url": entry.get("url"), "pick": pick,
+                 "branch": f"filter/{slug}", "entry": dest, "drops_block": False,
+                 "title": f"filter: {entry.get('name')}"}, ensure_ascii=False, indent=1))
+            return 0
 
         record, due = blocked(f["url"], args.absences)
         if record and not due:
@@ -530,8 +688,8 @@ def main():
     except Refused as e:
         write(args.out, "comment.md",
               f"Das kann ich so nicht bauen.\n\n{e}\n\n"
-              f"Ändere das Issue und setz das Label `wizard` neu, dann probiere ich es "
-              f"noch einmal.")
+              f"Ändere das Issue und setz das Label `{'filter-fix' if args.fix else 'wizard'}` "
+              f"neu, dann probiere ich es noch einmal.")
         print(f"refused: {e}", file=sys.stderr)
         return 3
 
