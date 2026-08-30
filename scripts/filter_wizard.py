@@ -412,6 +412,10 @@ def score(cand, page_len, lang):
     if L.uniform_hours(text, lang):
         s -= 15
         flag('same hours every day — check this is real, not theme boilerplate', 2)
+    if L.bare_lead(text, lang):
+        s -= 20
+        flag('an unlabelled time sits before the weekday table — usually a "today" widget '
+             'in the same wrapper, which rewrites itself daily', 2)
     rep = L.repeat_factor(text)
     if rep > 1:
         s -= 20
