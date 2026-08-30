@@ -1,9 +1,9 @@
 {
  "added": "2026-08-15",
- "captured_sample": ": 9:30 - 19:00Mo.9:30 - 19:00Di.9:30 - 19:00Mi.9:30 - 19:00Do.9:30 - 19:00Fr.9:30 - 19:00Sa.9:30 - 19:00So.Geschlossen",
- "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" geodir-field-business_hours \")]",
+ "captured_sample": "Mo.9:30 - 19:00Di.9:30 - 19:00Mi.9:30 - 19:00Do.9:30 - 19:00Fr.9:30 - 19:00Sa.9:30 - 19:00So.Geschlossen",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" gd-bh-open-hours \")]",
  "name": "Adler",
- "note": "2026-08-15: Klasse geodir-field-business_hours, die Tage stehen dort hinter den Zeiten.",
+ "note": "2026-08-15: Klasse geodir-field-business_hours, die Tage stehen dort hinter den Zeiten. 2026-08-30: Anker eine Ebene tiefer auf gd-bh-open-hours. Der Wrapper enthielt neben der Wochentabelle ein gd-bh-today-range für den laufenden Tag; dessen Text wechselt täglich und löste sonntags einen Alarm aus (9:30 - 19:00 wird Geschlossen), ohne dass sich Öffnungszeiten geändert haben.",
  "osm_id": "node/1406092120",
  "schema": 1,
  "tags": [
