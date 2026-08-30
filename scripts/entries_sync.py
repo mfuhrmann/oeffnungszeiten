@@ -45,7 +45,8 @@ import osm_cd_common as C
 # Entry field -> changedetection field. Everything listed is ENFORCED: if the entry and the
 # watch disagree, the watch loses.
 OSM_BASE = "https://www.openstreetmap.org"
-DOCS_BASE = "https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs"
+REPO_BASE = "https://github.com/mfuhrmann/oeffnungszeiten"
+DOCS_BASE = f"{REPO_BASE}/blob/main/docs"
 
 FIELD_MAP = {
     "url": "url",
@@ -120,9 +121,13 @@ def desired(entry, tag_uuids=None):
             f"OpenStreetMap: {OSM_BASE}/{entry['osm_id']}\n"
             "{{diff}}\n"
             "Zu tun: Zeiten in OSM pruefen und check_date:opening_hours setzen.\n"
-            "Stehen auf beiden Seiten des Diffs dieselben Zeiten, oder passt der Wechsel zum "
-            "heutigen Wochentag, hat sich die Seite umsortiert und nicht der Betrieb: "
-            f"{DOCS_BASE}/notifications.md#umsortiert"
+            "Zeigt der Diff keine Zeiten, sondern eine Uhr oder ein Banner, stehen auf beiden "
+            "Seiten dieselben Zeiten, oder passt der Wechsel zum heutigen Wochentag, dann ist "
+            f"der Filter dran: {DOCS_BASE}/notifications.md#umsortiert\n"
+            # No `&url={{watch_url}}` prefill: an issue-form field is filled through the query
+            # string, and a watch URL that carries one of its own (`?branch=500735` at Würth,
+            # `?store=…` at brillen.de) would end the parameter early and arrive truncated.
+            f"Melden ohne Checkout: {REPO_BASE}/issues/new?template=filter-korrigieren.yml"
         )
     return want
 
