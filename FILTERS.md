@@ -156,6 +156,14 @@ trigger** (`#elementor-action%3A…`).
 `.location-detail-opentime.highlight` "today" widget inside the same wrapper, today's line appeared
 twice and moved daily. Sorting masked the order but not the duplicate; the wrapper had to change.
 
+**The wizard flags the shape at creation time**, because that is where it is cheapest and least
+visible: an unlabelled time before the first weekday costs 20 points and reads *"a 'today' widget
+in the same wrapper, which rewrites itself daily"*. Adler had two candidates tied at 141, the
+wrapper listed first, and the wrapper was taken; it now scores 121 against the table's 141. Only a
+*bare* value counts — "Täglich von 17:00 bis 00:00 Uhr" ahead of the table is a statement about
+the week and stays unflagged. Measured against all 559 samples: 4 hits, every one a watch that
+already sorts, where the times group ahead of the days by definition.
+
 **Proof, before changing anything:** fetching the page proves nothing, because the rotation
 depends on the time of day it is fetched. The stored snapshots do prove it. Per snapshot, hold the
 checksum of the raw text against the checksum of its lines sorted:

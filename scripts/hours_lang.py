@@ -357,6 +357,45 @@ def repeat_factor(text, lang="de"):
     return max(common) if common else 1
 
 
+CLOSED_RE = re.compile(r'geschlossen|closed|ruhetag', re.I)
+# Words that may stand beside a bare time without making it a labelled statement.
+LEAD_NOISE = re.compile(r'\buhr\b|\bo\'?clock\b|\bhrs?\b', re.I)
+
+
+def bare_lead(text, lang="de"):
+    r"""Does an unlabelled time or `Geschlossen` sit before the first weekday?
+
+    The shape of a "today" widget rendered into the same capture as the weekly table: the page
+    writes the current day's value with no day beside it, so the text changes whenever that
+    day's hours differ. It is invisible on a Tuesday and fires on the Sunday.
+
+    Only a *bare* value counts. "Täglich von 17:00 bis 00:00 Uhr" before the table is a
+    statement about the week and stays unflagged — otherwise the check would push correct
+    captures down the ranking.
+
+    >>> bare_lead(": 9:30 - 19:00Mo.9:30 - 19:00Di.9:30 - 19:00")
+    True
+    >>> bare_lead("Geschlossen Montag 9-17 Dienstag 9-17")
+    True
+    >>> bare_lead("Täglich von 17:00 bis 00:00 Uhr Samstags open end")
+    False
+    >>> bare_lead("Öffnungszeiten Montag 9-17")
+    False
+    >>> bare_lead("Montag 9-17 Dienstag 9-17")
+    False
+    """
+    hits = _day_hits(text, lang)
+    if not hits:
+        return False
+    lead = text[:hits[0][0]]
+    if not (TIME_RE.search(lead) or CLOSED_RE.search(lead)):
+        return False
+    rest = TIME_RE.sub(" ", lead)
+    rest = CLOSED_RE.sub(" ", rest)
+    rest = LEAD_NOISE.sub(" ", rest)
+    return not re.search(r'[^\W\d_]', rest)
+
+
 def uniform_hours(text, lang="de"):
     """True when the text lists ~every day INDIVIDUALLY with one identical time range —
     the shape of generated theme boilerplate ("Monday 09:00-17:00 Tuesday 09:00-17:00 …").
