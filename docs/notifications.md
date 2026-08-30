@@ -208,6 +208,13 @@ Sorting hides re-ordering, **not duplication**. If the alarm returns after that,
 in the capture twice — a "today" widget inside the same wrapper — and the filter has to get
 narrower ([FILTERS.md](../FILTERS.md) case 7).
 
+**Without a checkout**, the issue form *Filter korrigieren* does the reading part: paste the
+`Webseite:` line and the diff, a maintainer applies the `filter-fix` label, and the bot answers
+with what the entry's filter grabs today above the alternatives. A wandering "today" block is
+invisible in one capture and plain the moment the two sit under each other. The one case it hands
+back is rotation: the bot fetches once and a single fetch cannot show it, so the comment says to
+report it rather than pick a narrower filter.
+
 ## Running this for another city
 
 The structure is language-neutral; the text a mapper reads is not. Five places carry German, and

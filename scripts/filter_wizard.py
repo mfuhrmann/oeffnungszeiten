@@ -464,6 +464,37 @@ def strip_noise(doc):
     return doc
 
 
+def capture(html, filt):
+    """What an existing changedetection filter grabs from this page, or None if we cannot say.
+
+    Only the two forms the entries use are honoured. `json:` filters read a JSON-LD block rather
+    than the DOM, and a bare CSS selector needs cssselect, which the wizard does not install —
+    both return None so the caller can say "nicht ausgewertet" instead of showing a wrong text.
+
+    >>> capture('<div class="h"><p>Mo 9-17</p></div>',
+    ...         'xpath://*[contains(concat(" ",normalize-space(@class)," ")," h ")]')
+    'Mo 9-17'
+    >>> capture('<p>x</p>', 'json:$..openingHours') is None
+    True
+    """
+    if not filt:
+        return None
+    body = filt.split(":", 1)[1] if filt.startswith(("xpath:", "xpath1:")) else None
+    if body is None:
+        return None
+    try:
+        doc = lxml.html.fromstring(html)
+        found = doc.xpath(body)
+    except Exception:
+        return None
+    if not found:
+        return ""
+    if filt.startswith("xpath1:"):
+        found = found[:1]
+    return " ".join(txt_of(el) if hasattr(el, "text_content") else str(el).strip()
+                    for el in found).strip()
+
+
 def collect(html, lang, page_text_len=None):
     doc = strip_noise(lxml.html.fromstring(html))
     page_len = page_text_len if page_text_len is not None else len(txt_of(doc))
