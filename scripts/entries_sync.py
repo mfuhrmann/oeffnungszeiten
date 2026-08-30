@@ -45,6 +45,7 @@ import osm_cd_common as C
 # Entry field -> changedetection field. Everything listed is ENFORCED: if the entry and the
 # watch disagree, the watch loses.
 OSM_BASE = "https://www.openstreetmap.org"
+DOCS_BASE = "https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs"
 
 FIELD_MAP = {
     "url": "url",
@@ -110,11 +111,18 @@ def desired(entry, tag_uuids=None):
     # A per-watch body is the only place the OSM id fits: the cascade is watch -> tag -> global,
     # and a non-empty value here wins outright (no companion "use_default" flag, unlike
     # time_between_check). Entries without an osm_id fall through to the global body.
+    # Winning outright means REPLACING it, not extending it, so every line the reader needs has
+    # to stand here too. 558 of 559 entries carry an osm_id, which made the guidance in the
+    # global body unreachable for all but one watch until this text was repeated.
     if entry.get("osm_id"):
         want["notification_body"] = (
             "Webseite: {{watch_url}}\n"
             f"OpenStreetMap: {OSM_BASE}/{entry['osm_id']}\n"
-            "{{diff}}"
+            "{{diff}}\n"
+            "Zu tun: Zeiten in OSM pruefen und check_date:opening_hours setzen.\n"
+            "Stehen auf beiden Seiten des Diffs dieselben Zeiten, oder passt der Wechsel zum "
+            "heutigen Wochentag, hat sich die Seite umsortiert und nicht der Betrieb: "
+            f"{DOCS_BASE}/notifications.md#umsortiert"
         )
     return want
 
