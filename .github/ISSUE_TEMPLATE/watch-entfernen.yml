@@ -1,7 +1,7 @@
 name: Watch entfernen
 description: Eine beobachtete Seite führt keine Öffnungszeiten mehr.
 title: "Weg: "
-labels: ["watch-weg"]
+labels: ["watch-entfernen"]
 body:
   - type: markdown
     attributes:

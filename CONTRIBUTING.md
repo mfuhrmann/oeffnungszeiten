@@ -207,8 +207,9 @@ Liste enthält. Eine Seite gehört in genau eine der beiden Listen, CI achtet da
 
 **Ohne Fork** geht auch das: die Vorlage
 [Watch entfernen](../../issues/new?template=watch-entfernen.yml) fragt die Seite, einen Grund aus
-einer Liste und einen Satz darüber, was dort statt der Zeiten steht. Ein Maintainer setzt das Label
-`watch-weg`, dann löscht der Bot den Eintrag, schreibt den Sperrlisten-Record und baut den Pull
+einer Liste und einen Satz darüber, was dort statt der Zeiten steht. Das Formular hängt `watch-entfernen`
+an, ein Maintainer setzt `watch-weg` — erst das ist der Startschuss, wie überall hier: ein Label,
+das ein Formular selbst vergibt, wäre kein Tor. Dann löscht der Bot den Eintrag, schreibt den Sperrlisten-Record und baut den Pull
 Request. Name, OSM-Objekt und die zuletzt erfassten Zeiten nimmt er aus der vorhandenen Datei; die
 Zeiten wandern in die Notiz, weil das Löschen sonst der Moment wäre, in dem sie verloren gehen. Die
 Seite ruft er **nicht** ab: was auf ihr steht, hast du gelesen, und der Pull Request ist die Stelle,
