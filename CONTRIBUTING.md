@@ -189,10 +189,11 @@ Der Dateiname entsteht aus Name und URL, damit zwei Filialen einer Kette nicht k
 ## Einen Watch ändern oder entfernen
 
 - **Ändern**: die Datei bearbeiten. Der nächste Sync schreibt sie durch.
-- **Entfernen**: die Datei mit `git rm` löschen. Der Watch ist binnen einer Stunde weg. Viele auf
-  einmal zu entfernen ist das eine, was in den Pull Request gehört: der Sync weigert sich, mehr als
-  eine Handvoll in einem Lauf zu löschen, weil ein leer angekommener Checkout genauso aussieht wie
-  die Bitte, alles zu löschen.
+- **Entfernen**: die Datei mit `git rm` löschen und die Seite in `no-watch.json` eintragen, im
+  selben Pull Request — eine Seite gehört in genau eine der beiden Listen. Der Watch ist binnen
+  einer Stunde weg. Viele auf einmal zu entfernen ist das eine, was in den Pull Request gehört:
+  der Sync weigert sich, mehr als eine Handvoll in einem Lauf zu löschen, weil ein leer
+  angekommener Checkout genauso aussieht wie die Bitte, alles zu löschen.
 
 ## Eine Seite ohne Zeiten: `no-watch.json`
 
@@ -203,6 +204,16 @@ gelisteten Gründe sein, `note` muss sagen, was die Seite *stattdessen* zeigt un
 wurde (deutsch, mindestens 30 Zeichen), und `recheck` ist ein Datum, `on-relocation` oder `never`.
 Aufbau und Gründe stehen in [CONCEPT.md](./CONCEPT.md); `python3 scripts/no_watch.py` zeigt, was die
 Liste enthält. Eine Seite gehört in genau eine der beiden Listen, CI achtet darauf.
+
+**Ohne Fork** geht auch das: die Vorlage
+[Watch entfernen](../../issues/new?template=watch-entfernen.yml) fragt die Seite, einen Grund aus
+einer Liste und einen Satz darüber, was dort statt der Zeiten steht. Ein Maintainer setzt das Label
+`watch-weg`, dann löscht der Bot den Eintrag, schreibt den Sperrlisten-Record und baut den Pull
+Request. Name, OSM-Objekt und die zuletzt erfassten Zeiten nimmt er aus der vorhandenen Datei; die
+Zeiten wandern in die Notiz, weil das Löschen sonst der Moment wäre, in dem sie verloren gehen. Die
+Seite ruft er **nicht** ab: was auf ihr steht, hast du gelesen, und der Pull Request ist die Stelle,
+an der das jemand nachliest. Liegen auf einer Seite zwei Watches, sagt er ab — dann trägt sie Zeiten
+für zwei Betriebe, und welcher wegfällt, ist keine Frage für ein Formular.
 
 ## Was zurückkommt
 

@@ -1,0 +1,60 @@
+name: Watch entfernen
+description: Eine beobachtete Seite führt keine Öffnungszeiten mehr.
+title: "Weg: "
+labels: ["watch-weg"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Für eine Seite, die **schon** beobachtet wird und auf der es nichts mehr zu beobachten
+        gibt: Die Zeiten sind verschwunden, der Betrieb nennt nur noch Termine, oder es gibt die
+        Seite gar nicht mehr.
+
+        Der Bot ruft die Seite **nicht** ab. Er nimmt, was du hier schreibst, löscht den Eintrag
+        und trägt die Seite mit deiner Begründung in die Sperrliste ein, damit sie niemand ein
+        zweites Mal vorschlägt. Name, OSM-Objekt und die zuletzt erfassten Zeiten holt er aus der
+        vorhandenen Datei — die musst du nicht heraussuchen. Fertig ist ein Pull Request, den ein
+        Maintainer liest.
+
+        Steht auf der Seite noch etwas, das nur der Filter nicht mehr trifft, ist
+        **Filter korrigieren** das richtige Formular.
+  - type: input
+    id: url
+    attributes:
+      label: Seite, die keine Zeiten mehr führt
+      description: Die Zeile `Webseite:` aus der Alarmnachricht, oder die Adresse aus der Leiste.
+      placeholder: https://example.de/kontakt
+    validations:
+      required: true
+  - type: dropdown
+    id: reason
+    attributes:
+      label: Warum die Seite nichts mehr hergibt
+      description: Was du dort siehst. Danach richtet sich, wann jemand wieder nachsieht.
+      options:
+        - Die Seite nennt keine Öffnungszeiten (mehr)
+        - Nur nach Vereinbarung, feste Zeiten gibt es nicht
+        - Die Zeiten stehen nur bei Facebook oder Instagram
+        - Nur Lieferzeiten auf einer Lieferplattform
+        - Die Seite nennt nur den heutigen Tag
+        - Durchgehend geöffnet, die Zeiten ändern sich nicht
+        - Die Seite gibt es nicht mehr
+    validations:
+      required: true
+  - type: textarea
+    id: note
+    attributes:
+      label: Was auf der Seite steht
+      description: >
+        Ein Satz, was dort statt der Zeiten zu lesen ist, gern wörtlich. Das ist das Einzige, was
+        in einem halben Jahr noch erklärt, warum diese Seite draußen ist. Mindestens 30 Zeichen.
+      placeholder: >
+        Unter "Kontakt" steht jetzt nur noch ein Formular, die Wochentabelle ist beim Umbau
+        verschwunden. Auch die Startseite und /oeffnungszeiten nennen keine Zeiten.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Eine Seite, die gerade nur nicht antwortet, gehört nicht hierher: ein Ausfall ist in einer
+        Woche vorbei, ein Eintrag in der Sperrliste hält ein halbes Jahr.
