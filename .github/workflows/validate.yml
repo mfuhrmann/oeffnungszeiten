@@ -31,6 +31,27 @@ jobs:
       # wizard_bot reads what a stranger typed into an issue form. Its parsing and validation
       # half is stdlib and needs no network, exactly so it can be checked in this job.
       - run: PYTHONPATH=scripts python3 -m doctest scripts/wizard_bot.py
+      # The bot finds a field by its heading, and the heading GitHub renders is the form's
+      # `label`. Renaming one therefore breaks the parsing in silence: the issue looks right and
+      # the bot reads an empty URL. One pass over the forms says whether every heading it knows
+      # still exists somewhere.
+      - name: every heading the bot reads still exists in a form
+        run: |
+          python3 - <<'PY'
+          import pathlib, sys
+          sys.path.insert(0, "scripts")
+          from wizard_bot import FIELDS
+          labels = set()
+          for f in sorted(pathlib.Path(".github/ISSUE_TEMPLATE").glob("*.yml")):
+              for line in f.read_text(encoding="utf-8").splitlines():
+                  line = line.strip()
+                  if line.startswith("label:"):
+                      labels.add(line[len("label:"):].strip().strip("\"'"))
+          missing = sorted(set(FIELDS) - labels)
+          if missing:
+              sys.exit(f"no issue form carries these headings any more: {missing}")
+          print(f"{len(FIELDS)} headings, all present")
+          PY
 
   settings-in-sync:
     # deploy/global-settings.json is the source. apps/changedetection/global-settings.values.yaml

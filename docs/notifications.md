@@ -215,6 +215,13 @@ invisible in one capture and plain the moment the two sit under each other. The 
 back is rotation: the bot fetches once and a single fetch cannot show it, so the comment says to
 report it rather than pick a narrower filter.
 
+When the page carries no hours at all any more — rebuilt, or down to a contact form — no filter
+fixes that, and the form for it is *Watch entfernen*: the page, a reason from a list, and a
+sentence on what it shows instead. Label `watch-weg`, and the bot builds the pull request that
+deletes the entry and writes the block-list record in one commit, carrying the watch's last
+`captured_sample` into the note. It fetches nothing; the reading is the reporter's, the merge is
+the check.
+
 ## Running this for another city
 
 The structure is language-neutral; the text a mapper reads is not. Five places carry German, and

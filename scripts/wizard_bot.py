@@ -23,6 +23,7 @@ Examples:
   python3 scripts/wizard_bot.py emit --body-file body.md --pick 2 --out out
 """
 import argparse
+import calendar
 import collections
 import datetime
 import ipaddress
@@ -51,7 +52,29 @@ FIELDS = {
     # the correction form: everything else about the entry is already on disk
     "Seite aus der Alarmnachricht": "url",
     "Was die Nachricht zeigte": "diff",
+    # the removal form: the page, and what a person sees on it instead of hours
+    "Seite, die keine Zeiten mehr führt": "url",
+    "Was auf der Seite steht": "note",
+    "Warum die Seite nichts mehr hergibt": "reason",
 }
+
+# The removal form's dropdown. A reporter reads a page, not our block list, so the form offers
+# sentences and this maps them onto the reasons `no-watch.json` allows. Only the reasons a
+# person can *see* are here: `anti-bot` and `datacenter-block` are properties of our instance,
+# invisible from a home connection, and stay a maintainer's judgement.
+REASONS = {
+    "Die Seite nennt keine Öffnungszeiten (mehr)": "no-hours-on-page",
+    "Nur nach Vereinbarung, feste Zeiten gibt es nicht": "appointment-only",
+    "Die Zeiten stehen nur bei Facebook oder Instagram": "social-only",
+    "Nur Lieferzeiten auf einer Lieferplattform": "delivery-platform-only",
+    "Die Seite nennt nur den heutigen Tag": "today-only",
+    "Durchgehend geöffnet, die Zeiten ändern sich nicht": "always-open",
+    "Die Seite gibt es nicht mehr": "site-unreachable",
+}
+# `always-open` cannot move: the hours are known and constant. Everything else here is a
+# property of the business, and a business changes its mind — half a year is what the list has
+# used for that since it exists.
+RECHECK_MONTHS = 6
 NO_RESPONSE = "_no response_"
 OSM_ID = re.compile(r"^(node|way|relation)/[1-9][0-9]*$")
 TAG = re.compile(r"^[a-z0-9][a-z0-9_-]{1,39}$")
@@ -287,6 +310,86 @@ def drop_block(url, path="no-watch.json"):
     return json.dumps(doc, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
 
 
+def recheck_date(reason, today=None):
+    """When to look at this page again — a date, or `never` for what cannot change.
+
+    >>> recheck_date("no-hours-on-page", datetime.date(2026, 8, 31))
+    '2027-02-28'
+    >>> recheck_date("today-only", datetime.date(2026, 12, 31))
+    '2027-06-30'
+    >>> recheck_date("always-open", datetime.date(2026, 8, 31))
+    'never'
+    """
+    if reason == "always-open":
+        return "never"
+    d = today or datetime.date.today()
+    month = d.month - 1 + RECHECK_MONTHS
+    year, month = d.year + month // 12, month % 12 + 1
+    day = min(d.day, calendar.monthrange(year, month)[1])
+    return datetime.date(year, month, day).isoformat()
+
+
+def block_record(entry, reason, note, issue):
+    """The `no-watch.json` record for a watch that is being removed.
+
+    Everything but the reason and the note comes off the entry, so the form can ask for what a
+    person sees on the page and nothing else. `captured_sample` is carried into the note on
+    purpose: it is the last thing the watch actually caught, and deleting the file is the moment
+    it would otherwise be lost — the same shape the hand-written records use.
+    """
+    note = " ".join((note or "").split())
+    sample = " ".join((entry.get("captured_sample") or "").split())
+    if sample:
+        note += f" Zuletzt erfasst, bevor der Watch entfernt wurde: {sample}"
+    if issue:
+        note += f" (Issue #{issue})"
+    return {
+        "url": entry.get("url"),
+        "name": entry.get("name"),
+        "reason": reason,
+        "established": datetime.date.today().isoformat(),
+        "recheck": recheck_date(reason),
+        "note": note.strip(),
+        "osm_id": entry.get("osm_id"),
+    }
+
+
+def add_block(record, path="no-watch.json"):
+    """The block list with this page added, as text.
+
+    Written without `sort_keys`, unlike `drop_block`: the file carries its keys in reading order
+    (url, name, reason, …), and sorting them would rewrite all 281 records for the sake of one.
+    A reviewer should see a single added record and nothing else.
+    """
+    doc = json.load(open(path))
+    doc["records"] = [r for r in doc["records"]
+                      if page_key(r.get("url") or "") != page_key(record["url"])] + [record]
+    return json.dumps(doc, ensure_ascii=False, indent=1) + "\n"
+
+
+def drop_pr_body(entry, path, record, issue):
+    return "\n".join([
+        f"**{entry.get('name')}** wird nicht mehr beobachtet, gemeldet in #{issue}.",
+        "",
+        f"- Seite: {entry.get('url')}",
+        f"- Grund: `{record['reason']}`",
+        f"- Wieder ansehen: `{record['recheck']}`",
+        "",
+        "Das steht künftig in `no-watch.json`:",
+        "",
+        fence(record["note"]),
+        "",
+        f"`{path}` fällt weg, der Eintrag in `no-watch.json` tritt an seine Stelle — eine Seite "
+        f"gehört in genau eine der beiden Listen, und CI prüft das. Nach dem Merge löscht die "
+        f"Sync den Watch binnen einer Stunde und meldet es in Matrix.",
+        "",
+        f"Bitte vor dem Merge selbst auf die Seite sehen: der Bot hat sie **nicht** abgerufen, "
+        f"hier steht, was ein Mensch gelesen hat.",
+        "",
+        f"Closes #{issue}",
+    ])
+
+
 def page_key(url):
     """What makes two links the same page, for the duplicate check.
 
@@ -338,6 +441,29 @@ def already_watched(url, osm_id=None, entries="entries"):
         if osm_id and e.get("osm_id") == osm_id:
             return name, "osm"
     return None, None
+
+
+def watching(url, entries="entries"):
+    """Every entry file whose page is this one — usually one, sometimes two.
+
+    Two businesses on one page is a known shape (FILTERS.md case 12), and removing one of that
+    pair is not a decision the removal form can make: the page still carries hours, only not
+    for this business. So the bot counts rather than assumes, and hands the pair to a person.
+    """
+    if not os.path.isdir(entries):
+        return []
+    want = page_key(url)
+    hits = []
+    for name in sorted(os.listdir(entries)):
+        if not name.endswith(".json") or name.startswith("."):
+            continue
+        try:
+            e = json.load(open(os.path.join(entries, name)))
+        except Exception:
+            continue
+        if page_key(e.get("url") or "") == want:
+            hits.append(name)
+    return hits
 
 
 def fetch(url, lang):
@@ -557,6 +683,8 @@ def main():
     ap.add_argument("--out", default="out", help="directory for the generated files")
     ap.add_argument("--fix", action="store_true",
                     help="correct the filter of an existing entry instead of creating one")
+    ap.add_argument("--drop", action="store_true",
+                    help="remove an existing entry and record the page in the block list")
     ap.add_argument("--entries", default="entries",
                     help="checked for a watch on the same page (default: %(default)s)")
     ap.add_argument("--absences", default="no-watch.json",
@@ -578,7 +706,12 @@ def main():
         return 0
     try:
         raw = parse_body(body)
-        if args.fix:
+        if args.drop:
+            # Nothing here is fetched and nothing is guessed: the page identifies the entry,
+            # and everything the record needs beyond the reason and the note is already in it.
+            f = {"url": check_url(raw.get("url")), "reason": raw.get("reason"),
+                 "note": raw_section(body, "Was auf der Seite steht")}
+        elif args.fix:
             # Name, OSM id and tags are already on disk; asking for them again would invite a
             # second, contradicting answer. Only the page and the reported diff come from here.
             f = {"url": check_url(raw.get("url")), "lang": "de",
@@ -587,6 +720,44 @@ def main():
             f = check_fields(raw)
         if args.command == "parse":
             print(json.dumps(f, ensure_ascii=False, indent=1))
+            return 0
+
+        if args.drop:
+            hits = watching(f["url"], args.entries)
+            if not hits:
+                raise Refused(
+                    "Diese Seite steht nicht in `entries/`, es gibt also keinen Watch zu "
+                    "entfernen. Prüf die Adresse aus der Alarmnachricht — steht die Seite auf "
+                    "der Sperrliste, ist sie schon aus dem Rennen.")
+            if len(hits) > 1:
+                liste = ", ".join(f"`entries/{h}`" for h in hits)
+                raise Refused(
+                    f"Auf dieser Seite liegen zwei Watches: {liste}. Die Seite trägt dann "
+                    f"Zeiten für zwei Betriebe, und welcher davon wegfällt, kann ich nicht "
+                    f"entscheiden. Sag es hier im Issue, ein Maintainer macht es von Hand.")
+            reason = REASONS.get((f.get("reason") or "").strip())
+            if not reason:
+                raise Refused(
+                    f"Den Grund {f.get('reason')!r} kenne ich nicht. Nimm einen aus der Liste "
+                    f"im Formular — jeder steht für einen Eintrag, den `no-watch.json` "
+                    f"zulässt.")
+            note = " ".join((f.get("note") or "").split())
+            if len(note) < 30:
+                raise Refused(
+                    "Die Notiz ist zu kurz. Sie ist das Einzige, was in einem halben Jahr noch "
+                    "erklärt, warum hier nichts beobachtet wird — schreib in einem Satz, was "
+                    "auf der Seite **statt** der Zeiten steht. CI verlangt 30 Zeichen.")
+            path = os.path.join(args.entries, hits[0])
+            entry = json.load(open(path, encoding="utf-8"))
+            record = block_record(entry, reason, note, args.issue)
+            slug = hits[0][:-len(".json")]
+            write(args.out, "no-watch.json", add_block(record, args.absences))
+            write(args.out, "pr-body.md",
+                  drop_pr_body(entry, f"entries/{hits[0]}", record, args.issue))
+            write(args.out, "meta.json", json.dumps(
+                {"slug": slug, "name": entry.get("name"), "url": entry.get("url"),
+                 "branch": f"weg/{slug}", "remove": f"entries/{hits[0]}",
+                 "title": f"no-watch: {entry.get('name')}"}, ensure_ascii=False, indent=1))
             return 0
 
         pick = args.pick
@@ -688,7 +859,8 @@ def main():
     except Refused as e:
         write(args.out, "comment.md",
               f"Das kann ich so nicht bauen.\n\n{e}\n\n"
-              f"Ändere das Issue und setz das Label `{'filter-fix' if args.fix else 'wizard'}` "
+              f"Ändere das Issue und setz das Label "
+              f"`{'watch-weg' if args.drop else 'filter-fix' if args.fix else 'wizard'}` "
               f"neu, dann probiere ich es noch einmal.")
         print(f"refused: {e}", file=sys.stderr)
         return 3

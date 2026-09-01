@@ -1,0 +1,90 @@
+# "Watch entfernen" as an issue -> branch, deleted entry, block-list record, pull request.
+#
+# One job, unlike wizard.yml and wizard-pick.yml: those split fetching from writing, because
+# they pull a URL a stranger wrote into an issue and must not do that with a token. This path
+# fetches nothing at all — it moves a page from `entries/` into `no-watch.json` on a person's
+# word, and the pull request is where that word is checked. The issue text still never reaches
+# a shell: it goes through the environment into a file.
+name: wizard-drop
+
+on:
+  issues:
+    types: [labeled]
+
+permissions: {}
+
+jobs:
+  remove:
+    # The label is the gate, as everywhere here: anyone may open an issue, a maintainer decides
+    # that it is worth a runner.
+    if: github.event.label.name == 'watch-weg'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      # A pull request opened with GITHUB_TOKEN starts no further workflow, which is GitHub's
+      # guard against a loop — so the entry check runs here. A PAT in WIZARD_PR_TOKEN gets the
+      # pull request its own CI run, with no change here.
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.WIZARD_PR_TOKEN || github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # No `pip install lxml`: the removal path never imports the wizard, because no page is
+      # parsed. Standard library only, like the checks in CI.
+      - name: the issue, as a file
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: printf '%s' "$BODY" > body.md
+      - name: build the removal
+        continue-on-error: true          # a refusal is an answer and still has a comment to post
+        run: |
+          PYTHONPATH=scripts python3 scripts/wizard_bot.py emit --drop \
+            --body-file body.md --issue "${{ github.event.issue.number }}" --out out
+      - name: nothing to open
+        id: refused
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f out/meta.json ]; then
+            gh issue comment "${{ github.event.issue.number }}" \
+              --repo "${{ github.repository }}" --body-file out/comment.md
+            echo "stop=yes" >> "$GITHUB_OUTPUT"
+          fi
+      - name: branch, commit, pull request
+        if: steps.refused.outputs.stop != 'yes'
+        env:
+          GH_TOKEN: ${{ secrets.WIZARD_PR_TOKEN || github.token }}
+          REPO: ${{ github.repository }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          BRANCH=$(python3 -c "import json;print(json.load(open('out/meta.json'))['branch'])")
+          TITLE=$(python3 -c "import json;print(json.load(open('out/meta.json'))['title'])")
+          REMOVE=$(python3 -c "import json;print(json.load(open('out/meta.json'))['remove'])")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git rm --quiet "$REMOVE"
+          cp out/no-watch.json no-watch.json
+          # Both halves are in the working tree now, which is the only state the check accepts:
+          # a page belongs in exactly one of the two lists.
+          python3 scripts/validate_entries.py
+          git add -A entries/ no-watch.json
+          git commit -m "$TITLE"
+          git push --force origin "HEAD:$BRANCH"
+          URL=$(gh pr list --head "$BRANCH" --state open --json url -q '.[0].url')
+          if [ -z "$URL" ]; then
+            URL=$(gh pr create --base main --head "$BRANCH" --title "$TITLE" \
+                    --body-file out/pr-body.md) || URL=""
+          fi
+          if [ -n "$URL" ]; then
+            gh issue comment "$ISSUE" --repo "$REPO" \
+              --body "Pull Request steht: $URL. Sieh dort noch einmal selbst auf die Seite — abgerufen habe ich sie nicht, im Pull Request steht, was du gelesen hast."
+          else
+            python3 scripts/wizard_bot.py compare --repo "$REPO" --branch "$BRANCH" \
+              --title "$TITLE" --body-file out/pr-body.md --out out
+            gh issue comment "$ISSUE" --repo "$REPO" --body-file out/compare.md
+          fi
