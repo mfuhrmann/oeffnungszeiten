@@ -1,9 +1,10 @@
 {
  "added": "2026-08-03",
- "captured_sample": "Öffnungszeiten öffnet heute dienstags: 16:00 bis 18:00 Uhr donnerstags: 16:00 bis 18:00 Uhr Im Kalender anzeigen Unsere Öffnungszeiten dienstags: 16:00 bis 18:00 Uhr donnerstags: 16:00 bis 18:00 Uhr W",
+ "captured_sample": "dienstags: 16:00 bis 18:00 Uhr donnerstags: 16:00 bis 18:00 Uhr dienstags: 16:00 bis 18:00 Uhr donnerstags: 16:00 bis 18:00 Uhr",
  "fetch_backend": "system",
- "filter": "xpath:(//h2[contains(normalize-space(.),\"Öffnungszeiten\")])/parent::*",
+ "filter": "xpath://*[contains(concat(\" \",normalize-space(@class),\" \"),\" openings-table \")]",
  "name": "Bücherrei Fulda Galerie",
+ "note": "2026-09-01: Filter auf class=\"openings-table\" geaendert, der vorherige erfasste seitenabhaengigen Text mit (Issue #72).",
  "osm_id": "node/12865486146",
  "schema": 1,
  "tags": [
