@@ -458,8 +458,8 @@ def fix_entry(outdir, path, entry, cand, issue):
     out["captured_sample"] = " ".join(cand["text"].split())[:200]
     stamp = datetime.date.today().isoformat()
     was = (out.get("note") or "").strip()
-    add = (f"{stamp}: Filter auf {cand['strategy']} geaendert, der vorherige erfasste "
-           f"seitenabhaengigen Text mit (Issue #{issue}).")
+    add = (f"{stamp}: Filter auf {cand['strategy']} geändert, der vorherige erfasste "
+           f"seitenabhängigen Text mit (Issue #{issue}).")
     out["note"] = f"{was} {add}".strip()
     os.makedirs(outdir, exist_ok=True)
     dest = os.path.join(outdir, os.path.basename(path))
