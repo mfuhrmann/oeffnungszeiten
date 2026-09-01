@@ -37,6 +37,7 @@ import os
 import re
 import tempfile
 import threading
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -55,6 +56,17 @@ MAX_BODY = 8000
 # p90 12, max 24. The worst case on record is a practice holiday notice at 47. 40 leaves every
 # real message intact and still bounds what one broken filter can do.
 MAX_LINES = 40
+# Threads: the room shows one alert per page, and the follow-up that belongs to it — "the filter
+# changed, the next alert is the baseline swap" — is only useful next to that alert. So the relay
+# remembers the last event it sent per page. Kept beside the session, never inside it: re-seeding
+# copies the session file into the pod, and that must not carry stale event ids, nor may a failed
+# bookkeeping write endanger the refresh token.
+THREADS_PATH = os.environ.get("MATRIX_RELAY_THREADS", "/config/matrix_relay_threads.json")
+# A root older than this is not answered any more: a thread under a message nobody can still see
+# in the timeline hides the follow-up instead of placing it.
+THREAD_TTL = 30 * 24 * 3600
+# Enough for every watched page to hold one thread, and a bound on a file nothing else prunes.
+THREAD_MAX = 400
 # Header lines of the notification body: "Webseite: <url>", "OpenStreetMap: <url>", or a bare
 # URL (the global body, used by the few entries without an osm_id) which is labelled Webseite.
 LINK_LINE = re.compile(r"^(?:([^:]{1,30}):\s*)?(https?://\S+)\s*$")
@@ -72,6 +84,43 @@ COLOR = {"added": "#2e7d32", "removed": "#c62828", "changed": "#ef6c00"}
 # differ line by line and never look like a reordering.
 REORDER_DOC = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
                "notifications.md#umsortiert")
+
+
+def page_key(url):
+    """The key a page is remembered under: scheme and trailing slash are not identity.
+
+    >>> page_key("https://Example.de/Kontakt/") == page_key("http://example.de/Kontakt")
+    True
+    >>> page_key("https://example.de/a") == page_key("https://example.de/b")
+    False
+    >>> page_key(None) is None
+    True
+    """
+    if not url:
+        return None
+    u = url.strip()
+    u = re.sub(r"^https?://", "", u, flags=re.I).rstrip("/")
+    host, _, rest = u.partition("/")
+    return host.lower() + ("/" + rest if rest else "")
+
+
+def first_link(message):
+    r"""The page a notification is about: the first link line of the body.
+
+    The same lines format_message turns into the header, read once more so the sender does not
+    have to name the page a second time in a field of its own.
+
+    >>> first_link("Webseite: https://example.de/kontakt\n(added) Mo 9-17")
+    'https://example.de/kontakt'
+    >>> first_link("(added) Mo 9-17") is None
+    True
+    """
+    for raw in message.splitlines():
+        m = LINK_LINE.match(raw.strip())
+        if m:
+            return m.group(2)
+        return None
+    return None
 
 
 def reorder_note(kept):
@@ -104,7 +153,7 @@ def reorder_note(kept):
             f"der einmalige Alarm nach dem Umstellen. {REORDER_DOC}"]
 
 
-def format_message(title, message):
+def format_message(title, message, lead=None):
     r"""Render one notification as (plain_text, html).
 
     The body changedetection sends is the watch's notification_body: "Webseite: <url>", an
@@ -119,9 +168,15 @@ def format_message(title, message):
     A diff that only reordered itself is labelled as such (see REORDER_DOC), because the six
     identical-looking lines it produces are the one message nobody can read.
 
+    `lead` is one line put above everything, used for the alert the relay knows is coming: the
+    baseline swap after a filter change. Without it that alert reads like a change of hours.
+
     >>> plain, html = format_message("T", "Webseite: https://example.de/\n(added) Mo 9-17")
     >>> plain.splitlines()
     ['T', 'Webseite: https://example.de/', '', '+ Mo 9-17']
+    >>> plain, html = format_message("T", "(added) Mo 9-17", lead="⤴ erwartet")
+    >>> plain.splitlines()[:2]
+    ['⤴ erwartet', 'T']
     >>> rot = "(removed) Mo 9-17\n(removed) Di 9-17\n(added) Di 9-17\n(added) Mo 9-17"
     >>> plain, html = format_message("T", rot)
     >>> plain.splitlines()[2]
@@ -164,7 +219,8 @@ def format_message(title, message):
         rest = len(kept) - MAX_LINES
         kept = kept[:MAX_LINES]
 
-    text_parts = ([title] if title else []) + [f"{label}: {url}" for label, url in head]
+    text_parts = ([lead] if lead else []) + ([title] if title else [])
+    text_parts += [f"{label}: {url}" for label, url in head]
     text_parts += ([""] + note if note else []) + [""]
     text_parts += [f"{SIGIL.get(kind, ' ')} {t}" for kind, t in kept]
     if rest:
@@ -174,6 +230,8 @@ def format_message(title, message):
         return html_mod.escape(s, quote=False)
 
     html_parts = []
+    if lead:
+        html_parts.append(f"<b>{esc(lead)}</b>")
     if title:
         html_parts.append(f"<b>{esc(title)}</b>")
     for label, url in head:
@@ -199,6 +257,116 @@ def format_message(title, message):
         html_parts.append(esc(f"[…] {rest} weitere Zeilen, vollständige Änderung im UI"))
 
     return "\n".join(text_parts), "<br/>".join(html_parts)
+
+
+class ThreadBook:
+    """One remembered event per page, so a follow-up lands under the alert it explains.
+
+    Two things are stored per page: the event that opened the thread, and whether the next alert
+    for that page is already accounted for. The second one is what makes the baseline swap after
+    a filter change readable — the sync announces it before it happens, the alert then arrives in
+    that thread and carries a line saying so, instead of looking like changed hours a few days
+    later with nothing next to it.
+
+    Losing the file costs nothing but the threading: every message still arrives, flat.
+
+    >>> import tempfile, os
+    >>> b = ThreadBook(os.path.join(tempfile.mkdtemp(), "t.json"))
+    >>> b.remember("https://example.de/", "$root")
+    >>> b.thread_for("https://example.de/")
+    ('$root', '$root')
+    >>> b.thread_for("https://other.de/") is None
+    True
+    >>> b.expect("https://example.de/")
+    >>> b.pending("https://example.de/")
+    True
+    >>> b.followed("https://example.de/", "$reply")     # the awaited alert arrived
+    >>> b.pending("https://example.de/")
+    False
+    >>> b.thread_for("https://example.de/")             # replies chain to the newest event
+    ('$root', '$reply')
+    """
+
+    def __init__(self, path):
+        self.path = path
+        self.lock = threading.RLock()
+        self.pages = None
+
+    def _load(self):
+        if self.pages is None:
+            try:
+                with open(self.path) as fh:
+                    self.pages = json.load(fh).get("pages") or {}
+            except (OSError, ValueError):
+                self.pages = {}
+        return self.pages
+
+    def _save(self):
+        """Best effort. A thread that is not remembered costs a flat message, nothing more."""
+        pages = self.pages
+        if len(pages) > THREAD_MAX:
+            for k in sorted(pages, key=lambda k: pages[k].get("ts", 0))[:len(pages) - THREAD_MAX]:
+                pages.pop(k)
+        try:
+            d = os.path.dirname(self.path) or "."
+            fd, tmp = tempfile.mkstemp(dir=d, prefix=".threads.", suffix=".json")
+            with os.fdopen(fd, "w") as fh:
+                json.dump({"pages": pages}, fh, indent=1)
+            os.replace(tmp, self.path)
+        except OSError as e:
+            log.warning("could not persist %s (%s) - messages still send, threading is lost",
+                        self.path, e)
+
+    def thread_for(self, url):
+        """(root, latest) for a page whose thread is still worth answering, else None."""
+        key = page_key(url)
+        if not key:
+            return None
+        with self.lock:
+            rec = self._load().get(key)
+            if not rec or time.time() - rec.get("ts", 0) > THREAD_TTL:
+                return None
+            return rec["root"], rec.get("latest") or rec["root"]
+
+    def remember(self, url, event_id):
+        """This message opened a thread: later follow-ups answer under it."""
+        key = page_key(url)
+        if not key or not event_id:
+            return
+        with self.lock:
+            self._load()[key] = {"root": event_id, "latest": event_id, "ts": time.time()}
+            self._save()
+
+    def followed(self, url, event_id):
+        """A reply went into the thread: chain the next one to it, and clear the expectation."""
+        key = page_key(url)
+        if not key:
+            return
+        with self.lock:
+            rec = self._load().get(key)
+            if not rec:
+                return
+            if event_id:
+                rec["latest"] = event_id
+            rec.pop("await", None)
+            self._save()
+
+    def expect(self, url):
+        """The next alert for this page is the announced one and belongs in the thread."""
+        key = page_key(url)
+        if not key:
+            return
+        with self.lock:
+            rec = self._load().get(key)
+            if rec:
+                rec["await"] = True
+                self._save()
+
+    def pending(self, url):
+        key = page_key(url)
+        with self.lock:
+            rec = self._load().get(key) if key else None
+            return bool(rec and rec.get("await"))
 
 
 class MatrixSession:
@@ -332,8 +500,12 @@ class MatrixSession:
             self.save()
         return body["room_id"]
 
-    def send(self, text, html=None):
-        """Send one m.text message, refreshing once if the token was rejected."""
+    def send(self, text, html=None, thread=None):
+        """Send one m.text message, refreshing once if the token was rejected.
+
+        `thread` is the (root, latest) pair from the ThreadBook. A client that does not render
+        threads shows the message as a reply to `latest`, which is what is_falling_back means.
+        """
         if len(text) > MAX_BODY:
             text = text[:MAX_BODY] + "\n[…] gekürzt, vollständige Änderung im UI"
         # Truncating markup would emit unbalanced tags, so an oversized formatted_body is
@@ -343,6 +515,11 @@ class MatrixSession:
         content = {"msgtype": "m.text", "body": text}
         if html:
             content.update({"format": "org.matrix.custom.html", "formatted_body": html})
+        if thread:
+            root, latest = thread
+            content["m.relates_to"] = {"rel_type": "m.thread", "event_id": root,
+                                       "is_falling_back": True,
+                                       "m.in_reply_to": {"event_id": latest}}
         room = urllib.parse.quote(self.room_id(), safe="")
         # One transaction ID for both attempts: it is the homeserver's idempotency key, so a
         # retry after a rejected token must not read as a second message. It has to be unique
@@ -364,7 +541,13 @@ class MatrixSession:
             raise RuntimeError(f"send failed: HTTP {status} {body}")
 
 
-def make_handler(session):
+# The line the announced alert carries. It says what the diff below it is, because the diff
+# itself cannot: an old capture against a new one looks exactly like changed hours.
+BASELINE_LEAD = ("⤴ Erwarteter Wechsel der Grundlage nach der Filteränderung — "
+                 "alter Ausschnitt gegen neuen, keine geänderte Öffnungszeit.")
+
+
+def make_handler(session, book=None):
     class Handler(BaseHTTPRequestHandler):
         def _reply(self, code, payload):
             raw = json.dumps(payload).encode()
@@ -392,21 +575,43 @@ def make_handler(session):
                 payload = {"message": raw.decode("utf8", "replace")}
             title = (payload.get("title") or "").strip()
             message = (payload.get("message") or payload.get("body") or "").strip()
-            text, formatted = format_message(title, message)
+            # The page this is about. changedetection names it in the first body line, so the
+            # global notification_body stays as it is — and it must, since any edit to the
+            # global settings re-baselines every watch.
+            page = payload.get("page") or first_link(message)
+            # `thread` asks to answer under the page's last alert: the sync says why a filter
+            # changed next to the alert that made somebody change it. `awaited` is the other
+            # half, set by the same call: the alert that follows is the baseline swap.
+            wants_thread = bool(payload.get("thread"))
+            awaited = bool(book and not wants_thread and book.pending(page))
+            thread = book.thread_for(page) if book and (wants_thread or awaited) else None
+            text, formatted = format_message(title, message,
+                                             lead=BASELINE_LEAD if awaited else None)
             if not text.strip():
                 self._reply(400, {"error": "empty notification"})
                 return
             try:
-                event_id = session.send(text, html=formatted)
+                event_id = session.send(text, html=formatted, thread=thread)
             except Exception as e:
                 log.error("send failed: %s", e)
                 self._reply(502, {"error": str(e)[:300]})
                 return
+            if book and page:
+                # A thread is only ever opened by a message that stands on its own. The sync
+                # note is one when the page has no alert to answer yet, and then the awaited
+                # alert answers the note instead — the pair stays together either way.
+                if thread:
+                    book.followed(page, event_id)
+                else:
+                    book.remember(page, event_id)
+                if payload.get("expect_baseline"):
+                    book.expect(page)
             # Line counts in and out: how verbose real diffs get decides whether a cap is
             # needed at all. Deciding that from measurements, not from one bad example.
             diff_lines = sum(1 for ln in text.splitlines() if ln[:1] in ("+", "−", "~"))
-            log.info("sent %s (%d chars, %d diff lines from %d raw)",
-                     event_id, len(text), diff_lines, len(message.splitlines()))
+            log.info("sent %s (%d chars, %d diff lines from %d raw)%s",
+                     event_id, len(text), diff_lines, len(message.splitlines()),
+                     " in thread" if thread else "")
             self._reply(200, {"ok": True, "event_id": event_id})
 
         def log_message(self, fmt, *args):
@@ -418,6 +623,9 @@ def make_handler(session):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--state", default=STATE_PATH)
+    ap.add_argument("--threads", default=THREADS_PATH,
+                    help="where the per-page root events are remembered; losing this file "
+                         "costs the threading, nothing else")
     ap.add_argument("--host", default="0.0.0.0")
     ap.add_argument("--port", type=int, default=8099)
     ap.add_argument("--test", metavar="TEXT", help="send one message and exit")
@@ -436,7 +644,8 @@ def main():
         log.warning("relay listening on %s:%d, but no usable session yet (%s) - "
                     "seed %s; it is picked up without a restart",
                     args.host, args.port, e, args.state)
-    ThreadingHTTPServer((args.host, args.port), make_handler(session)).serve_forever()
+    ThreadingHTTPServer((args.host, args.port),
+                        make_handler(session, ThreadBook(args.threads))).serve_forever()
 
 
 if __name__ == "__main__":

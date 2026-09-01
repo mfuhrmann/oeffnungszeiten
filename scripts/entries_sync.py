@@ -213,12 +213,44 @@ def prune_meldung(namen, geloescht, grund=""):
     return (title, "\n".join(liste))
 
 
-def melden(url, title, body):
-    """Say it where somebody reads it. Never fail the run over a failed notification."""
+# A watch whose capture is redrawn compares a new excerpt against a snapshot taken through the
+# old one, so its next check reports a difference that is not a change of hours. Nothing else in
+# `desired()` does that: an interval or a title leaves the captured text alone.
+BASELINE_KEYS = ("url", "include_filters", "subtractive_selectors", "extract_text",
+                 "ignore_text", "fetch_backend", "sort_text_alphabetically",
+                 "text_should_not_be_present")
+
+
+def baseline_meldung(name, seite):
+    """-> (title, body) for the note that goes in front of that difference.
+
+    Sent before the recheck, so it stands in the room when the alert lands rather than after it.
+
+    >>> t, b = baseline_meldung("Bücherei", "https://example.de/oeffnungszeiten")
+    >>> t
+    'Filter geändert: Bücherei'
+    >>> b.splitlines()[0]
+    'Webseite: https://example.de/oeffnungszeiten'
+    """
+    return (f"Filter geändert: {name}",
+            "\n".join([
+                f"Webseite: {seite}",
+                "",
+                "Der Eintrag trägt einen neuen Ausschnitt, die Seite wird sofort neu geprüft.",
+                "Die Meldung darauf vergleicht den alten Ausschnitt mit dem neuen und ist "
+                "keine geänderte Öffnungszeit. Danach zählt wieder jede Meldung."]))
+
+
+def melden(url, title, body, **extra):
+    """Say it where somebody reads it. Never fail the run over a failed notification.
+
+    `extra` reaches the relay as it is: `thread` puts the message under the page's last alert,
+    `expect_baseline` marks the alert that follows as the announced one.
+    """
     if not url:
         return
     try:
-        payload = json.dumps({"title": title, "message": body}).encode()
+        payload = json.dumps({"title": title, "message": body, **extra}).encode()
         req = urllib.request.Request(url, data=payload,
                                      headers={"Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=30) as r:
@@ -366,6 +398,21 @@ def main():
     for slug, uuid, d in update:
         api.update(uuid, **{k: v for k, (_c, v) in d.items()})
         print(f"updated {slug}")
+        # Announce, then force the check. Without the recheck the difference arrives whenever
+        # the three-day cadence next comes round, long after the pull request that caused it is
+        # out of everybody's head; with it, the note and the alert are minutes apart and sit in
+        # one thread.
+        if any(k in d for k in BASELINE_KEYS):
+            entry = entries[slug]
+            melden(args.notify, *baseline_meldung(entry.get("name") or slug,
+                                                  entry.get("url", "")),
+                   thread=True, expect_baseline=True)
+            try:
+                api.recheck(uuid)
+                print(f"rechecked {slug}")
+            except Exception as e:
+                print(f"recheck failed for {slug} ({type(e).__name__}) — the next scheduled "
+                      f"check does it", file=sys.stderr)
     for slug, uuid in delete:
         api.delete(uuid)          # ALWAYS targeted by uuid, never by tag
         lock.pop(slug, None)

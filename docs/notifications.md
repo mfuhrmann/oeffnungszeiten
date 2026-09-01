@@ -171,6 +171,32 @@ time is reported as found: a line too many beats a silent failure. Each finding 
 checksum from moving. That is precisely what the weekly report is for: if it says
 "nothing to report", it has actually looked.
 
+## The baseline swap after a filter change
+
+Redrawing a filter means the next check compares a new excerpt against a snapshot taken through
+the old one. That difference is not a change of hours, and from the diff alone nothing says so.
+Two things keep it readable, both in `entries_sync.py`:
+
+- **It happens at once.** A watch whose `url`, filter, `ignore_text`, `extract_text`,
+  `sort_text_alphabetically` or `fetch_backend` changed gets a `?recheck=1` right after the
+  update, so the difference lands minutes after the pull request instead of up to three days
+  later, when nobody connects the two any more.
+- **It is announced first.** The sync posts a short note before the recheck, and marks the page
+  as expecting one alert. The relay answers that note under the page's last alert — the one that
+  made somebody change the filter — and the alert that follows goes into the same thread with a
+  line saying what it is.
+
+The relay remembers one root event per page in `/config/matrix_relay_threads.json`, beside the
+session and never inside it: re-seeding copies the session file into the pod, and a failed write
+here must not endanger the refresh token. Losing the file costs the threading and nothing else,
+every message still arrives, flat. A root older than 30 days is not answered any more, because a
+thread under a message that has scrolled out of the timeline hides the follow-up instead of
+placing it.
+
+Only a message that names the page can be threaded: the relay reads the `Webseite:` line the
+global `notification_body` already writes. That is deliberate — the body is a global setting, and
+any edit to those re-baselines every watch.
+
 ## Umsortiert
 
 A page whose opening-hours table starts at **today** rewrites itself daily. Its diff shows every
