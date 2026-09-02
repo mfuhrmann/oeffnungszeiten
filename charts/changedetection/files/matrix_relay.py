@@ -67,6 +67,11 @@ THREADS_PATH = os.environ.get("MATRIX_RELAY_THREADS", "/config/matrix_relay_thre
 THREAD_TTL = 30 * 24 * 3600
 # Enough for every watched page to hold one thread, and a bound on a file nothing else prunes.
 THREAD_MAX = 400
+# How long an announced baseline swap stays announced. The recheck follows the note within
+# minutes, and if it fails the next scheduled check is three days later - but a recheck that
+# finds no difference sends nothing at all, and the expectation would otherwise wait for the
+# next real change and label it as the swap. A week covers the fallback and expires by itself.
+AWAIT_TTL = 7 * 24 * 3600
 # Header lines of the notification body: "Webseite: <url>", "OpenStreetMap: <url>", or a bare
 # URL (the global body, used by the few entries without an osm_id) which is labelled Webseite.
 LINK_LINE = re.compile(r"^(?:([^:]{1,30}):\s*)?(https?://\S+)\s*$")
@@ -115,12 +120,9 @@ def first_link(message):
     >>> first_link("(added) Mo 9-17") is None
     True
     """
-    for raw in message.splitlines():
-        m = LINK_LINE.match(raw.strip())
-        if m:
-            return m.group(2)
-        return None
-    return None
+    first = (message.splitlines() or [""])[0].strip()
+    m = LINK_LINE.match(first)
+    return m.group(2) if m else None
 
 
 def reorder_note(kept):
@@ -283,6 +285,10 @@ class ThreadBook:
     >>> b.followed("https://example.de/", "$reply")     # the awaited alert arrived
     >>> b.pending("https://example.de/")
     False
+    >>> b.expect("https://example.de/")                 # an alert that never came
+    >>> b.pages[page_key("https://example.de/")]["await"] -= AWAIT_TTL + 1
+    >>> b.pending("https://example.de/")
+    False
     >>> b.thread_for("https://example.de/")             # replies chain to the newest event
     ('$root', '$reply')
     """
@@ -352,21 +358,26 @@ class ThreadBook:
             self._save()
 
     def expect(self, url):
-        """The next alert for this page is the announced one and belongs in the thread."""
+        """The next alert for this page is the announced one and belongs in the thread.
+
+        Timestamped, because the alert may never come: a recheck that finds no difference sends
+        nothing, and an expectation that waits forever would label the next real change as the
+        announced one.
+        """
         key = page_key(url)
         if not key:
             return
         with self.lock:
             rec = self._load().get(key)
             if rec:
-                rec["await"] = True
+                rec["await"] = time.time()
                 self._save()
 
     def pending(self, url):
         key = page_key(url)
         with self.lock:
             rec = self._load().get(key) if key else None
-            return bool(rec and rec.get("await"))
+            return bool(rec and time.time() - (rec.get("await") or 0) < AWAIT_TTL)
 
 
 class MatrixSession:
