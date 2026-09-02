@@ -191,7 +191,9 @@ session and never inside it: re-seeding copies the session file into the pod, an
 here must not endanger the refresh token. Losing the file costs the threading and nothing else,
 every message still arrives, flat. A root older than 30 days is not answered any more, because a
 thread under a message that has scrolled out of the timeline hides the follow-up instead of
-placing it.
+placing it. The expectation itself expires after a week: a recheck that finds no difference
+sends nothing at all, and an expectation left standing would put the announcement in front of
+the next real change instead.
 
 Only a message that names the page can be threaded: the relay reads the `Webseite:` line the
 global `notification_body` already writes. That is deliberate — the body is a global setting, and
