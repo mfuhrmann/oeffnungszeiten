@@ -75,12 +75,27 @@ AWAIT_TTL = 7 * 24 * 3600
 # Header lines of the notification body: "Webseite: <url>", "OpenStreetMap: <url>", or a bare
 # URL (the global body, used by the few entries without an osm_id) which is labelled Webseite.
 LINK_LINE = re.compile(r"^(?:([^:]{1,30}):\s*)?(https?://\S+)\s*$")
+# What the sender puts under this line is guidance, not page content. Keeping the two apart is
+# not cosmetic: everything below it used to arrive as unmarked diff lines, and reorder_note
+# refuses to speak when the diff holds a line it cannot account for - so the rotation note could
+# never fire for the 558 of 559 watches whose body carries this block.
+TRAILER_MARK = "Hinweise:"
+# A guidance line that ends in a URL becomes that URL, labelled with the words in front of it.
+# Two reasons, and the second one is the real one: ninety characters of link read badly, and
+# Matrix' default push rule matches the user's own name as a word in `content.body` - in
+# "github.com/<name>/oeffnungszeiten" it is one, so every alert arrived as a personal highlight
+# for exactly one person in a room where no message is addressed to anybody. A one-word label
+# ("Webseite", "uuid") keeps its address visible, because there the address is the information.
+TRAILER_LINK = re.compile(r"^(.{1,80}?)\s*:\s+(https?://\S+)$")
 DEFAULT_LINK_LABEL = "Webseite"
 
 # changedetection prefixes each changed line with (added) / (removed) / (changed).
-DIFF_MARKER = re.compile(r"^\((added|removed|changed)\)\s?")
-SIGIL = {"added": "+", "removed": "−", "changed": "~"}
-COLOR = {"added": "#2e7d32", "removed": "#c62828", "changed": "#ef6c00"}
+# changedetection reports a changed line as a pair: "(changed) <old>" and "(into) <new>". Read
+# apart they are two lines that look almost alike and say nothing; read together they are the
+# one sentence the alert is about, so they are folded into "<old> → <new>" below.
+DIFF_MARKER = re.compile(r"^\((added|removed|changed|into)\)\s?")
+SIGIL = {"added": "+", "removed": "−", "changed": "~", "into": "→"}
+COLOR = {"added": "#2e7d32", "removed": "#c62828", "changed": "#ef6c00", "into": "#ef6c00"}
 
 # A page whose hours table starts at TODAY sends every removed line straight back as an added
 # one. That diff reads like changed hours and is not one, and the answer is always the same, so
@@ -125,6 +140,26 @@ def first_link(message):
     return m.group(2) if m else None
 
 
+def labelled_link(line):
+    """-> (label, url) for a guidance line whose whole point is the link, else None.
+
+    The label has to be prose. A single word in front of the colon is a field name, and there
+    the address itself is what the reader came for.
+
+    >>> labelled_link("Wann der Filter dran ist: https://example.de/doc#x")
+    ('Wann der Filter dran ist', 'https://example.de/doc#x')
+    >>> labelled_link("Webseite: https://example.de/") is None
+    True
+    >>> labelled_link("Zu tun: Zeiten in OSM prüfen.") is None
+    True
+    """
+    m = TRAILER_LINK.match(line.strip())
+    if not m:
+        return None
+    label = m.group(1).strip()
+    return (label, m.group(2)) if " " in label else None
+
+
 def reorder_note(kept):
     """The two lines that explain a reordering, or [] when the diff is a real change.
 
@@ -152,7 +187,8 @@ def reorder_note(kept):
     return [f"⟳ Nur umsortiert — dieselben {n} Zeilen in anderer Reihenfolge, "
             f"die Zeiten sind unverändert.",
             f"  Zu tun: sort_text_alphabetically im Entry setzen. Steht es schon dort, war das "
-            f"der einmalige Alarm nach dem Umstellen. {REORDER_DOC}"]
+            f"der einmalige Alarm nach dem Umstellen.",
+            f"  Was dahintersteckt: {REORDER_DOC}"]
 
 
 def format_message(title, message, lead=None):
@@ -169,6 +205,10 @@ def format_message(title, message, lead=None):
 
     A diff that only reordered itself is labelled as such (see REORDER_DOC), because the six
     identical-looking lines it produces are the one message nobody can read.
+
+    Everything under a `Hinweise:` line is guidance rather than page content: it goes below the
+    diff, outside the line cap, and its links are rendered as their label so that no repository
+    URL ends up in the plain body (see TRAILER_LINK).
 
     `lead` is one line put above everything, used for the alert the relay knows is coming: the
     baseline swap after a filter change. Without it that alert reads like a change of hours.
@@ -188,6 +228,19 @@ def format_message(title, message, lead=None):
     >>> plain, html = format_message("T", "(removed) Mo 9-17\n(added) Mo 9-18")
     >>> "umsortiert" in plain
     False
+    >>> plain, html = format_message("T", "(changed) Fr 17-23\n(into) Fr 17-22")
+    >>> plain.splitlines()[-1]
+    '~ Fr 17-23 → Fr 17-22'
+    >>> body = ("(removed) Mo 9-17\n(added) Mo 9-18\nHinweise:\n"
+    ...         "Zu tun: Zeiten in OSM prüfen.\nFilter melden: https://example.de/neu")
+    >>> plain, html = format_message("T", body)
+    >>> plain.splitlines()[-2:]
+    ['Zu tun: Zeiten in OSM prüfen.', 'Filter melden']
+    >>> '<a href="https://example.de/neu">Filter melden</a>' in html
+    True
+    >>> rot = "(removed) Mo 9-17\n(added) Mo 9-17\nHinweise:\nFilter melden: https://example.de/"
+    >>> "umsortiert" in format_message("T", rot)[0]      # the trailer no longer hides the note
+    True
     >>> lang = "\n".join(f"(added) Zeile {i}" for i in range(50))
     >>> plain, html = format_message("T", lang)
     >>> plain.splitlines()[-1]
@@ -206,6 +259,15 @@ def format_message(title, message, lead=None):
         lines.pop(0)
         head.append((m.group(1) or DEFAULT_LINK_LABEL, m.group(2)))
 
+    # The guidance block, split off before anything counts diff lines. It is not part of the
+    # page, so it neither confuses reorder_note nor eats into MAX_LINES: a long diff must not be
+    # able to truncate the sentence that says what to do about it.
+    trailer = []
+    for i, raw in enumerate(lines):
+        if raw.strip() == TRAILER_MARK:
+            lines, trailer = lines[:i], [t for t in lines[i + 1:] if t.strip()]
+            break
+
     kept = []
     for raw in lines:
         stripped = raw.strip()
@@ -215,21 +277,45 @@ def format_message(title, message, lead=None):
             continue
         kept.append((m.group(1) if m else None, text))
 
+    # Fold the pair. An "(into)" without its partner keeps its own line and its arrow: better a
+    # lonely arrow than a silently dropped half.
+    folded = []
+    for kind, text in kept:
+        if kind == "into" and folded and folded[-1][0] == "changed":
+            folded[-1] = ("changed", f"{folded[-1][1]} → {text}")
+        else:
+            folded.append((kind, text))
+    kept = folded
+
     note = reorder_note(kept)
     rest = 0
     if len(kept) > MAX_LINES:
         rest = len(kept) - MAX_LINES
         kept = kept[:MAX_LINES]
 
+    def esc(s):
+        return html_mod.escape(s, quote=False)
+
+    def as_text(line):
+        """A guidance line as it reads without markup: the label stands for its link."""
+        lk = labelled_link(line)
+        return lk[0] if lk else line
+
+    def as_html(line):
+        lk = labelled_link(line)
+        if not lk:
+            return esc(line)
+        label, url = lk
+        return f'<a href="{html_mod.escape(url, quote=True)}">{esc(label)}</a>'
+
     text_parts = ([lead] if lead else []) + ([title] if title else [])
     text_parts += [f"{label}: {url}" for label, url in head]
-    text_parts += ([""] + note if note else []) + [""]
+    text_parts += ([""] + [as_text(n) for n in note] if note else []) + [""]
     text_parts += [f"{SIGIL.get(kind, ' ')} {t}" for kind, t in kept]
     if rest:
         text_parts.append(f"[…] {rest} weitere Zeilen, vollständige Änderung im UI")
-
-    def esc(s):
-        return html_mod.escape(s, quote=False)
+    if trailer:
+        text_parts += [""] + [as_text(t) for t in trailer]
 
     html_parts = []
     if lead:
@@ -242,11 +328,7 @@ def format_message(title, message, lead=None):
     if note:
         html_parts.append("")
         for line in note:
-            if line.startswith("⟳"):
-                html_parts.append(f"<b>{esc(line)}</b>")
-            else:   # the doc link is the point of the second line, so make it clickable
-                html_parts.append(esc(line).replace(
-                    REORDER_DOC, f'<a href="{REORDER_DOC}">{REORDER_DOC}</a>'))
+            html_parts.append(f"<b>{esc(line)}</b>" if line.startswith("⟳") else as_html(line))
         html_parts.append("")
     for kind, t in kept:
         body = esc(t)
@@ -257,6 +339,9 @@ def format_message(title, message, lead=None):
         html_parts.append(body)
     if rest:
         html_parts.append(esc(f"[…] {rest} weitere Zeilen, vollständige Änderung im UI"))
+    if trailer:
+        html_parts.append("")
+        html_parts += [as_html(t) for t in trailer]
 
     return "\n".join(text_parts), "<br/>".join(html_parts)
 
