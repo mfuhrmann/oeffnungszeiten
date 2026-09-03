@@ -85,6 +85,11 @@ PICK = re.compile(r"^\s*/pick\s+([0-9]{1,2})\s*$", re.M)
 TRACKING = re.compile(r"^(utm_\w+|gclid|fbclid|msclkid|igshid|mc_[ce]id|_ga)$")
 MAX_CANDIDATES = 6
 MAX_TEXT = 600
+# The pasted alarm is quoted whole, not folded into a paragraph: it is the evidence the reader
+# compares the candidates against, and both halves of a changed line have to stay under each
+# other. Wider than MAX_TEXT because it carries the old text and the new one, and NKD's sale
+# boilerplate alone is 1800 characters - exactly the alarm somebody reports.
+MAX_DIFF = 4000
 
 
 class Refused(Exception):
@@ -488,11 +493,38 @@ def fetch(url, lang):
     return html, ranked
 
 
-def fence(text):
-    """A fenced block that survives backticks in the captured text."""
-    body = re.sub(r"\s{2,}", " ", text).strip()[:MAX_TEXT]
+def unfence(text):
+    r"""Drop a code fence the issue form already put around a pasted block.
+
+    A `render: text` field arrives fenced from GitHub. Fencing it a second time shows the inner
+    ```text as a line of its own and puts the reader in front of markup instead of the alarm.
+
+    >>> unfence("```text\nMo 9-17\n```")
+    'Mo 9-17'
+    >>> unfence("Mo 9-17")
+    'Mo 9-17'
+    """
+    lines = text.strip().splitlines()
+    if len(lines) >= 2 and re.match(r"^`{3,}\w*$", lines[0].strip()) \
+            and re.match(r"^`{3,}$", lines[-1].strip()):
+        return "\n".join(lines[1:-1]).strip()
+    return text.strip()
+
+
+def fence(text, limit=MAX_TEXT, keep_lines=False):
+    """A fenced block that survives backticks in the captured text.
+
+    `keep_lines` quotes the text as it stands. Captured page text is folded into one paragraph,
+    because its line breaks are an accident of the markup; a pasted alarm is not folded, because
+    there they carry the meaning. Either way a cut is named rather than left to look like the
+    end of the text.
+    """
+    body = unfence(text) if keep_lines else re.sub(r"\s{2,}", " ", text).strip()
+    cut = ""
+    if len(body) > limit:
+        body, cut = body[:limit].rstrip(), f"\n[…] gekürzt, {len(body) - limit} Zeichen mehr"
     ticks = "`" * max(3, max((len(m) for m in re.findall(r"`+", body)), default=0) + 1)
-    return f"{ticks}\n{body}\n{ticks}"
+    return f"{ticks}\n{body}{cut}\n{ticks}"
 
 
 def candidate_block(i, cand, lang):
@@ -544,15 +576,16 @@ def fix_comment(entry, path, current, diff, ranked, lang, html_len, url):
         f"Abgerufen: {url} ({html_len} Bytes, einfacher Abruf, kein Browser).",
         f"Beobachtet wird die Seite als `{path}`.",
         "",
-        f"**Was der Filter heute erfasst** (`{entry.get('filter') or 'kein Filter'}`):",
+        f"**Was der Filter bisher erfasste** (`{entry.get('filter') or 'kein Filter'}`):",
         "",
         now,
         "",
     ]
     if diff:
-        parts += ["**Was in der Nachricht stand:**", "", fence(diff), ""]
+        parts += ["**Was in der Nachricht stand:**", "",
+                  fence(diff, limit=MAX_DIFF, keep_lines=True), ""]
     parts += [
-        "**So liest du die Liste:**",
+        "**So liest du die Liste ⬇️:**",
         "",
         "- Unterscheidet sich ein Kandidat vom Text oben nur durch etwas am Anfang oder Ende, "
         "das zum heutigen Wochentag passt, ist das die Ursache — nimm ihn.",
