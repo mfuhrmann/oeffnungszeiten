@@ -126,13 +126,13 @@ def desired(entry, tag_uuids=None):
             "{{diff}}\n"
             "Hinweise:\n"
             "Zu tun: Zeiten in OSM prüfen, dann check_date:opening_hours setzen.\n"
-            "Steht im Diff keine geänderte Öffnungszeit, ist der Filter dran und nicht der "
-            "Betrieb.\n"
-            f"Woran man das erkennt: {DOCS_BASE}/notifications.md#umsortiert\n"
+            "Zeigt der Diff keine Öffnungszeiten, ist es ein Fehlalarm: OSM bleibt unberührt, "
+            "der Filter muss nachgezogen werden.\n"
+            f"Wie Fehlalarme entstehen: {DOCS_BASE}/notifications.md#umsortiert\n"
             # No `&url={{watch_url}}` prefill: an issue-form field is filled through the query
             # string, and a watch URL that carries one of its own (`?branch=500735` at Würth,
             # `?store=…` at brillen.de) would end the parameter early and arrive truncated.
-            "Filter melden, ohne etwas zu installieren: "
+            "Fehlalarm melden: "
             f"{REPO_BASE}/issues/new?template=filter-korrigieren.yml"
         )
     return want
