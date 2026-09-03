@@ -116,18 +116,24 @@ def desired(entry, tag_uuids=None):
     # to stand here too. 558 of 559 entries carry an osm_id, which made the guidance in the
     # global body unreachable for all but one watch until this text was repeated.
     if entry.get("osm_id"):
+        # `Hinweise:` separates the page from the guidance under it. The relay needs that line:
+        # without it the guidance arrives as unmarked diff lines, which silences the rotation
+        # note and lets a long diff push the instruction out. One thought per line, and each
+        # link on a line of its own, because the relay renders a prose label as the link text.
         want["notification_body"] = (
             "Webseite: {{watch_url}}\n"
             f"OpenStreetMap: {OSM_BASE}/{entry['osm_id']}\n"
             "{{diff}}\n"
-            "Zu tun: Zeiten in OSM pruefen und check_date:opening_hours setzen.\n"
-            "Zeigt der Diff keine Zeiten, sondern eine Uhr oder ein Banner, stehen auf beiden "
-            "Seiten dieselben Zeiten, oder passt der Wechsel zum heutigen Wochentag, dann ist "
-            f"der Filter dran: {DOCS_BASE}/notifications.md#umsortiert\n"
+            "Hinweise:\n"
+            "Zu tun: Zeiten in OSM prüfen, dann check_date:opening_hours setzen.\n"
+            "Zeigt der Diff keine Öffnungszeiten, ist es ein Fehlalarm: OSM bleibt unberührt, "
+            "der Filter muss nachgezogen werden.\n"
+            f"Wie Fehlalarme entstehen: {DOCS_BASE}/notifications.md#umsortiert\n"
             # No `&url={{watch_url}}` prefill: an issue-form field is filled through the query
             # string, and a watch URL that carries one of its own (`?branch=500735` at Würth,
             # `?store=…` at brillen.de) would end the parameter early and arrive truncated.
-            f"Melden ohne Checkout: {REPO_BASE}/issues/new?template=filter-korrigieren.yml"
+            "Fehlalarm melden: "
+            f"{REPO_BASE}/issues/new?template=filter-korrigieren.yml"
         )
     return want
 

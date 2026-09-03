@@ -206,6 +206,9 @@ def compose(rows):
         # Several of the moves above end in "--uuid", and the report is the only place the
         # reader has it: the Matrix message is where they start, not the watch list.
         lines.append(f"uuid: {r.get('uuid')}")
+    # Below this line the relay renders guidance, not findings: it stays out of the line cap,
+    # and the link is shown as its label instead of as an address nobody reads.
+    lines.append("Hinweise:")
     lines.append(f"Was die Befunde bedeuten: {DOCS}")
     lines.append(f"(von {len(rows)} Watches insgesamt)")
     return title, "\n".join(lines)

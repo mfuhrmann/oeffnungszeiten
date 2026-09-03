@@ -31,7 +31,7 @@
   ],
   "global_subtractive_selectors": [],
   "ignore_whitespace": true,
-  "notification_body": "{{watch_url}}\n{{diff}}\nZu tun: Zeiten in OSM pruefen und check_date:opening_hours setzen. Zeigt der Diff keine Zeiten, sondern eine Uhr oder ein Banner, ist der Filter dran: https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/notifications.md#was-eine-nachricht-verlangt",
+  "notification_body": "{{watch_url}}\n{{diff}}\nHinweise:\nZu tun: Zeiten in OSM prüfen, dann check_date:opening_hours setzen.\nZeigt der Diff keine Öffnungszeiten, ist es ein Fehlalarm: OSM bleibt unberührt, der Filter muss nachgezogen werden.\nWie Fehlalarme entstehen: https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/notifications.md#umsortiert\nFehlalarm melden: https://github.com/mfuhrmann/oeffnungszeiten/issues/new?template=filter-korrigieren.yml",
   "notification_format": "text",
   "notification_title": "Öffnungszeiten geändert: {{watch_title}}",
   "notification_urls": [

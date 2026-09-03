@@ -136,6 +136,10 @@ it decides which of two jobs this is:
   [Umsortiert](#umsortiert). The relay says so itself, so this is the one case that needs no
   reading of the diff.
 
+The block under `Hinweise:` is not part of the page. It carries the two links a reader needs
+when the diff turns out to be the filter's fault, and it is rendered below the diff, outside the
+line cap, so a long change can never truncate it.
+
 **2. `CSS/xPath filter was not present in the page`**: changedetection's own message, sent after
 six consecutive misses, so roughly 18 days at a 3-day cadence. Nothing to do in OSM: the site was
 rebuilt and the anchor is gone. Re-run the wizard and commit the new filter.
@@ -199,6 +203,28 @@ Only a message that names the page can be threaded: the relay reads the `Webseit
 global `notification_body` already writes. That is deliberate — the body is a global setting, and
 any edit to those re-baselines every watch.
 
+## What a message says, and what it does not link
+
+Two rules shape the text, and both were paid for.
+
+**Guidance sits under a `Hinweise:` line, page content above it.** Everything the sender appends
+after the diff used to arrive as unmarked diff lines, and `reorder_note` stays silent when the
+diff holds a line it cannot account for — so the `⟳ Nur umsortiert` verdict could not fire for a
+single one of the 558 watches whose body carries that block. The separator is what tells the two
+apart; it also keeps the guidance out of `MAX_LINES`.
+
+**A guidance link is rendered as its label, not as its address.** Matrix' default push rule
+`.m.rule.contains_user_name` matches the local part of a user id as a *word* in `content.body`,
+and a slash is a word boundary — so `github.com/<name>/oeffnungszeiten` in every alert made every
+alert a personal highlight for exactly one person, in a room where no message is addressed to
+anybody. Putting the address in the `href` and the words in the body ends that without anyone
+having to switch a push rule off. A one-word label (`Webseite:`, `uuid:`) keeps its address
+visible: there the address is the information.
+
+**A changed line arrives as a pair.** changedetection writes `(changed) <old>` and `(into) <new>`
+on two lines. Apart they read as two nearly identical lines that say nothing; the relay folds
+them into `<old> → <new>`, which is also what makes an invisible difference visible.
+
 ## Umsortiert
 
 A page whose opening-hours table starts at **today** rewrites itself daily. Its diff shows every
@@ -259,13 +285,15 @@ they are the whole list:
 |---|---|---|
 | `DEFAULT_LINK_LABEL` | `charts/changedetection/files/matrix_relay.py` | `Webseite`, the label on the header link when a body line names none |
 | `reorder_note()` | `charts/changedetection/files/matrix_relay.py` | the `⟳ Nur umsortiert` verdict and what to do about it |
-| `notification_title`, `notification_body` | `deploy/global-settings.json` | the subject of every change alert, and the `Zu tun:` line under the diff |
+| `notification_title`, `notification_body` | `deploy/global-settings.json` | the subject of every change alert, and the `Hinweise:` block under the diff |
 | `desired()` | `scripts/entries_sync.py` | the per-watch body, `Webseite:` and `OpenStreetMap:` |
 | `compose()` | `scripts/audit_report.py` | the weekly report: title, `Zu tun:` lines, `Webseite:`, `uuid:` |
 
 The relay's own parsing is not language-bound: `LINK_LINE` accepts any label up to 30 characters,
-so a translated one keeps producing a header link. The `(added)` / `(removed)` / `(changed)`
-markers it strips come from changedetection itself and are English wherever it runs. `hours_lang.py` is the other half of this and is
+so a translated one keeps producing a header link. `TRAILER_MARK` is the one German word the
+parser itself looks for, so a translation has to change it in both places at once. The `(added)` /
+`(removed)` / `(changed)` / `(into)` markers it strips come from changedetection itself and are
+English wherever it runs. `hours_lang.py` is the other half of this and is
 already bilingual; a new language goes in there and both the wizard and the audit gain it.
 
 ## Operating it
