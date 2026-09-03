@@ -104,6 +104,10 @@ COLOR = {"added": "#2e7d32", "removed": "#c62828", "changed": "#ef6c00", "into":
 # differ line by line and never look like a reordering.
 REORDER_DOC = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
                "notifications.md#umsortiert")
+DECODE_DOC = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
+              "notifications.md#zeichensalat")
+# What a failed decode leaves behind, one per undecodable byte.
+BROKEN_CHAR = "\ufffd"
 
 
 def page_key(url):
@@ -189,6 +193,38 @@ def reorder_note(kept):
             f"  Zu tun: sort_text_alphabetically im Entry setzen. Steht es schon dort, war das "
             f"der einmalige Alarm nach dem Umstellen.",
             f"  Was dahintersteckt: {REORDER_DOC}"]
+
+
+def decode_note(pairs):
+    """The two lines that explain mangled bytes, or [] when the change is a real one.
+
+    A page that ships a character the fetch could not decode puts U+FFFD where that character
+    was. The line then differs from the stored one without anything having changed, and
+    `ignore_whitespace` cannot help: the replacement character is not whitespace.
+
+    True only when every folded pair is the same text once the replacement characters and all
+    whitespace are gone. A pair that hides a real difference behind the mangled bytes fails that
+    test and is reported as the change it is.
+
+    >>> decode_note([("Freitag 5–11 pm", "Freitag 5–11\ufffd\ufffd\ufffdpm")])[0][:14]
+    '⚠ Zeichensalat'
+    >>> decode_note([("Freitag 5–11 pm", "Freitag 5–12\ufffd\ufffd\ufffdpm")])
+    []
+    >>> decode_note([("Küche bis 22", "K\ufffd\ufffdche bis 22")])
+    []
+    >>> decode_note([("Freitag 5–11 pm", "Freitag 5–11 pm")])   # no mangled bytes at all
+    []
+    >>> decode_note([])
+    []
+    """
+    if not pairs or not any(BROKEN_CHAR in new for _old, new in pairs):
+        return []
+    bare = lambda t: re.sub(r"[\ufffd\s]+", "", t)
+    if any(bare(old) != bare(new) for old, new in pairs):
+        return []
+    return ["⚠ Zeichensalat — alt und neu sind gleich, nur ein Zeichen kam kaputt an.",
+            "  Keine geänderte Öffnungszeit, nichts zu tun.",
+            f"  Woran das liegt: {DECODE_DOC}"]
 
 
 def format_message(title, message, lead=None):
@@ -277,17 +313,21 @@ def format_message(title, message, lead=None):
             continue
         kept.append((m.group(1) if m else None, text))
 
-    # Fold the pair. An "(into)" without its partner keeps its own line and its arrow: better a
-    # lonely arrow than a silently dropped half.
-    folded = []
+    # Fold the pair onto one line. The old half carries NO marker of its own - measured against a
+    # real alert, changedetection marks only the "(into)" side - so the partner is simply the
+    # line before it, whatever it is. An "(into)" with nothing in front keeps its own line and
+    # its arrow: better a lonely arrow than a silently dropped half.
+    folded, pairs = [], []
     for kind, text in kept:
-        if kind == "into" and folded and folded[-1][0] == "changed":
-            folded[-1] = ("changed", f"{folded[-1][1]} → {text}")
+        if kind == "into" and folded:
+            was = folded[-1][1]
+            folded[-1] = ("changed", f"{was} → {text}")
+            pairs.append((was, text))
         else:
             folded.append((kind, text))
     kept = folded
 
-    note = reorder_note(kept)
+    note = reorder_note(kept) or decode_note(pairs)
     rest = 0
     if len(kept) > MAX_LINES:
         rest = len(kept) - MAX_LINES
