@@ -132,9 +132,9 @@ it decides which of two jobs this is:
 - the diff shows a temporary notice (Betriebsurlaub, renovation, "ab Montag neue Zeiten"), leave
   `opening_hours` alone. The regular hours are still the regular hours, and the notice is gone in
   two weeks.
-- the message carries a `⟳ Nur umsortiert` line → nothing changed at all, see
-  [Umsortiert](#umsortiert). The relay says so itself, so this is the one case that needs no
-  reading of the diff.
+- the message carries a `⟳ Nur umsortiert` or `⚠ Zeichensalat` line → nothing changed at all,
+  see [Umsortiert](#umsortiert) and [Zeichensalat](#zeichensalat). The relay says so itself, so
+  these are the two cases that need no reading of the diff.
 
 The block under `Hinweise:` is not part of the page. It carries the two links a reader needs
 when the diff turns out to be the filter's fault, and it is rendered below the diff, outside the
@@ -221,9 +221,32 @@ anybody. Putting the address in the `href` and the words in the body ends that w
 having to switch a push rule off. A one-word label (`Webseite:`, `uuid:`) keeps its address
 visible: there the address is the information.
 
-**A changed line arrives as a pair.** changedetection writes `(changed) <old>` and `(into) <new>`
-on two lines. Apart they read as two nearly identical lines that say nothing; the relay folds
-them into `<old> → <new>`, which is also what makes an invisible difference visible.
+**A changed line arrives as a pair.** changedetection marks only the second half: the old text
+stands on a line of its own with no marker, the new one behind `(into)`. Apart they read as two
+nearly identical lines that say nothing; the relay folds them into `<old> → <new>`, which is also
+what makes an invisible difference visible. The partner of an `(into)` is therefore whatever line
+precedes it, not a line marked `(changed)`.
+
+## Zeichensalat
+
+A page can ship a character the fetch cannot decode. What lands in the snapshot is U+FFFD, the
+replacement character, one per undecodable byte — so a single narrow no-break space (U+202F,
+three bytes in UTF-8) becomes three of them. The line then differs from the stored one without
+anything having changed, and `ignore_whitespace` does not help: U+202F is whitespace and would
+have been ignored, U+FFFD is not.
+
+Measured on `zum-biereck.9gg.de`, one of four watches on that platform: the page writes U+202F
+between the number and `pm` and sends `content-type: text/html` with no charset, naming UTF-8
+only in a meta tag. Decoded as anything else, `5–11 pm` arrives as `5–11␦␦␦pm`. It flips back
+whenever the next fetch decodes correctly, so the same non-change is reported twice.
+
+`decode_note()` labels it rather than trying to suppress it. The verdict is decidable, not a
+guess: the pair has to be the same text once the replacement characters and all whitespace are
+gone. `5–11 pm` against `5–12␦␦␦pm` fails that test, and so does `Küche` against `K␦␦che` — a
+difference hidden behind the mangled bytes is reported as the change it is.
+
+Suppressing it is not on offer. `ignore_text` works line by line, so muting the artifact would
+mute every real change to the same line, which is the opening hours themselves.
 
 ## Umsortiert
 
@@ -278,13 +301,14 @@ the check.
 
 ## Running this for another city
 
-The structure is language-neutral; the text a mapper reads is not. Five places carry German, and
+The structure is language-neutral; the text a mapper reads is not. Six places carry German, and
 they are the whole list:
 
 | | Where | What it says |
 |---|---|---|
 | `DEFAULT_LINK_LABEL` | `charts/changedetection/files/matrix_relay.py` | `Webseite`, the label on the header link when a body line names none |
 | `reorder_note()` | `charts/changedetection/files/matrix_relay.py` | the `⟳ Nur umsortiert` verdict and what to do about it |
+| `decode_note()` | `charts/changedetection/files/matrix_relay.py` | the `⚠ Zeichensalat` verdict, see [Zeichensalat](#zeichensalat) |
 | `notification_title`, `notification_body` | `deploy/global-settings.json` | the subject of every change alert, and the `Hinweise:` block under the diff |
 | `desired()` | `scripts/entries_sync.py` | the per-watch body, `Webseite:` and `OpenStreetMap:` |
 | `compose()` | `scripts/audit_report.py` | the weekly report: title, `Zu tun:` lines, `Webseite:`, `uuid:` |
