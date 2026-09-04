@@ -120,7 +120,7 @@ def confirmed(rows, base_url, api_key, budget=RECHECK_BUDGET):
     return out
 
 
-DOCS = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
+DOCS = ("https://github.com/osm-fulda/oeffnungszeiten/blob/main/docs/"
         "notifications.md#was-eine-nachricht-verlangt")
 
 # A finding names what is broken; a reader still has to know what to do about it. The audit

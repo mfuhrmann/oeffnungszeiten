@@ -45,7 +45,7 @@ import osm_cd_common as C
 # Entry field -> changedetection field. Everything listed is ENFORCED: if the entry and the
 # watch disagree, the watch loses.
 OSM_BASE = "https://www.openstreetmap.org"
-REPO_BASE = "https://github.com/mfuhrmann/oeffnungszeiten"
+REPO_BASE = "https://github.com/osm-fulda/oeffnungszeiten"
 DOCS_BASE = f"{REPO_BASE}/blob/main/docs"
 
 FIELD_MAP = {

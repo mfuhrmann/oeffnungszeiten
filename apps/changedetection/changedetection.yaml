@@ -103,7 +103,7 @@ data:
     sync:
       enabled: true
       apply: true
-      repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+      repo: https://github.com/osm-fulda/oeffnungszeiten.git
       ref: main
       # Removing a file in a pull request removes the watch, which is what the docs have always
       # promised. The guard is what makes that safe: the job refuses when more than maxPrune
