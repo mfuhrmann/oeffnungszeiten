@@ -1,8 +1,20 @@
 # "/pick N" under a wizard issue -> branch, entry file, pull request.
 #
 # Same split as wizard.yml: the job that fetches the page holds no write token, and hands its
-# result to the job that pushes. The gate is the `wizard` label on the issue, so only a thread a
-# maintainer opened this way can spend a runner.
+# result to the job that pushes.
+#
+# Two gates, and both are needed. The label says a maintainer decided this thread is worth a
+# runner — but the label sits on the issue, while the comment that starts the run may come from
+# anyone who can type. A passer-by writing `/pick 1` under a labeled issue would otherwise fetch
+# a page and force-push a branch on our account, as often as they care to.
+#
+# The commenter therefore has to be either one of us or the person who opened the issue. The
+# second half is the point of the whole path: the contributor who proposed the page picks the
+# block that carries the hours, with no fork and nothing installed, exactly as the README
+# describes. What a third party would add is not a contribution, only a runner.
+#
+# `concurrency` caps the rest: a second `/pick` in the same thread replaces the first instead of
+# queueing behind it, so a stuck fetch cannot pile up either.
 name: wizard-pick
 
 on:
@@ -11,10 +23,17 @@ on:
 
 permissions: {}
 
+concurrency:
+  group: wizard-pick-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
 jobs:
   emit:
     if: >
       github.event.issue.pull_request == null &&
+      (github.event.comment.user.login == github.event.issue.user.login ||
+       contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'),
+                github.event.comment.author_association)) &&
       (contains(github.event.issue.labels.*.name, 'wizard') ||
        contains(github.event.issue.labels.*.name, 'filter-fix')) &&
       startsWith(github.event.comment.body, '/pick')
