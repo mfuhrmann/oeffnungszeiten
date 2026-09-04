@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # The workflows are the only dependency this repo declares: `entries/` is data, and the Python
+  # the checks run is standard library plus an `lxml` the wizard job installs by name. An action
+  # bump therefore is the whole supply chain here, and the tags in use (`@v4`, `@v5`) move under
+  # us either way -- Dependabot at least makes each move a commit somebody read.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore          # -> "chore(deps): bump actions/checkout"
+      include: scope
+    groups:
+      actions:
+        patterns: ['*']      # one PR for all action bumps, not one per action
