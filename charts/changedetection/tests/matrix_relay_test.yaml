@@ -118,7 +118,7 @@ tests:
       auditReport:
         enabled: true
       sync:
-        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+        repo: https://github.com/osm-fulda/oeffnungszeiten.git
     documentIndex: 4
     asserts:
       - isKind:
@@ -137,7 +137,7 @@ tests:
       sync:
         enabled: true
         prune: true
-        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+        repo: https://github.com/osm-fulda/oeffnungszeiten.git
     documentIndex: 4
     asserts:
       - isKind:
@@ -155,7 +155,7 @@ tests:
       sync:
         enabled: true
         prune: false
-        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+        repo: https://github.com/osm-fulda/oeffnungszeiten.git
     documentIndex: 4
     asserts:
       - isKind:

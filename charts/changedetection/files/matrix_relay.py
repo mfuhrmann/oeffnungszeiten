@@ -102,9 +102,9 @@ COLOR = {"added": "#2e7d32", "removed": "#c62828", "changed": "#ef6c00", "into":
 # the message carries it instead of leaving the reader to work it out. The check needs nothing
 # but the diff: a day name is part of its line, so two businesses swapping their times still
 # differ line by line and never look like a reordering.
-REORDER_DOC = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
+REORDER_DOC = ("https://github.com/osm-fulda/oeffnungszeiten/blob/main/docs/"
                "notifications.md#umsortiert")
-DECODE_DOC = ("https://github.com/mfuhrmann/oeffnungszeiten/blob/main/docs/"
+DECODE_DOC = ("https://github.com/osm-fulda/oeffnungszeiten/blob/main/docs/"
               "notifications.md#zeichensalat")
 # What a failed decode leaves behind, one per undecodable byte.
 BROKEN_CHAR = "\ufffd"

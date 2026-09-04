@@ -21,7 +21,7 @@ tests:
       auditReport:
         enabled: true
       sync:
-        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+        repo: https://github.com/osm-fulda/oeffnungszeiten.git
     asserts:
       - hasDocuments:
           count: 1
@@ -41,7 +41,7 @@ tests:
       auditReport:
         enabled: true
       sync:
-        repo: https://github.com/mfuhrmann/oeffnungszeiten.git
+        repo: https://github.com/osm-fulda/oeffnungszeiten.git
     asserts:
       - equal:
           path: spec.jobTemplate.spec.template.metadata.labels['app.kubernetes.io/name']

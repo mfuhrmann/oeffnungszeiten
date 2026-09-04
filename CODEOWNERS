@@ -1,7 +1,7 @@
 # Watches are contributions; the deployment is not. Everything below reconciles into a live
 # cluster on merge, so it needs an explicit review rather than a quick approve.
-/charts/     @mfuhrmann
-/apps/       @mfuhrmann
-/clusters/   @mfuhrmann
-/deploy/     @mfuhrmann
-/.github/    @mfuhrmann
+/charts/     @osm-fulda/owners
+/apps/       @osm-fulda/owners
+/clusters/   @osm-fulda/owners
+/deploy/     @osm-fulda/owners
+/.github/    @osm-fulda/owners
